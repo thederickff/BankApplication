@@ -27,19 +27,64 @@ public class TelaPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        paneMain = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        spnCod = new javax.swing.JSpinner();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Super Mercado");
         setResizable(false);
+
+        jLabel1.setText("Cod:");
+
+        jLabel2.setText("Pesquisar Produto");
+
+        spnCod.setModel(new javax.swing.SpinnerNumberModel(0, 0, 1000, 1));
+
+        javax.swing.GroupLayout paneMainLayout = new javax.swing.GroupLayout(paneMain);
+        paneMain.setLayout(paneMainLayout);
+        paneMainLayout.setHorizontalGroup(
+            paneMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(paneMainLayout.createSequentialGroup()
+                .addGroup(paneMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(paneMainLayout.createSequentialGroup()
+                        .addGap(49, 49, 49)
+                        .addComponent(jLabel1)
+                        .addGap(51, 51, 51)
+                        .addComponent(spnCod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(paneMainLayout.createSequentialGroup()
+                        .addGap(147, 147, 147)
+                        .addComponent(jLabel2)))
+                .addContainerGap(198, Short.MAX_VALUE))
+        );
+        paneMainLayout.setVerticalGroup(
+            paneMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(paneMainLayout.createSequentialGroup()
+                .addGap(41, 41, 41)
+                .addComponent(jLabel2)
+                .addGap(38, 38, 38)
+                .addGroup(paneMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(spnCod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(220, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1200, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(126, 126, 126)
+                .addComponent(paneMain, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(597, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 600, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(71, 71, 71)
+                .addComponent(paneMain, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(189, Short.MAX_VALUE))
         );
 
         setSize(new java.awt.Dimension(1210, 630));
@@ -82,5 +127,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JPanel paneMain;
+    private javax.swing.JSpinner spnCod;
     // End of variables declaration//GEN-END:variables
 }
