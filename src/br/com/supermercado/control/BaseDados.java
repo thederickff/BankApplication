@@ -7,27 +7,30 @@ package br.com.supermercado.control;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
  * @author derick
  */
-public class ConnectionFactory {
+public class BaseDados {
    
     public static String url = "jdbc:mysql://localhost:3306/produtos_sm";
     public static String user = "root";
     public static String password = "admin";
+  
     
-    
-    public static Connection getConnection(){
-        try{
-            
-            
+    public Connection getConnection() {
+
+        try {
             return DriverManager.getConnection(url, user, password);
-        } catch(SQLException e){
-           throw new RuntimeException();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
         }
-        
     }
+  
 }

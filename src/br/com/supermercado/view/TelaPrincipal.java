@@ -5,7 +5,9 @@
  */
 package br.com.supermercado.view;
 
-import br.com.supermercado.control.ConnectionFactory;
+import br.com.supermercado.control.BaseDados;
+import br.com.supermercado.control.ProdutoControl;
+import br.com.supermercado.model.Produto;
 import java.sql.Connection;
 import java.sql.SQLException;
 
@@ -15,10 +17,13 @@ import java.sql.SQLException;
  */
 public class TelaPrincipal extends javax.swing.JFrame {
 
+    private ProdutoControl pc;
+
     /**
      * Creates new form TelaPrincipal
      */
     public TelaPrincipal() {
+        pc = new ProdutoControl();
         initComponents();
     }
 
@@ -51,10 +56,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         tbProdutos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
                 {null, null, null}
             },
             new String [] {
@@ -148,16 +149,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarActionPerformed
-        try {
-            // TODO add your handling code here:
-            
-            Connection con = ConnectionFactory.getConnection();
-            
-            System.out.println("connectado");
-            con.close();
-        } catch (SQLException ex) {
-            System.out.println(ex);
-        }
+       
+        this.tbProdutos = pc.pesquisar(tbProdutos, spnCod);
     }//GEN-LAST:event_btnPesquisarActionPerformed
 
     /**
