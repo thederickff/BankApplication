@@ -37,7 +37,7 @@ public class ProdutoControl {
 
                 Produto p = new Produto();
                 p.setCodigo(rs.getInt("codigo"));
-                    tb.setValueAt(p.getCodigo(), row, col);
+                tb.setValueAt(p.getCodigo(), row, col);
                 col++;
                 p.setNome(rs.getString("nome"));
                 tb.setValueAt(p.getNome(), row, col);
@@ -48,7 +48,7 @@ public class ProdutoControl {
                 row++;
             }
             row = 0;
-            
+
             ps.close();
             rs.close();
             con.close();
