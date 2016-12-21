@@ -6,7 +6,7 @@
       <SubComponents>
         <Menu class="javax.swing.JMenu" name="mnSuperMercado">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Super Mercado"/>
+            <Property name="text" type="java.lang.String" value="Mercado"/>
           </Properties>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="mniPP">

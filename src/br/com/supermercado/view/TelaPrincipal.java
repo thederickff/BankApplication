@@ -52,7 +52,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Mercadinho Derick");
 
-        mnSuperMercado.setText("Super Mercado");
+        mnSuperMercado.setText("Mercado");
 
         mniPP.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.CTRL_MASK));
         mniPP.setText("Pesquisar Produto");

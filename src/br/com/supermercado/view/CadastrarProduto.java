@@ -5,16 +5,21 @@
  */
 package br.com.supermercado.view;
 
+import br.com.supermercado.control.ProdutoControl;
+import br.com.supermercado.model.Produto;
+
 /**
  *
  * @author derick
  */
 public class CadastrarProduto extends javax.swing.JFrame {
 
-    /**
+    private ProdutoControl pc;
+    /**w
      * Creates new form CadastrarProduto
      */
     public CadastrarProduto() {
+        pc= new ProdutoControl();
         initComponents();
     }
 
@@ -66,6 +71,11 @@ public class CadastrarProduto extends javax.swing.JFrame {
 
         btnSalvar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         btnSalvar.setText("Salvar");
+        btnSalvar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalvarActionPerformed(evt);
+            }
+        });
 
         btnApagar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         btnApagar.setText("Apagar");
@@ -144,6 +154,17 @@ public class CadastrarProduto extends javax.swing.JFrame {
         setSize(new java.awt.Dimension(531, 414));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
+        // TODO add your handling code here:
+        Produto p =  new Produto();
+        String nome = txtNome.getText();
+        nome = nome.toUpperCase();
+        p.setNome(nome);
+        p.setCodigo((int)spnCodigo.getValue());
+        p.setPreco((double)spnPreco.getValue());
+        pc.salvarDados(p);
+    }//GEN-LAST:event_btnSalvarActionPerformed
 
     /**
      * @param args the command line arguments
