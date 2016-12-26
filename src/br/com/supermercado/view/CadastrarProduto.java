@@ -15,7 +15,7 @@ import br.com.supermercado.model.Produto;
 public class CadastrarProduto extends javax.swing.JFrame {
 
     private ProdutoControl pc;
-    /**w
+    /**
      * Creates new form CadastrarProduto
      */
     public CadastrarProduto() {

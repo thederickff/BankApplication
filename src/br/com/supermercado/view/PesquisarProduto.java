@@ -44,7 +44,7 @@ public class PesquisarProduto extends javax.swing.JFrame {
 
         paneMain.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        jLabel1.setText("Nomde do Produto:");
+        jLabel1.setText("Nome do Produto:");
 
         tbProdutos.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         tbProdutos.setModel(new javax.swing.table.DefaultTableModel(
