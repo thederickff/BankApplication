@@ -6,6 +6,9 @@
 package br.com.supermercado.view;
 
 import br.com.supermercado.control.ProdutoControl;
+import javax.swing.table.TableCellRenderer;
+import javax.swing.table.TableColumn;
+import javax.swing.table.TableColumnModel;
 
 /**
  *
@@ -16,9 +19,12 @@ public class PesquisarProduto extends javax.swing.JFrame {
     /**
      * Creates new form PesquisarProduto
      */
-    ProdutoControl pc;
+    private final ProdutoControl pc;
+    private final String[] col;
     public PesquisarProduto() {
         pc = new ProdutoControl();
+        col = new String[]{"Codigo", "Nome", "Preco"};
+
         initComponents();
     }
 
@@ -47,58 +53,7 @@ public class PesquisarProduto extends javax.swing.JFrame {
         jLabel1.setText("Nome do Produto:");
 
         tbProdutos.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        tbProdutos.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
-            },
-            new String [] {
-                "Codigo", "Nome", "Preco"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.Double.class
-            };
-            boolean[] canEdit = new boolean [] {
-                false, false, false
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
+        tbProdutos.setModel(new javax.swing.table.DefaultTableModel(col, pc.getRow()));
         jScrollPane1.setViewportView(tbProdutos);
 
         txtNomeProduto.addCaretListener(new javax.swing.event.CaretListener() {
@@ -115,20 +70,19 @@ public class PesquisarProduto extends javax.swing.JFrame {
         paneMainLayout.setHorizontalGroup(
             paneMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(paneMainLayout.createSequentialGroup()
-                .addGroup(paneMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(paneMainLayout.createSequentialGroup()
-                        .addGap(39, 39, 39)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 821, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(paneMainLayout.createSequentialGroup()
-                        .addGap(96, 96, 96)
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtNomeProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(37, Short.MAX_VALUE))
+                .addGap(96, 96, 96)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(txtNomeProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(412, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, paneMainLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jLabel2)
                 .addGap(314, 314, 314))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, paneMainLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 821, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(31, 31, 31))
         );
         paneMainLayout.setVerticalGroup(
             paneMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -139,9 +93,9 @@ public class PesquisarProduto extends javax.swing.JFrame {
                 .addGroup(paneMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(txtNomeProduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(50, Short.MAX_VALUE))
+                .addContainerGap(56, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -167,12 +121,18 @@ public class PesquisarProduto extends javax.swing.JFrame {
 
     private void txtNomeProdutoCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_txtNomeProdutoCaretUpdate
         // TODO add your handling code here:
-        pc.limpar(tbProdutos);
+      
+        try{
         this.tbProdutos = pc.pesquisar(tbProdutos, txtNomeProduto.getText());
+        } catch(Exception e){
+            System.out.println("Erro: " + e);
+        }
         
        
     }//GEN-LAST:event_txtNomeProdutoCaretUpdate
-
+    private void updateTable(){
+        tbProdutos.setModel(new javax.swing.table.DefaultTableModel(col, pc.getRow()));
+    }
     /**
      * @param args the command line arguments
      */
