@@ -125,7 +125,7 @@ public class ProdutoControl {
             JOptionPane.showMessageDialog(null, "Dados salvo com sucesso!");
             ps.close();
             con.close();
-        } catch (SQLException ex) {
+        } catch (SQLException ex) { 
             System.out.println("Erro: " + ex);
         }
 

@@ -47,7 +47,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Mercadinho Derick");
+        jLabel1.setText("Mercadinho");
 
         mnSuperMercado.setText("Mercado");
 
