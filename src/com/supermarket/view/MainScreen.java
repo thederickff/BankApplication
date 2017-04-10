@@ -3,24 +3,24 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.com.supermercado.view;
+package com.supermarket.view;
 
-import br.com.supermercado.control.ProdutoControl;
+import com.supermarket.control.ProductControl;
 
 
 /**
  *
  * @author derick
  */
-public class TelaPrincipal extends javax.swing.JFrame {
+public class MainScreen extends javax.swing.JFrame {
 
-    private ProdutoControl pc;
+    private ProductControl pc;
 
     /**
      * Creates new form TelaPrincipal
      */
-    public TelaPrincipal() {
-        pc = new ProdutoControl();
+    public MainScreen() {
+        pc = new ProductControl();
         initComponents();
     }
 
@@ -35,53 +35,53 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
-        mnSuperMercado = new javax.swing.JMenu();
-        mniPP = new javax.swing.JMenuItem();
-        mniCP = new javax.swing.JMenuItem();
-        mnAjuda = new javax.swing.JMenu();
-        mniSobre = new javax.swing.JMenuItem();
+        mnSuperMarket = new javax.swing.JMenu();
+        mniSP = new javax.swing.JMenuItem();
+        mniNP = new javax.swing.JMenuItem();
+        mnHelp = new javax.swing.JMenu();
+        mniAbout = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Super Mercado");
+        setTitle("Super Market System");
         setResizable(false);
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Mercadinho");
+        jLabel1.setText("Super Market System");
 
-        mnSuperMercado.setText("Mercado");
+        mnSuperMarket.setText("SuperMarket");
 
-        mniPP.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.CTRL_MASK));
-        mniPP.setText("Pesquisar Produto");
-        mniPP.addActionListener(new java.awt.event.ActionListener() {
+        mniSP.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.CTRL_MASK));
+        mniSP.setText("Search Product");
+        mniSP.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mniPPActionPerformed(evt);
+                mniSPActionPerformed(evt);
             }
         });
-        mnSuperMercado.add(mniPP);
+        mnSuperMarket.add(mniSP);
 
-        mniCP.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.CTRL_MASK));
-        mniCP.setText("Cadastrar Produto");
-        mniCP.addActionListener(new java.awt.event.ActionListener() {
+        mniNP.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_N, java.awt.event.InputEvent.CTRL_MASK));
+        mniNP.setText("New Product");
+        mniNP.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mniCPActionPerformed(evt);
+                mniNPActionPerformed(evt);
             }
         });
-        mnSuperMercado.add(mniCP);
+        mnSuperMarket.add(mniNP);
 
-        jMenuBar1.add(mnSuperMercado);
+        jMenuBar1.add(mnSuperMarket);
 
-        mnAjuda.setText("Ajuda");
+        mnHelp.setText("Help");
 
-        mniSobre.setText("Sobre");
-        mniSobre.addActionListener(new java.awt.event.ActionListener() {
+        mniAbout.setText("About");
+        mniAbout.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mniSobreActionPerformed(evt);
+                mniAboutActionPerformed(evt);
             }
         });
-        mnAjuda.add(mniSobre);
+        mnHelp.add(mniAbout);
 
-        jMenuBar1.add(mnAjuda);
+        jMenuBar1.add(mnHelp);
 
         setJMenuBar(jMenuBar1);
 
@@ -106,21 +106,21 @@ public class TelaPrincipal extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void mniPPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniPPActionPerformed
+    private void mniSPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniSPActionPerformed
         // TODO add your handling code here:
-        PesquisarProduto pp = new PesquisarProduto();
-        pp.setVisible(true);
-    }//GEN-LAST:event_mniPPActionPerformed
+        SearchProduct sp = new SearchProduct();
+        sp.setVisible(true);
+    }//GEN-LAST:event_mniSPActionPerformed
 
-    private void mniCPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniCPActionPerformed
+    private void mniNPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniNPActionPerformed
         // TODO add your handling code here:
-        CadastrarProduto cp = new CadastrarProduto();
+        CreateProduct cp = new CreateProduct();
         cp.setVisible(true);
-    }//GEN-LAST:event_mniCPActionPerformed
+    }//GEN-LAST:event_mniNPActionPerformed
 
-    private void mniSobreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniSobreActionPerformed
+    private void mniAboutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniAboutActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_mniSobreActionPerformed
+    }//GEN-LAST:event_mniAboutActionPerformed
 
     /**
      * @param args the command line arguments
@@ -143,18 +143,19 @@ public class TelaPrincipal extends javax.swing.JFrame {
         } catch (ClassNotFoundException ex) {
        
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TelaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MainScreen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TelaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MainScreen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TelaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MainScreen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TelaPrincipal().setVisible(true);
+                new MainScreen().setVisible(true);
             }
         });
     }
@@ -162,10 +163,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenu mnAjuda;
-    private javax.swing.JMenu mnSuperMercado;
-    private javax.swing.JMenuItem mniCP;
-    private javax.swing.JMenuItem mniPP;
-    private javax.swing.JMenuItem mniSobre;
+    private javax.swing.JMenu mnHelp;
+    private javax.swing.JMenu mnSuperMarket;
+    private javax.swing.JMenuItem mniAbout;
+    private javax.swing.JMenuItem mniNP;
+    private javax.swing.JMenuItem mniSP;
     // End of variables declaration//GEN-END:variables
 }
