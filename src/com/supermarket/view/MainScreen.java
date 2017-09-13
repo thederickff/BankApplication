@@ -5,7 +5,7 @@
  */
 package com.supermarket.view;
 
-import com.supermarket.control.ProductControl;
+import com.supermarket.controller.ProductController;
 
 
 /**
@@ -14,13 +14,13 @@ import com.supermarket.control.ProductControl;
  */
 public class MainScreen extends javax.swing.JFrame {
 
-    private ProductControl pc;
+    private ProductController pc;
 
     /**
      * Creates new form TelaPrincipal
      */
     public MainScreen() {
-        pc = new ProductControl();
+        pc = new ProductController();
         initComponents();
     }
 

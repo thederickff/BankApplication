@@ -5,7 +5,7 @@
  */
 package com.supermarket.view;
 
-import com.supermarket.control.ProductControl;
+import com.supermarket.controller.ProductController;
 
 
 /**
@@ -17,10 +17,10 @@ public class SearchProduct extends javax.swing.JFrame {
     /**
      * Creates new form PesquisarProduto
      */
-    private final ProductControl pc;
+    private final ProductController pc;
     private final String[] col;
     public SearchProduct() {
-        pc = new ProductControl();
+        pc = new ProductController();
         col = new String[]{"Code", "Name", "Price"};
 
         initComponents();

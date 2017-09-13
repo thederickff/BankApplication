@@ -5,7 +5,7 @@
  */
 package com.supermarket.view;
 
-import com.supermarket.control.ProductControl;
+import com.supermarket.controller.ProductController;
 import com.supermarket.model.Product;
 
 /**
@@ -14,12 +14,12 @@ import com.supermarket.model.Product;
  */
 public class CreateProduct extends javax.swing.JFrame {
 
-    private ProductControl pc;
+    private ProductController pc;
     /**
      * Creates new form CadastrarProduto
      */
     public CreateProduct() {
-        pc= new ProductControl();
+        pc= new ProductController();
         initComponents();
     }
 
@@ -168,8 +168,8 @@ public class CreateProduct extends javax.swing.JFrame {
         String nome = txtName.getText();
         nome = nome.toUpperCase();
         p.setName(nome);
-        p.setCode((int)spnCode.getValue());
-        p.setPrice((double)spnPrice.getValue());
+        //p.setCode((int)spnCode.getValue());
+        //p.setPrice((double)spnPrice.getValue());
         pc.save(p);
     }//GEN-LAST:event_btnSaveActionPerformed
 

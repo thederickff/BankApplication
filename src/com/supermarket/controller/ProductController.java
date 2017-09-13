@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.supermarket.control;
+package com.supermarket.controller;
 
 import com.supermarket.model.Product;
 import java.sql.Connection;
@@ -17,7 +17,7 @@ import javax.swing.JTable;
  *
  * @author derick
  */
-public class ProductControl {
+public class ProductController {
 
     private int row = 0;
 
@@ -27,7 +27,7 @@ public class ProductControl {
     private ResultSet rs;
     private String sql;
 
-    public ProductControl() {
+    public ProductController() {
         bs = new DatabaseConf();
 
     }
@@ -38,7 +38,7 @@ public class ProductControl {
 
             con = bs.getConnection();
             String price;
-            sql = "select * from " + DatabaseConf.tableProducts + " where name like '" + txt + "%'";
+            //sql = "select * from " + DatabaseConf.tableProducts + " where name like '" + txt + "%'";
             ps = con.prepareStatement(sql);
             rs = ps.executeQuery();
             clear(tb);
@@ -46,13 +46,13 @@ public class ProductControl {
             while (rs.next()) {
 
                 Product p = new Product();
-                p.setCode(rs.getInt("code"));
-                insertString(tb, Integer.toString(p.getCode()), "Code", row);
+                //             p.setCode(rs.getInt("code"));
+                //       insertString(tb, Integer.toString(p.getCode()), "Code", row);
                 p.setName(rs.getString("name"));
                 insertString(tb, p.getName(), "Name", row);
-                p.setPrice(rs.getDouble("price"));
-                price = formatNumber(p.getPrice());
-                insertString(tb, price, "Price", row);
+                //           p.setPrice(rs.getDouble("price"));
+                //         price = formatNumber(p.getPrice());
+                //             insertString(tb, price, "Price", row);
                 row++;
             }
             //
@@ -79,7 +79,7 @@ public class ProductControl {
         try {
             con = bs.getConnection();
 
-            sql = "select * from " + DatabaseConf.tableProducts + "";
+            //sql = "select * from " + DatabaseConf.tableProducts + "";
             ps = con.prepareStatement(sql);
 
             rs = ps.executeQuery();
@@ -116,11 +116,11 @@ public class ProductControl {
 
         try {
             con = bs.getConnection();
-            sql = "insert into " + DatabaseConf.tableProducts + "(code, name, price) values(?,?,?)";
+            //sql = "insert into " + DatabaseConf.tableProducts + "(code, name, price) values(?,?,?)";
             ps = con.prepareStatement(sql);
-            ps.setInt(1, product.getCode());
+//            ps.setInt(1, product.getCode());
             ps.setString(2, product.getName());
-            ps.setDouble(3, product.getPrice());
+            //           ps.setDouble(3, product.getPrice());
 
             ps.execute();
 

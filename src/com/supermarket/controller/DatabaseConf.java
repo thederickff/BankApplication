@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.supermarket.control;
+package com.supermarket.controller;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -15,10 +15,10 @@ import java.sql.SQLException;
  */
 public class DatabaseConf {
    
-    public static String url = "jdbc:mysql://localhost:3306/supermarket_db";
+    public static String url = "jdbc:mysql://localhost:3306/bmarket_store";
     public static String user = "root";
     public static String password = "admin";
-    public static String tableProducts = "products";
+  
     
     public Connection getConnection() {
 

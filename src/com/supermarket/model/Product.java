@@ -5,22 +5,35 @@
  */
 package com.supermarket.model;
 
+import java.math.BigDecimal;
+
 /**
  *
  * @author derick
  */
 public class Product {
-    private int code;
+    
+    private int productId;
+    
     private String name;
-    private double price;
+    
+    private BigDecimal unitPrice;
+    
+    private String description;
+    private String manufacturer;
+    private String category;
 
     
-    public int getCode() {
-        return code;
+    
+    
+    
+    
+    public int getProductId() {
+        return productId;
     }
 
-    public void setCode(int code) {
-        this.code = code;
+    public void setProductId(int productId) {
+        this.productId = productId;
     }
 
     public String getName() {
@@ -31,13 +44,38 @@ public class Product {
         this.name = name;
     }
 
-    public double getPrice() {
-        return price;
+    public BigDecimal getUnitPrice() {
+        return unitPrice;
     }
 
-    public void setPrice(double price) {
-        this.price = price;
+    public void setUnitPrice(BigDecimal unitPrice) {
+        this.unitPrice = unitPrice;
     }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getManufacturer() {
+        return manufacturer;
+    }
+
+    public void setManufacturer(String manufacturer) {
+        this.manufacturer = manufacturer;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
     
     
 }
