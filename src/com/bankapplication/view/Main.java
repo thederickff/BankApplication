@@ -35,6 +35,16 @@ public class Main extends javax.swing.JFrame {
         tbtnMakeWithdrawal = new javax.swing.JButton();
         splitPaneMain = new javax.swing.JSplitPane();
         paneNavigate = new javax.swing.JPanel();
+        navlbBankOps = new javax.swing.JLabel();
+        navCustomerOp = new javax.swing.JButton();
+        navStaffOp = new javax.swing.JButton();
+        navDepositOp = new javax.swing.JButton();
+        navWithdrawalOp = new javax.swing.JButton();
+        navlbHistory = new javax.swing.JLabel();
+        navCustomerHis = new javax.swing.JButton();
+        navWithdrawalHis = new javax.swing.JButton();
+        navDepositHis = new javax.swing.JButton();
+        navLoginHis = new javax.swing.JButton();
         dskPaneDesktop = new javax.swing.JDesktopPane();
         menuBarMain = new javax.swing.JMenuBar();
         menuFile = new javax.swing.JMenu();
@@ -76,19 +86,89 @@ public class Main extends javax.swing.JFrame {
         tbtnMakeWithdrawal.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         toolBarMain.add(tbtnMakeWithdrawal);
 
-        splitPaneMain.setDividerLocation(150);
+        splitPaneMain.setDividerLocation(180);
         splitPaneMain.setDividerSize(7);
+
+        navlbBankOps.setFont(new java.awt.Font("Noto Sans", 1, 14)); // NOI18N
+        navlbBankOps.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        navlbBankOps.setText("BANK OPERATIONS");
+
+        navCustomerOp.setText("Customer Registration");
+
+        navStaffOp.setText("Staff Registration");
+
+        navDepositOp.setText("Deposit");
+
+        navWithdrawalOp.setText("Withdrawal");
+
+        navlbHistory.setFont(new java.awt.Font("Noto Sans", 1, 14)); // NOI18N
+        navlbHistory.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        navlbHistory.setText("HISTORY");
+
+        navCustomerHis.setText("Customer Registration");
+
+        navWithdrawalHis.setText("Withdrawal Details");
+
+        navDepositHis.setText("Deposit Details");
+
+        navLoginHis.setText("Login Details");
 
         javax.swing.GroupLayout paneNavigateLayout = new javax.swing.GroupLayout(paneNavigate);
         paneNavigate.setLayout(paneNavigateLayout);
         paneNavigateLayout.setHorizontalGroup(
             paneNavigateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
+            .addGroup(paneNavigateLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(paneNavigateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(navlbBankOps, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(navlbHistory, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(paneNavigateLayout.createSequentialGroup()
+                        .addGroup(paneNavigateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(navCustomerHis, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(navWithdrawalHis, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(navDepositHis, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(navCustomerOp, javax.swing.GroupLayout.DEFAULT_SIZE, 156, Short.MAX_VALUE)
+                            .addComponent(navStaffOp, javax.swing.GroupLayout.DEFAULT_SIZE, 156, Short.MAX_VALUE)
+                            .addComponent(navDepositOp, javax.swing.GroupLayout.DEFAULT_SIZE, 156, Short.MAX_VALUE)
+                            .addComponent(navWithdrawalOp, javax.swing.GroupLayout.DEFAULT_SIZE, 156, Short.MAX_VALUE)
+                            .addComponent(navLoginHis, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
+
+        paneNavigateLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {navCustomerOp, navDepositOp, navStaffOp, navWithdrawalOp});
+
+        paneNavigateLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {navCustomerHis, navDepositHis, navLoginHis, navWithdrawalHis});
+
         paneNavigateLayout.setVerticalGroup(
             paneNavigateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 352, Short.MAX_VALUE)
+            .addGroup(paneNavigateLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(navlbBankOps)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(navCustomerOp)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(navStaffOp)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(navDepositOp)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(navWithdrawalOp)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(navlbHistory)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(navCustomerHis)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(navWithdrawalHis)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(navDepositHis)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(navLoginHis)
+                .addContainerGap())
         );
+
+        paneNavigateLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {navCustomerOp, navDepositOp, navStaffOp, navWithdrawalOp});
+
+        paneNavigateLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {navCustomerHis, navDepositHis, navLoginHis, navWithdrawalHis});
 
         splitPaneMain.setLeftComponent(paneNavigate);
         splitPaneMain.setRightComponent(dskPaneDesktop);
@@ -146,7 +226,7 @@ public class Main extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(toolBarMain, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(splitPaneMain, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 819, Short.MAX_VALUE)
+            .addComponent(splitPaneMain, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 888, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -205,6 +285,16 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JMenuItem menuiRegistration;
     private javax.swing.JMenuItem menuiWithdrawal;
     private javax.swing.JMenuItem menuiWithdrawalDetails;
+    private javax.swing.JButton navCustomerHis;
+    private javax.swing.JButton navCustomerOp;
+    private javax.swing.JButton navDepositHis;
+    private javax.swing.JButton navDepositOp;
+    private javax.swing.JButton navLoginHis;
+    private javax.swing.JButton navStaffOp;
+    private javax.swing.JButton navWithdrawalHis;
+    private javax.swing.JButton navWithdrawalOp;
+    private javax.swing.JLabel navlbBankOps;
+    private javax.swing.JLabel navlbHistory;
     private javax.swing.JPanel paneNavigate;
     private javax.swing.JSplitPane splitPaneMain;
     private javax.swing.JButton tbtnMakeDeposit;
