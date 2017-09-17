@@ -29,6 +29,13 @@ public class Main extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        toolBarMain = new javax.swing.JToolBar();
+        tbtnRegisterCustomer = new javax.swing.JButton();
+        tbtnMakeDeposit = new javax.swing.JButton();
+        tbtnMakeWithdrawal = new javax.swing.JButton();
+        splitPaneMain = new javax.swing.JSplitPane();
+        paneNavigate = new javax.swing.JPanel();
+        dskPaneDesktop = new javax.swing.JDesktopPane();
         menuBarMain = new javax.swing.JMenuBar();
         menuFile = new javax.swing.JMenu();
         menuiLogin = new javax.swing.JMenuItem();
@@ -45,6 +52,46 @@ public class Main extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Bank Application");
+
+        toolBarMain.setRollover(true);
+
+        tbtnRegisterCustomer.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/bankapplication/resources/add-new-document.png"))); // NOI18N
+        tbtnRegisterCustomer.setToolTipText("Register new Customers");
+        tbtnRegisterCustomer.setFocusable(false);
+        tbtnRegisterCustomer.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        tbtnRegisterCustomer.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        toolBarMain.add(tbtnRegisterCustomer);
+
+        tbtnMakeDeposit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/bankapplication/resources/open-archive.png"))); // NOI18N
+        tbtnMakeDeposit.setToolTipText("Make your Deposit");
+        tbtnMakeDeposit.setFocusable(false);
+        tbtnMakeDeposit.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        tbtnMakeDeposit.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        toolBarMain.add(tbtnMakeDeposit);
+
+        tbtnMakeWithdrawal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/bankapplication/resources/product-realise.png"))); // NOI18N
+        tbtnMakeWithdrawal.setToolTipText("Make your Withdrawal");
+        tbtnMakeWithdrawal.setFocusable(false);
+        tbtnMakeWithdrawal.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        tbtnMakeWithdrawal.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        toolBarMain.add(tbtnMakeWithdrawal);
+
+        splitPaneMain.setDividerLocation(150);
+        splitPaneMain.setDividerSize(7);
+
+        javax.swing.GroupLayout paneNavigateLayout = new javax.swing.GroupLayout(paneNavigate);
+        paneNavigate.setLayout(paneNavigateLayout);
+        paneNavigateLayout.setHorizontalGroup(
+            paneNavigateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+        paneNavigateLayout.setVerticalGroup(
+            paneNavigateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 352, Short.MAX_VALUE)
+        );
+
+        splitPaneMain.setLeftComponent(paneNavigate);
+        splitPaneMain.setRightComponent(dskPaneDesktop);
 
         menuFile.setText("File");
 
@@ -98,11 +145,15 @@ public class Main extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 872, Short.MAX_VALUE)
+            .addComponent(toolBarMain, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(splitPaneMain, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 819, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 390, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(toolBarMain, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(splitPaneMain))
         );
 
         pack();
@@ -140,6 +191,7 @@ public class Main extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JDesktopPane dskPaneDesktop;
     private javax.swing.JMenuBar menuBarMain;
     private javax.swing.JMenu menuFile;
     private javax.swing.JMenu menuHistory;
@@ -153,5 +205,11 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JMenuItem menuiRegistration;
     private javax.swing.JMenuItem menuiWithdrawal;
     private javax.swing.JMenuItem menuiWithdrawalDetails;
+    private javax.swing.JPanel paneNavigate;
+    private javax.swing.JSplitPane splitPaneMain;
+    private javax.swing.JButton tbtnMakeDeposit;
+    private javax.swing.JButton tbtnMakeWithdrawal;
+    private javax.swing.JButton tbtnRegisterCustomer;
+    private javax.swing.JToolBar toolBarMain;
     // End of variables declaration//GEN-END:variables
 }
