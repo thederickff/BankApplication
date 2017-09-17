@@ -9,12 +9,12 @@ package com.bankapplication.view;
  *
  * @author derickfelix
  */
-public class RegisterCustomer extends javax.swing.JDialog {
+public class RegisterStaff extends javax.swing.JDialog {
 
     /**
-     * Creates new form RegisterCustomer
+     * Creates new form RegisterStaff
      */
-    public RegisterCustomer(java.awt.Frame parent, boolean modal) {
+    public RegisterStaff(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
     }
@@ -57,7 +57,7 @@ public class RegisterCustomer extends javax.swing.JDialog {
         btnCancel = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("New Customer");
+        setTitle("Register Staff");
 
         paneTittle.setBackground(new java.awt.Color(0, 83, 165));
 
@@ -83,8 +83,7 @@ public class RegisterCustomer extends javax.swing.JDialog {
                 .addContainerGap(26, Short.MAX_VALUE))
         );
 
-        paneBody.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "New Customer", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 0, 14))); // NOI18N
-        paneBody.setToolTipText("");
+        paneBody.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "New Staff", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 0, 14))); // NOI18N
 
         cmbAccount.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Account Type", "Savings", "Current" }));
 
@@ -225,8 +224,6 @@ public class RegisterCustomer extends javax.swing.JDialog {
                 .addContainerGap(41, Short.MAX_VALUE))
         );
 
-        paneBodyLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {lblAccount, lblAddress, lblDOB, lblName, lblOccupation, lblPassword, lblSex});
-
         btnRegister.setText("Register");
 
         btnClear.setText("Clear");
@@ -237,11 +234,11 @@ public class RegisterCustomer extends javax.swing.JDialog {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(paneTittle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(layout.createSequentialGroup()
+            .addComponent(paneTittle, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(paneBody, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(paneBody, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(btnRegister, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -272,6 +269,7 @@ public class RegisterCustomer extends javax.swing.JDialog {
     private void txtAddressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAddressActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtAddressActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBrowsePicture;

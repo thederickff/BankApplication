@@ -101,6 +101,11 @@ public class Main extends javax.swing.JFrame {
         });
 
         navStaffOp.setText("Staff Registration");
+        navStaffOp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                navStaffOpActionPerformed(evt);
+            }
+        });
 
         navDepositOp.setText("Deposit");
 
@@ -254,6 +259,12 @@ public class Main extends javax.swing.JFrame {
         RegisterCustomer rc = new RegisterCustomer(this, true);
         rc.setVisible(true);
     }//GEN-LAST:event_navCustomerOpActionPerformed
+
+    private void navStaffOpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_navStaffOpActionPerformed
+        // TODO add your handling code here:
+        RegisterStaff rs = new RegisterStaff(this, true);
+        rs.setVisible(true);
+    }//GEN-LAST:event_navStaffOpActionPerformed
 
     /**
      * @param args the command line arguments
