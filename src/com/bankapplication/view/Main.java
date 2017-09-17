@@ -94,6 +94,11 @@ public class Main extends javax.swing.JFrame {
         navlbBankOps.setText("BANK OPERATIONS");
 
         navCustomerOp.setText("Customer Registration");
+        navCustomerOp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                navCustomerOpActionPerformed(evt);
+            }
+        });
 
         navStaffOp.setText("Staff Registration");
 
@@ -243,6 +248,12 @@ public class Main extends javax.swing.JFrame {
     private void menuiLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuiLoginActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_menuiLoginActionPerformed
+
+    private void navCustomerOpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_navCustomerOpActionPerformed
+        // TODO add your handling code here:
+        RegisterCustomer rc = new RegisterCustomer(this, true);
+        rc.setVisible(true);
+    }//GEN-LAST:event_navCustomerOpActionPerformed
 
     /**
      * @param args the command line arguments
