@@ -29,29 +29,95 @@ public class Main extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        menuBarMain = new javax.swing.JMenuBar();
+        menuFile = new javax.swing.JMenu();
+        menuiLogin = new javax.swing.JMenuItem();
+        menuiExit = new javax.swing.JMenuItem();
+        menuOperations = new javax.swing.JMenu();
+        menuiWithdrawal = new javax.swing.JMenuItem();
+        menuiDeposit = new javax.swing.JMenuItem();
+        menuiRegistration = new javax.swing.JMenuItem();
+        menuHistory = new javax.swing.JMenu();
+        menuiRegisteredCustomers = new javax.swing.JMenuItem();
+        menuiDepositDetails = new javax.swing.JMenuItem();
+        menuiWithdrawalDetails = new javax.swing.JMenuItem();
+        menuiLoginDetails = new javax.swing.JMenuItem();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Bank Application");
+
+        menuFile.setText("File");
+
+        menuiLogin.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_L, java.awt.event.InputEvent.CTRL_MASK));
+        menuiLogin.setText("Login");
+        menuiLogin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuiLoginActionPerformed(evt);
+            }
+        });
+        menuFile.add(menuiLogin);
+
+        menuiExit.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.CTRL_MASK));
+        menuiExit.setText("Exit");
+        menuFile.add(menuiExit);
+
+        menuBarMain.add(menuFile);
+
+        menuOperations.setText("Operations");
+
+        menuiWithdrawal.setText("Withdrawal");
+        menuOperations.add(menuiWithdrawal);
+
+        menuiDeposit.setText("Deposit");
+        menuOperations.add(menuiDeposit);
+
+        menuiRegistration.setText("Registration");
+        menuOperations.add(menuiRegistration);
+
+        menuBarMain.add(menuOperations);
+
+        menuHistory.setText("History");
+
+        menuiRegisteredCustomers.setText("Registered Customers");
+        menuHistory.add(menuiRegisteredCustomers);
+
+        menuiDepositDetails.setText("Deposit Details");
+        menuHistory.add(menuiDepositDetails);
+
+        menuiWithdrawalDetails.setText("Withdrawal Details");
+        menuHistory.add(menuiWithdrawalDetails);
+
+        menuiLoginDetails.setText("Login Details");
+        menuHistory.add(menuiLoginDetails);
+
+        menuBarMain.add(menuHistory);
+
+        setJMenuBar(menuBarMain);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 867, Short.MAX_VALUE)
+            .addGap(0, 872, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 440, Short.MAX_VALUE)
+            .addGap(0, 390, Short.MAX_VALUE)
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void menuiLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuiLoginActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_menuiLoginActionPerformed
+
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
+        /* Set the System look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
@@ -74,5 +140,18 @@ public class Main extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuBar menuBarMain;
+    private javax.swing.JMenu menuFile;
+    private javax.swing.JMenu menuHistory;
+    private javax.swing.JMenu menuOperations;
+    private javax.swing.JMenuItem menuiDeposit;
+    private javax.swing.JMenuItem menuiDepositDetails;
+    private javax.swing.JMenuItem menuiExit;
+    private javax.swing.JMenuItem menuiLogin;
+    private javax.swing.JMenuItem menuiLoginDetails;
+    private javax.swing.JMenuItem menuiRegisteredCustomers;
+    private javax.swing.JMenuItem menuiRegistration;
+    private javax.swing.JMenuItem menuiWithdrawal;
+    private javax.swing.JMenuItem menuiWithdrawalDetails;
     // End of variables declaration//GEN-END:variables
 }
