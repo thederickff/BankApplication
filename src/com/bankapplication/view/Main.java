@@ -61,7 +61,7 @@ public class Main extends javax.swing.JFrame {
         menuiLoginDetails = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Bank Application");
+        setTitle("Trisoft Bank");
 
         toolBarMain.setRollover(true);
 
@@ -108,8 +108,18 @@ public class Main extends javax.swing.JFrame {
         });
 
         navDepositOp.setText("Deposit");
+        navDepositOp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                navDepositOpActionPerformed(evt);
+            }
+        });
 
         navWithdrawalOp.setText("Withdrawal");
+        navWithdrawalOp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                navWithdrawalOpActionPerformed(evt);
+            }
+        });
 
         navlbHistory.setFont(new java.awt.Font("Noto Sans", 1, 14)); // NOI18N
         navlbHistory.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -265,6 +275,16 @@ public class Main extends javax.swing.JFrame {
         RegisterStaff rs = new RegisterStaff(this, true);
         rs.setVisible(true);
     }//GEN-LAST:event_navStaffOpActionPerformed
+
+    private void navDepositOpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_navDepositOpActionPerformed
+        Deposit deposit = new Deposit(this, true);
+        deposit.setVisible(true);
+    }//GEN-LAST:event_navDepositOpActionPerformed
+
+    private void navWithdrawalOpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_navWithdrawalOpActionPerformed
+        Withdraw withdraw = new Withdraw(this, true);
+        withdraw.setVisible(true);
+    }//GEN-LAST:event_navWithdrawalOpActionPerformed
 
     /**
      * @param args the command line arguments

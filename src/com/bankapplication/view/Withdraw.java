@@ -50,6 +50,7 @@ public class Withdraw extends javax.swing.JDialog {
         btnCancel = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Trisoft Bank - Withdraw");
 
         paneTittle.setBackground(new java.awt.Color(0, 83, 165));
 
@@ -219,6 +220,7 @@ public class Withdraw extends javax.swing.JDialog {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     

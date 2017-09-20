@@ -84,7 +84,7 @@
   </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
-    <Property name="title" type="java.lang.String" value="Bank Application"/>
+    <Property name="title" type="java.lang.String" value="Trisoft Bank"/>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="menuBar" type="java.lang.String" value="menuBarMain"/>
@@ -262,11 +262,17 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Deposit"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="navDepositOpActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="navWithdrawalOp">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Withdrawal"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="navWithdrawalOpActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="navlbHistory">
               <Properties>

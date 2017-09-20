@@ -39,7 +39,7 @@ public class Login extends javax.swing.JDialog {
         btnCancel = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Log in");
+        setTitle("Trisoft Bank - Log in");
         setResizable(false);
 
         paneTittle.setBackground(new java.awt.Color(0, 83, 165));

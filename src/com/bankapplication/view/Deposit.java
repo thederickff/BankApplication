@@ -50,6 +50,7 @@ public class Deposit extends javax.swing.JDialog {
         btnCancel = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Trisoft Bank - Deposit");
 
         paneTittle.setBackground(new java.awt.Color(0, 83, 165));
 
@@ -220,6 +221,7 @@ public class Deposit extends javax.swing.JDialog {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     
