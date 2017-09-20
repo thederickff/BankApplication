@@ -287,21 +287,33 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Customer Registration"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="navCustomerHisActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="navWithdrawalHis">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Withdrawal Details"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="navWithdrawalHisActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="navDepositHis">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Deposit Details"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="navDepositHisActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="navLoginHis">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Login Details"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="navLoginHisActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>

@@ -5,6 +5,14 @@
  */
 package com.bankapplication.view;
 
+import com.bankapplication.view.history.CustomerRegistration;
+import com.bankapplication.view.history.DepositDetails;
+import com.bankapplication.view.history.LoginDetails;
+import com.bankapplication.view.history.WithdrawalDetails;
+import com.bankapplication.view.operations.RegisterCustomer;
+import com.bankapplication.view.operations.RegisterStaff;
+import com.bankapplication.view.operations.Deposit;
+import com.bankapplication.view.operations.Withdraw;
 import javax.swing.UnsupportedLookAndFeelException;
 
 /**
@@ -126,12 +134,32 @@ public class Main extends javax.swing.JFrame {
         navlbHistory.setText("HISTORY");
 
         navCustomerHis.setText("Customer Registration");
+        navCustomerHis.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                navCustomerHisActionPerformed(evt);
+            }
+        });
 
         navWithdrawalHis.setText("Withdrawal Details");
+        navWithdrawalHis.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                navWithdrawalHisActionPerformed(evt);
+            }
+        });
 
         navDepositHis.setText("Deposit Details");
+        navDepositHis.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                navDepositHisActionPerformed(evt);
+            }
+        });
 
         navLoginHis.setText("Login Details");
+        navLoginHis.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                navLoginHisActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout paneNavigateLayout = new javax.swing.GroupLayout(paneNavigate);
         paneNavigate.setLayout(paneNavigateLayout);
@@ -285,6 +313,26 @@ public class Main extends javax.swing.JFrame {
         Withdraw withdraw = new Withdraw(this, true);
         withdraw.setVisible(true);
     }//GEN-LAST:event_navWithdrawalOpActionPerformed
+
+    private void navCustomerHisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_navCustomerHisActionPerformed
+        CustomerRegistration cr = new CustomerRegistration(this, true);
+        cr.setVisible(true);
+    }//GEN-LAST:event_navCustomerHisActionPerformed
+
+    private void navWithdrawalHisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_navWithdrawalHisActionPerformed
+        WithdrawalDetails wd = new WithdrawalDetails(this, true);
+        wd.setVisible(true);
+    }//GEN-LAST:event_navWithdrawalHisActionPerformed
+
+    private void navDepositHisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_navDepositHisActionPerformed
+        DepositDetails dd = new DepositDetails(this, true);
+        dd.setVisible(true);
+    }//GEN-LAST:event_navDepositHisActionPerformed
+
+    private void navLoginHisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_navLoginHisActionPerformed
+        LoginDetails ld = new LoginDetails(this, true);
+        ld.setVisible(true);
+    }//GEN-LAST:event_navLoginHisActionPerformed
 
     /**
      * @param args the command line arguments
