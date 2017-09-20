@@ -174,37 +174,37 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
-                  <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="103" groupAlignment="1" attributes="0">
                       <Group type="102" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="1" attributes="0">
                               <Group type="102" attributes="0">
-                                  <EmptySpace min="-2" pref="90" max="-2" attributes="0"/>
                                   <Component id="lblName" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="txtName" min="-2" pref="244" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
-                                  <Component id="lblAccount" min="-2" pref="97" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="1" attributes="0">
-                                  <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
-                                  <Component id="lblAmountDeposited" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblAmountWithdrawn" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="txtAmountDeposited" max="32767" attributes="0"/>
-                                  <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
-                                  <Component id="lblPreviousBalance" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtAmountDeposited" min="-2" pref="241" max="-2" attributes="0"/>
                               </Group>
+                          </Group>
+                          <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="lblAccount" alignment="1" min="-2" pref="97" max="-2" attributes="0"/>
+                              <Component id="lblPreviousBalance" alignment="1" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="txtPreviousBalance" pref="288" max="32767" attributes="0"/>
+                              <Component id="txtPreviousBalance" max="32767" attributes="0"/>
                               <Component id="txtAccount" alignment="1" max="32767" attributes="0"/>
                           </Group>
                       </Group>
-                      <Group type="102" alignment="0" attributes="0">
+                      <Group type="102" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="lblAuthorizedStaffID" min="-2" pref="115" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="txtAuthorizedStaff" max="32767" attributes="0"/>
+                          <Component id="txtAuthorizedStaff" min="-2" pref="669" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
@@ -225,7 +225,7 @@
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="txtPreviousBalance" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="lblPreviousBalance" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="lblAmountDeposited" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
+                      <Component id="lblAmountWithdrawn" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
                       <Component id="txtAmountDeposited" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
@@ -269,10 +269,10 @@
         </Component>
         <Component class="javax.swing.JTextField" name="txtAuthorizedStaff">
         </Component>
-        <Component class="javax.swing.JLabel" name="lblAmountDeposited">
+        <Component class="javax.swing.JLabel" name="lblAmountWithdrawn">
           <Properties>
             <Property name="horizontalAlignment" type="int" value="4"/>
-            <Property name="text" type="java.lang.String" value="Amount Deposited:"/>
+            <Property name="text" type="java.lang.String" value="Amount Withdrawn:"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtName">
