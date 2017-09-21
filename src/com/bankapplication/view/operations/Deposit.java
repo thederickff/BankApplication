@@ -118,11 +118,17 @@ public class Deposit extends javax.swing.JDialog {
         lblAccount.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblAccount.setText("Account Number:");
 
+        txtAccount.setEnabled(false);
+
         lblName.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         lblName.setText("Name:");
 
         lblAmountDeposited.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblAmountDeposited.setText("Amount Deposited:");
+
+        txtName.setEnabled(false);
+
+        txtPreviousBalance.setEnabled(false);
 
         javax.swing.GroupLayout paneFieldsLayout = new javax.swing.GroupLayout(paneFields);
         paneFields.setLayout(paneFieldsLayout);
@@ -180,6 +186,11 @@ public class Deposit extends javax.swing.JDialog {
         btnDeposit.setText("Deposit");
 
         btnClear.setText("Clear");
+        btnClear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnClearActionPerformed(evt);
+            }
+        });
 
         btnCancel.setText("Cancel");
         btnCancel.addActionListener(new java.awt.event.ActionListener() {
@@ -242,6 +253,15 @@ public class Deposit extends javax.swing.JDialog {
     private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
         this.dispose();
     }//GEN-LAST:event_btnCancelActionPerformed
+
+    private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
+        this.txtName.setText(null);
+        this.txtAccount.setText(null);
+        this.txtAccountNumber.setText(null);
+        this.txtAmountDeposited.setText(null);
+        this.txtAuthorizedStaff.setText(null);
+        this.txtPreviousBalance.setText(null);
+    }//GEN-LAST:event_btnClearActionPerformed
 
     
     // Variables declaration - do not modify//GEN-BEGIN:variables

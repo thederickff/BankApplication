@@ -182,7 +182,7 @@
                               <Group type="102" attributes="0">
                                   <Component id="lblAmountWithdrawn" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="txtAmountDeposited" min="-2" pref="241" max="-2" attributes="0"/>
+                                  <Component id="txtAmountWithdrawn" min="-2" pref="241" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace pref="29" max="32767" attributes="0"/>
@@ -216,7 +216,7 @@
                       <Component id="txtPreviousBalance" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="lblPreviousBalance" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="lblAmountWithdrawn" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
-                      <Component id="txtAmountDeposited" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtAmountWithdrawn" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -229,7 +229,7 @@
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JTextField" name="txtAmountDeposited">
+        <Component class="javax.swing.JTextField" name="txtAmountWithdrawn">
         </Component>
         <Component class="javax.swing.JLabel" name="lblAuthorizedStaffID">
           <Properties>
@@ -250,6 +250,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtAccount">
+          <Properties>
+            <Property name="enabled" type="boolean" value="false"/>
+          </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="lblName">
           <Properties>
@@ -266,8 +269,14 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtName">
+          <Properties>
+            <Property name="enabled" type="boolean" value="false"/>
+          </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtPreviousBalance">
+          <Properties>
+            <Property name="enabled" type="boolean" value="false"/>
+          </Properties>
         </Component>
       </SubComponents>
     </Container>
@@ -307,6 +316,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Clear"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnClearActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnCancel">
           <Properties>
