@@ -13,7 +13,7 @@ import com.bankapplication.view.operations.RegisterCustomer;
 import com.bankapplication.view.operations.RegisterStaff;
 import com.bankapplication.view.operations.Deposit;
 import com.bankapplication.view.operations.Withdraw;
-import javax.swing.ImageIcon;
+//import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.UnsupportedLookAndFeelException;
 
@@ -306,45 +306,43 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_menuiLoginActionPerformed
 
     private void navCustomerOpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_navCustomerOpActionPerformed
-        // TODO add your handling code here:
-        RegisterCustomer rc = new RegisterCustomer(this, true);
-        rc.setVisible(true);
+        // Create a new RegisterCustomer Dialog and show it
+        new RegisterCustomer(this, true).setVisible(true);
     }//GEN-LAST:event_navCustomerOpActionPerformed
 
     private void navStaffOpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_navStaffOpActionPerformed
-        // TODO add your handling code here:
-        RegisterStaff rs = new RegisterStaff(this, true);
-        rs.setVisible(true);
+        // Create a new RegisterStaff Dialog and show it
+        new RegisterStaff(this, true).setVisible(true);
     }//GEN-LAST:event_navStaffOpActionPerformed
 
     private void navDepositOpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_navDepositOpActionPerformed
-        Deposit deposit = new Deposit(this, true);
-        deposit.setVisible(true);
+        // Create a new Deposit Dialog and show it
+        new Deposit(this, true).setVisible(true);
     }//GEN-LAST:event_navDepositOpActionPerformed
 
     private void navWithdrawalOpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_navWithdrawalOpActionPerformed
-        Withdraw withdraw = new Withdraw(this, true);
-        withdraw.setVisible(true);
+        // Create a new Withdrawal Dialog and show it
+        new Withdraw(this, true).setVisible(true);
     }//GEN-LAST:event_navWithdrawalOpActionPerformed
 
     private void navCustomerHisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_navCustomerHisActionPerformed
-        CustomerRegistration cr = new CustomerRegistration(this, true);
-        cr.setVisible(true);
+        // Create a new CustomerRegistration Dialog and show it
+        new CustomerRegistration(this, true).setVisible(true);
     }//GEN-LAST:event_navCustomerHisActionPerformed
 
     private void navWithdrawalHisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_navWithdrawalHisActionPerformed
-        WithdrawalDetails wd = new WithdrawalDetails(this, true);
-        wd.setVisible(true);
+        // Create a new WithdrawalDetails Dialog and show it
+        new WithdrawalDetails(this, true).setVisible(true);
     }//GEN-LAST:event_navWithdrawalHisActionPerformed
 
     private void navDepositHisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_navDepositHisActionPerformed
-        DepositDetails dd = new DepositDetails(this, true);
-        dd.setVisible(true);
+        // Create a new DepositDetails Dialog and show it
+        new DepositDetails(this, true).setVisible(true);
     }//GEN-LAST:event_navDepositHisActionPerformed
 
     private void navLoginHisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_navLoginHisActionPerformed
-        LoginDetails ld = new LoginDetails(this, true);
-        ld.setVisible(true);
+        // Create a new LoginDetails Dialog and show it
+        new LoginDetails(this, true).setVisible(true);
     }//GEN-LAST:event_navLoginHisActionPerformed
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
