@@ -13,6 +13,8 @@ import com.bankapplication.view.operations.RegisterCustomer;
 import com.bankapplication.view.operations.RegisterStaff;
 import com.bankapplication.view.operations.Deposit;
 import com.bankapplication.view.operations.Withdraw;
+import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 import javax.swing.UnsupportedLookAndFeelException;
 
 /**
@@ -26,6 +28,7 @@ public class Main extends javax.swing.JFrame {
      */
     public Main() {
         initComponents();
+        //setIconImage(new ImageIcon(getClass().getResource("/com/bankapplication/resources/bg-1.jpg")).getImage());
     }
 
     /**
@@ -68,8 +71,13 @@ public class Main extends javax.swing.JFrame {
         menuiWithdrawalDetails = new javax.swing.JMenuItem();
         menuiLoginDetails = new javax.swing.JMenuItem();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("Trisoft Bank");
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         toolBarMain.setRollover(true);
 
@@ -234,6 +242,11 @@ public class Main extends javax.swing.JFrame {
 
         menuiExit.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.CTRL_MASK));
         menuiExit.setText("Exit");
+        menuiExit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuiExitActionPerformed(evt);
+            }
+        });
         menuFile.add(menuiExit);
 
         menuBarMain.add(menuFile);
@@ -334,6 +347,20 @@ public class Main extends javax.swing.JFrame {
         ld.setVisible(true);
     }//GEN-LAST:event_navLoginHisActionPerformed
 
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        int i = JOptionPane.showConfirmDialog(this, "Are you sure you want to close? ", "Select One", JOptionPane.YES_NO_OPTION);
+        if (i == JOptionPane.YES_OPTION) {
+            System.exit(0);
+        }
+    }//GEN-LAST:event_formWindowClosing
+
+    private void menuiExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuiExitActionPerformed
+        int i = JOptionPane.showConfirmDialog(this, "Are you sure you want to close? ", "Select One", JOptionPane.YES_NO_OPTION);
+        if (i == JOptionPane.YES_OPTION) {
+            System.exit(0);
+        }
+    }//GEN-LAST:event_menuiExitActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -346,7 +373,7 @@ public class Main extends javax.swing.JFrame {
         try {
             String systemLookAndFeel = javax.swing.UIManager.getSystemLookAndFeelClassName();
             javax.swing.UIManager.setLookAndFeel(systemLookAndFeel);
-        } catch (ClassNotFoundException | IllegalAccessException | InstantiationException | UnsupportedLookAndFeelException e ) {
+        } catch (ClassNotFoundException | IllegalAccessException | InstantiationException | UnsupportedLookAndFeelException e) {
             System.out.println("Error: " + e);
         }
         //</editor-fold>
