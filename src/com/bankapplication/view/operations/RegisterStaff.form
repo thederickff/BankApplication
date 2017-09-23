@@ -123,50 +123,41 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="1" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Component id="lblOccupation" alignment="1" max="32767" attributes="0"/>
+                      <Component id="lblDOB" alignment="1" max="32767" attributes="0"/>
+                      <Component id="lblSex" alignment="1" max="32767" attributes="0"/>
+                      <Component id="lblName" alignment="1" max="32767" attributes="0"/>
+                      <Component id="lblAddress" alignment="1" max="32767" attributes="0"/>
+                      <Component id="lblAccount" alignment="1" max="32767" attributes="0"/>
+                      <Component id="lblPassword" alignment="0" min="-2" pref="94" max="-2" attributes="0"/>
+                      <Component id="lblRank" alignment="1" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" attributes="0">
+                      <Component id="cmbRank" max="32767" attributes="0"/>
+                      <Component id="cmbAccount" alignment="0" pref="465" max="32767" attributes="0"/>
+                      <Component id="txtPassword" alignment="0" max="32767" attributes="0"/>
+                      <Component id="txtAddress" alignment="0" max="32767" attributes="0"/>
+                      <Component id="txtName" alignment="0" max="32767" attributes="0"/>
+                      <Component id="txtOccupation" alignment="0" max="32767" attributes="0"/>
                       <Group type="102" alignment="0" attributes="0">
-                          <Component id="lblInitialBalance" min="-2" pref="106" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="txtInitialBalance" max="32767" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="lblOccupation" alignment="1" max="32767" attributes="0"/>
-                              <Component id="lblDOB" alignment="1" max="32767" attributes="0"/>
-                              <Component id="lblSex" alignment="1" max="32767" attributes="0"/>
-                              <Component id="lblName" alignment="1" max="32767" attributes="0"/>
-                              <Component id="lblAddress" alignment="1" max="32767" attributes="0"/>
-                              <Component id="lblAccount" alignment="1" max="32767" attributes="0"/>
-                              <Component id="lblPassword" alignment="0" min="-2" pref="94" max="-2" attributes="0"/>
-                              <Component id="lblRank" alignment="1" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="1" attributes="0">
-                              <Component id="cmbRank" max="32767" attributes="0"/>
-                              <Component id="cmbAccount" alignment="0" pref="465" max="32767" attributes="0"/>
-                              <Component id="txtPassword" alignment="0" max="32767" attributes="0"/>
-                              <Component id="txtAddress" alignment="0" max="32767" attributes="0"/>
-                              <Component id="txtName" alignment="0" max="32767" attributes="0"/>
-                              <Component id="txtOccupation" alignment="0" max="32767" attributes="0"/>
                               <Group type="102" alignment="0" attributes="0">
-                                  <Group type="103" groupAlignment="1" attributes="0">
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Component id="radioMale" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="radioFemale" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Component id="cmbDay" min="-2" pref="88" max="-2" attributes="0"/>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="cmbMonth" min="-2" pref="90" max="-2" attributes="0"/>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="cmbYear" min="-2" pref="90" max="-2" attributes="0"/>
-                                      </Group>
-                                  </Group>
-                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                  <Component id="radioMale" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="radioFemale" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="cmbDay" min="-2" pref="88" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="cmbMonth" min="-2" pref="90" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="cmbYear" min="-2" pref="90" max="-2" attributes="0"/>
                               </Group>
                           </Group>
+                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace min="-2" pref="63" max="-2" attributes="0"/>
@@ -228,11 +219,6 @@
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="txtPassword" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="lblPassword" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="txtInitialBalance" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="lblInitialBalance" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
@@ -474,14 +460,6 @@
         <Component class="javax.swing.JLabel" name="lblRank">
           <Properties>
             <Property name="text" type="java.lang.String" value="Rank:"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JTextField" name="txtInitialBalance">
-        </Component>
-        <Component class="javax.swing.JLabel" name="lblInitialBalance">
-          <Properties>
-            <Property name="horizontalAlignment" type="int" value="4"/>
-            <Property name="text" type="java.lang.String" value="Initial Balance"/>
           </Properties>
         </Component>
       </SubComponents>

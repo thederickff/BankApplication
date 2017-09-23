@@ -134,16 +134,13 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
-                                  <Group type="103" groupAlignment="1" attributes="0">
-                                      <Component id="lblRank" min="-2" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                          <Component id="lblOccupation" alignment="1" max="32767" attributes="0"/>
-                                          <Component id="lblDOB" alignment="1" max="32767" attributes="0"/>
-                                          <Component id="lblSex" alignment="1" max="32767" attributes="0"/>
-                                          <Component id="lblName" alignment="1" max="32767" attributes="0"/>
-                                          <Component id="lblAddress" alignment="1" max="32767" attributes="0"/>
-                                          <Component id="lblAccount" alignment="1" pref="94" max="32767" attributes="0"/>
-                                      </Group>
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="lblOccupation" alignment="1" max="32767" attributes="0"/>
+                                      <Component id="lblDOB" alignment="1" max="32767" attributes="0"/>
+                                      <Component id="lblSex" alignment="1" max="32767" attributes="0"/>
+                                      <Component id="lblName" alignment="1" max="32767" attributes="0"/>
+                                      <Component id="lblAddress" alignment="1" max="32767" attributes="0"/>
+                                      <Component id="lblAccount" alignment="1" pref="94" max="32767" attributes="0"/>
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
@@ -151,7 +148,6 @@
                                       <Component id="txtAddress" alignment="0" max="32767" attributes="0"/>
                                       <Component id="txtName" alignment="0" max="32767" attributes="0"/>
                                       <Component id="txtOccupation" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="cmbRank" max="32767" attributes="0"/>
                                       <Group type="102" attributes="0">
                                           <Group type="103" groupAlignment="0" attributes="0">
                                               <Group type="102" alignment="0" attributes="0">
@@ -229,12 +225,7 @@
                       <Component id="txtOccupation" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="lblOccupation" linkSize="3" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="lblRank" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="cmbRank" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace max="-2" attributes="0"/>
+                  <EmptySpace min="-2" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="txtPassword" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="lblPassword" linkSize="3" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -468,23 +459,6 @@
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnBrowsePictureActionPerformed"/>
           </Events>
-        </Component>
-        <Component class="javax.swing.JLabel" name="lblRank">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Rank:"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JComboBox" name="cmbRank">
-          <Properties>
-            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="1">
-                <StringItem index="0" value="Select Rank"/>
-              </StringArray>
-            </Property>
-          </Properties>
-          <AuxValues>
-            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-          </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="lblInitialBalance">
           <Properties>
