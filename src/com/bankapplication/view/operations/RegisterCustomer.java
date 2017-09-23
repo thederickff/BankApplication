@@ -5,12 +5,18 @@
  */
 package com.bankapplication.view.operations;
 
+import java.awt.Image;
+import java.io.File;
+import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
+
 /**
  *
  * @author derickfelix
  */
 public class RegisterCustomer extends javax.swing.JDialog {
 
+    private File file;
     /**
      * Creates new form RegisterCustomer
      */
@@ -135,20 +141,25 @@ public class RegisterCustomer extends javax.swing.JDialog {
         paneThumbnail.setLayout(paneThumbnailLayout);
         paneThumbnailLayout.setHorizontalGroup(
             paneThumbnailLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(paneThumbnailLayout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, paneThumbnailLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(lblPicture, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         paneThumbnailLayout.setVerticalGroup(
             paneThumbnailLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, paneThumbnailLayout.createSequentialGroup()
+            .addGroup(paneThumbnailLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(lblPicture, javax.swing.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
         btnBrowsePicture.setText("Browse Picture");
+        btnBrowsePicture.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBrowsePictureActionPerformed(evt);
+            }
+        });
 
         lblRank.setText("Rank:");
 
@@ -173,7 +184,7 @@ public class RegisterCustomer extends javax.swing.JDialog {
                                 .addComponent(lblAccount, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 94, Short.MAX_VALUE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(paneBodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cmbAccount, 0, 465, Short.MAX_VALUE)
+                            .addComponent(cmbAccount, 0, 477, Short.MAX_VALUE)
                             .addComponent(txtAddress)
                             .addComponent(txtName)
                             .addComponent(txtOccupation)
@@ -190,7 +201,7 @@ public class RegisterCustomer extends javax.swing.JDialog {
                                         .addComponent(cmbMonth, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(cmbYear, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(0, 185, Short.MAX_VALUE))))
+                                .addGap(0, 197, Short.MAX_VALUE))))
                     .addGroup(paneBodyLayout.createSequentialGroup()
                         .addComponent(lblPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -288,12 +299,12 @@ public class RegisterCustomer extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(paneBody, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnRegister, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(btnClear)
-                        .addComponent(btnCancel)))
-                .addContainerGap())
+                        .addComponent(btnCancel))
+                    .addComponent(btnRegister, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -321,6 +332,18 @@ public class RegisterCustomer extends javax.swing.JDialog {
         this.txtPassword.setText(null);
         this.txtOccupation.setText(null);
     }//GEN-LAST:event_btnClearActionPerformed
+
+    private void btnBrowsePictureActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBrowsePictureActionPerformed
+        // TODO add your handling code here:
+        JFileChooser choose = new JFileChooser();
+        int i = choose.showOpenDialog(this);
+        if( i == JFileChooser.APPROVE_OPTION) {
+            file = choose.getSelectedFile();
+            Image img = getToolkit().createImage(file.getAbsolutePath())
+                    .getScaledInstance(110, 110, Image.SCALE_SMOOTH);
+            lblPicture.setIcon(new ImageIcon(img));
+        }
+    }//GEN-LAST:event_btnBrowsePictureActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBrowsePicture;
