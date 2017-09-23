@@ -254,12 +254,27 @@ public class Main extends javax.swing.JFrame {
         menuOperations.setText("Operations");
 
         menuiWithdrawal.setText("Withdrawal");
+        menuiWithdrawal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuiWithdrawalActionPerformed(evt);
+            }
+        });
         menuOperations.add(menuiWithdrawal);
 
         menuiDeposit.setText("Deposit");
+        menuiDeposit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuiDepositActionPerformed(evt);
+            }
+        });
         menuOperations.add(menuiDeposit);
 
         menuiRegistration.setText("Registration");
+        menuiRegistration.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuiRegistrationActionPerformed(evt);
+            }
+        });
         menuOperations.add(menuiRegistration);
 
         menuBarMain.add(menuOperations);
@@ -267,15 +282,35 @@ public class Main extends javax.swing.JFrame {
         menuHistory.setText("History");
 
         menuiRegisteredCustomers.setText("Registered Customers");
+        menuiRegisteredCustomers.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuiRegisteredCustomersActionPerformed(evt);
+            }
+        });
         menuHistory.add(menuiRegisteredCustomers);
 
         menuiDepositDetails.setText("Deposit Details");
+        menuiDepositDetails.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuiDepositDetailsActionPerformed(evt);
+            }
+        });
         menuHistory.add(menuiDepositDetails);
 
         menuiWithdrawalDetails.setText("Withdrawal Details");
+        menuiWithdrawalDetails.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuiWithdrawalDetailsActionPerformed(evt);
+            }
+        });
         menuHistory.add(menuiWithdrawalDetails);
 
         menuiLoginDetails.setText("Login Details");
+        menuiLoginDetails.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuiLoginDetailsActionPerformed(evt);
+            }
+        });
         menuHistory.add(menuiLoginDetails);
 
         menuBarMain.add(menuHistory);
@@ -302,7 +337,8 @@ public class Main extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void menuiLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuiLoginActionPerformed
-        // TODO add your handling code here:
+        // Create a new Login Dialog and show it
+        new Login(this, true).setVisible(true);
     }//GEN-LAST:event_menuiLoginActionPerformed
 
     private void navCustomerOpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_navCustomerOpActionPerformed
@@ -358,6 +394,40 @@ public class Main extends javax.swing.JFrame {
             System.exit(0);
         }
     }//GEN-LAST:event_menuiExitActionPerformed
+
+    private void menuiWithdrawalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuiWithdrawalActionPerformed
+        // Create a new Withdrawal Dialog and show it
+        new Withdraw(this, true).setVisible(true);
+    }//GEN-LAST:event_menuiWithdrawalActionPerformed
+
+    private void menuiDepositActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuiDepositActionPerformed
+        // Create a new Deposit Dialog and show it
+        new Deposit(this, true).setVisible(true);
+    }//GEN-LAST:event_menuiDepositActionPerformed
+
+    private void menuiRegistrationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuiRegistrationActionPerformed
+
+    }//GEN-LAST:event_menuiRegistrationActionPerformed
+
+    private void menuiRegisteredCustomersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuiRegisteredCustomersActionPerformed
+        // Create a new CustomerRegistration Dialog and show it
+        new CustomerRegistration(this, true).setVisible(true);
+    }//GEN-LAST:event_menuiRegisteredCustomersActionPerformed
+
+    private void menuiDepositDetailsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuiDepositDetailsActionPerformed
+        // Create a new DepositDetails Dialog and show it
+        new DepositDetails(this, true).setVisible(true);
+    }//GEN-LAST:event_menuiDepositDetailsActionPerformed
+
+    private void menuiWithdrawalDetailsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuiWithdrawalDetailsActionPerformed
+        // Create a new WithdrawalDetails Dialog and show it
+        new WithdrawalDetails(this, true).setVisible(true);
+    }//GEN-LAST:event_menuiWithdrawalDetailsActionPerformed
+
+    private void menuiLoginDetailsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuiLoginDetailsActionPerformed
+        // Create a new LoginDetails Dialog and show it
+        new LoginDetails(this, true).setVisible(true);
+    }//GEN-LAST:event_menuiLoginDetailsActionPerformed
 
     /**
      * @param args the command line arguments

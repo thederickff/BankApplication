@@ -42,16 +42,25 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Withdrawal"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuiWithdrawalActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="menuiDeposit">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Deposit"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuiDepositActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="menuiRegistration">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Registration"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuiRegistrationActionPerformed"/>
+              </Events>
             </MenuItem>
           </SubComponents>
         </Menu>
@@ -64,21 +73,33 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Registered Customers"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuiRegisteredCustomersActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="menuiDepositDetails">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Deposit Details"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuiDepositDetailsActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="menuiWithdrawalDetails">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Withdrawal Details"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuiWithdrawalDetailsActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="menuiLoginDetails">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Login Details"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuiLoginDetailsActionPerformed"/>
+              </Events>
             </MenuItem>
           </SubComponents>
         </Menu>
