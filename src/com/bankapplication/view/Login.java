@@ -5,6 +5,9 @@
  */
 package com.bankapplication.view;
 
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+
 /**
  *
  * @author derickfelix
@@ -17,6 +20,10 @@ public class Login extends javax.swing.JDialog {
     public Login(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        customOperations();
+    }
+
+    private void customOperations() {
         lblStatus.setVisible(false);
     }
 
@@ -74,6 +81,18 @@ public class Login extends javax.swing.JDialog {
 
         lblPassword.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblPassword.setText("Password:");
+
+        txtAccount.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtAccountKeyPressed(evt);
+            }
+        });
+
+        txtPassword.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtPasswordKeyPressed(evt);
+            }
+        });
 
         lblStatus.setForeground(new java.awt.Color(197, 1, 1));
         lblStatus.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -162,7 +181,30 @@ public class Login extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
+        onClickLogin();
+    }//GEN-LAST:event_btnLoginActionPerformed
 
+    private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_btnCancelActionPerformed
+
+    private void txtAccountKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtAccountKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            txtAccount.nextFocus();
+        }
+    }//GEN-LAST:event_txtAccountKeyPressed
+
+    private void txtPasswordKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPasswordKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            onClickLogin();
+            this.nextFocus();
+        }
+    }//GEN-LAST:event_txtPasswordKeyPressed
+
+    /**
+     * Check to login fields, whether it is valid or invalid
+     */
+    private void onClickLogin() {
         if (txtAccount.getText().equals("root") && txtPassword.getText().equals("admin")) {
             new Main().setVisible(true);
             dispose();
@@ -171,12 +213,7 @@ public class Login extends javax.swing.JDialog {
             txtAccount.setText(null);
             txtPassword.setText(null);
         }
-    }//GEN-LAST:event_btnLoginActionPerformed
-
-    private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
-        System.exit(0);
-    }//GEN-LAST:event_btnCancelActionPerformed
-
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancel;
