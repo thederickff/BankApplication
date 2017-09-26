@@ -473,10 +473,15 @@ public class Main extends javax.swing.JFrame {
         }
         //</editor-fold>
         //</editor-fold>
-
-        /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> {
-            new Main().setVisible(true);
+            Login login = new Login(new javax.swing.JFrame(), true);
+            login.addWindowListener(new java.awt.event.WindowAdapter() {
+                @Override
+                public void windowClosing(java.awt.event.WindowEvent e) {
+                    System.exit(0);
+                }
+            });
+            login.setVisible(true);
         });
     }
 
