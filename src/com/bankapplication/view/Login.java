@@ -5,7 +5,6 @@
  */
 package com.bankapplication.view;
 
-import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
 /**
@@ -202,7 +201,7 @@ public class Login extends javax.swing.JDialog {
     }//GEN-LAST:event_txtPasswordKeyPressed
 
     /**
-     * Check to login fields, whether it is valid or invalid
+     * Check the login fields, whether it is valid or invalid
      */
     private void onClickLogin() {
         if (txtAccount.getText().equals("root") && txtPassword.getText().equals("admin")) {
