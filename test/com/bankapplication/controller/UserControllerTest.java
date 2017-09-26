@@ -5,6 +5,7 @@
  */
 package com.bankapplication.controller;
 
+import com.bankapplication.database.ConnectionManager;
 import com.bankapplication.model.User;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -45,7 +46,8 @@ public class UserControllerTest {
      */
     @Test
     public void testLogin() {
-        instance = new UserController();
+        ConnectionManager cm = new ConnectionManager();
+        instance = new UserController(cm);
         
         User user = new User("root", "0000", "admin");
         user.setPassword("admin");

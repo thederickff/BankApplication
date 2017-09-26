@@ -5,12 +5,26 @@
  */
 package com.bankapplication.controller;
 
+import com.bankapplication.database.ConnectionManager;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
 /**
  * @name UserController
  * @author derickfelix
  * @date Sep 26, 2017
  */
 public class UserController {
+
+    private ConnectionManager connectionManager;
+    private Statement statement;
+    private ResultSet rs;
+
+    public UserController(ConnectionManager connectionManager) {
+        this.connectionManager = connectionManager;
+    }
 
     /**
      * Makes the authentication by a given account number and a password
@@ -20,6 +34,25 @@ public class UserController {
      * @return - Whether an user exists in the database
      */
     public boolean login(String accountNumber, String password) {
+        Connection conn = connectionManager.createConnection();
+
+        try {
+            statement = (Statement) conn.createStatement();
+            rs = statement.executeQuery("select * from users");
+
+            while (rs.next()) {
+                if (rs.getString("account_number").equals(accountNumber)
+                        && rs.getString("password").equals(password)) {
+                    return true;
+                }
+            }
+            // Close
+            conn.close();
+            statement.close();
+            rs.close();
+        } catch (SQLException ex) {
+            System.out.println("SQL Error: " + ex);
+        }
         return false;
     }
 }

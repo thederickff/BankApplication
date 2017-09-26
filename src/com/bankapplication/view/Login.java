@@ -5,6 +5,8 @@
  */
 package com.bankapplication.view;
 
+import com.bankapplication.controller.UserController;
+import com.bankapplication.database.ConnectionManager;
 import java.awt.event.KeyEvent;
 
 /**
@@ -12,6 +14,9 @@ import java.awt.event.KeyEvent;
  * @author derickfelix
  */
 public class Login extends javax.swing.JDialog {
+
+    private ConnectionManager connectionManager;
+    private UserController userController;
 
     /**
      * Creates new form Login
@@ -24,6 +29,8 @@ public class Login extends javax.swing.JDialog {
 
     private void customOperations() {
         lblStatus.setVisible(false);
+        this.connectionManager = new ConnectionManager();
+        this.userController = new UserController(connectionManager);
     }
 
     /**
@@ -204,7 +211,10 @@ public class Login extends javax.swing.JDialog {
      * Check the login fields, whether it is valid or invalid
      */
     private void onClickLogin() {
-        if (txtAccount.getText().equals("root") && txtPassword.getText().equals("admin")) {
+        String acc = txtAccount.getText();
+        String pws = txtPassword.getText();
+        
+        if (userController.login(acc, pws)) {
             new Main().setVisible(true);
             dispose();
         } else {
