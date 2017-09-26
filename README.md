@@ -1,7 +1,7 @@
 # BankApplication
 🏦 Banking System Management
 
-
+![Image Demo](https://github.com/derickfelix/BankApplication/blob/master/src/com/bankapplication/resources/demo.png)
 
 
 ## Contributing 
