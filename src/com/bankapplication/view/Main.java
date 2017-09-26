@@ -86,6 +86,11 @@ public class Main extends javax.swing.JFrame {
         tbtnRegisterCustomer.setFocusable(false);
         tbtnRegisterCustomer.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         tbtnRegisterCustomer.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        tbtnRegisterCustomer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tbtnRegisterCustomerActionPerformed(evt);
+            }
+        });
         toolBarMain.add(tbtnRegisterCustomer);
 
         tbtnMakeDeposit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/bankapplication/resources/open-archive.png"))); // NOI18N
@@ -93,6 +98,11 @@ public class Main extends javax.swing.JFrame {
         tbtnMakeDeposit.setFocusable(false);
         tbtnMakeDeposit.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         tbtnMakeDeposit.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        tbtnMakeDeposit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tbtnMakeDepositActionPerformed(evt);
+            }
+        });
         toolBarMain.add(tbtnMakeDeposit);
 
         tbtnMakeWithdrawal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/bankapplication/resources/product-realise.png"))); // NOI18N
@@ -100,6 +110,11 @@ public class Main extends javax.swing.JFrame {
         tbtnMakeWithdrawal.setFocusable(false);
         tbtnMakeWithdrawal.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         tbtnMakeWithdrawal.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        tbtnMakeWithdrawal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tbtnMakeWithdrawalActionPerformed(evt);
+            }
+        });
         toolBarMain.add(tbtnMakeWithdrawal);
 
         splitPaneMain.setDividerLocation(180);
@@ -428,6 +443,18 @@ public class Main extends javax.swing.JFrame {
         // Create a new LoginDetails Dialog and show it
         new LoginDetails(this, true).setVisible(true);
     }//GEN-LAST:event_menuiLoginDetailsActionPerformed
+
+    private void tbtnRegisterCustomerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tbtnRegisterCustomerActionPerformed
+        new RegisterCustomer(this, true).setVisible(true);
+    }//GEN-LAST:event_tbtnRegisterCustomerActionPerformed
+
+    private void tbtnMakeDepositActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tbtnMakeDepositActionPerformed
+        new Deposit(this, true).setVisible(true);
+    }//GEN-LAST:event_tbtnMakeDepositActionPerformed
+
+    private void tbtnMakeWithdrawalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tbtnMakeWithdrawalActionPerformed
+        new Withdraw(this, true).setVisible(true);
+    }//GEN-LAST:event_tbtnMakeWithdrawalActionPerformed
 
     /**
      * @param args the command line arguments
