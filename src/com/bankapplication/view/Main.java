@@ -28,7 +28,6 @@ public class Main extends javax.swing.JFrame {
      */
     public Main() {
         initComponents();
-        //setIconImage(new ImageIcon(getClass().getResource("/com/bankapplication/resources/bg-1.jpg")).getImage());
     }
 
     /**

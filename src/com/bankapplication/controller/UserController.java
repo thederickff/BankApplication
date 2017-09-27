@@ -7,7 +7,6 @@ package com.bankapplication.controller;
 
 import com.bankapplication.database.ConnectionManager;
 import java.sql.Connection;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
@@ -16,14 +15,10 @@ import java.sql.Statement;
  * @author derickfelix
  * @date Sep 26, 2017
  */
-public class UserController {
-
-    private ConnectionManager connectionManager;
-    private Statement statement;
-    private ResultSet rs;
+public class UserController extends Controller {
 
     public UserController(ConnectionManager connectionManager) {
-        this.connectionManager = connectionManager;
+        super(connectionManager);
     }
 
     /**
