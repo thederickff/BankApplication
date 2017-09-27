@@ -229,8 +229,8 @@
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
-                  <Component id="lblStatus" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <Component id="lblStatus" min="-2" pref="16" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="lblAccount" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="txtAccount" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -273,7 +273,6 @@
               <Color blue="1" green="1" red="c5" type="rgb"/>
             </Property>
             <Property name="horizontalAlignment" type="int" value="0"/>
-            <Property name="text" type="java.lang.String" value="The account number or password you entered did not match our records."/>
           </Properties>
         </Component>
       </SubComponents>

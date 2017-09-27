@@ -5,6 +5,8 @@
  */
 package com.bankapplication.view.operations;
 
+import com.bankapplication.controller.CustomerController;
+import com.bankapplication.database.ConnectionManager;
 import java.awt.Image;
 import java.io.File;
 import javax.swing.ImageIcon;
@@ -17,6 +19,8 @@ import javax.swing.JFileChooser;
 public class RegisterCustomer extends javax.swing.JDialog {
 
     private File file;
+    private ConnectionManager connectionManager;
+    private CustomerController CustomerController;
 
     /**
      * Creates new form RegisterCustomer
@@ -32,6 +36,8 @@ public class RegisterCustomer extends javax.swing.JDialog {
         int random = (int) (Math.random() * 9999 + 1000);
         // generate a random account number
         txtAccountNumber.setText(Integer.toString(random));
+        this.connectionManager = new ConnectionManager();
+        this.CustomerController = new CustomerController(connectionManager);
     }
 
     /**
@@ -67,6 +73,7 @@ public class RegisterCustomer extends javax.swing.JDialog {
         btnBrowsePicture = new javax.swing.JButton();
         txtAccountNumber = new javax.swing.JTextField();
         lblName1 = new javax.swing.JLabel();
+        lblStatus = new javax.swing.JLabel();
         btnRegister = new javax.swing.JButton();
         btnClear = new javax.swing.JButton();
         btnCancel = new javax.swing.JButton();
@@ -170,6 +177,10 @@ public class RegisterCustomer extends javax.swing.JDialog {
         lblName1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblName1.setText("Account Number:");
 
+        lblStatus.setFont(new java.awt.Font("Noto Sans", 1, 14)); // NOI18N
+        lblStatus.setForeground(new java.awt.Color(168, 1, 1));
+        lblStatus.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+
         javax.swing.GroupLayout paneBodyLayout = new javax.swing.GroupLayout(paneBody);
         paneBody.setLayout(paneBodyLayout);
         paneBodyLayout.setHorizontalGroup(
@@ -190,10 +201,10 @@ public class RegisterCustomer extends javax.swing.JDialog {
                                 .addComponent(lblAddress, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(lblAccount, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 94, Short.MAX_VALUE))
                             .addComponent(lblName1))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(58, 58, 58)
                         .addGroup(paneBodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtAccountNumber)
-                            .addComponent(cmbAccount, 0, 521, Short.MAX_VALUE)
+                            .addComponent(cmbAccount, 0, 475, Short.MAX_VALUE)
                             .addComponent(txtAddress)
                             .addGroup(paneBodyLayout.createSequentialGroup()
                                 .addGroup(paneBodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -207,60 +218,69 @@ public class RegisterCustomer extends javax.swing.JDialog {
                                         .addComponent(cmbMonth, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(cmbYear, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(0, 241, Short.MAX_VALUE))
+                                .addGap(0, 195, Short.MAX_VALUE))
                             .addComponent(txtName))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(paneBodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(paneThumbnail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnBrowsePicture, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(24, 24, 24))
+            .addGroup(paneBodyLayout.createSequentialGroup()
+                .addComponent(lblStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         paneBodyLayout.setVerticalGroup(
             paneBodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(paneBodyLayout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addGroup(paneBodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(paneBodyLayout.createSequentialGroup()
-                        .addComponent(paneThumbnail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnBrowsePicture))
-                    .addGroup(paneBodyLayout.createSequentialGroup()
-                        .addGroup(paneBodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblName1)
-                            .addComponent(txtAccountNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(paneBodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblName))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(paneBodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtAddress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblAddress))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(paneBodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(cmbAccount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblAccount))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(paneBodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(radioMale)
-                            .addComponent(radioFemale)
-                            .addComponent(lblSex))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(paneBodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(cmbDay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cmbMonth, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cmbYear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblDOB))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(paneBodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblPassword))))
+                .addGap(3, 3, 3)
+                .addComponent(paneThumbnail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnBrowsePicture)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(paneBodyLayout.createSequentialGroup()
+                .addGap(0, 0, 0)
+                .addGroup(paneBodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblName1)
+                    .addComponent(txtAccountNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(paneBodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblName))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(paneBodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtAddress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblAddress))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(paneBodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cmbAccount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblAccount))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(paneBodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(radioMale)
+                    .addComponent(radioFemale)
+                    .addComponent(lblSex))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(paneBodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cmbDay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cmbMonth, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cmbYear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblDOB))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(paneBodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblPassword))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         paneBodyLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {lblAccount, lblAddress, lblDOB, lblName, lblPassword, lblSex});
 
         btnRegister.setText("Register");
+        btnRegister.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegisterActionPerformed(evt);
+            }
+        });
 
         btnClear.setText("Clear");
         btnClear.addActionListener(new java.awt.event.ActionListener() {
@@ -311,7 +331,7 @@ public class RegisterCustomer extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtAddressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAddressActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_txtAddressActionPerformed
 
     private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
@@ -342,6 +362,37 @@ public class RegisterCustomer extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_btnBrowsePictureActionPerformed
 
+    private void btnRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterActionPerformed
+        try {
+            String accountNumber = txtAccountNumber.getText();
+            String name = txtName.getText();
+            String address = txtAddress.getText();
+            String accountType = cmbAccount.getSelectedItem().toString();
+
+            char sex = 'm';
+            if (radioFemale.isSelected()) {
+                sex = 'f';
+            }
+            // Database mask yy/mm/dd
+            String dob = (String) cmbYear.getSelectedItem() + cmbMonth.getSelectedItem() + cmbDay.getSelectedItem();
+            String password = txtPassword.getText();
+            if(fieldsIsEmpty()) {
+                lblStatus.setText("Error: Some of the fields is empty!");
+            } else {
+                System.out.println("Ok");
+            }
+        } catch (Exception e) {
+            System.out.println("Input Error: " + e);
+        }
+
+    }//GEN-LAST:event_btnRegisterActionPerformed
+
+    private boolean fieldsIsEmpty() {
+        return txtAccountNumber.getText() == null || txtAddress.getText() == null
+                || txtName.getText() == null || txtPassword.getText() == null
+                || cmbAccount.getSelectedIndex() == 0 || cmbDay.getSelectedIndex() == 0
+                || cmbMonth.getSelectedIndex() == 0 || cmbYear.getSelectedIndex() == 0;
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBrowsePicture;
     private javax.swing.JButton btnCancel;
@@ -360,6 +411,7 @@ public class RegisterCustomer extends javax.swing.JDialog {
     private javax.swing.JLabel lblPassword;
     private javax.swing.JLabel lblPicture;
     private javax.swing.JLabel lblSex;
+    private javax.swing.JLabel lblStatus;
     private javax.swing.JPanel paneBody;
     private javax.swing.JPanel paneThumbnail;
     private javax.swing.JPanel paneTittle;

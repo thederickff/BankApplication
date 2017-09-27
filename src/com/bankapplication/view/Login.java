@@ -28,7 +28,6 @@ public class Login extends javax.swing.JDialog {
     }
 
     private void customOperations() {
-        lblStatus.setVisible(false);
         this.connectionManager = new ConnectionManager();
         this.userController = new UserController(connectionManager);
     }
@@ -167,7 +166,6 @@ public class Login extends javax.swing.JDialog {
 
         lblStatus.setForeground(new java.awt.Color(197, 1, 1));
         lblStatus.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblStatus.setText("The account number or password you entered did not match our records.");
 
         javax.swing.GroupLayout paneLoginLayout = new javax.swing.GroupLayout(paneLogin);
         paneLogin.setLayout(paneLoginLayout);
@@ -192,8 +190,8 @@ public class Login extends javax.swing.JDialog {
         paneLoginLayout.setVerticalGroup(
             paneLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(paneLoginLayout.createSequentialGroup()
-                .addComponent(lblStatus)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lblStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(paneLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblAccount)
                     .addComponent(txtAccount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -291,7 +289,7 @@ public class Login extends javax.swing.JDialog {
             new Main().setVisible(true);
             dispose();
         } else {
-            lblStatus.setVisible(true);
+            lblStatus.setText("The account number or password you entered did not match our records.");
             txtAccount.setText(null);
             txtPassword.setText(null);
         }
