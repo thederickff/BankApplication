@@ -35,18 +35,14 @@ public class Deposit extends javax.swing.JDialog {
         txtAccountNumber = new javax.swing.JTextField();
         btnCheck = new javax.swing.JButton();
         paneFields = new javax.swing.JPanel();
-        txtAmountDeposited = new javax.swing.JTextField();
-        lblAuthorizedStaffID = new javax.swing.JLabel();
-        lblDepositorName = new javax.swing.JLabel();
-        lblAccount = new javax.swing.JLabel();
-        txtAccount = new javax.swing.JTextField();
+        txtAmount = new javax.swing.JTextField();
+        lblPreviousDeposit = new javax.swing.JLabel();
+        txtPreviousDeposit = new javax.swing.JTextField();
         lblName = new javax.swing.JLabel();
-        txtAuthorizedStaff = new javax.swing.JTextField();
         lblAmountDeposited = new javax.swing.JLabel();
         txtName = new javax.swing.JTextField();
-        txtPreviousBalance = new javax.swing.JTextField();
-        lblPreviousBalance1 = new javax.swing.JLabel();
-        txtDepositorName = new javax.swing.JTextField();
+        txtTotalBalance = new javax.swing.JTextField();
+        lblTotalBalance = new javax.swing.JLabel();
         paneButtons = new javax.swing.JPanel();
         btnDeposit = new javax.swing.JButton();
         btnClear = new javax.swing.JButton();
@@ -93,9 +89,9 @@ public class Deposit extends javax.swing.JDialog {
                 .addContainerGap()
                 .addComponent(lblAccountNumber)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtAccountNumber, javax.swing.GroupLayout.DEFAULT_SIZE, 498, Short.MAX_VALUE)
+                .addComponent(txtAccountNumber)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnCheck, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnCheck, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         paneAccountLayout.setVerticalGroup(
@@ -109,67 +105,47 @@ public class Deposit extends javax.swing.JDialog {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        paneFields.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Fill Carefully", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 0, 14))); // NOI18N
+        paneFields.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Operation", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 0, 14))); // NOI18N
 
-        lblAuthorizedStaffID.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        lblAuthorizedStaffID.setText("Authorized Staff ID:");
+        lblPreviousDeposit.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblPreviousDeposit.setText("Previous Deposit:");
 
-        lblDepositorName.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        lblDepositorName.setText("Depositor's Name:");
-
-        lblAccount.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        lblAccount.setText("Account Number:");
-
-        txtAccount.setEnabled(false);
+        txtPreviousDeposit.setEnabled(false);
 
         lblName.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         lblName.setText("Name:");
 
         lblAmountDeposited.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        lblAmountDeposited.setText("Amount Deposited:");
+        lblAmountDeposited.setText("Amount:");
 
         txtName.setEnabled(false);
 
-        txtPreviousBalance.setEnabled(false);
+        txtTotalBalance.setEnabled(false);
 
-        lblPreviousBalance1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        lblPreviousBalance1.setText("Previous Balance:");
+        lblTotalBalance.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblTotalBalance.setText("Total Balance:");
 
         javax.swing.GroupLayout paneFieldsLayout = new javax.swing.GroupLayout(paneFields);
         paneFields.setLayout(paneFieldsLayout);
         paneFieldsLayout.setHorizontalGroup(
             paneFieldsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(paneFieldsLayout.createSequentialGroup()
-                .addGap(50, 50, 50)
-                .addGroup(paneFieldsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(paneFieldsLayout.createSequentialGroup()
-                        .addComponent(lblName)
-                        .addGap(88, 88, 88)
-                        .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(paneFieldsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(paneFieldsLayout.createSequentialGroup()
-                            .addComponent(lblAuthorizedStaffID)
-                            .addGap(18, 18, 18)
-                            .addComponent(txtAuthorizedStaff))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, paneFieldsLayout.createSequentialGroup()
-                            .addComponent(lblAmountDeposited)
-                            .addGap(18, 18, 18)
-                            .addComponent(txtAmountDeposited, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap()
+                .addGroup(paneFieldsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lblAmountDeposited)
+                    .addComponent(lblName))
+                .addGap(18, 18, 18)
                 .addGroup(paneFieldsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(paneFieldsLayout.createSequentialGroup()
-                        .addGap(9, 9, 9)
-                        .addComponent(lblDepositorName, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(txtDepositorName, javax.swing.GroupLayout.DEFAULT_SIZE, 218, Short.MAX_VALUE))
-                    .addGroup(paneFieldsLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(paneFieldsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblAccount, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblPreviousBalance1, javax.swing.GroupLayout.Alignment.TRAILING))
-                        .addGap(18, 18, 18)
-                        .addGroup(paneFieldsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtAccount, javax.swing.GroupLayout.DEFAULT_SIZE, 220, Short.MAX_VALUE)
-                            .addComponent(txtPreviousBalance))))
+                    .addComponent(txtName)
+                    .addComponent(txtAmount, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(paneFieldsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lblTotalBalance)
+                    .addComponent(lblPreviousDeposit))
+                .addGap(18, 18, 18)
+                .addGroup(paneFieldsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(txtPreviousDeposit)
+                    .addComponent(txtTotalBalance, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         paneFieldsLayout.setVerticalGroup(
@@ -179,24 +155,19 @@ public class Deposit extends javax.swing.JDialog {
                 .addGroup(paneFieldsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblName)
                     .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblAccount)
-                    .addComponent(txtAccount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblPreviousDeposit)
+                    .addComponent(txtPreviousDeposit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(paneFieldsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtPreviousBalance, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtTotalBalance, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblAmountDeposited, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtAmountDeposited, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblPreviousBalance1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(paneFieldsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblAuthorizedStaffID)
-                    .addComponent(txtAuthorizedStaff, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblDepositorName)
-                    .addComponent(txtDepositorName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(24, Short.MAX_VALUE))
+                    .addComponent(txtAmount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblTotalBalance))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         btnDeposit.setText("Deposit");
+        btnDeposit.setEnabled(false);
 
         btnClear.setText("Clear");
         btnClear.addActionListener(new java.awt.event.ActionListener() {
@@ -217,13 +188,12 @@ public class Deposit extends javax.swing.JDialog {
         paneButtonsLayout.setHorizontalGroup(
             paneButtonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, paneButtonsLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(btnDeposit, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnClear, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(6, 6, 6))
+                .addComponent(btnCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         paneButtonsLayout.setVerticalGroup(
             paneButtonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -269,12 +239,10 @@ public class Deposit extends javax.swing.JDialog {
 
     private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
         this.txtName.setText(null);
-        this.txtAccount.setText(null);
+        this.txtPreviousDeposit.setText(null);
         this.txtAccountNumber.setText(null);
-        this.txtAmountDeposited.setText(null);
-        this.txtAuthorizedStaff.setText(null);
-        this.txtPreviousBalance.setText(null);
-        this.txtDepositorName.setText(null);
+        this.txtAmount.setText(null);
+        this.txtTotalBalance.setText(null);
     }//GEN-LAST:event_btnClearActionPerformed
 
     
@@ -283,24 +251,20 @@ public class Deposit extends javax.swing.JDialog {
     private javax.swing.JButton btnCheck;
     private javax.swing.JButton btnClear;
     private javax.swing.JButton btnDeposit;
-    private javax.swing.JLabel lblAccount;
     private javax.swing.JLabel lblAccountNumber;
     private javax.swing.JLabel lblAmountDeposited;
-    private javax.swing.JLabel lblAuthorizedStaffID;
-    private javax.swing.JLabel lblDepositorName;
     private javax.swing.JLabel lblName;
-    private javax.swing.JLabel lblPreviousBalance1;
+    private javax.swing.JLabel lblPreviousDeposit;
+    private javax.swing.JLabel lblTotalBalance;
     private javax.swing.JPanel paneAccount;
     private javax.swing.JPanel paneButtons;
     private javax.swing.JPanel paneFields;
     private javax.swing.JPanel paneTittle;
     private javax.swing.JLabel panelbTitle;
-    private javax.swing.JTextField txtAccount;
     private javax.swing.JTextField txtAccountNumber;
-    private javax.swing.JTextField txtAmountDeposited;
-    private javax.swing.JTextField txtAuthorizedStaff;
-    private javax.swing.JTextField txtDepositorName;
+    private javax.swing.JTextField txtAmount;
     private javax.swing.JTextField txtName;
-    private javax.swing.JTextField txtPreviousBalance;
+    private javax.swing.JTextField txtPreviousDeposit;
+    private javax.swing.JTextField txtTotalBalance;
     // End of variables declaration//GEN-END:variables
 }

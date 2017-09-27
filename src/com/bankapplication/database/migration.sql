@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Sep 26, 2017 at 02:33 PM
+-- Generation Time: Sep 27, 2017 at 05:25 PM
 -- Server version: 5.7.17-1
 -- PHP Version: 7.0.16-3
 
@@ -47,10 +47,8 @@ CREATE TABLE `customers` (
 
 CREATE TABLE `deposit` (
   `id` int(11) NOT NULL,
-  `name` varchar(100) NOT NULL,
   `customer_id` int(10) UNSIGNED NOT NULL,
-  `previous_balance` double NOT NULL,
-  `amount_deposited` double NOT NULL,
+  `deposit_amount` double NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -93,7 +91,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `account_number`, `role`, `password`) VALUES
-(1, 'root', '0000', 'admin', 'admin');
+(1, 'root', '0000', 'super', 'admin');
 
 -- --------------------------------------------------------
 
@@ -103,11 +101,8 @@ INSERT INTO `users` (`id`, `name`, `account_number`, `role`, `password`) VALUES
 
 CREATE TABLE `withdrawal` (
   `id` int(11) NOT NULL,
-  `name` varchar(100) NOT NULL,
   `customer_id` int(11) UNSIGNED NOT NULL,
-  `previous_balance` double NOT NULL,
-  `amount_withdrawn` double NOT NULL,
-  `new_balance` double NOT NULL,
+  `withdraw_amount` double NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;

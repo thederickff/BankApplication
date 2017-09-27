@@ -112,9 +112,9 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="lblAccountNumber" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="txtAccountNumber" pref="498" max="32767" attributes="0"/>
+                  <Component id="txtAccountNumber" max="32767" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="btnCheck" min="-2" pref="199" max="-2" attributes="0"/>
+                  <Component id="btnCheck" min="-2" pref="187" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -152,7 +152,7 @@
       <Properties>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-            <TitledBorder title="Fill Carefully">
+            <TitledBorder title="Operation">
               <Font PropertyName="font" name="Dialog" size="14" style="0"/>
             </TitledBorder>
           </Border>
@@ -163,45 +163,25 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <Component id="lblName" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="88" max="-2" attributes="0"/>
-                          <Component id="txtName" min="-2" pref="244" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                          <Group type="102" alignment="1" attributes="0">
-                              <Component id="lblAuthorizedStaffID" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="txtAuthorizedStaff" max="32767" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="lblAmountDeposited" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="txtAmountDeposited" min="-2" pref="241" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="1" attributes="0">
+                      <Component id="lblAmountDeposited" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblName" min="-2" max="-2" attributes="0"/>
                   </Group>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
-                          <Component id="lblDepositorName" min="-2" pref="104" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="txtDepositorName" pref="218" max="32767" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="lblAccount" alignment="1" min="-2" pref="97" max="-2" attributes="0"/>
-                              <Component id="lblPreviousBalance1" alignment="1" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="txtAccount" pref="220" max="32767" attributes="0"/>
-                              <Component id="txtPreviousBalance" max="32767" attributes="0"/>
-                          </Group>
-                      </Group>
+                      <Component id="txtName" max="32767" attributes="0"/>
+                      <Component id="txtAmount" min="-2" pref="244" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="1" attributes="0">
+                      <Component id="lblTotalBalance" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblPreviousDeposit" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Component id="txtPreviousDeposit" max="32767" attributes="0"/>
+                      <Component id="txtTotalBalance" min="-2" pref="220" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
@@ -214,50 +194,31 @@
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="lblName" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="txtName" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="lblAccount" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="txtAccount" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblPreviousDeposit" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtPreviousDeposit" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="txtPreviousBalance" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtTotalBalance" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="lblAmountDeposited" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
-                      <Component id="txtAmountDeposited" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="lblPreviousBalance1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtAmount" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblTotalBalance" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="lblAuthorizedStaffID" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="txtAuthorizedStaff" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="lblDepositorName" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="txtDepositorName" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace pref="24" max="32767" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JTextField" name="txtAmountDeposited">
+        <Component class="javax.swing.JTextField" name="txtAmount">
         </Component>
-        <Component class="javax.swing.JLabel" name="lblAuthorizedStaffID">
+        <Component class="javax.swing.JLabel" name="lblPreviousDeposit">
           <Properties>
             <Property name="horizontalAlignment" type="int" value="4"/>
-            <Property name="text" type="java.lang.String" value="Authorized Staff ID:"/>
+            <Property name="text" type="java.lang.String" value="Previous Deposit:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="lblDepositorName">
-          <Properties>
-            <Property name="horizontalAlignment" type="int" value="4"/>
-            <Property name="text" type="java.lang.String" value="Depositor&apos;s Name:"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="lblAccount">
-          <Properties>
-            <Property name="horizontalAlignment" type="int" value="4"/>
-            <Property name="text" type="java.lang.String" value="Account Number:"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JTextField" name="txtAccount">
+        <Component class="javax.swing.JTextField" name="txtPreviousDeposit">
           <Properties>
             <Property name="enabled" type="boolean" value="false"/>
           </Properties>
@@ -268,12 +229,10 @@
             <Property name="text" type="java.lang.String" value="Name:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="txtAuthorizedStaff">
-        </Component>
         <Component class="javax.swing.JLabel" name="lblAmountDeposited">
           <Properties>
             <Property name="horizontalAlignment" type="int" value="4"/>
-            <Property name="text" type="java.lang.String" value="Amount Deposited:"/>
+            <Property name="text" type="java.lang.String" value="Amount:"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtName">
@@ -281,18 +240,16 @@
             <Property name="enabled" type="boolean" value="false"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="txtPreviousBalance">
+        <Component class="javax.swing.JTextField" name="txtTotalBalance">
           <Properties>
             <Property name="enabled" type="boolean" value="false"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="lblPreviousBalance1">
+        <Component class="javax.swing.JLabel" name="lblTotalBalance">
           <Properties>
             <Property name="horizontalAlignment" type="int" value="4"/>
-            <Property name="text" type="java.lang.String" value="Previous Balance:"/>
+            <Property name="text" type="java.lang.String" value="Total Balance:"/>
           </Properties>
-        </Component>
-        <Component class="javax.swing.JTextField" name="txtDepositorName">
         </Component>
       </SubComponents>
     </Container>
@@ -302,13 +259,12 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   <Component id="btnDeposit" min="-2" pref="101" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="btnClear" min="-2" pref="69" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="btnCancel" min="-2" pref="81" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -326,6 +282,7 @@
         <Component class="javax.swing.JButton" name="btnDeposit">
           <Properties>
             <Property name="text" type="java.lang.String" value="Deposit"/>
+            <Property name="enabled" type="boolean" value="false"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="btnClear">
