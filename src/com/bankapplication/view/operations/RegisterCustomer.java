@@ -7,6 +7,7 @@ package com.bankapplication.view.operations;
 
 import com.bankapplication.controller.CustomerController;
 import com.bankapplication.database.ConnectionManager;
+import com.bankapplication.model.Customer;
 import java.awt.Image;
 import java.io.File;
 import javax.swing.ImageIcon;
@@ -20,7 +21,8 @@ public class RegisterCustomer extends javax.swing.JDialog {
 
     private File file;
     private ConnectionManager connectionManager;
-    private CustomerController CustomerController;
+    private CustomerController customerController;
+    private Customer customer;
 
     /**
      * Creates new form RegisterCustomer
@@ -37,7 +39,7 @@ public class RegisterCustomer extends javax.swing.JDialog {
         // generate a random account number
         txtAccountNumber.setText(Integer.toString(random));
         this.connectionManager = new ConnectionManager();
-        this.CustomerController = new CustomerController(connectionManager);
+        this.customerController = new CustomerController(connectionManager);
     }
 
     /**
@@ -113,7 +115,7 @@ public class RegisterCustomer extends javax.swing.JDialog {
         lblAddress.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblAddress.setText("Address:");
 
-        cmbDay.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Day", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30" }));
+        cmbDay.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Day", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30" }));
 
         btnGroupSex.add(radioFemale);
         radioFemale.setText("Female");
@@ -127,12 +129,12 @@ public class RegisterCustomer extends javax.swing.JDialog {
         lblPassword.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblPassword.setText("Password:");
 
-        cmbMonth.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Month", "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" }));
+        cmbMonth.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Month", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12" }));
 
         lblSex.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblSex.setText("Sex:");
 
-        cmbYear.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Year", "2008", "2009", "2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023" }));
+        cmbYear.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Year", "1999", "1998", "1997", "1996", "1995", "1994", "1993", "1992", "1991", "1990", "1989", "1988", "1987", "1986", "1985", "1984", "1983", "1982", "1981", "1980", "1979", "1978", "1977", "1976", "1975", "1974", "1973", "1972", "1971", "1970", "1969", "1968", "1967", "1966", "1965" }));
 
         lblDOB.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblDOB.setText("DOB:");
@@ -238,7 +240,6 @@ public class RegisterCustomer extends javax.swing.JDialog {
                 .addComponent(btnBrowsePicture)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(paneBodyLayout.createSequentialGroup()
-                .addGap(0, 0, 0)
                 .addGroup(paneBodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblName1)
                     .addComponent(txtAccountNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -339,15 +340,7 @@ public class RegisterCustomer extends javax.swing.JDialog {
     }//GEN-LAST:event_btnCancelActionPerformed
 
     private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
-        // Combo box
-        this.cmbAccount.setSelectedIndex(0);
-        this.cmbDay.setSelectedIndex(0);
-        this.cmbMonth.setSelectedIndex(0);
-        this.cmbYear.setSelectedIndex(0);
-        // Text
-        this.txtName.setText(null);
-        this.txtAddress.setText(null);
-        this.txtPassword.setText(null);
+        clearFields();
     }//GEN-LAST:event_btnClearActionPerformed
 
     private void btnBrowsePictureActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBrowsePictureActionPerformed
@@ -364,29 +357,54 @@ public class RegisterCustomer extends javax.swing.JDialog {
 
     private void btnRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterActionPerformed
         try {
-            String accountNumber = txtAccountNumber.getText();
+
+            String acc = txtAccountNumber.getText();
             String name = txtName.getText();
             String address = txtAddress.getText();
-            String accountType = cmbAccount.getSelectedItem().toString();
+            String accType = cmbAccount.getSelectedItem().toString();
 
             char sex = 'm';
             if (radioFemale.isSelected()) {
                 sex = 'f';
             }
-            // Database mask yy/mm/dd
-            String dob = (String) cmbYear.getSelectedItem() + cmbMonth.getSelectedItem() + cmbDay.getSelectedItem();
-            String password = txtPassword.getText();
-            if(fieldsIsEmpty()) {
+            // Database mask yy-mm-dd
+            String dob = (String) cmbYear.getSelectedItem() + "-" + cmbMonth.getSelectedItem() + "-" + cmbDay.getSelectedItem();
+            String psw = txtPassword.getText();
+            if (fieldsIsEmpty()) {
                 lblStatus.setText("Error: Some of the fields is empty!");
             } else {
-                System.out.println("Ok");
+                customer = new Customer(acc, name, address, accType, sex, dob);
+                customer.setPassword(psw);
+                customerController.store(customer);
+                this.dispose();
             }
         } catch (Exception e) {
             System.out.println("Input Error: " + e);
         }
 
     }//GEN-LAST:event_btnRegisterActionPerformed
-
+    
+    
+    /**
+     * It clear all the fields in this form
+     */
+    private void clearFields() {
+        // Combo box
+        this.cmbAccount.setSelectedIndex(0);
+        this.cmbDay.setSelectedIndex(0);
+        this.cmbMonth.setSelectedIndex(0);
+        this.cmbYear.setSelectedIndex(0);
+        // Text
+        this.txtName.setText(null);
+        this.txtAddress.setText(null);
+        this.txtPassword.setText(null);
+    }
+    
+    /**
+     * Checks if there is an empty field
+     * 
+     * @return It there is an empty field, if so it returns true
+     */
     private boolean fieldsIsEmpty() {
         return txtAccountNumber.getText() == null || txtAddress.getText() == null
                 || txtName.getText() == null || txtPassword.getText() == null

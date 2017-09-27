@@ -7,6 +7,7 @@
 package com.bankapplication.controller;
 
 import com.bankapplication.database.ConnectionManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
@@ -18,6 +19,7 @@ import java.sql.Statement;
 public class Controller {
     protected ConnectionManager connectionManager;
     protected Statement statement;
+    protected PreparedStatement ps;
     protected ResultSet rs;
     
     public Controller(ConnectionManager connectionManager) {
