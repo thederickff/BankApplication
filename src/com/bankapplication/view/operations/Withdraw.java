@@ -43,7 +43,6 @@ public class Withdraw extends javax.swing.JDialog {
         lblAmountWithdrawn = new javax.swing.JLabel();
         txtName = new javax.swing.JTextField();
         txtTotalBalance = new javax.swing.JTextField();
-        paneButtons = new javax.swing.JPanel();
         btnCancel = new javax.swing.JButton();
         btnClear = new javax.swing.JButton();
         btnDeposit = new javax.swing.JButton();
@@ -108,7 +107,7 @@ public class Withdraw extends javax.swing.JDialog {
         paneFields.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Operation", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 0, 14))); // NOI18N
 
         lblTotalBalance.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        lblTotalBalance.setText("Previous Balance:");
+        lblTotalBalance.setText("Total Balance:");
 
         lblWithdrawn.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblWithdrawn.setText("Previous Withdrawn:");
@@ -146,7 +145,7 @@ public class Withdraw extends javax.swing.JDialog {
                 .addGroup(paneFieldsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(txtPreviousWithdrawn, javax.swing.GroupLayout.DEFAULT_SIZE, 244, Short.MAX_VALUE)
                     .addComponent(txtTotalBalance))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(13, Short.MAX_VALUE))
         );
         paneFieldsLayout.setVerticalGroup(
             paneFieldsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -164,17 +163,6 @@ public class Withdraw extends javax.swing.JDialog {
                     .addComponent(lblAmountWithdrawn, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtAmountWithdrawn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        javax.swing.GroupLayout paneButtonsLayout = new javax.swing.GroupLayout(paneButtons);
-        paneButtons.setLayout(paneButtonsLayout);
-        paneButtonsLayout.setHorizontalGroup(
-            paneButtonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 462, Short.MAX_VALUE)
-        );
-        paneButtonsLayout.setVerticalGroup(
-            paneButtonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
         );
 
         btnCancel.setText("Cancel");
@@ -205,8 +193,7 @@ public class Withdraw extends javax.swing.JDialog {
                     .addComponent(paneAccount, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(paneFields, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(paneButtons, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(btnDeposit, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnClear, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -222,15 +209,11 @@ public class Withdraw extends javax.swing.JDialog {
                 .addComponent(paneAccount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(paneFields, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(paneButtons, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnClear)
-                            .addComponent(btnDeposit)
-                            .addComponent(btnCancel))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnClear)
+                    .addComponent(btnDeposit)
+                    .addComponent(btnCancel))
                 .addContainerGap())
         );
 
@@ -261,7 +244,6 @@ public class Withdraw extends javax.swing.JDialog {
     private javax.swing.JLabel lblTotalBalance;
     private javax.swing.JLabel lblWithdrawn;
     private javax.swing.JPanel paneAccount;
-    private javax.swing.JPanel paneButtons;
     private javax.swing.JPanel paneFields;
     private javax.swing.JPanel paneTittle;
     private javax.swing.JLabel panelbTitle;
