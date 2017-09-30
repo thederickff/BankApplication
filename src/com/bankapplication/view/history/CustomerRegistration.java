@@ -5,18 +5,49 @@
  */
 package com.bankapplication.view.history;
 
+import com.bankapplication.controller.CustomerController;
+import com.bankapplication.database.ConnectionManager;
+import com.bankapplication.model.Customer;
+import java.util.LinkedList;
+
 /**
  *
  * @author derickfelix
  */
 public class CustomerRegistration extends javax.swing.JDialog {
 
+    private ConnectionManager cm;
+    private LinkedList<Customer> customers;
+    private CustomerController customerCtrl;
     /**
      * Creates new form RegisteredCustomer
      */
     public CustomerRegistration(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        customOperations();
+    }
+    private void customOperations() {
+        cm = new ConnectionManager();
+        customerCtrl = new CustomerController(cm);
+        // Get All the customers
+        customers = customerCtrl.getCustomers();
+        
+        for (int i = 0; i < customers.size(); i++) {
+            Customer tempCustomer = customers.get(i);
+            // Account Number
+            table.setValueAt(tempCustomer.getAccountNumber(), i, 0);
+            // Name
+            table.setValueAt(tempCustomer.getName(), i, 1);
+            // Address
+            table.setValueAt(tempCustomer.getAddress(), i, 2);
+            // Sex
+            table.setValueAt(tempCustomer.getSex(), i, 3);
+            // Born Date
+            table.setValueAt(tempCustomer.getDob(), i, 4);
+            // Account Type
+            table.setValueAt(tempCustomer.getAccountType(), i, 5);
+        }
     }
 
     /**
@@ -31,7 +62,7 @@ public class CustomerRegistration extends javax.swing.JDialog {
         paneTittle = new javax.swing.JPanel();
         panelbTitle = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tableCustomers = new javax.swing.JTable();
+        table = new javax.swing.JTable();
         paneButtons = new javax.swing.JPanel();
         btnPrint = new javax.swing.JButton();
         btnCancel = new javax.swing.JButton();
@@ -63,18 +94,51 @@ public class CustomerRegistration extends javax.swing.JDialog {
                 .addContainerGap(26, Short.MAX_VALUE))
         );
 
-        tableCustomers.setModel(new javax.swing.table.DefaultTableModel(
+        table.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Account Number", "Name", "Address", "Sex", "Born Date", "Account Type"
             }
-        ));
-        jScrollPane1.setViewportView(tableCustomers);
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        table.setToolTipText("Customers Table");
+        jScrollPane1.setViewportView(table);
 
         btnPrint.setText("Print");
 
@@ -144,6 +208,6 @@ public class CustomerRegistration extends javax.swing.JDialog {
     private javax.swing.JPanel paneButtons;
     private javax.swing.JPanel paneTittle;
     private javax.swing.JLabel panelbTitle;
-    private javax.swing.JTable tableCustomers;
+    private javax.swing.JTable table;
     // End of variables declaration//GEN-END:variables
 }

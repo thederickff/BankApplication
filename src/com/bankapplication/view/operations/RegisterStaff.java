@@ -182,7 +182,7 @@ public class RegisterStaff extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(paneBodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(cmbRank, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(cmbAccount, javax.swing.GroupLayout.Alignment.LEADING, 0, 465, Short.MAX_VALUE)
+                    .addComponent(cmbAccount, javax.swing.GroupLayout.Alignment.LEADING, 0, 455, Short.MAX_VALUE)
                     .addComponent(txtPassword, javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtAddress, javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtName, javax.swing.GroupLayout.Alignment.LEADING)
