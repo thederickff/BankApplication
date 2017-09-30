@@ -8,10 +8,12 @@ package com.bankapplication.view.operations;
 import com.bankapplication.controller.CustomerController;
 import com.bankapplication.database.ConnectionManager;
 import com.bankapplication.model.Customer;
+import java.awt.HeadlessException;
 import java.awt.Image;
 import java.io.File;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -34,10 +36,6 @@ public class RegisterCustomer extends javax.swing.JDialog {
     }
 
     private void customOperations() {
-        // Min: 1000, Max: 9999
-        int random = (int) (Math.random() * 9999 + 1000);
-        // generate a random account number
-        txtAccountNumber.setText(Integer.toString(random));
         this.connectionManager = new ConnectionManager();
         this.customerController = new CustomerController(connectionManager);
     }
@@ -73,8 +71,6 @@ public class RegisterCustomer extends javax.swing.JDialog {
         paneThumbnail = new javax.swing.JPanel();
         lblPicture = new javax.swing.JLabel();
         btnBrowsePicture = new javax.swing.JButton();
-        txtAccountNumber = new javax.swing.JTextField();
-        lblName1 = new javax.swing.JLabel();
         lblStatus = new javax.swing.JLabel();
         btnRegister = new javax.swing.JButton();
         btnClear = new javax.swing.JButton();
@@ -174,11 +170,6 @@ public class RegisterCustomer extends javax.swing.JDialog {
             }
         });
 
-        txtAccountNumber.setEnabled(false);
-
-        lblName1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        lblName1.setText("Account Number:");
-
         lblStatus.setFont(new java.awt.Font("Noto Sans", 1, 14)); // NOI18N
         lblStatus.setForeground(new java.awt.Color(168, 1, 1));
         lblStatus.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -195,18 +186,15 @@ public class RegisterCustomer extends javax.swing.JDialog {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtPassword))
                     .addGroup(paneBodyLayout.createSequentialGroup()
+                        .addGroup(paneBodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(lblDOB, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(lblSex, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(lblName, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(lblAddress, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(lblAccount, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 94, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(paneBodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(paneBodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(lblDOB, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(lblSex, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(lblName, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(lblAddress, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(lblAccount, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 94, Short.MAX_VALUE))
-                            .addComponent(lblName1))
-                        .addGap(58, 58, 58)
-                        .addGroup(paneBodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtAccountNumber)
-                            .addComponent(cmbAccount, 0, 475, Short.MAX_VALUE)
+                            .addComponent(cmbAccount, 0, 524, Short.MAX_VALUE)
                             .addComponent(txtAddress)
                             .addGroup(paneBodyLayout.createSequentialGroup()
                                 .addGroup(paneBodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -220,7 +208,7 @@ public class RegisterCustomer extends javax.swing.JDialog {
                                         .addComponent(cmbMonth, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(cmbYear, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(0, 195, Short.MAX_VALUE))
+                                .addGap(0, 244, Short.MAX_VALUE))
                             .addComponent(txtName))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(paneBodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -240,10 +228,7 @@ public class RegisterCustomer extends javax.swing.JDialog {
                 .addComponent(btnBrowsePicture)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(paneBodyLayout.createSequentialGroup()
-                .addGroup(paneBodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblName1)
-                    .addComponent(txtAccountNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addContainerGap()
                 .addGroup(paneBodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblName))
@@ -303,13 +288,13 @@ public class RegisterCustomer extends javax.swing.JDialog {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(paneTittle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(495, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnRegister, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnClear, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(6, 6, 6))
             .addComponent(paneBody, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
@@ -319,10 +304,9 @@ public class RegisterCustomer extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(paneBody, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(btnClear)
-                        .addComponent(btnCancel))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnClear)
+                    .addComponent(btnCancel)
                     .addComponent(btnRegister, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -357,8 +341,10 @@ public class RegisterCustomer extends javax.swing.JDialog {
 
     private void btnRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterActionPerformed
         try {
-
-            String acc = txtAccountNumber.getText();
+            // Min: 1000, Max: 9999
+            int random = (int) (Math.random() * 9999 + 1000);
+            // sets a random account number
+            String acc = Integer.toString(random);
             String name = txtName.getText();
             String address = txtAddress.getText();
             String accType = cmbAccount.getSelectedItem().toString();
@@ -376,15 +362,16 @@ public class RegisterCustomer extends javax.swing.JDialog {
                 customer = new Customer(acc, name, address, accType, sex, dob);
                 customer.setPassword(psw);
                 customerController.store(customer);
+                JOptionPane.showMessageDialog(this, "Customer created successfully\n"
+                                                  + "Account Number: " + acc);
                 this.dispose();
             }
-        } catch (Exception e) {
+        } catch (HeadlessException e) {
             System.out.println("Input Error: " + e);
         }
 
     }//GEN-LAST:event_btnRegisterActionPerformed
-    
-    
+
     /**
      * It clear all the fields in this form
      */
@@ -399,14 +386,14 @@ public class RegisterCustomer extends javax.swing.JDialog {
         this.txtAddress.setText(null);
         this.txtPassword.setText(null);
     }
-    
+
     /**
      * Checks if there is an empty field
-     * 
+     *
      * @return It there is an empty field, if so it returns true
      */
     private boolean fieldsIsEmpty() {
-        return txtAccountNumber.getText() == null || txtAddress.getText() == null
+        return txtAddress.getText() == null
                 || txtName.getText() == null || txtPassword.getText() == null
                 || cmbAccount.getSelectedIndex() == 0 || cmbDay.getSelectedIndex() == 0
                 || cmbMonth.getSelectedIndex() == 0 || cmbYear.getSelectedIndex() == 0;
@@ -425,7 +412,6 @@ public class RegisterCustomer extends javax.swing.JDialog {
     private javax.swing.JLabel lblAddress;
     private javax.swing.JLabel lblDOB;
     private javax.swing.JLabel lblName;
-    private javax.swing.JLabel lblName1;
     private javax.swing.JLabel lblPassword;
     private javax.swing.JLabel lblPicture;
     private javax.swing.JLabel lblSex;
@@ -436,7 +422,6 @@ public class RegisterCustomer extends javax.swing.JDialog {
     private javax.swing.JLabel panelbTitle;
     private javax.swing.JRadioButton radioFemale;
     private javax.swing.JRadioButton radioMale;
-    private javax.swing.JTextField txtAccountNumber;
     private javax.swing.JTextField txtAddress;
     private javax.swing.JTextField txtName;
     private javax.swing.JPasswordField txtPassword;

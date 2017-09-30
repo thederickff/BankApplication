@@ -44,7 +44,6 @@ public class Withdraw extends javax.swing.JDialog {
         txtName = new javax.swing.JTextField();
         txtTotalBalance = new javax.swing.JTextField();
         btnCancel = new javax.swing.JButton();
-        btnClear = new javax.swing.JButton();
         btnDeposit = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -105,6 +104,8 @@ public class Withdraw extends javax.swing.JDialog {
         );
 
         paneFields.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Operation", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 0, 14))); // NOI18N
+
+        txtAmountWithdrawn.setEnabled(false);
 
         lblTotalBalance.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblTotalBalance.setText("Total Balance:");
@@ -172,13 +173,6 @@ public class Withdraw extends javax.swing.JDialog {
             }
         });
 
-        btnClear.setText("Clear");
-        btnClear.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnClearActionPerformed(evt);
-            }
-        });
-
         btnDeposit.setText("Withdraw");
         btnDeposit.setEnabled(false);
 
@@ -196,8 +190,6 @@ public class Withdraw extends javax.swing.JDialog {
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(btnDeposit, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnClear, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
@@ -211,7 +203,6 @@ public class Withdraw extends javax.swing.JDialog {
                 .addComponent(paneFields, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnClear)
                     .addComponent(btnDeposit)
                     .addComponent(btnCancel))
                 .addContainerGap())
@@ -225,18 +216,10 @@ public class Withdraw extends javax.swing.JDialog {
         this.dispose();
     }//GEN-LAST:event_btnCancelActionPerformed
 
-    private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
-        this.txtName.setText(null);
-        this.txtAccountNumber.setText(null);
-        this.txtAmountWithdrawn.setText(null);
-        this.txtTotalBalance.setText(null);
-    }//GEN-LAST:event_btnClearActionPerformed
-
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancel;
     private javax.swing.JButton btnCheck;
-    private javax.swing.JButton btnClear;
     private javax.swing.JButton btnDeposit;
     private javax.swing.JLabel lblAccountNumber;
     private javax.swing.JLabel lblAmountWithdrawn;

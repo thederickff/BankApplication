@@ -45,7 +45,6 @@ public class Deposit extends javax.swing.JDialog {
         lblTotalBalance = new javax.swing.JLabel();
         paneButtons = new javax.swing.JPanel();
         btnDeposit = new javax.swing.JButton();
-        btnClear = new javax.swing.JButton();
         btnCancel = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -106,6 +105,8 @@ public class Deposit extends javax.swing.JDialog {
         );
 
         paneFields.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Operation", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 0, 14))); // NOI18N
+
+        txtAmount.setEnabled(false);
 
         lblPreviousDeposit.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblPreviousDeposit.setText("Previous Deposit:");
@@ -169,13 +170,6 @@ public class Deposit extends javax.swing.JDialog {
         btnDeposit.setText("Deposit");
         btnDeposit.setEnabled(false);
 
-        btnClear.setText("Clear");
-        btnClear.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnClearActionPerformed(evt);
-            }
-        });
-
         btnCancel.setText("Cancel");
         btnCancel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -191,14 +185,11 @@ public class Deposit extends javax.swing.JDialog {
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(btnDeposit, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnClear, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         paneButtonsLayout.setVerticalGroup(
             paneButtonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(paneButtonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                .addComponent(btnClear)
                 .addComponent(btnDeposit)
                 .addComponent(btnCancel))
         );
@@ -237,19 +228,10 @@ public class Deposit extends javax.swing.JDialog {
         this.dispose();
     }//GEN-LAST:event_btnCancelActionPerformed
 
-    private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
-        this.txtName.setText(null);
-        this.txtPreviousDeposit.setText(null);
-        this.txtAccountNumber.setText(null);
-        this.txtAmount.setText(null);
-        this.txtTotalBalance.setText(null);
-    }//GEN-LAST:event_btnClearActionPerformed
-
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancel;
     private javax.swing.JButton btnCheck;
-    private javax.swing.JButton btnClear;
     private javax.swing.JButton btnDeposit;
     private javax.swing.JLabel lblAccountNumber;
     private javax.swing.JLabel lblAmountDeposited;

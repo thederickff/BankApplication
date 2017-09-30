@@ -30,13 +30,13 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Component id="paneTittle" alignment="0" max="32767" attributes="0"/>
           <Group type="102" attributes="0">
-              <EmptySpace pref="495" max="32767" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
               <Component id="btnRegister" min="-2" pref="100" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="btnClear" min="-2" pref="100" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="btnCancel" min="-2" pref="101" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
           </Group>
           <Component id="paneBody" alignment="1" max="32767" attributes="0"/>
       </Group>
@@ -48,12 +48,10 @@
               <EmptySpace max="-2" attributes="0"/>
               <Component id="paneBody" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="btnClear" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="btnCancel" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <Component id="btnRegister" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="btnClear" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnCancel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnRegister" alignment="3" max="32767" attributes="0"/>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
@@ -127,20 +125,16 @@
                           <Component id="txtPassword" max="32767" attributes="0"/>
                       </Group>
                       <Group type="102" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="lblDOB" alignment="1" max="32767" attributes="0"/>
-                                  <Component id="lblSex" alignment="1" max="32767" attributes="0"/>
-                                  <Component id="lblName" alignment="1" max="32767" attributes="0"/>
-                                  <Component id="lblAddress" alignment="1" max="32767" attributes="0"/>
-                                  <Component id="lblAccount" alignment="1" pref="94" max="32767" attributes="0"/>
-                              </Group>
-                              <Component id="lblName1" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="lblDOB" alignment="1" max="32767" attributes="0"/>
+                              <Component id="lblSex" alignment="1" max="32767" attributes="0"/>
+                              <Component id="lblName" alignment="1" max="32767" attributes="0"/>
+                              <Component id="lblAddress" alignment="1" max="32767" attributes="0"/>
+                              <Component id="lblAccount" alignment="1" pref="94" max="32767" attributes="0"/>
                           </Group>
-                          <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="txtAccountNumber" max="32767" attributes="0"/>
-                              <Component id="cmbAccount" alignment="0" pref="475" max="32767" attributes="0"/>
+                              <Component id="cmbAccount" alignment="0" pref="524" max="32767" attributes="0"/>
                               <Component id="txtAddress" alignment="0" max="32767" attributes="0"/>
                               <Group type="102" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
@@ -157,7 +151,7 @@
                                           <Component id="cmbYear" min="-2" pref="90" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
-                                  <EmptySpace min="0" pref="195" max="32767" attributes="0"/>
+                                  <EmptySpace min="0" pref="244" max="32767" attributes="0"/>
                               </Group>
                               <Component id="txtName" alignment="0" max="32767" attributes="0"/>
                           </Group>
@@ -186,11 +180,7 @@
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
               <Group type="102" attributes="0">
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="lblName1" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="txtAccountNumber" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace max="-2" attributes="0"/>
+                  <EmptySpace min="-2" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="txtName" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="lblName" linkSize="3" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -459,17 +449,6 @@
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnBrowsePictureActionPerformed"/>
           </Events>
-        </Component>
-        <Component class="javax.swing.JTextField" name="txtAccountNumber">
-          <Properties>
-            <Property name="enabled" type="boolean" value="false"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="lblName1">
-          <Properties>
-            <Property name="horizontalAlignment" type="int" value="4"/>
-            <Property name="text" type="java.lang.String" value="Account Number:"/>
-          </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="lblStatus">
           <Properties>
