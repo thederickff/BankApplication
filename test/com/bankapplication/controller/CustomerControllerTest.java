@@ -47,7 +47,7 @@ public class CustomerControllerTest {
     @Test
     public void testAll() {
         System.out.println("all");
-        ConnectionManager cm = new ConnectionManager();
+        ConnectionManager cm = ConnectionManager.getInstance();
         instance = new CustomerController(cm);
         LinkedList<Customer> customers = instance.getCustomers();
         

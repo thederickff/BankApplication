@@ -46,7 +46,7 @@ public class UserControllerTest {
      */
     @Test
     public void testLogin() {
-        ConnectionManager cm = new ConnectionManager();
+        ConnectionManager cm = ConnectionManager.getInstance();
         instance = new UserController(cm);
         
         User user = new User("root", "0000", "admin");

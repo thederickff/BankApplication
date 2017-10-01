@@ -36,7 +36,7 @@ public class RegisterCustomer extends javax.swing.JDialog {
     }
 
     private void customOperations() {
-        this.connectionManager = new ConnectionManager();
+        this.connectionManager = ConnectionManager.getInstance();
         this.customerController = new CustomerController(connectionManager);
     }
 

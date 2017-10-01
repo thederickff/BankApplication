@@ -48,7 +48,7 @@ public class ConnectionManagerTest {
      */
     @Test
     public void testCreateConnection() {
-        instance = new ConnectionManager();
+        instance = ConnectionManager.getInstance();
         Connection conn = instance.createConnection();
         Statement stmt;
         ResultSet rs;

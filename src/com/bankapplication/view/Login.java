@@ -28,7 +28,7 @@ public class Login extends javax.swing.JDialog {
     }
 
     private void customOperations() {
-        this.connectionManager = new ConnectionManager();
+        this.connectionManager = ConnectionManager.getInstance();
         this.userController = new UserController(connectionManager);
     }
 
