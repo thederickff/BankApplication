@@ -5,10 +5,8 @@
  */
 package com.bankapplication.controller;
 
-import com.bankapplication.database.ConnectionManager;
 import com.bankapplication.model.Customer;
 import java.util.ArrayList;
-import java.util.LinkedList;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -59,5 +57,15 @@ public class CustomerControllerTest {
             System.out.println("DOB: " + tempCustomer.getDob());
         }
     }
+    
+    /**
+     * Test of getCustomerById method, of class CustomerController.
+     *
+    @Test
+    public void testGetCustomerById() {
+        instance = new CustomerController();
+        Customer customer = instance.getCustomerById(1);
+        
+    }*/
     
 }

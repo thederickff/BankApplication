@@ -5,7 +5,6 @@
  */
 package com.bankapplication.controller;
 
-import com.bankapplication.database.ConnectionManager;
 import com.bankapplication.model.Customer;
 import com.bankapplication.respository.impl.CustomerRepository;
 import java.util.ArrayList;

@@ -60,7 +60,35 @@ public class CustomerRepository extends BaseRepository implements ICustomerRepos
 
     @Override
     public Customer find(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Connection conn = connectionManager.createConnection();
+        String sql = "SELECT * FROM " + table + " WHERE `id` = ?";
+
+        try {
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setInt(1, id);
+
+            rs = pstmt.executeQuery();
+
+            while (rs.next()) {
+                String acc = rs.getString("account_number");
+                String name = rs.getString("name");
+                String address = rs.getString("address");
+                String sex = rs.getString("sex");
+                String dob = rs.getString("born_date");
+                String accType = rs.getString("account_type");
+                String password = rs.getString("password");
+
+                Customer customer = new Customer(acc, name, address, accType, sex.charAt(0), dob);
+                customer.setPassword(password);
+                return customer;
+            }
+            statement.close();
+            rs.close();
+            conn.close();
+        } catch (SQLException e) {
+            System.out.println("SQLError: " + e);
+        }
+        return null;
     }
 
     @Override
