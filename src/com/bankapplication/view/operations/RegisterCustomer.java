@@ -6,7 +6,6 @@
 package com.bankapplication.view.operations;
 
 import com.bankapplication.controller.CustomerController;
-import com.bankapplication.database.ConnectionManager;
 import com.bankapplication.model.Customer;
 import java.awt.HeadlessException;
 import java.awt.Image;
@@ -22,7 +21,6 @@ import javax.swing.JOptionPane;
 public class RegisterCustomer extends javax.swing.JDialog {
 
     private File file;
-    private ConnectionManager connectionManager;
     private CustomerController customerController;
     private Customer customer;
 
@@ -36,8 +34,7 @@ public class RegisterCustomer extends javax.swing.JDialog {
     }
 
     private void customOperations() {
-        this.connectionManager = ConnectionManager.getInstance();
-        this.customerController = new CustomerController(connectionManager);
+        this.customerController = new CustomerController();
     }
 
     /**

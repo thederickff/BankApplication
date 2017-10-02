@@ -8,7 +8,7 @@ package com.bankapplication.view.history;
 import com.bankapplication.controller.CustomerController;
 import com.bankapplication.database.ConnectionManager;
 import com.bankapplication.model.Customer;
-import java.util.LinkedList;
+import java.util.ArrayList;
 
 /**
  *
@@ -16,8 +16,7 @@ import java.util.LinkedList;
  */
 public class CustomerRegistration extends javax.swing.JDialog {
 
-    private ConnectionManager cm;
-    private LinkedList<Customer> customers;
+    private ArrayList<Customer> customers;
     private CustomerController customerCtrl;
     /**
      * Creates new form RegisteredCustomer
@@ -28,8 +27,7 @@ public class CustomerRegistration extends javax.swing.JDialog {
         customOperations();
     }
     private void customOperations() {
-        cm = ConnectionManager.getInstance();
-        customerCtrl = new CustomerController(cm);
+        customerCtrl = new CustomerController();
         // Get All the customers
         customers = customerCtrl.getCustomers();
         

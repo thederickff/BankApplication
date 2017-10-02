@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package com.bankapplication.controller;
+package com.bankapplication.respository.impl;
 
 import com.bankapplication.database.ConnectionManager;
 import java.sql.PreparedStatement;
@@ -12,17 +12,17 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 
 /**
- * @name Controller
+ * @name BaseRepository
  * @author derickfelix
- * @date Sep 26, 2017
+ * @date Oct 2, 2017
  */
-public class Controller {
+public class BaseRepository {
     protected ConnectionManager connectionManager;
     protected Statement statement;
-    protected PreparedStatement ps;
+    protected PreparedStatement pstmt;
     protected ResultSet rs;
     
-    public Controller(ConnectionManager connectionManager) {
-        this.connectionManager = connectionManager;
+    public BaseRepository() {
+        this.connectionManager = ConnectionManager.getInstance();
     }
 }

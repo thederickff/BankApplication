@@ -7,6 +7,7 @@ package com.bankapplication.controller;
 
 import com.bankapplication.database.ConnectionManager;
 import com.bankapplication.model.Customer;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -47,9 +48,8 @@ public class CustomerControllerTest {
     @Test
     public void testAll() {
         System.out.println("all");
-        ConnectionManager cm = ConnectionManager.getInstance();
-        instance = new CustomerController(cm);
-        LinkedList<Customer> customers = instance.getCustomers();
+        instance = new CustomerController();
+        ArrayList<Customer> customers = instance.getCustomers();
         
         for (int i = 0; i < customers.size(); i++) {
             Customer tempCustomer = customers.get(i);

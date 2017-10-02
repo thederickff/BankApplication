@@ -6,19 +6,25 @@
 package com.bankapplication.controller;
 
 import com.bankapplication.database.ConnectionManager;
+import com.bankapplication.model.User;
+import com.bankapplication.respository.impl.UserRepository;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 /**
  * @name UserController
  * @author derickfelix
  * @date Sep 26, 2017
  */
-public class UserController extends Controller {
+public class UserController {
 
-    public UserController(ConnectionManager connectionManager) {
-        super(connectionManager);
+    private UserRepository userRepository;
+    private ArrayList<User> users;
+    
+    public UserController() {
+        this.userRepository = new UserRepository();
     }
 
     /**
@@ -29,24 +35,14 @@ public class UserController extends Controller {
      * @return - Whether an user exists in the database
      */
     public boolean login(String accountNumber, String password) {
-        Connection conn = connectionManager.createConnection();
+        users = userRepository.all();
+        for (int i = 0; i < users.size(); i++) {
+            User tempUser = users.get(i);
 
-        try {
-            statement = (Statement) conn.createStatement();
-            rs = statement.executeQuery("select * from users");
-
-            while (rs.next()) {
-                if (rs.getString("account_number").equals(accountNumber)
-                        && rs.getString("password").equals(password)) {
-                    return true;
-                }
+            if (tempUser.getAccountNumber().equals(accountNumber)
+                    && tempUser.getPassword().equals(password)) {
+                return true;
             }
-            // Close
-            conn.close();
-            statement.close();
-            rs.close();
-        } catch (SQLException ex) {
-            System.out.println("SQL Error: " + ex);
         }
         return false;
     }

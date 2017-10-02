@@ -6,7 +6,6 @@
 package com.bankapplication.view;
 
 import com.bankapplication.controller.UserController;
-import com.bankapplication.database.ConnectionManager;
 import java.awt.event.KeyEvent;
 
 /**
@@ -15,7 +14,6 @@ import java.awt.event.KeyEvent;
  */
 public class Login extends javax.swing.JDialog {
 
-    private ConnectionManager connectionManager;
     private UserController userController;
 
     /**
@@ -28,8 +26,7 @@ public class Login extends javax.swing.JDialog {
     }
 
     private void customOperations() {
-        this.connectionManager = ConnectionManager.getInstance();
-        this.userController = new UserController(connectionManager);
+        this.userController = new UserController();
     }
 
     /**

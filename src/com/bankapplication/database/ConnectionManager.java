@@ -18,7 +18,7 @@ import java.sql.SQLException;
  */
 public class ConnectionManager {
 
-    private static ConnectionManager connectioManager;
+    private static ConnectionManager connectionManager;
     private final String driverName = "com.mysql.jdbc.Driver";
     private final String connectionUrl = "jdbc:mysql://localhost:3306/bank_db";
     private final String username = "root";
@@ -54,9 +54,9 @@ public class ConnectionManager {
     }
     
     public static ConnectionManager getInstance() {
-        if (connectioManager == null) {
-            connectioManager = new ConnectionManager();
+        if (connectionManager == null) {
+            connectionManager = new ConnectionManager();
         }
-        return connectioManager;
+        return connectionManager;
     }
 }
