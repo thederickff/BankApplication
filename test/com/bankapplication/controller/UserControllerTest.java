@@ -18,24 +18,24 @@ import static org.junit.Assert.*;
  * @author derickfelix
  */
 public class UserControllerTest {
-    
+
     private UserController instance;
-    
+
     public UserControllerTest() {
     }
-    
+
     @BeforeClass
     public static void setUpClass() {
     }
-    
+
     @AfterClass
     public static void tearDownClass() {
     }
-    
+
     @Before
     public void setUp() {
     }
-    
+
     @After
     public void tearDown() {
     }
@@ -46,31 +46,60 @@ public class UserControllerTest {
     @Test
     public void testLogin() {
         instance = new UserController();
-        
+
         User user = new User();
         user.setName("root");
         user.setAccountNumber("0000");
         user.setRole("admin");
         user.setPassword("admin");
-        
+
         assertTrue(instance.login(user.getAccountNumber(), user.getPassword()));
     }
-    
-    
+
+    /**
+     * Test of store method, of class UserController.
+     */
+    @Test
+    public void testStore() {
+        System.out.println("Store");
+        instance = new UserController();
+        User user = new User();
+        user.setName("Bryson Balvin");
+        user.setAccountNumber("1111");
+        user.setRole("manager");
+        user.setPassword("secret");
+        //instance.store(user);
+        assertEquals(user.getName(), instance.findById(2).getName());
+    }
+
     /**
      * Test of update method, of class UserController.
      */
     @Test
     public void testUpdate() {
+        System.out.println("Update");
         instance = new UserController();
-        
+
         User user = new User();
         user.setUserId("1");
         user.setName("Will Drake");
         user.setAccountNumber("0000");
         user.setRole("admin");
         user.setPassword("admin");
-        
-        instance.update(user);
+
+        //instance.update(user);
+        assertEquals(user.getName(), instance.findById(1).getName());
+    }
+
+    /**
+     * Test of destroy method, of class UserController.
+     */
+    @Test
+    public void testDestroy() {
+        System.out.println("Destroy");
+        instance = new UserController();
+        User user = new User();
+        user.setUserId("4");
+        //instance.destroy(user);
     }
 }

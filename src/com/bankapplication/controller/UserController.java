@@ -15,7 +15,7 @@ import java.util.ArrayList;
  * @date Sep 26, 2017
  */
 public class UserController {
-
+    
     private UserRepository userRepository;
     private ArrayList<User> users;
     
@@ -34,7 +34,7 @@ public class UserController {
         users = userRepository.all();
         for (int i = 0; i < users.size(); i++) {
             User tempUser = users.get(i);
-
+            
             if (tempUser.getAccountNumber().equals(accountNumber)
                     && tempUser.getPassword().equals(password)) {
                 return true;
@@ -43,7 +43,19 @@ public class UserController {
         return false;
     }
     
+    public User findById(int id) {
+        return userRepository.find(id);
+    }
+
+    public void store(User user) {
+        userRepository.store(user);
+    }
+
     public void update(User user) {
         userRepository.update(user);
+    }
+
+    public void destroy(User user) {
+        userRepository.destroy(user);
     }
 }

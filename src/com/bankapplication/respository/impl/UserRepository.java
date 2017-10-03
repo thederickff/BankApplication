@@ -25,7 +25,7 @@ public class UserRepository extends BaseRepository implements IUserRepository {
     @Override
     public ArrayList<User> all() {
         Connection conn = connectionManager.createConnection();
-        String sql = "select * from " + table;
+        String sql = "SELECT * FROM " + table;
         // Intantiate only once
         if (users == null) {
             users = new ArrayList<>();
@@ -76,7 +76,7 @@ public class UserRepository extends BaseRepository implements IUserRepository {
     @Override
     public void update(User user) {
         Connection conn = connectionManager.createConnection();
-        String sql = "UPDATE "+table+" SET `name` = ?, `role` = ? WHERE `id` = ?";
+        String sql = "UPDATE " + table + " SET `name` = ?, `role` = ? WHERE `id` = ?";
         try {
             pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, user.getName());
@@ -88,17 +88,41 @@ public class UserRepository extends BaseRepository implements IUserRepository {
         } catch (SQLException e) {
             System.out.println("SQLError: " + e);
         }
-        
     }
 
     @Override
     public void store(User user) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Connection conn = connectionManager.createConnection();
+        String sql = "INSERT INTO " + table + "(`account_number`, `name`, `role`, `password`) value (?, ?, ?, ?)";
+
+        try {
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setString(1, user.getAccountNumber());
+            pstmt.setString(2, user.getName());
+            pstmt.setString(3, user.getRole());
+            pstmt.setString(4, user.getPassword());
+            pstmt.execute();
+            pstmt.close();
+            conn.close();
+        } catch (SQLException e) {
+            System.out.println("SQLError: " + e);
+        }
     }
 
     @Override
     public void destroy(User user) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Connection conn = connectionManager.createConnection();
+        String sql = "DELETE FROM " + table + " WHERE `id` = ?";
+        try {
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setString(1, user.getUserId());
+            pstmt.execute();
+            
+            pstmt.close();
+            conn.close();
+        } catch (SQLException e) {
+            System.out.println("SQLError: " + e);
+        }
     }
 
     private User userMapper(ResultSet rs) throws SQLException {
