@@ -9,6 +9,7 @@ import com.bankapplication.model.Customer;
 import java.util.ArrayList;
 import com.bankapplication.respository.ICustomerRepository;
 import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 /**
@@ -37,17 +38,7 @@ public class CustomerRepository extends BaseRepository implements ICustomerRepos
             rs = statement.executeQuery(sql);
 
             while (rs.next()) {
-                String acc = rs.getString("account_number");
-                String name = rs.getString("name");
-                String address = rs.getString("address");
-                String sex = rs.getString("sex");
-                String dob = rs.getString("born_date");
-                String accType = rs.getString("account_type");
-                String password = rs.getString("password");
-
-                Customer tempCustomer = new Customer(acc, name, address, accType, sex.charAt(0), dob);
-                tempCustomer.setPassword(password);
-                customers.add(tempCustomer);
+                customers.add(customerMapper(rs));
             }
             statement.close();
             rs.close();
@@ -70,17 +61,7 @@ public class CustomerRepository extends BaseRepository implements ICustomerRepos
             rs = pstmt.executeQuery();
 
             while (rs.next()) {
-                String acc = rs.getString("account_number");
-                String name = rs.getString("name");
-                String address = rs.getString("address");
-                String sex = rs.getString("sex");
-                String dob = rs.getString("born_date");
-                String accType = rs.getString("account_type");
-                String password = rs.getString("password");
-
-                Customer customer = new Customer(acc, name, address, accType, sex.charAt(0), dob);
-                customer.setPassword(password);
-                return customer;
+                return customerMapper(rs);
             }
             statement.close();
             rs.close();
@@ -125,4 +106,15 @@ public class CustomerRepository extends BaseRepository implements ICustomerRepos
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+    private Customer customerMapper(ResultSet rs) throws SQLException {
+        Customer customer = new Customer();
+        customer.setAccountNumber(rs.getString("account_number"));
+        customer.setName(rs.getString("name"));
+        customer.setAddress(rs.getString("address"));
+        customer.setSex((rs.getString("sex").charAt(0)));
+        customer.setDob(rs.getString("born_date"));
+        customer.setAccountType(rs.getString("account_type"));
+        customer.setPassword(rs.getString("password"));
+        return customer;
+    }
 }

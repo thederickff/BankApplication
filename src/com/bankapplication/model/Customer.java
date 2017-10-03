@@ -20,15 +20,6 @@ public class Customer {
     private String dob;
     private String password;
 
-    public Customer(String accountNumber, String name, String address, String accountType, char sex, String dob) {
-        this.accountNumber = accountNumber;
-        this.name = name;
-        this.address = address;
-        this.accountType = accountType;
-        this.sex = sex;
-        this.dob = dob;
-    }
-
     public String getAccountNumber() {
         return accountNumber;
     }

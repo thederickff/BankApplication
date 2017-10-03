@@ -18,12 +18,6 @@ public class User {
     private String role;
     private String password;
     
-    public User(String name, String accountNumber, String role) {
-        this.name = name;
-        this.accountNumber = accountNumber;
-        this.role = role;
-    }
-
     public String getName() {
         return name;
     }

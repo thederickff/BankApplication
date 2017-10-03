@@ -8,6 +8,7 @@ package com.bankapplication.respository.impl;
 import com.bankapplication.model.User;
 import com.bankapplication.respository.IUserRepository;
 import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -37,15 +38,7 @@ public class UserRepository extends BaseRepository implements IUserRepository {
             rs = statement.executeQuery(sql);
 
             while (rs.next()) {
-
-                String accNumber = rs.getString("account_number");
-                String name = rs.getString("name");
-                String role = rs.getString("role");
-                String password = rs.getString("password");
-
-                User tempUser = new User(name, accNumber, role);
-                tempUser.setPassword(password);
-                users.add(tempUser);
+                users.add(userMapper(rs));
             }
             statement.close();
             rs.close();
@@ -58,7 +51,26 @@ public class UserRepository extends BaseRepository implements IUserRepository {
 
     @Override
     public User find(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Connection conn = connectionManager.createConnection();
+        String sql = "SELECT * FROM " + table + " WHERE `id` = ?";
+
+        try {
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setInt(1, id);
+
+            rs = pstmt.executeQuery();
+
+            while (rs.next()) {
+                return userMapper(rs);
+            }
+
+            statement.close();
+            rs.close();
+            conn.close();
+        } catch (SQLException e) {
+            System.out.println("SQLError: " + e);
+        }
+        return null;
     }
 
     @Override
@@ -76,4 +88,12 @@ public class UserRepository extends BaseRepository implements IUserRepository {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+    private User userMapper(ResultSet rs) throws SQLException {
+        User user = new User();
+        user.setAccountNumber(rs.getString("account_number"));
+        user.setName(rs.getString("name"));
+        user.setRole(rs.getString("role"));
+        user.setPassword(rs.getString("password"));
+        return user;
+    }
 }

@@ -5,12 +5,8 @@
  */
 package com.bankapplication.controller;
 
-import com.bankapplication.database.ConnectionManager;
 import com.bankapplication.model.User;
 import com.bankapplication.respository.impl.UserRepository;
-import java.sql.Connection;
-import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 
 /**
