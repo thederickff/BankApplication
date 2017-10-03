@@ -5,7 +5,6 @@
  */
 package com.bankapplication.controller;
 
-import com.bankapplication.database.ConnectionManager;
 import com.bankapplication.model.User;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -48,7 +47,10 @@ public class UserControllerTest {
     public void testLogin() {
         instance = new UserController();
         
-        User user = new User("root", "0000", "admin");
+        User user = new User();
+        user.setName("root");
+        user.setAccountNumber("0000");
+        user.setRole("admin");
         user.setPassword("admin");
         
         assertTrue(instance.login(user.getAccountNumber(), user.getPassword()));

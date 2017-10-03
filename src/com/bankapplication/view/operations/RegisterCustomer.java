@@ -356,7 +356,12 @@ public class RegisterCustomer extends javax.swing.JDialog {
             if (fieldsIsEmpty()) {
                 lblStatus.setText("Error: Some of the fields is empty!");
             } else {
-                customer = new Customer(acc, name, address, accType, sex, dob);
+                customer = new Customer();
+                customer.setAccountNumber(acc);
+                customer.setName(name);
+                customer.setAddress(address);
+                customer.setAccountType(accType);
+                customer.setSex(sex);
                 customer.setPassword(psw);
                 customerController.store(customer);
                 JOptionPane.showMessageDialog(this, "Customer created successfully\n"
