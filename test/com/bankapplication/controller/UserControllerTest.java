@@ -56,4 +56,21 @@ public class UserControllerTest {
         assertTrue(instance.login(user.getAccountNumber(), user.getPassword()));
     }
     
+    
+    /**
+     * Test of update method, of class UserController.
+     */
+    @Test
+    public void testUpdate() {
+        instance = new UserController();
+        
+        User user = new User();
+        user.setUserId("1");
+        user.setName("Will Drake");
+        user.setAccountNumber("0000");
+        user.setRole("admin");
+        user.setPassword("admin");
+        
+        instance.update(user);
+    }
 }

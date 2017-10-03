@@ -74,7 +74,7 @@ public class CustomerRepository extends BaseRepository implements ICustomerRepos
 
     @Override
     public void update(Customer customer) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String sql = "UPDATE "+table+" SET `name` = ?, `address` = ?, `sex` = ?, `born_date` = ?, `account_type` = ? WHERE `id` = ?";
     }
 
     @Override

@@ -42,4 +42,8 @@ public class UserController {
         }
         return false;
     }
+    
+    public void update(User user) {
+        userRepository.update(user);
+    }
 }

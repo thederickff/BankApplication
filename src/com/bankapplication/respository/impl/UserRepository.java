@@ -75,7 +75,20 @@ public class UserRepository extends BaseRepository implements IUserRepository {
 
     @Override
     public void update(User user) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Connection conn = connectionManager.createConnection();
+        String sql = "UPDATE "+table+" SET `name` = ?, `role` = ? WHERE `id` = ?";
+        try {
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setString(1, user.getName());
+            pstmt.setString(2, user.getRole());
+            pstmt.setString(3, user.getUserId());
+            pstmt.execute();
+            pstmt.close();
+            conn.close();
+        } catch (SQLException e) {
+            System.out.println("SQLError: " + e);
+        }
+        
     }
 
     @Override
@@ -90,6 +103,7 @@ public class UserRepository extends BaseRepository implements IUserRepository {
 
     private User userMapper(ResultSet rs) throws SQLException {
         User user = new User();
+        user.setUserId(rs.getString("id"));
         user.setAccountNumber(rs.getString("account_number"));
         user.setName(rs.getString("name"));
         user.setRole(rs.getString("role"));

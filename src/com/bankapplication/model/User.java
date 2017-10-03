@@ -13,6 +13,7 @@ package com.bankapplication.model;
  */
 public class User {
 
+    private String userId;
     private String name;
     private String accountNumber;
     private String role;
@@ -42,6 +43,14 @@ public class User {
         this.role = role;
     }
 
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
+    
     public String getPassword() {
         return password;
     }
