@@ -28,4 +28,15 @@ public class CustomerController {
     public ArrayList<Customer> getCustomers() {
         return customerRepository.all();
     }
+    
+    public Customer findById(int id) {
+        return customerRepository.find(id);
+    }
+    
+    public void update(Customer customer) {
+        customerRepository.update(customer);
+    }
+    public void destroy(Customer customer) {
+        customerRepository.destroy(customer);
+    }
 }
