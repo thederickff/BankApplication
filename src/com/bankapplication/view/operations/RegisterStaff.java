@@ -5,6 +5,8 @@
  */
 package com.bankapplication.view.operations;
 
+import com.bankapplication.controller.StaffController;
+import com.bankapplication.model.Staff;
 import java.awt.Image;
 import java.io.File;
 import javax.swing.ImageIcon;
@@ -17,12 +19,18 @@ import javax.swing.JFileChooser;
 public class RegisterStaff extends javax.swing.JDialog {
 
     private File file;
+    private StaffController staffController;
+    private Staff staff;
     /**
      * Creates new form RegisterStaff
      */
     public RegisterStaff(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        customOperations();
+    }
+    private void customOperations() {
+        this.staffController = new StaffController();
     }
 
     /**
@@ -38,9 +46,7 @@ public class RegisterStaff extends javax.swing.JDialog {
         paneTittle = new javax.swing.JPanel();
         panelbTitle = new javax.swing.JLabel();
         paneBody = new javax.swing.JPanel();
-        cmbAccount = new javax.swing.JComboBox<>();
         lblAddress = new javax.swing.JLabel();
-        txtOccupation = new javax.swing.JTextField();
         txtPassword = new javax.swing.JPasswordField();
         cmbDay = new javax.swing.JComboBox<>();
         radioFemale = new javax.swing.JRadioButton();
@@ -50,11 +56,9 @@ public class RegisterStaff extends javax.swing.JDialog {
         lblSex = new javax.swing.JLabel();
         cmbYear = new javax.swing.JComboBox<>();
         lblDOB = new javax.swing.JLabel();
-        lblOccupation = new javax.swing.JLabel();
         lblName = new javax.swing.JLabel();
         radioMale = new javax.swing.JRadioButton();
         txtName = new javax.swing.JTextField();
-        lblAccount = new javax.swing.JLabel();
         paneThumbnail = new javax.swing.JPanel();
         lblPicture = new javax.swing.JLabel();
         btnBrowsePicture = new javax.swing.JButton();
@@ -93,8 +97,6 @@ public class RegisterStaff extends javax.swing.JDialog {
 
         paneBody.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "New Staff", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 0, 14))); // NOI18N
 
-        cmbAccount.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Account Type", "Savings", "Current" }));
-
         lblAddress.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblAddress.setText("Address:");
 
@@ -122,17 +124,11 @@ public class RegisterStaff extends javax.swing.JDialog {
         lblDOB.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblDOB.setText("DOB:");
 
-        lblOccupation.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        lblOccupation.setText("Occupation:");
-
         lblName.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblName.setText("Name:");
 
         btnGroupSex.add(radioMale);
         radioMale.setText("Male");
-
-        lblAccount.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        lblAccount.setText("Account Type:");
 
         paneThumbnail.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
@@ -160,7 +156,7 @@ public class RegisterStaff extends javax.swing.JDialog {
             }
         });
 
-        cmbRank.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Rank" }));
+        cmbRank.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select a Rank", "Board of Director", "Chief Executive Officer", "Chief Operating Officer", "General Manager", "Deputy General Manager", "Assistant General Manager", "Principal Officer", "Senior Officer/Probationary Officer", "Clerical Staff Member", "Non-Clerical Staff Member" }));
 
         lblRank.setText("Rank:");
 
@@ -171,22 +167,18 @@ public class RegisterStaff extends javax.swing.JDialog {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, paneBodyLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(paneBodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(lblOccupation, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(lblDOB, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(lblSex, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(lblName, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(lblAddress, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lblAccount, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(lblPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblRank, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(paneBodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(cmbRank, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(cmbAccount, javax.swing.GroupLayout.Alignment.LEADING, 0, 455, Short.MAX_VALUE)
                     .addComponent(txtPassword, javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtAddress, javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtName, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtOccupation, javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, paneBodyLayout.createSequentialGroup()
                         .addGroup(paneBodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, paneBodyLayout.createSequentialGroup()
@@ -199,17 +191,21 @@ public class RegisterStaff extends javax.swing.JDialog {
                                 .addComponent(cmbMonth, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(cmbYear, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addGap(63, 63, 63)
+                        .addGap(0, 186, Short.MAX_VALUE)))
+                .addGap(18, 18, 18)
                 .addGroup(paneBodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(paneThumbnail, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnBrowsePicture, javax.swing.GroupLayout.DEFAULT_SIZE, 138, Short.MAX_VALUE))
+                    .addComponent(btnBrowsePicture, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
         paneBodyLayout.setVerticalGroup(
             paneBodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(paneBodyLayout.createSequentialGroup()
-                .addGroup(paneBodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(paneBodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(paneBodyLayout.createSequentialGroup()
+                        .addComponent(paneThumbnail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnBrowsePicture))
                     .addGroup(paneBodyLayout.createSequentialGroup()
                         .addGroup(paneBodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -220,33 +216,23 @@ public class RegisterStaff extends javax.swing.JDialog {
                             .addComponent(lblAddress))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(paneBodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(cmbAccount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblAccount))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(paneBodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(radioMale)
                             .addComponent(radioFemale)
-                            .addComponent(lblSex)))
-                    .addComponent(paneThumbnail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(paneBodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cmbDay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cmbMonth, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cmbYear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblDOB)
-                    .addComponent(btnBrowsePicture))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(paneBodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtOccupation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblOccupation))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(paneBodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblRank)
-                    .addComponent(cmbRank, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(paneBodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblPassword))
+                            .addComponent(lblSex))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(paneBodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(cmbDay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cmbMonth, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cmbYear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblDOB))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(paneBodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblRank)
+                            .addComponent(cmbRank, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(paneBodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblPassword))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -313,7 +299,6 @@ public class RegisterStaff extends javax.swing.JDialog {
 
     private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
         // Combo box
-        this.cmbAccount.setSelectedIndex(0);
         this.cmbDay.setSelectedIndex(0);
         this.cmbMonth.setSelectedIndex(0);
         this.cmbYear.setSelectedIndex(0);
@@ -322,7 +307,6 @@ public class RegisterStaff extends javax.swing.JDialog {
         this.txtName.setText(null);
         this.txtAddress.setText(null);
         this.txtPassword.setText(null);
-        this.txtOccupation.setText(null);
         this.txtAddress.setText(null);
     }//GEN-LAST:event_btnClearActionPerformed
 
@@ -345,16 +329,13 @@ public class RegisterStaff extends javax.swing.JDialog {
     private javax.swing.JButton btnClear;
     private javax.swing.ButtonGroup btnGroupSex;
     private javax.swing.JButton btnRegister;
-    private javax.swing.JComboBox<String> cmbAccount;
     private javax.swing.JComboBox<String> cmbDay;
     private javax.swing.JComboBox<String> cmbMonth;
     private javax.swing.JComboBox<String> cmbRank;
     private javax.swing.JComboBox<String> cmbYear;
-    private javax.swing.JLabel lblAccount;
     private javax.swing.JLabel lblAddress;
     private javax.swing.JLabel lblDOB;
     private javax.swing.JLabel lblName;
-    private javax.swing.JLabel lblOccupation;
     private javax.swing.JLabel lblPassword;
     private javax.swing.JLabel lblPicture;
     private javax.swing.JLabel lblRank;
@@ -367,7 +348,6 @@ public class RegisterStaff extends javax.swing.JDialog {
     private javax.swing.JRadioButton radioMale;
     private javax.swing.JTextField txtAddress;
     private javax.swing.JTextField txtName;
-    private javax.swing.JTextField txtOccupation;
     private javax.swing.JPasswordField txtPassword;
     // End of variables declaration//GEN-END:variables
 }
