@@ -95,7 +95,7 @@ public class StaffRepository extends BaseRepository implements IStaffRepository 
     @Override
     public void store(Staff staff) {
         Connection conn = connectionManager.createConnection();
-        String sql = "INSER INTO " + table + " (`account_number`, `name`, `address`, `sex`, `born_date`, `rank`, `password`) VALUES (?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO " + table + " (`account_number`, `name`, `address`, `sex`, `born_date`, `rank`, `password`) VALUES (?, ?, ?, ?, ?, ?, ?)";
 
         try {
             // Prepare Statement
@@ -111,7 +111,7 @@ public class StaffRepository extends BaseRepository implements IStaffRepository 
             pstmt.close();
             conn.close();
         } catch (SQLException ex) {
-            System.out.println("SQL Erro: " + ex);
+            System.out.println("SQL Error: " + ex);
         }
     }
 

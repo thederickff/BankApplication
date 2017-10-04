@@ -119,12 +119,12 @@ public class RegisterStaff extends javax.swing.JDialog {
         lblPassword.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblPassword.setText("Password:");
 
-        cmbMonth.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Month", "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" }));
+        cmbMonth.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Month", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12" }));
 
         lblSex.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblSex.setText("Sex:");
 
-        cmbYear.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Year", "2008", "2009", "2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023" }));
+        cmbYear.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Year", "1999", "1998", "1997", "1996", "1995", "1994", "1993", "1992", "1991", "1990", "1989", "1988", "1987", "1986", "1985", "1984", "1983", "1982", "1981", "1980", "1979", "1978", "1977", "1976", "1975", "1974", "1973", "1972", "1971", "1970", "1969", "1968", "1967", "1966", "1965" }));
 
         lblDOB.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblDOB.setText("DOB:");
@@ -357,6 +357,7 @@ public class RegisterStaff extends javax.swing.JDialog {
                 staff.setName(name);
                 staff.setAddress(address);
                 staff.setRank(rank);
+                staff.setDob(dob);
                 staff.setSex(sex);
                 staff.setPassword(psw);
                 staffController.store(staff);

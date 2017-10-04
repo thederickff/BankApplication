@@ -294,18 +294,18 @@
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="13">
                 <StringItem index="0" value="Month"/>
-                <StringItem index="1" value="Jan"/>
-                <StringItem index="2" value="Feb"/>
-                <StringItem index="3" value="Mar"/>
-                <StringItem index="4" value="Apr"/>
-                <StringItem index="5" value="May"/>
-                <StringItem index="6" value="Jun"/>
-                <StringItem index="7" value="Jul"/>
-                <StringItem index="8" value="Aug"/>
-                <StringItem index="9" value="Sep"/>
-                <StringItem index="10" value="Oct"/>
-                <StringItem index="11" value="Nov"/>
-                <StringItem index="12" value="Dec"/>
+                <StringItem index="1" value="01"/>
+                <StringItem index="2" value="02"/>
+                <StringItem index="3" value="03"/>
+                <StringItem index="4" value="04"/>
+                <StringItem index="5" value="05"/>
+                <StringItem index="6" value="06"/>
+                <StringItem index="7" value="07"/>
+                <StringItem index="8" value="08"/>
+                <StringItem index="9" value="09"/>
+                <StringItem index="10" value="10"/>
+                <StringItem index="11" value="11"/>
+                <StringItem index="12" value="12"/>
               </StringArray>
             </Property>
           </Properties>
@@ -322,24 +322,43 @@
         <Component class="javax.swing.JComboBox" name="cmbYear">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="17">
+              <StringArray count="36">
                 <StringItem index="0" value="Year"/>
-                <StringItem index="1" value="2008"/>
-                <StringItem index="2" value="2009"/>
-                <StringItem index="3" value="2010"/>
-                <StringItem index="4" value="2011"/>
-                <StringItem index="5" value="2012"/>
-                <StringItem index="6" value="2013"/>
-                <StringItem index="7" value="2014"/>
-                <StringItem index="8" value="2015"/>
-                <StringItem index="9" value="2016"/>
-                <StringItem index="10" value="2017"/>
-                <StringItem index="11" value="2018"/>
-                <StringItem index="12" value="2019"/>
-                <StringItem index="13" value="2020"/>
-                <StringItem index="14" value="2021"/>
-                <StringItem index="15" value="2022"/>
-                <StringItem index="16" value="2023"/>
+                <StringItem index="1" value="1999"/>
+                <StringItem index="2" value="1998"/>
+                <StringItem index="3" value="1997"/>
+                <StringItem index="4" value="1996"/>
+                <StringItem index="5" value="1995"/>
+                <StringItem index="6" value="1994"/>
+                <StringItem index="7" value="1993"/>
+                <StringItem index="8" value="1992"/>
+                <StringItem index="9" value="1991"/>
+                <StringItem index="10" value="1990"/>
+                <StringItem index="11" value="1989"/>
+                <StringItem index="12" value="1988"/>
+                <StringItem index="13" value="1987"/>
+                <StringItem index="14" value="1986"/>
+                <StringItem index="15" value="1985"/>
+                <StringItem index="16" value="1984"/>
+                <StringItem index="17" value="1983"/>
+                <StringItem index="18" value="1982"/>
+                <StringItem index="19" value="1981"/>
+                <StringItem index="20" value="1980"/>
+                <StringItem index="21" value="1979"/>
+                <StringItem index="22" value="1978"/>
+                <StringItem index="23" value="1977"/>
+                <StringItem index="24" value="1976"/>
+                <StringItem index="25" value="1975"/>
+                <StringItem index="26" value="1974"/>
+                <StringItem index="27" value="1973"/>
+                <StringItem index="28" value="1972"/>
+                <StringItem index="29" value="1971"/>
+                <StringItem index="30" value="1970"/>
+                <StringItem index="31" value="1969"/>
+                <StringItem index="32" value="1968"/>
+                <StringItem index="33" value="1967"/>
+                <StringItem index="34" value="1966"/>
+                <StringItem index="35" value="1965"/>
               </StringArray>
             </Property>
           </Properties>

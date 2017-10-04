@@ -361,6 +361,7 @@ public class RegisterCustomer extends javax.swing.JDialog {
                 customer.setName(name);
                 customer.setAddress(address);
                 customer.setAccountType(accType);
+                customer.setDob(dob);
                 customer.setSex(sex);
                 customer.setPassword(psw);
                 customerController.store(customer);
