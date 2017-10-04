@@ -12,6 +12,7 @@ package com.bankapplication.model;
  */
 public class Staff {
 
+    private String staffId;
     private String accountNumber;
     private String name;
     private String address;
@@ -20,10 +21,13 @@ public class Staff {
     private String rank;
     private String password;
 
-    public Staff(String accountNumber, String name, String rank) {
-        this.accountNumber = accountNumber;
-        this.name = name;
-        this.rank = rank;
+    
+    public String getStaffId() {
+        return staffId;
+    }
+
+    public void setStaffId(String staffId) {
+        this.staffId = staffId;
     }
 
     public String getAccountNumber() {
