@@ -40,8 +40,8 @@ public class CustomerRepository extends BaseRepository implements ICustomerRepos
             while (rs.next()) {
                 customers.add(customerMapper(rs));
             }
-            statement.close();
             rs.close();
+            statement.close();
             conn.close();
         } catch (SQLException ex) {
             System.out.println("SQL Error: " + ex);
@@ -63,8 +63,8 @@ public class CustomerRepository extends BaseRepository implements ICustomerRepos
             while (rs.next()) {
                 return customerMapper(rs);
             }
-            statement.close();
             rs.close();
+            pstmt.close();
             conn.close();
         } catch (SQLException e) {
             System.out.println("SQLError: " + e);
@@ -74,7 +74,23 @@ public class CustomerRepository extends BaseRepository implements ICustomerRepos
 
     @Override
     public void update(Customer customer) {
-        String sql = "UPDATE "+table+" SET `name` = ?, `address` = ?, `sex` = ?, `born_date` = ?, `account_type` = ? WHERE `id` = ?";
+        Connection conn = connectionManager.createConnection();
+        String sql = "UPDATE " + table + " SET `name` = ?, `address` = ?, `sex` = ?, `born_date` = ?, `account_type` = ? WHERE `id` = ?";
+
+        try {
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setString(1, customer.getName());
+            pstmt.setString(2, customer.getAddress());
+            pstmt.setString(3, Character.toString(customer.getSex()));
+            pstmt.setString(4, customer.getDob());
+            pstmt.setString(5, customer.getAccountType());
+            pstmt.setString(6, customer.getCustomerId());
+            pstmt.execute();
+            pstmt.close();
+            conn.close();
+        } catch (SQLException e) {
+            System.out.println("SQLError: " + e);
+        }
     }
 
     @Override
@@ -91,9 +107,7 @@ public class CustomerRepository extends BaseRepository implements ICustomerRepos
             pstmt.setString(5, customer.getDob());
             pstmt.setString(6, customer.getAccountType());
             pstmt.setString(7, customer.getPassword());
-            // Execute Staement
             pstmt.execute();
-            // Close Connection
             pstmt.close();
             conn.close();
         } catch (SQLException ex) {
@@ -103,7 +117,19 @@ public class CustomerRepository extends BaseRepository implements ICustomerRepos
 
     @Override
     public void destroy(Customer customer) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Connection conn = connectionManager.createConnection();
+        String sql = "DELETE FROM " + table + " WHERE `id` = ?";
+        try {
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setString(1, customer.getCustomerId());
+            pstmt.execute();
+
+            pstmt.close();
+            conn.close();
+        } catch (SQLException e) {
+            System.out.println("SQLError: " + e);
+        }
+
     }
 
     private Customer customerMapper(ResultSet rs) throws SQLException {
