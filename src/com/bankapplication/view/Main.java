@@ -7,7 +7,6 @@ package com.bankapplication.view;
 
 import com.bankapplication.view.history.CustomerRegistration;
 import com.bankapplication.view.history.DepositDetails;
-import com.bankapplication.view.history.LoginDetails;
 import com.bankapplication.view.history.WithdrawalDetails;
 import com.bankapplication.view.operations.RegisterCustomer;
 import com.bankapplication.view.operations.RegisterStaff;
@@ -54,7 +53,6 @@ public class Main extends javax.swing.JFrame {
         navCustomerHis = new javax.swing.JButton();
         navWithdrawalHis = new javax.swing.JButton();
         navDepositHis = new javax.swing.JButton();
-        navLoginHis = new javax.swing.JButton();
         dskPaneDesktop = new javax.swing.JDesktopPane();
         menuBarMain = new javax.swing.JMenuBar();
         menuFile = new javax.swing.JMenu();
@@ -68,7 +66,6 @@ public class Main extends javax.swing.JFrame {
         menuiRegisteredCustomers = new javax.swing.JMenuItem();
         menuiDepositDetails = new javax.swing.JMenuItem();
         menuiWithdrawalDetails = new javax.swing.JMenuItem();
-        menuiLoginDetails = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("Trisoft Bank");
@@ -176,13 +173,6 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
-        navLoginHis.setText("Login Details");
-        navLoginHis.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                navLoginHisActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout paneNavigateLayout = new javax.swing.GroupLayout(paneNavigate);
         paneNavigate.setLayout(paneNavigateLayout);
         paneNavigateLayout.setHorizontalGroup(
@@ -197,18 +187,17 @@ public class Main extends javax.swing.JFrame {
                             .addComponent(navCustomerHis, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(navWithdrawalHis, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(navDepositHis, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(navCustomerOp, javax.swing.GroupLayout.DEFAULT_SIZE, 156, Short.MAX_VALUE)
+                            .addComponent(navCustomerOp, javax.swing.GroupLayout.PREFERRED_SIZE, 156, Short.MAX_VALUE)
                             .addComponent(navStaffOp, javax.swing.GroupLayout.DEFAULT_SIZE, 156, Short.MAX_VALUE)
                             .addComponent(navDepositOp, javax.swing.GroupLayout.DEFAULT_SIZE, 156, Short.MAX_VALUE)
-                            .addComponent(navWithdrawalOp, javax.swing.GroupLayout.DEFAULT_SIZE, 156, Short.MAX_VALUE)
-                            .addComponent(navLoginHis, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                            .addComponent(navWithdrawalOp, javax.swing.GroupLayout.DEFAULT_SIZE, 156, Short.MAX_VALUE))
+                        .addGap(0, 11, Short.MAX_VALUE)))
                 .addContainerGap())
         );
 
         paneNavigateLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {navCustomerOp, navDepositOp, navStaffOp, navWithdrawalOp});
 
-        paneNavigateLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {navCustomerHis, navDepositHis, navLoginHis, navWithdrawalHis});
+        paneNavigateLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {navCustomerHis, navDepositHis, navWithdrawalHis});
 
         paneNavigateLayout.setVerticalGroup(
             paneNavigateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -231,14 +220,12 @@ public class Main extends javax.swing.JFrame {
                 .addComponent(navWithdrawalHis)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(navDepositHis)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(navLoginHis)
                 .addContainerGap())
         );
 
         paneNavigateLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {navCustomerOp, navDepositOp, navStaffOp, navWithdrawalOp});
 
-        paneNavigateLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {navCustomerHis, navDepositHis, navLoginHis, navWithdrawalHis});
+        paneNavigateLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {navCustomerHis, navDepositHis, navWithdrawalHis});
 
         splitPaneMain.setLeftComponent(paneNavigate);
         splitPaneMain.setRightComponent(dskPaneDesktop);
@@ -319,14 +306,6 @@ public class Main extends javax.swing.JFrame {
         });
         menuHistory.add(menuiWithdrawalDetails);
 
-        menuiLoginDetails.setText("Login Details");
-        menuiLoginDetails.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuiLoginDetailsActionPerformed(evt);
-            }
-        });
-        menuHistory.add(menuiLoginDetails);
-
         menuBarMain.add(menuHistory);
 
         setJMenuBar(menuBarMain);
@@ -390,11 +369,6 @@ public class Main extends javax.swing.JFrame {
         new DepositDetails(this, true).setVisible(true);
     }//GEN-LAST:event_navDepositHisActionPerformed
 
-    private void navLoginHisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_navLoginHisActionPerformed
-        // Create a new LoginDetails Dialog and show it
-        new LoginDetails(this, true).setVisible(true);
-    }//GEN-LAST:event_navLoginHisActionPerformed
-
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
         int i = JOptionPane.showConfirmDialog(this, "Are you sure you want to close? ", "Select One", JOptionPane.YES_NO_OPTION);
         if (i == JOptionPane.YES_OPTION) {
@@ -437,11 +411,6 @@ public class Main extends javax.swing.JFrame {
         // Create a new WithdrawalDetails Dialog and show it
         new WithdrawalDetails(this, true).setVisible(true);
     }//GEN-LAST:event_menuiWithdrawalDetailsActionPerformed
-
-    private void menuiLoginDetailsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuiLoginDetailsActionPerformed
-        // Create a new LoginDetails Dialog and show it
-        new LoginDetails(this, true).setVisible(true);
-    }//GEN-LAST:event_menuiLoginDetailsActionPerformed
 
     private void tbtnRegisterCustomerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tbtnRegisterCustomerActionPerformed
         new RegisterCustomer(this, true).setVisible(true);
@@ -494,7 +463,6 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JMenuItem menuiDepositDetails;
     private javax.swing.JMenuItem menuiExit;
     private javax.swing.JMenuItem menuiLogin;
-    private javax.swing.JMenuItem menuiLoginDetails;
     private javax.swing.JMenuItem menuiRegisteredCustomers;
     private javax.swing.JMenuItem menuiRegistration;
     private javax.swing.JMenuItem menuiWithdrawal;
@@ -503,7 +471,6 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JButton navCustomerOp;
     private javax.swing.JButton navDepositHis;
     private javax.swing.JButton navDepositOp;
-    private javax.swing.JButton navLoginHis;
     private javax.swing.JButton navStaffOp;
     private javax.swing.JButton navWithdrawalHis;
     private javax.swing.JButton navWithdrawalOp;
