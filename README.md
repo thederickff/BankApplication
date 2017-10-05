@@ -10,13 +10,8 @@ To install the application follow these steps.
 ### Step 2: Install the Netbeans
 Before installing [netbeans](https://netbeans.org/) make sure you have Java installed.
 ### Step 3: Open the project on Netbeans
-After this, just build it to get the jar file
+Click in open the project on netbeans
+### Step 4: Import the Database
+Import the `database/migration.sql` file to a mysql database. 
 
-
-## Contributing 
-1. Fork the project.
-2. Clone to your machine
-3. Open the project on your Netbeans.
-4. Import the `database/migration.sql` file to a mysql database. 
-
-And enjoy!
+Enjoy!
