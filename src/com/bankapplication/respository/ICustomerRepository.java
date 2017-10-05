@@ -24,12 +24,12 @@ public interface ICustomerRepository {
     public ArrayList<Customer> all();
 
     /**
-     * Gets a customer in the database by specifying the id
+     * Gets a customer in the database by specifying the account number
      *
-     * @param id the id of the customer
+     * @param accountNumber the account number of the customer
      * @return - A Customer
      */
-    public Customer find(int id);
+    public Customer find(int accountNumber);
 
     /**
      * Updates a specific customer in the database

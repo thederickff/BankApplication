@@ -50,13 +50,13 @@ public class CustomerRepository extends BaseRepository implements ICustomerRepos
     }
 
     @Override
-    public Customer find(int id) {
+    public Customer find(int accountNumber) {
         Connection conn = connectionManager.createConnection();
-        String sql = "SELECT * FROM " + table + " WHERE `id` = ?";
+        String sql = "SELECT * FROM " + table + " WHERE `account_number` = ?";
 
         try {
             pstmt = conn.prepareStatement(sql);
-            pstmt.setInt(1, id);
+            pstmt.setInt(1, accountNumber);
 
             rs = pstmt.executeQuery();
 
@@ -75,7 +75,7 @@ public class CustomerRepository extends BaseRepository implements ICustomerRepos
     @Override
     public void update(Customer customer) {
         Connection conn = connectionManager.createConnection();
-        String sql = "UPDATE " + table + " SET `name` = ?, `address` = ?, `sex` = ?, `born_date` = ?, `account_type` = ? WHERE `id` = ?";
+        String sql = "UPDATE " + table + " SET `name` = ?, `address` = ?, `sex` = ?, `born_date` = ?, `account_type` = ? WHERE `account_number` = ?";
 
         try {
             pstmt = conn.prepareStatement(sql);
@@ -84,7 +84,7 @@ public class CustomerRepository extends BaseRepository implements ICustomerRepos
             pstmt.setString(3, Character.toString(customer.getSex()));
             pstmt.setString(4, customer.getDob());
             pstmt.setString(5, customer.getAccountType());
-            pstmt.setString(6, customer.getCustomerId());
+            pstmt.setString(6, customer.getAccountNumber());
             pstmt.execute();
             pstmt.close();
             conn.close();
@@ -118,10 +118,10 @@ public class CustomerRepository extends BaseRepository implements ICustomerRepos
     @Override
     public void destroy(Customer customer) {
         Connection conn = connectionManager.createConnection();
-        String sql = "DELETE FROM " + table + " WHERE `id` = ?";
+        String sql = "DELETE FROM " + table + " WHERE `account_number` = ?";
         try {
             pstmt = conn.prepareStatement(sql);
-            pstmt.setString(1, customer.getCustomerId());
+            pstmt.setString(1, customer.getAccountNumber());
             pstmt.execute();
 
             pstmt.close();

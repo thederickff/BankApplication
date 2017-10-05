@@ -13,7 +13,6 @@ package com.bankapplication.model;
  */
 public class Customer {
     
-    private String customerId;
     private String accountNumber;
     private String name;
     private String address;
@@ -21,14 +20,6 @@ public class Customer {
     private char sex;
     private String dob;
     private String password;
-
-    public String getCustomerId() {
-        return customerId;
-    }
-
-    public void setCustomerId(String customerId) {
-        this.customerId = customerId;
-    }
 
     public String getAccountNumber() {
         return accountNumber;

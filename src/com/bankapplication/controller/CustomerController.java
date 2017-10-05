@@ -29,8 +29,8 @@ public class CustomerController {
         return customerRepository.all();
     }
     
-    public Customer findById(int id) {
-        return customerRepository.find(id);
+    public Customer searchCustomer(int accountNumber) {
+        return customerRepository.find(accountNumber);
     }
     
     public void update(Customer customer) {
