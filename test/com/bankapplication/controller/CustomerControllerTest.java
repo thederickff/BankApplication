@@ -58,14 +58,13 @@ public class CustomerControllerTest {
         }
     }
     
-    /**
-     * Test of getCustomerById method, of class CustomerController.
-     *
+    
     @Test
-    public void testGetCustomerById() {
+    public void testSearchCustomer() {
+        System.out.println("Search acccount");
         instance = new CustomerController();
-        Customer customer = instance.getCustomerById(1);
-        
-    }*/
+        Customer customer = instance.searchCustomer(2470);
+        assertTrue(customer.getName() != null);
+    }
     
 }
