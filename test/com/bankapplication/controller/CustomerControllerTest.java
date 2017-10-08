@@ -58,7 +58,9 @@ public class CustomerControllerTest {
         }
     }
     
-    
+    /**
+     * Test of searchCustomer method, of class CustomerController.
+     */
     @Test
     public void testSearchCustomer() {
         System.out.println("Search acccount");
