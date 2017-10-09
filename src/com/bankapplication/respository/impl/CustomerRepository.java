@@ -132,6 +132,13 @@ public class CustomerRepository extends BaseRepository implements ICustomerRepos
 
     }
 
+    /**
+     * Constructs a new Customer object
+     * 
+     * @param rs the result set
+     * @return a new Customer
+     * @throws SQLException 
+     */
     private Customer customerMapper(ResultSet rs) throws SQLException {
         Customer customer = new Customer();
         customer.setAccountNumber(rs.getString("account_number"));
