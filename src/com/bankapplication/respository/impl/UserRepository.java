@@ -125,6 +125,13 @@ public class UserRepository extends BaseRepository implements IUserRepository {
         }
     }
 
+    /**
+     * Constructs a new User object
+     * 
+     * @param rs the result set
+     * @return a new User
+     * @throws SQLException 
+     */
     private User userMapper(ResultSet rs) throws SQLException {
         User user = new User();
         user.setUserId(rs.getString("id"));

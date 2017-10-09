@@ -132,6 +132,13 @@ public class StaffRepository extends BaseRepository implements IStaffRepository 
 
     }
 
+    /**
+     * Constructs a new Staff object
+     * 
+     * @param rs the result set
+     * @return a new Staff
+     * @throws SQLException 
+     */
     private Staff staffMapper(ResultSet rs) throws SQLException {
         Staff staff = new Staff();
         staff.setAccountNumber(rs.getString("account_number"));
