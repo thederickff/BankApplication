@@ -34,7 +34,7 @@ public class OperationRepository extends BaseRepository implements IOperationRep
             pstmt = conn.prepareStatement(sql);
             pstmt.setInt(1, customerId);
             pstmt.setDouble(2, amount);
-            
+
             pstmt.execute();
             pstmt.close();
             conn.close();
@@ -52,7 +52,7 @@ public class OperationRepository extends BaseRepository implements IOperationRep
             pstmt = conn.prepareStatement(sql);
             pstmt.setInt(1, customerId);
             pstmt.setDouble(2, amount);
-            
+
             pstmt.execute();
             pstmt.close();
             conn.close();
@@ -125,13 +125,14 @@ public class OperationRepository extends BaseRepository implements IOperationRep
         }
         try {
             pstmt = conn.prepareStatement(sql);
-            rs = pstmt.executeQuery(sql);
-
+            pstmt.setInt(1, customerId);
+            rs = pstmt.executeQuery();
+           
             while (rs.next()) {
                 deposits.add(depositMapper(rs));
             }
             rs.close();
-            statement.close();
+            pstmt.close();
             conn.close();
         } catch (SQLException ex) {
             System.out.println("SQL Error: " + ex);
@@ -142,7 +143,7 @@ public class OperationRepository extends BaseRepository implements IOperationRep
     @Override
     public ArrayList<Withdraw> withdraws(int customerId) {
         Connection conn = connectionManager.createConnection();
-        String sql = "SELECT * FROM " + depositTable + " WHERE `customer_id` = ?";
+        String sql = "SELECT * FROM " + withdrawTable + " WHERE `customer_id` = ?";
         // Intantiate only once
         if (withdraws == null) {
             withdraws = new ArrayList<>();
@@ -152,13 +153,13 @@ public class OperationRepository extends BaseRepository implements IOperationRep
         try {
             pstmt = conn.prepareStatement(sql);
             pstmt.setInt(1, customerId);
-            rs = pstmt.executeQuery(sql);
+            rs = pstmt.executeQuery();
 
             while (rs.next()) {
                 withdraws.add(withdrawMapper(rs));
             }
             rs.close();
-            statement.close();
+            pstmt.close();
             conn.close();
         } catch (SQLException ex) {
             System.out.println("SQL Error: " + ex);
