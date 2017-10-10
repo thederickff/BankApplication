@@ -141,8 +141,7 @@ ALTER TABLE `customers`
 -- Indexes for table `deposits`
 --
 ALTER TABLE `deposits`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `customer_id` (`customer_id`) USING BTREE;
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `staffs`
@@ -162,8 +161,7 @@ ALTER TABLE `users`
 -- Indexes for table `withdraws`
 --
 ALTER TABLE `withdraws`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `customer_id` (`customer_id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
