@@ -56,6 +56,8 @@ public class OperationControllerTest {
     public void testMakeWithdraw() {
         System.out.println("makeWithdraw");
         instance = new OperationController();
+        instance.makeDeposit(1, 1000);
+        instance.makeWithdraw(1, 600);
         instance.makeWithdraw(1, 600);
         instance.makeWithdraw(1, 400);
         System.out.println(instance.getBalance(1));
