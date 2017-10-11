@@ -90,7 +90,7 @@ public class OperationRepository extends BaseRepository implements IOperationRep
     @Override
     public ArrayList<Withdraw> withdraws() {
         Connection conn = connectionManager.createConnection();
-        String sql = "SELECT * FROM " + depositTable;
+        String sql = "SELECT * FROM " + withdrawTable;
         // Intantiate only once
         if (withdraws == null) {
             withdraws = new ArrayList<>();
@@ -186,6 +186,6 @@ public class OperationRepository extends BaseRepository implements IOperationRep
      * @throws SQLException
      */
     private Withdraw withdrawMapper(ResultSet rs) throws SQLException {
-        return new Withdraw(rs.getString("customer_id"), rs.getDouble("withdraw_amount"));
+        return new Withdraw(rs.getString("customer_id"), rs.getDouble("withdraw_amount"), rs.getDate("created_at"));
     }
 }

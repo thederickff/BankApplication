@@ -6,7 +6,6 @@
 package com.bankapplication.view.history;
 
 import com.bankapplication.controller.CustomerController;
-import com.bankapplication.database.ConnectionManager;
 import com.bankapplication.model.Customer;
 import java.util.ArrayList;
 

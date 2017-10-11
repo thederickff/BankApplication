@@ -51,4 +51,14 @@ public class OperationController {
         
         return balance;
     }
+    
+    public ArrayList<Withdraw> getAllWithdraws() {
+        withdraws = this.operationRepository.withdraws();
+        return withdraws;
+    }
+    
+    public ArrayList<Deposit> getAllDeposits() {
+        deposits = this.operationRepository.deposits();
+        return deposits;
+    }
 }

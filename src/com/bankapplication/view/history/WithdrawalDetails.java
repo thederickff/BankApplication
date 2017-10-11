@@ -5,11 +5,19 @@
  */
 package com.bankapplication.view.history;
 
+import com.bankapplication.controller.OperationController;
+import com.bankapplication.model.Deposit;
+import com.bankapplication.model.Withdraw;
+import java.util.ArrayList;
+
 /**
  *
  * @author derickfelix
  */
 public class WithdrawalDetails extends javax.swing.JDialog {
+
+    private OperationController operationCtrl;
+    private ArrayList<Withdraw> withdraws;
 
     /**
      * Creates new form RegisteredCustomer
@@ -17,6 +25,19 @@ public class WithdrawalDetails extends javax.swing.JDialog {
     public WithdrawalDetails(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        customOperations();
+    }
+
+    private void customOperations() {
+        this.operationCtrl = new OperationController();
+        this.withdraws = operationCtrl.getAllWithdraws();
+        for (int i = 0; i < this.withdraws.size(); i++) {
+            Withdraw tempWithdraw = this.withdraws.get(i);
+            // Amount
+            tableWithdrawals.setValueAt(tempWithdraw.getAmount(), i, 0);
+            // Date
+            tableWithdrawals.setValueAt(tempWithdraw.getDate().toString(), i, 1);
+        }
     }
 
     /**
@@ -30,7 +51,7 @@ public class WithdrawalDetails extends javax.swing.JDialog {
 
         paneTittle = new javax.swing.JPanel();
         panelbTitle = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
+        scrllPanelWithdraws = new javax.swing.JScrollPane();
         tableWithdrawals = new javax.swing.JTable();
         paneButtons = new javax.swing.JPanel();
         btnPrint = new javax.swing.JButton();
@@ -65,16 +86,38 @@ public class WithdrawalDetails extends javax.swing.JDialog {
 
         tableWithdrawals.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "amount", "time"
             }
-        ));
-        jScrollPane1.setViewportView(tableWithdrawals);
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Double.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        scrllPanelWithdraws.setViewportView(tableWithdrawals);
 
         btnPrint.setText("Print");
 
@@ -114,7 +157,7 @@ public class WithdrawalDetails extends javax.swing.JDialog {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(paneButtons, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 748, Short.MAX_VALUE))
+                    .addComponent(scrllPanelWithdraws, javax.swing.GroupLayout.DEFAULT_SIZE, 511, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -122,7 +165,7 @@ public class WithdrawalDetails extends javax.swing.JDialog {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(paneTittle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(scrllPanelWithdraws, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(paneButtons, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -139,10 +182,10 @@ public class WithdrawalDetails extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancel;
     private javax.swing.JButton btnPrint;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPanel paneButtons;
     private javax.swing.JPanel paneTittle;
     private javax.swing.JLabel panelbTitle;
+    private javax.swing.JScrollPane scrllPanelWithdraws;
     private javax.swing.JTable tableWithdrawals;
     // End of variables declaration//GEN-END:variables
 }
