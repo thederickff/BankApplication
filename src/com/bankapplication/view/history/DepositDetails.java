@@ -5,18 +5,38 @@
  */
 package com.bankapplication.view.history;
 
+import com.bankapplication.model.Deposit;
+import com.bankapplication.controller.OperationController;
+import java.util.ArrayList;
+
 /**
  *
  * @author derickfelix
  */
 public class DepositDetails extends javax.swing.JDialog {
 
+    private OperationController operationCtrl;
+    private ArrayList<Deposit> deposits;
     /**
      * Creates new form RegisteredCustomer
      */
     public DepositDetails(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        customOperations();
+    }
+    
+    private void customOperations() {
+        this.operationCtrl = new OperationController();
+        this.deposits = operationCtrl.getAllDeposits();
+        
+        for (int i = 0; i < deposits.size(); i++) {
+            Deposit tempDeposit = deposits.get(i);
+            // Amount
+            tableDeposits.setValueAt(tempDeposit.getAmount(), i, 0);
+            // Date
+            tableDeposits.setValueAt(tempDeposit.getDate(), i, 1);
+        }
     }
 
     /**
@@ -65,15 +85,29 @@ public class DepositDetails extends javax.swing.JDialog {
 
         tableDeposits.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Amount", "Date"
             }
-        ));
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Double.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(tableDeposits);
 
         btnPrint.setText("Print");
@@ -115,7 +149,7 @@ public class DepositDetails extends javax.swing.JDialog {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(paneButtons, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 732, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 394, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -124,7 +158,7 @@ public class DepositDetails extends javax.swing.JDialog {
                 .addComponent(paneTittle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(paneButtons, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );

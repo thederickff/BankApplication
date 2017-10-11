@@ -6,6 +6,8 @@
 
 package com.bankapplication.model;
 
+import java.util.Date;
+
 /**
  * @name Deposit
  * @author derickfelix
@@ -15,10 +17,12 @@ public class Deposit {
     
     private String customerId;
     private double amount;
+    private Date date;
 
-    public Deposit(String customerId, double amount) {
+    public Deposit(String customerId, double amount, Date date) {
         this.customerId = customerId;
         this.amount = amount;
+        this.date = date;
     }
 
     public String getCustomerId() {
@@ -35,6 +39,14 @@ public class Deposit {
 
     public void setAmount(double amount) {
         this.amount = amount;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
     }
     
     

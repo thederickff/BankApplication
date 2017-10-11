@@ -175,7 +175,7 @@ public class OperationRepository extends BaseRepository implements IOperationRep
      * @throws SQLException
      */
     private Deposit depositMapper(ResultSet rs) throws SQLException {
-        return new Deposit(rs.getString("customer_id"), rs.getDouble("deposit_amount"));
+        return new Deposit(rs.getString("customer_id"), rs.getDouble("deposit_amount"), rs.getDate("created_at"));
     }
 
     /**
