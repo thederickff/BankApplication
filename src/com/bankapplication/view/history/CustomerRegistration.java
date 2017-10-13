@@ -26,7 +26,7 @@ public class CustomerRegistration extends javax.swing.JDialog {
         customOperations();
     }
     private void customOperations() {
-        customerCtrl = new CustomerController();
+        customerCtrl = CustomerController.getInstance();
         // Get All the customers
         customers = customerCtrl.getCustomers();
         

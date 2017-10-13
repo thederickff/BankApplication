@@ -31,8 +31,8 @@ public class DepositOperation extends javax.swing.JDialog {
     }
     
     private void customComponents() {
-        this.customerCtrl = new CustomerController();
-        this.operationCtrl = new OperationController();
+        this.customerCtrl = CustomerController.getInstance();
+        this.operationCtrl = OperationController.getInstance();
     }
 
     /**

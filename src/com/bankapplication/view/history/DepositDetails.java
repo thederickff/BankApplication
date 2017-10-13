@@ -27,7 +27,7 @@ public class DepositDetails extends javax.swing.JDialog {
     }
     
     private void customOperations() {
-        this.operationCtrl = new OperationController();
+        this.operationCtrl = OperationController.getInstance();
         this.deposits = operationCtrl.getAllDeposits();
         
         for (int i = 0; i < deposits.size(); i++) {

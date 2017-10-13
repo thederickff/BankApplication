@@ -34,7 +34,7 @@ public class RegisterCustomer extends javax.swing.JDialog {
     }
 
     private void customOperations() {
-        this.customerController = new CustomerController();
+        this.customerController = CustomerController.getInstance();
     }
 
     /**

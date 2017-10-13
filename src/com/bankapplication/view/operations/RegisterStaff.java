@@ -34,7 +34,7 @@ public class RegisterStaff extends javax.swing.JDialog {
     }
 
     private void customOperations() {
-        this.staffController = new StaffController();
+        this.staffController = StaffController.getInstance();
     }
 
     /**

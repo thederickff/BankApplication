@@ -29,7 +29,7 @@ public class WithdrawalDetails extends javax.swing.JDialog {
     }
 
     private void customOperations() {
-        this.operationCtrl = new OperationController();
+        this.operationCtrl = OperationController.getInstance();
         this.withdraws = operationCtrl.getAllWithdraws();
         for (int i = 0; i < this.withdraws.size(); i++) {
             Withdraw tempWithdraw = this.withdraws.get(i);

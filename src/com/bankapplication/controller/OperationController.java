@@ -17,12 +17,13 @@ import java.util.ArrayList;
  */
 public class OperationController {
 
+    private static OperationController operationCtrl;
     private OperationRepository operationRepository;
     private ArrayList<Withdraw> withdraws;
     private ArrayList<Deposit> deposits;
 
-    public OperationController() {
-            this.operationRepository = new OperationRepository();
+    private OperationController() {
+        this.operationRepository = new OperationRepository();
     }
 
     public void makeDeposit(int customer_id, double amount) {
@@ -36,7 +37,7 @@ public class OperationController {
             System.out.println("Error: You have not money enough!");
         }
     }
-    
+
     public double getBalance(int customer_id) {
         double balance = 0;
         withdraws = this.operationRepository.withdraws(customer_id);
@@ -48,17 +49,24 @@ public class OperationController {
         for (int i = 0; i < withdraws.size(); i++) {
             balance -= withdraws.get(i).getAmount();
         }
-        
+
         return balance;
     }
-    
+
     public ArrayList<Withdraw> getAllWithdraws() {
         withdraws = this.operationRepository.withdraws();
         return withdraws;
     }
-    
+
     public ArrayList<Deposit> getAllDeposits() {
         deposits = this.operationRepository.deposits();
         return deposits;
+    }
+    
+    public static OperationController getInstance() {
+        if (operationCtrl == null) {
+            operationCtrl = new OperationController();
+        }
+        return operationCtrl;
     }
 }
