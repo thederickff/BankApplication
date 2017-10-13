@@ -10,8 +10,8 @@ import com.bankapplication.view.history.DepositDetails;
 import com.bankapplication.view.history.WithdrawalDetails;
 import com.bankapplication.view.operations.RegisterCustomer;
 import com.bankapplication.view.operations.RegisterStaff;
-import com.bankapplication.view.operations.Deposit;
-import com.bankapplication.view.operations.Withdraw;
+import com.bankapplication.view.operations.DepositOperation;
+import com.bankapplication.view.operations.WithdrawOperation;
 //import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.UnsupportedLookAndFeelException;
@@ -346,12 +346,12 @@ public class Main extends javax.swing.JFrame {
 
     private void navDepositOpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_navDepositOpActionPerformed
         // Create a new Deposit Dialog and show it
-        new Deposit(this, true).setVisible(true);
+        new DepositOperation(this, true).setVisible(true);
     }//GEN-LAST:event_navDepositOpActionPerformed
 
     private void navWithdrawalOpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_navWithdrawalOpActionPerformed
         // Create a new Withdrawal Dialog and show it
-        new Withdraw(this, true).setVisible(true);
+        new WithdrawOperation(this, true).setVisible(true);
     }//GEN-LAST:event_navWithdrawalOpActionPerformed
 
     private void navCustomerHisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_navCustomerHisActionPerformed
@@ -385,12 +385,12 @@ public class Main extends javax.swing.JFrame {
 
     private void menuiWithdrawalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuiWithdrawalActionPerformed
         // Create a new Withdrawal Dialog and show it
-        new Withdraw(this, true).setVisible(true);
+        new WithdrawOperation(this, true).setVisible(true);
     }//GEN-LAST:event_menuiWithdrawalActionPerformed
 
     private void menuiDepositActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuiDepositActionPerformed
         // Create a new Deposit Dialog and show it
-        new Deposit(this, true).setVisible(true);
+        new DepositOperation(this, true).setVisible(true);
     }//GEN-LAST:event_menuiDepositActionPerformed
 
     private void menuiRegistrationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuiRegistrationActionPerformed
@@ -417,11 +417,11 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_tbtnRegisterCustomerActionPerformed
 
     private void tbtnMakeDepositActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tbtnMakeDepositActionPerformed
-        new Deposit(this, true).setVisible(true);
+        new DepositOperation(this, true).setVisible(true);
     }//GEN-LAST:event_tbtnMakeDepositActionPerformed
 
     private void tbtnMakeWithdrawalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tbtnMakeWithdrawalActionPerformed
-        new Withdraw(this, true).setVisible(true);
+        new WithdrawOperation(this, true).setVisible(true);
     }//GEN-LAST:event_tbtnMakeWithdrawalActionPerformed
 
     /**
