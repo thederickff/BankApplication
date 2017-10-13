@@ -46,7 +46,7 @@ public class CustomerControllerTest {
     @Test
     public void testAll() {
         System.out.println("all");
-        instance = new CustomerController();
+        instance = CustomerController.getInstance();
         ArrayList<Customer> customers = instance.getCustomers();
         
         for (int i = 0; i < customers.size(); i++) {
@@ -64,7 +64,7 @@ public class CustomerControllerTest {
     @Test
     public void testSearchCustomer() {
         System.out.println("Search acccount");
-        instance = new CustomerController();
+        instance = CustomerController.getInstance();
         Customer customer = instance.searchCustomer(2470);
         assertTrue(customer.getName() != null);
     }

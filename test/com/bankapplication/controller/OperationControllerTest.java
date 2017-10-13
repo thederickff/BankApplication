@@ -45,7 +45,7 @@ public class OperationControllerTest {
     @Test
     public void testMakeDeposit() {
         System.out.println("makeDeposit");
-        //instance = new OperationController();
+        //instance = OperationController.getInstance();
         //instance.makeDeposit(1, 1000);
     }
 
@@ -55,7 +55,7 @@ public class OperationControllerTest {
     @Test
     public void testMakeWithdraw() {
         System.out.println("makeWithdraw");
-        instance = new OperationController();
+        instance = OperationController.getInstance();
         instance.makeDeposit(1, 1000);
         instance.makeWithdraw(1, 600);
         instance.makeWithdraw(1, 600);
@@ -69,7 +69,7 @@ public class OperationControllerTest {
     @Test
     public void testGetBalance() {
         System.out.println("getBalance");
-        //instance = new OperationController();
+        //instance = OperationController.getInstance();
         //System.out.println(instance.getBalance(1));
     }
     

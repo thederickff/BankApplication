@@ -45,7 +45,7 @@ public class UserControllerTest {
      */
     @Test
     public void testLogin() {
-        instance = new UserController();
+        instance = UserController.getInstance();
 
         User user = new User();
         user.setName("root");
@@ -62,7 +62,7 @@ public class UserControllerTest {
     @Test
     public void testStore() {
         System.out.println("Store");
-        instance = new UserController();
+        instance = UserController.getInstance();
         User user = new User();
         user.setName("Bryson Balvin");
         user.setAccountNumber("1111");
@@ -78,7 +78,7 @@ public class UserControllerTest {
     @Test
     public void testUpdate() {
         System.out.println("Update");
-        instance = new UserController();
+        instance = UserController.getInstance();
 
         User user = new User();
         user.setUserId("1");
@@ -97,7 +97,7 @@ public class UserControllerTest {
     @Test
     public void testDestroy() {
         System.out.println("Destroy");
-        instance = new UserController();
+        instance = UserController.getInstance();
         User user = new User();
         user.setUserId("4");
         //instance.destroy(user);
