@@ -26,16 +26,18 @@ public class OperationController {
         this.operationRepository = new OperationRepository();
     }
 
-    public void makeDeposit(int accountNumber, double amount) {
+    public boolean makeDeposit(int accountNumber, double amount) {
         this.operationRepository.deposit(accountNumber, amount);
+        return true;
     }
 
-    public void makeWithdraw(int accountNumber, double amount) {
+    public boolean makeWithdraw(int accountNumber, double amount) {
         if (amount <= getBalance(accountNumber)) {
             this.operationRepository.withdraw(accountNumber, amount);
-        } else {
-            System.out.println("Error: You have not money enough!");
+            return true;
         }
+        
+        return false;
     }
 
     public double getBalance(int accountNumber) {

@@ -32,7 +32,7 @@
                   <Component id="paneFields" alignment="0" max="32767" attributes="0"/>
                   <Group type="102" attributes="0">
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                      <Component id="btnDeposit" min="-2" pref="101" max="-2" attributes="0"/>
+                      <Component id="btnWithdraw" min="-2" pref="101" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="btnCancel" min="-2" pref="81" max="-2" attributes="0"/>
                   </Group>
@@ -51,7 +51,7 @@
               <Component id="paneFields" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="btnDeposit" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnWithdraw" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btnCancel" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
@@ -120,7 +120,7 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="lblAccountNumber" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="txtAccountNumber" max="32767" attributes="0"/>
+                  <Component id="txtAccountNumber" pref="378" max="32767" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="btnCheck" min="-2" pref="199" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
@@ -153,6 +153,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="check"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCheckActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
@@ -174,24 +177,24 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="lblName" alignment="1" min="-2" max="-2" attributes="0"/>
-                      <Component id="lblAmountWithdrawn" alignment="1" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblAmount" alignment="1" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="txtName" min="-2" pref="241" max="-2" attributes="0"/>
-                      <Component id="txtAmountWithdrawn" min="-2" pref="241" max="-2" attributes="0"/>
+                      <Component id="txtAmount" min="-2" pref="241" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" attributes="0">
+                      <Component id="lblWithdraw" min="-2" max="-2" attributes="0"/>
                       <Component id="lblTotalBalance" min="-2" max="-2" attributes="0"/>
-                      <Component id="lblWithdrawn" min="-2" pref="116" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="txtPreviousWithdrawn" pref="244" max="32767" attributes="0"/>
-                      <Component id="txtTotalBalance" max="32767" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="txtPreviousWithdraw" min="-2" pref="244" max="-2" attributes="0"/>
+                      <Component id="txtTotalBalance" min="-2" pref="244" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="13" max="32767" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -202,15 +205,15 @@
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="lblName" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="txtName" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="lblWithdrawn" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="txtPreviousWithdrawn" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblWithdraw" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtPreviousWithdraw" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="txtTotalBalance" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="lblTotalBalance" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="lblAmountWithdrawn" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
-                      <Component id="txtAmountWithdrawn" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblAmount" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
+                      <Component id="txtAmount" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
@@ -218,10 +221,13 @@
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JTextField" name="txtAmountWithdrawn">
+        <Component class="javax.swing.JTextField" name="txtAmount">
           <Properties>
             <Property name="enabled" type="boolean" value="false"/>
           </Properties>
+          <Events>
+            <EventHandler event="caretUpdate" listener="javax.swing.event.CaretListener" parameters="javax.swing.event.CaretEvent" handler="txtAmountCaretUpdate"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="lblTotalBalance">
           <Properties>
@@ -229,13 +235,13 @@
             <Property name="text" type="java.lang.String" value="Total Balance:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="lblWithdrawn">
+        <Component class="javax.swing.JLabel" name="lblWithdraw">
           <Properties>
             <Property name="horizontalAlignment" type="int" value="4"/>
-            <Property name="text" type="java.lang.String" value="Previous Withdrawn:"/>
+            <Property name="text" type="java.lang.String" value="Previous Withdraw:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="txtPreviousWithdrawn">
+        <Component class="javax.swing.JTextField" name="txtPreviousWithdraw">
           <Properties>
             <Property name="enabled" type="boolean" value="false"/>
           </Properties>
@@ -246,7 +252,7 @@
             <Property name="text" type="java.lang.String" value="Name:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="lblAmountWithdrawn">
+        <Component class="javax.swing.JLabel" name="lblAmount">
           <Properties>
             <Property name="horizontalAlignment" type="int" value="4"/>
             <Property name="text" type="java.lang.String" value="Amount:"/>
@@ -272,11 +278,14 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCancelActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="btnDeposit">
+    <Component class="javax.swing.JButton" name="btnWithdraw">
       <Properties>
         <Property name="text" type="java.lang.String" value="Withdraw"/>
         <Property name="enabled" type="boolean" value="false"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnWithdrawActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>
