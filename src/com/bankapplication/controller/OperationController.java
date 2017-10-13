@@ -53,6 +53,22 @@ public class OperationController {
         return balance;
     }
 
+    public double getPreviousDeposit(int accountNumber) {
+        deposits = this.operationRepository.deposits(accountNumber);
+        if (deposits.size() > 0) {
+            return deposits.get(deposits.size() - 1).getAmount();
+        }
+        return 0;
+    }
+
+    public double getPreviousWithdraw(int accountNumber) {
+        withdraws = this.operationRepository.withdraws(accountNumber);
+        if (withdraws.size() > 0) {
+            return withdraws.get(withdraws.size() - 1).getAmount();
+        }
+        return 0;
+    }
+
     public ArrayList<Withdraw> getAllWithdraws() {
         withdraws = this.operationRepository.withdraws();
         return withdraws;
@@ -62,7 +78,7 @@ public class OperationController {
         deposits = this.operationRepository.deposits();
         return deposits;
     }
-    
+
     public static OperationController getInstance() {
         if (operationCtrl == null) {
             operationCtrl = new OperationController();

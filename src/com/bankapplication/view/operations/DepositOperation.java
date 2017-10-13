@@ -9,6 +9,7 @@ import com.bankapplication.controller.CustomerController;
 import com.bankapplication.controller.OperationController;
 import com.bankapplication.model.Customer;
 import com.bankapplication.model.Deposit;
+import java.awt.HeadlessException;
 import javax.swing.JOptionPane;
 
 /**
@@ -16,7 +17,7 @@ import javax.swing.JOptionPane;
  * @author derickfelix
  */
 public class DepositOperation extends javax.swing.JDialog {
-
+    
     private CustomerController customerCtrl;
     private OperationController operationCtrl;
     private Customer customer;
@@ -30,7 +31,7 @@ public class DepositOperation extends javax.swing.JDialog {
         initComponents();
         customComponents();
     }
-
+    
     private void customComponents() {
         this.customerCtrl = CustomerController.getInstance();
         this.operationCtrl = OperationController.getInstance();
@@ -129,6 +130,11 @@ public class DepositOperation extends javax.swing.JDialog {
         paneFields.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Operation", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 0, 14))); // NOI18N
 
         txtAmount.setEnabled(false);
+        txtAmount.addCaretListener(new javax.swing.event.CaretListener() {
+            public void caretUpdate(javax.swing.event.CaretEvent evt) {
+                txtAmountCaretUpdate(evt);
+            }
+        });
 
         lblPreviousDeposit.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblPreviousDeposit.setText("Previous Deposit:");
@@ -191,6 +197,11 @@ public class DepositOperation extends javax.swing.JDialog {
 
         btnDeposit.setText("Deposit");
         btnDeposit.setEnabled(false);
+        btnDeposit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDepositActionPerformed(evt);
+            }
+        });
 
         btnCancel.setText("Cancel");
         btnCancel.addActionListener(new java.awt.event.ActionListener() {
@@ -255,18 +266,40 @@ public class DepositOperation extends javax.swing.JDialog {
             int accNumber = Integer.parseInt(txtAccountNumber.getText());
             customer = customerCtrl.searchCustomer(accNumber);
             if (customer != null) {
-               txtAccountNumber.setEditable(false);
-               txtAmount.setEditable(true);
-               // Update fields
-               txtName.setText(customer.getName());
-               //txtTotalBalance(operationCtrl.getBalance(customer.getAccountNumber()))
+                txtAccountNumber.setEnabled(false);
+                txtAmount.setEnabled(true);
+                // Update fields
+                txtName.setText(customer.getName());
+                double balance = operationCtrl.getBalance(accNumber);                
+                double previousDeposit = operationCtrl.getPreviousDeposit(accNumber);
+                txtTotalBalance.setText(String.format("%.2f $", balance));
+                txtPreviousDeposit.setText(String.format("%.2f $", previousDeposit));
             } else {
                 JOptionPane.showMessageDialog(this, "Sorry, this account number did not match our records.", "Account not found.", JOptionPane.ERROR_MESSAGE);
             }
-        } catch (Exception e) {
+        } catch (HeadlessException | NumberFormatException e) {
             System.out.println("Error: " + e);
         }
     }//GEN-LAST:event_btnCheckActionPerformed
+
+    private void txtAmountCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_txtAmountCaretUpdate
+        try {
+            double amount = Double.parseDouble(txtAmount.getText());
+            if (amount > 0) {
+                btnDeposit.setEnabled(true);
+            }
+        } catch (NumberFormatException e) {
+            btnDeposit.setEnabled(false);
+        }
+    }//GEN-LAST:event_txtAmountCaretUpdate
+
+    private void btnDepositActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDepositActionPerformed
+        double amount = Double.parseDouble(txtAmount.getText());
+        int accountNumber = Integer.parseInt(txtAccountNumber.getText());
+        operationCtrl.makeDeposit(accountNumber, amount);
+        JOptionPane.showMessageDialog(this, "Deposit was made successfully!", "Deposit Sucess.", JOptionPane.INFORMATION_MESSAGE);
+        this.dispose();
+    }//GEN-LAST:event_btnDepositActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
