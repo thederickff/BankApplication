@@ -26,13 +26,13 @@ public class OperationRepository extends BaseRepository implements IOperationRep
     private ArrayList<Withdraw> withdraws;
 
     @Override
-    public void deposit(int customerId, double amount) {
+    public void deposit(int accountNumber, double amount) {
         Connection conn = connectionManager.createConnection();
-        String sql = "INSERT INTO " + depositTable + " (`customer_id`, `deposit_amount`) VALUES (?, ?)";
+        String sql = "INSERT INTO " + depositTable + " (`account_number`, `deposit_amount`) VALUES (?, ?)";
         try {
             // Prepare Statement
             pstmt = conn.prepareStatement(sql);
-            pstmt.setInt(1, customerId);
+            pstmt.setInt(1, accountNumber);
             pstmt.setDouble(2, amount);
 
             pstmt.execute();
@@ -44,13 +44,13 @@ public class OperationRepository extends BaseRepository implements IOperationRep
     }
 
     @Override
-    public void withdraw(int customerId, double amount) {
+    public void withdraw(int accountNumber, double amount) {
         Connection conn = connectionManager.createConnection();
-        String sql = "INSERT INTO " + withdrawTable + " (`customer_id`, `withdraw_amount`) VALUES (?, ?)";
+        String sql = "INSERT INTO " + withdrawTable + " (`account_number`, `withdraw_amount`) VALUES (?, ?)";
         try {
             // Prepare Statement
             pstmt = conn.prepareStatement(sql);
-            pstmt.setInt(1, customerId);
+            pstmt.setInt(1, accountNumber);
             pstmt.setDouble(2, amount);
 
             pstmt.execute();
@@ -114,9 +114,9 @@ public class OperationRepository extends BaseRepository implements IOperationRep
     }
 
     @Override
-    public ArrayList<Deposit> deposits(int customerId) {
+    public ArrayList<Deposit> deposits(int accountNumber) {
         Connection conn = connectionManager.createConnection();
-        String sql = "SELECT * FROM " + depositTable + " WHERE `customer_id` = ?";
+        String sql = "SELECT * FROM " + depositTable + " WHERE `account_number` = ?";
         // Intantiate only once
         if (deposits == null) {
             deposits = new ArrayList<>();
@@ -125,7 +125,7 @@ public class OperationRepository extends BaseRepository implements IOperationRep
         }
         try {
             pstmt = conn.prepareStatement(sql);
-            pstmt.setInt(1, customerId);
+            pstmt.setInt(1, accountNumber);
             rs = pstmt.executeQuery();
            
             while (rs.next()) {
@@ -141,9 +141,9 @@ public class OperationRepository extends BaseRepository implements IOperationRep
     }
 
     @Override
-    public ArrayList<Withdraw> withdraws(int customerId) {
+    public ArrayList<Withdraw> withdraws(int accountNumber) {
         Connection conn = connectionManager.createConnection();
-        String sql = "SELECT * FROM " + withdrawTable + " WHERE `customer_id` = ?";
+        String sql = "SELECT * FROM " + withdrawTable + " WHERE `account_number` = ?";
         // Intantiate only once
         if (withdraws == null) {
             withdraws = new ArrayList<>();
@@ -152,7 +152,7 @@ public class OperationRepository extends BaseRepository implements IOperationRep
         }
         try {
             pstmt = conn.prepareStatement(sql);
-            pstmt.setInt(1, customerId);
+            pstmt.setInt(1, accountNumber);
             rs = pstmt.executeQuery();
 
             while (rs.next()) {
@@ -175,7 +175,7 @@ public class OperationRepository extends BaseRepository implements IOperationRep
      * @throws SQLException
      */
     private Deposit depositMapper(ResultSet rs) throws SQLException {
-        return new Deposit(rs.getString("customer_id"), rs.getDouble("deposit_amount"), rs.getDate("created_at"));
+        return new Deposit(rs.getString("account_number"), rs.getDouble("deposit_amount"), rs.getDate("created_at"));
     }
 
     /**
@@ -186,6 +186,6 @@ public class OperationRepository extends BaseRepository implements IOperationRep
      * @throws SQLException
      */
     private Withdraw withdrawMapper(ResultSet rs) throws SQLException {
-        return new Withdraw(rs.getString("customer_id"), rs.getDouble("withdraw_amount"), rs.getDate("created_at"));
+        return new Withdraw(rs.getString("account_number"), rs.getDouble("withdraw_amount"), rs.getDate("created_at"));
     }
 }

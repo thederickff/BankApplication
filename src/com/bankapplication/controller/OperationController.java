@@ -26,22 +26,22 @@ public class OperationController {
         this.operationRepository = new OperationRepository();
     }
 
-    public void makeDeposit(int customer_id, double amount) {
-        this.operationRepository.deposit(customer_id, amount);
+    public void makeDeposit(int accountNumber, double amount) {
+        this.operationRepository.deposit(accountNumber, amount);
     }
 
-    public void makeWithdraw(int customer_id, double amount) {
-        if (amount <= getBalance(customer_id)) {
-            this.operationRepository.withdraw(customer_id, amount);
+    public void makeWithdraw(int accountNumber, double amount) {
+        if (amount <= getBalance(accountNumber)) {
+            this.operationRepository.withdraw(accountNumber, amount);
         } else {
             System.out.println("Error: You have not money enough!");
         }
     }
 
-    public double getBalance(int customer_id) {
+    public double getBalance(int accountNumber) {
         double balance = 0;
-        withdraws = this.operationRepository.withdraws(customer_id);
-        deposits = this.operationRepository.deposits(customer_id);
+        withdraws = this.operationRepository.withdraws(accountNumber);
+        deposits = this.operationRepository.deposits(accountNumber);
 
         for (int i = 0; i < deposits.size(); i++) {
             balance += deposits.get(i).getAmount();

@@ -9,7 +9,7 @@ import com.bankapplication.controller.CustomerController;
 import com.bankapplication.controller.OperationController;
 import com.bankapplication.model.Customer;
 import com.bankapplication.model.Deposit;
-
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -21,6 +21,7 @@ public class DepositOperation extends javax.swing.JDialog {
     private OperationController operationCtrl;
     private Customer customer;
     private Deposit deposit;
+
     /**
      * Creates new form Deposit
      */
@@ -29,7 +30,7 @@ public class DepositOperation extends javax.swing.JDialog {
         initComponents();
         customComponents();
     }
-    
+
     private void customComponents() {
         this.customerCtrl = CustomerController.getInstance();
         this.operationCtrl = OperationController.getInstance();
@@ -250,10 +251,24 @@ public class DepositOperation extends javax.swing.JDialog {
     }//GEN-LAST:event_btnCancelActionPerformed
 
     private void btnCheckActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCheckActionPerformed
-        
+        try {
+            int accNumber = Integer.parseInt(txtAccountNumber.getText());
+            customer = customerCtrl.searchCustomer(accNumber);
+            if (customer != null) {
+               txtAccountNumber.setEditable(false);
+               txtAmount.setEditable(true);
+               // Update fields
+               txtName.setText(customer.getName());
+               //txtTotalBalance(operationCtrl.getBalance(customer.getAccountNumber()))
+            } else {
+                JOptionPane.showMessageDialog(this, "Sorry, this account number did not match our records.", "Account not found.", JOptionPane.ERROR_MESSAGE);
+            }
+        } catch (Exception e) {
+            System.out.println("Error: " + e);
+        }
     }//GEN-LAST:event_btnCheckActionPerformed
 
-    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancel;
     private javax.swing.JButton btnCheck;

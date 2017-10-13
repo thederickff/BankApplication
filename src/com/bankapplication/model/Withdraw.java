@@ -15,22 +15,22 @@ import java.util.Date;
  */
 public class Withdraw {
 
-    private String customerId;
+    private String accountNumber;
     private double amount;
     private Date date;
     
-    public Withdraw(String customerId, double amount, Date date) {
-        this.customerId = customerId;
+    public Withdraw(String accountNumber, double amount, Date date) {
+        this.accountNumber = accountNumber;
         this.amount = amount;
         this.date = date;
     }
 
-    public String getCustomerId() {
-        return customerId;
+    public String getAccountNumber() {
+        return accountNumber;
     }
 
-    public void setCustomerId(String customerId) {
-        this.customerId = customerId;
+    public void setAccountNumber(String accountNumber) {
+        this.accountNumber = accountNumber;
     }
 
     public double getAmount() {
