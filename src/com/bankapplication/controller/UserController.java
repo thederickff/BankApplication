@@ -5,6 +5,7 @@
  */
 package com.bankapplication.controller;
 
+import com.bankapplication.controller.util.Auth;
 import com.bankapplication.model.User;
 import com.bankapplication.respository.impl.UserRepository;
 import java.util.ArrayList;
@@ -38,6 +39,10 @@ public class UserController {
 
             if (tempUser.getAccountNumber().equals(accountNumber)
                     && tempUser.getPassword().equals(password)) {
+                
+                Auth.setAccountNumber(tempUser.getAccountNumber());
+                Auth.setName(tempUser.getName());
+                Auth.setType("admin");
                 return true;
             }
         }
@@ -66,4 +71,5 @@ public class UserController {
         }
         return userCtrl;
     }
+    
 }

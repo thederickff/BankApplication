@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package com.bankapplication.model;
 
 /**
@@ -18,14 +17,6 @@ public class User {
     private String accountNumber;
     private String role;
     private String password;
-    
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
 
     public String getAccountNumber() {
         return accountNumber;
@@ -33,6 +24,14 @@ public class User {
 
     public void setAccountNumber(String accountNumber) {
         this.accountNumber = accountNumber;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getRole() {
@@ -43,14 +42,6 @@ public class User {
         this.role = role;
     }
 
-    public String getUserId() {
-        return userId;
-    }
-
-    public void setUserId(String userId) {
-        this.userId = userId;
-    }
-    
     public String getPassword() {
         return password;
     }
@@ -58,6 +49,12 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
-    
-    
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
 }

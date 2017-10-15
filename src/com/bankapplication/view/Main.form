@@ -126,15 +126,27 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Component id="toolBarMain" alignment="0" max="32767" attributes="0"/>
-          <Component id="splitPaneMain" alignment="1" pref="888" max="32767" attributes="0"/>
+          <Group type="102" attributes="0">
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="lblAuthName" max="32767" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <Component id="splitPaneMain" pref="881" max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+          </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <Component id="toolBarMain" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="splitPaneMain" max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="lblAuthName" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -193,6 +205,11 @@
     </Container>
     <Container class="javax.swing.JSplitPane" name="splitPaneMain">
       <Properties>
+        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+          <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+            <LineBorder/>
+          </Border>
+        </Property>
         <Property name="dividerLocation" type="int" value="180"/>
         <Property name="dividerSize" type="int" value="7"/>
       </Properties>
@@ -214,18 +231,13 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="navlbBankOps" alignment="0" max="32767" attributes="0"/>
                           <Component id="navlbHistory" alignment="0" max="32767" attributes="0"/>
-                          <Group type="102" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="navCustomerHis" linkSize="6" alignment="0" min="-2" pref="156" max="-2" attributes="0"/>
-                                  <Component id="navWithdrawalHis" linkSize="6" alignment="0" min="-2" pref="156" max="-2" attributes="0"/>
-                                  <Component id="navDepositHis" linkSize="6" alignment="0" min="-2" pref="156" max="-2" attributes="0"/>
-                                  <Component id="navCustomerOp" linkSize="1" alignment="0" pref="156" max="32767" attributes="0"/>
-                                  <Component id="navStaffOp" linkSize="1" alignment="0" pref="156" max="32767" attributes="0"/>
-                                  <Component id="navDepositOp" linkSize="1" pref="156" max="32767" attributes="0"/>
-                                  <Component id="navWithdrawalOp" linkSize="1" alignment="0" pref="156" max="32767" attributes="0"/>
-                              </Group>
-                              <EmptySpace min="0" pref="11" max="32767" attributes="0"/>
-                          </Group>
+                          <Component id="navWithdrawalOp" alignment="0" max="32767" attributes="0"/>
+                          <Component id="navDepositOp" alignment="0" max="32767" attributes="0"/>
+                          <Component id="navDepositHis" alignment="0" max="32767" attributes="0"/>
+                          <Component id="navWithdrawalHis" alignment="0" max="32767" attributes="0"/>
+                          <Component id="navCustomerHis" alignment="0" pref="167" max="32767" attributes="0"/>
+                          <Component id="navStaffOp" max="32767" attributes="0"/>
+                          <Component id="navCustomerOp" alignment="0" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -237,21 +249,21 @@
                       <EmptySpace min="-2" max="-2" attributes="0"/>
                       <Component id="navlbBankOps" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" max="-2" attributes="0"/>
-                      <Component id="navCustomerOp" linkSize="2" min="-2" max="-2" attributes="0"/>
+                      <Component id="navCustomerOp" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" max="-2" attributes="0"/>
-                      <Component id="navStaffOp" linkSize="2" min="-2" max="-2" attributes="0"/>
+                      <Component id="navStaffOp" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" max="-2" attributes="0"/>
-                      <Component id="navDepositOp" linkSize="2" min="-2" max="-2" attributes="0"/>
+                      <Component id="navDepositOp" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" max="-2" attributes="0"/>
-                      <Component id="navWithdrawalOp" linkSize="2" min="-2" max="-2" attributes="0"/>
+                      <Component id="navWithdrawalOp" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
                       <Component id="navlbHistory" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="navCustomerHis" linkSize="5" min="-2" max="-2" attributes="0"/>
+                      <Component id="navCustomerHis" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="navWithdrawalHis" linkSize="5" min="-2" max="-2" attributes="0"/>
+                      <Component id="navWithdrawalHis" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="navDepositHis" linkSize="5" min="-2" max="-2" attributes="0"/>
+                      <Component id="navDepositHis" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -343,5 +355,14 @@
         </Component>
       </SubComponents>
     </Container>
+    <Component class="javax.swing.JLabel" name="lblAuthName">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Dialog" size="18" style="1"/>
+        </Property>
+        <Property name="horizontalAlignment" type="int" value="0"/>
+        <Property name="text" type="java.lang.String" value="Authenticated user name"/>
+      </Properties>
+    </Component>
   </SubComponents>
 </Form>

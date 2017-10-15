@@ -36,7 +36,6 @@ public class OperationController {
             this.operationRepository.withdraw(accountNumber, amount);
             return true;
         }
-        
         return false;
     }
 

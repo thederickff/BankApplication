@@ -5,6 +5,7 @@
  */
 package com.bankapplication.view;
 
+import com.bankapplication.controller.util.Auth;
 import com.bankapplication.view.history.CustomerRegistration;
 import com.bankapplication.view.history.DepositDetails;
 import com.bankapplication.view.history.WithdrawalDetails;
@@ -27,6 +28,16 @@ public class Main extends javax.swing.JFrame {
      */
     public Main() {
         initComponents();
+        customOperations();
+    }
+    
+    private void customOperations() {
+        lblAuthName.setText(Auth.name());
+        if (!Auth.type().equals("admin")) {
+            navCustomerOp.setVisible(false);
+            navCustomerHis.setVisible(false);
+            navStaffOp.setVisible(false);
+        }
     }
 
     /**
@@ -54,6 +65,7 @@ public class Main extends javax.swing.JFrame {
         navWithdrawalHis = new javax.swing.JButton();
         navDepositHis = new javax.swing.JButton();
         dskPaneDesktop = new javax.swing.JDesktopPane();
+        lblAuthName = new javax.swing.JLabel();
         menuBarMain = new javax.swing.JMenuBar();
         menuFile = new javax.swing.JMenu();
         menuiLogin = new javax.swing.JMenuItem();
@@ -113,6 +125,7 @@ public class Main extends javax.swing.JFrame {
         });
         toolBarMain.add(tbtnMakeWithdrawal);
 
+        splitPaneMain.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         splitPaneMain.setDividerLocation(180);
         splitPaneMain.setDividerSize(7);
 
@@ -182,23 +195,15 @@ public class Main extends javax.swing.JFrame {
                 .addGroup(paneNavigateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(navlbBankOps, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(navlbHistory, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(paneNavigateLayout.createSequentialGroup()
-                        .addGroup(paneNavigateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(navCustomerHis, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(navWithdrawalHis, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(navDepositHis, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(navCustomerOp, javax.swing.GroupLayout.PREFERRED_SIZE, 156, Short.MAX_VALUE)
-                            .addComponent(navStaffOp, javax.swing.GroupLayout.DEFAULT_SIZE, 156, Short.MAX_VALUE)
-                            .addComponent(navDepositOp, javax.swing.GroupLayout.DEFAULT_SIZE, 156, Short.MAX_VALUE)
-                            .addComponent(navWithdrawalOp, javax.swing.GroupLayout.DEFAULT_SIZE, 156, Short.MAX_VALUE))
-                        .addGap(0, 11, Short.MAX_VALUE)))
+                    .addComponent(navWithdrawalOp, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(navDepositOp, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(navDepositHis, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(navWithdrawalHis, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(navCustomerHis, javax.swing.GroupLayout.DEFAULT_SIZE, 167, Short.MAX_VALUE)
+                    .addComponent(navStaffOp, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(navCustomerOp, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
-
-        paneNavigateLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {navCustomerOp, navDepositOp, navStaffOp, navWithdrawalOp});
-
-        paneNavigateLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {navCustomerHis, navDepositHis, navWithdrawalHis});
-
         paneNavigateLayout.setVerticalGroup(
             paneNavigateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(paneNavigateLayout.createSequentialGroup()
@@ -223,12 +228,12 @@ public class Main extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        paneNavigateLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {navCustomerOp, navDepositOp, navStaffOp, navWithdrawalOp});
-
-        paneNavigateLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {navCustomerHis, navDepositHis, navWithdrawalHis});
-
         splitPaneMain.setLeftComponent(paneNavigate);
         splitPaneMain.setRightComponent(dskPaneDesktop);
+
+        lblAuthName.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        lblAuthName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblAuthName.setText("Authenticated user name");
 
         menuFile.setText("File");
 
@@ -315,14 +320,23 @@ public class Main extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(toolBarMain, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(splitPaneMain, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 888, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblAuthName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(splitPaneMain, javax.swing.GroupLayout.DEFAULT_SIZE, 881, Short.MAX_VALUE)
+                        .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(toolBarMain, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(splitPaneMain)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(splitPaneMain))
+                .addComponent(lblAuthName)
+                .addContainerGap())
         );
 
         pack();
@@ -455,6 +469,7 @@ public class Main extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane dskPaneDesktop;
+    private javax.swing.JLabel lblAuthName;
     private javax.swing.JMenuBar menuBarMain;
     private javax.swing.JMenu menuFile;
     private javax.swing.JMenu menuHistory;
