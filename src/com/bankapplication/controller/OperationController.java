@@ -32,7 +32,7 @@ public class OperationController {
     }
 
     public boolean makeWithdraw(int accountNumber, double amount) {
-        if (amount <= getBalance(accountNumber)) {
+        if ((float) amount <= getBalance(accountNumber)) {
             this.operationRepository.withdraw(accountNumber, amount);
             return true;
         }
