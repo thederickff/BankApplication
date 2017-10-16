@@ -5,6 +5,7 @@
  */
 package com.bankapplication.view;
 
+import com.bankapplication.controller.StaffController;
 import com.bankapplication.controller.UserController;
 import java.awt.event.KeyEvent;
 
@@ -15,6 +16,7 @@ import java.awt.event.KeyEvent;
 public class Login extends javax.swing.JDialog {
 
     private UserController userController;
+    private StaffController staffCtrl;
 
     /**
      * Creates new form Login
@@ -27,6 +29,7 @@ public class Login extends javax.swing.JDialog {
 
     private void customOperations() {
         this.userController = UserController.getInstance();
+        this.staffCtrl = StaffController.getInstance();
     }
 
     /**
@@ -282,7 +285,7 @@ public class Login extends javax.swing.JDialog {
         String acc = txtAccount.getText();
         String pws = txtPassword.getText();
         
-        if (userController.login(acc, pws)) {
+        if (userController.login(acc, pws) || staffCtrl.login(acc, pws)) {
             new Main().setVisible(true);
             dispose();
         } else {

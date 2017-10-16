@@ -30,13 +30,28 @@ public class Main extends javax.swing.JFrame {
         initComponents();
         customOperations();
     }
-    
+
     private void customOperations() {
         lblAuthName.setText(Auth.name());
         if (!Auth.type().equals("admin")) {
-            navCustomerOp.setVisible(false);
-            navCustomerHis.setVisible(false);
             navStaffOp.setVisible(false);
+            navDepositOp.setVisible(false);
+            navWithdrawalOp.setVisible(false);
+            tbtnMakeDeposit.setEnabled(false);
+            tbtnMakeWithdrawal.setEnabled(false);
+            menuiDeposit.setEnabled(false);
+            menuiWithdrawal.setEnabled(false);
+            if (!Auth.type().equals("staff")) {
+                navDepositOp.setVisible(true);
+                navWithdrawalOp.setVisible(true);
+                navCustomerOp.setVisible(false);
+                menuiRegistration.setVisible(false);
+                navCustomerHis.setVisible(false);
+                menuiRegisteredCustomers.setEnabled(false);
+                menuiWithdrawalDetails.setEnabled(false);
+                tbtnMakeDeposit.setEnabled(true);
+                tbtnMakeWithdrawal.setEnabled(true);
+            }
         }
     }
 
@@ -68,7 +83,6 @@ public class Main extends javax.swing.JFrame {
         lblAuthName = new javax.swing.JLabel();
         menuBarMain = new javax.swing.JMenuBar();
         menuFile = new javax.swing.JMenu();
-        menuiLogin = new javax.swing.JMenuItem();
         menuiExit = new javax.swing.JMenuItem();
         menuOperations = new javax.swing.JMenu();
         menuiWithdrawal = new javax.swing.JMenuItem();
@@ -237,15 +251,6 @@ public class Main extends javax.swing.JFrame {
 
         menuFile.setText("File");
 
-        menuiLogin.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_L, java.awt.event.InputEvent.CTRL_MASK));
-        menuiLogin.setText("Login");
-        menuiLogin.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuiLoginActionPerformed(evt);
-            }
-        });
-        menuFile.add(menuiLogin);
-
         menuiExit.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.CTRL_MASK));
         menuiExit.setText("Exit");
         menuiExit.addActionListener(new java.awt.event.ActionListener() {
@@ -343,11 +348,6 @@ public class Main extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void menuiLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuiLoginActionPerformed
-        // Create a new Login Dialog and show it
-        new Login(this, true).setVisible(true);
-    }//GEN-LAST:event_menuiLoginActionPerformed
-
     private void navCustomerOpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_navCustomerOpActionPerformed
         // Create a new RegisterCustomer Dialog and show it
         new RegisterCustomer(this, true).setVisible(true);
@@ -408,7 +408,7 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_menuiDepositActionPerformed
 
     private void menuiRegistrationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuiRegistrationActionPerformed
-
+        new CustomerRegistration(this, true).setVisible(true);
     }//GEN-LAST:event_menuiRegistrationActionPerformed
 
     private void menuiRegisteredCustomersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuiRegisteredCustomersActionPerformed
@@ -477,7 +477,6 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JMenuItem menuiDeposit;
     private javax.swing.JMenuItem menuiDepositDetails;
     private javax.swing.JMenuItem menuiExit;
-    private javax.swing.JMenuItem menuiLogin;
     private javax.swing.JMenuItem menuiRegisteredCustomers;
     private javax.swing.JMenuItem menuiRegistration;
     private javax.swing.JMenuItem menuiWithdrawal;
