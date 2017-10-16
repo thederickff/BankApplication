@@ -5,7 +5,7 @@
  */
 package com.bankapplication.view;
 
-import com.bankapplication.controller.util.Auth;
+import com.bankapplication.util.Auth;
 import com.bankapplication.view.history.CustomerRegistration;
 import com.bankapplication.view.history.DepositDetails;
 import com.bankapplication.view.history.WithdrawalDetails;

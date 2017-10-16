@@ -5,7 +5,7 @@
  */
 package com.bankapplication.controller;
 
-import com.bankapplication.controller.util.Auth;
+import com.bankapplication.util.Auth;
 import com.bankapplication.model.User;
 import com.bankapplication.respository.impl.UserRepository;
 import java.util.ArrayList;
