@@ -1,5 +1,5 @@
-# Banking System Management
-This is a bank application that handles basics operations of a bank<br>
+# Banking System Management - Simulation
+This is a bank application that handles basics operations of a bank, still in development<br>
 
 ![Image Demo](https://github.com/derickfelix/BankApplication/blob/master/src/com/bankapplication/resources/demo.png)
 
