@@ -150,6 +150,7 @@ public class RegisterCustomer extends javax.swing.JDialog {
         lblName.setText("Name:");
 
         btnGroupSex.add(radioMale);
+        radioMale.setSelected(true);
         radioMale.setText("Male");
 
         lblAccount.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
