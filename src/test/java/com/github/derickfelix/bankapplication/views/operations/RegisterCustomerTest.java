@@ -13,6 +13,7 @@ import com.github.derickfelix.bankapplication.views.Main;
 import java.util.ArrayList;
 import javax.swing.*;
 import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.CoreMatchers.not;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -59,7 +60,7 @@ public class RegisterCustomerTest {
         //rc.setVisible(true);
         JTextField txtName = (JTextField) TestUtils.getChildNamed(rc, "jtfName");
         JTextField txtAddress = (JTextField) TestUtils.getChildNamed(rc, "jtfAddress");
-        JComboBox<String> cmbAccount = (JComboBox<String>) TestUtils.getChildNamed(rc, "cmbAcc");
+        JComboBox<String> cmbAccount = (JComboBox<String>) TestUtils.getChildNamed(rc, "cAcc");
         JRadioButton radioFemale = (JRadioButton) TestUtils.getChildNamed(rc, "jrbFemale");
         JRadioButton radioMale = (JRadioButton) TestUtils.getChildNamed(rc, "jrbMale");
         JComboBox<String> cmbDay = (JComboBox<String>) TestUtils.getChildNamed(rc, "cDay");
@@ -70,7 +71,7 @@ public class RegisterCustomerTest {
             //Check NULL of JComponent
         assertNotNull("Cannot access JTextField component (jtfName)", txtName);
         assertNotNull("Cannot access JTextField component (jtfAddress)", txtAddress);
-        assertNotNull("Cannot access JComboBox component (cmbAcc)", cmbAccount);
+        assertNotNull("Cannot access JComboBox component (cAcc)", cmbAccount);
         assertNotNull("Cannot access JRadioButton component (jrbFemale)", radioFemale);
         assertNotNull("Cannot access JRadioButton component (jrbMale)", radioMale);
         assertNotNull("Cannot access JComboBox component (cDay)", cmbDay);
@@ -123,7 +124,7 @@ public class RegisterCustomerTest {
         //rc.setVisible(true);
         JTextField txtName = (JTextField) TestUtils.getChildNamed(rc, "jtfName");
         JTextField txtAddress = (JTextField) TestUtils.getChildNamed(rc, "jtfAddress");
-        JComboBox<String> cmbAccount = (JComboBox<String>) TestUtils.getChildNamed(rc, "cmbAcc");
+        JComboBox<String> cmbAccount = (JComboBox<String>) TestUtils.getChildNamed(rc, "cAcc");
         JRadioButton radioFemale = (JRadioButton) TestUtils.getChildNamed(rc, "jrbFemale");
         JRadioButton radioMale = (JRadioButton) TestUtils.getChildNamed(rc, "jrbMale");
         JComboBox<String> cmbDay = (JComboBox<String>) TestUtils.getChildNamed(rc, "cDay");
@@ -131,10 +132,12 @@ public class RegisterCustomerTest {
         JComboBox<String> cmbYear = (JComboBox<String>) TestUtils.getChildNamed(rc, "cYear");
         JPasswordField txtPassword = (JPasswordField) TestUtils.getChildNamed(rc, "jpfPassword");
         JButton btnRegister = (JButton) TestUtils.getChildNamed(rc, "btnReg");
+        JButton btnClear = (JButton) TestUtils.getChildNamed(rc, "btnClr");
+        JButton btnCancel = (JButton) TestUtils.getChildNamed(rc, "btnCcl");
             //Check NULL of JComponent
         assertNotNull("Cannot access JTextField component (jtfName)", txtName);
         assertNotNull("Cannot access JTextField component (jtfAddress)", txtAddress);
-        assertNotNull("Cannot access JComboBox component (cmbAcc)", cmbAccount);
+        assertNotNull("Cannot access JComboBox component (cAcc)", cmbAccount);
         assertNotNull("Cannot access JRadioButton component (jrbFemale)", radioFemale);
         assertNotNull("Cannot access JRadioButton component (jrbMale)", radioMale);
         assertNotNull("Cannot access JComboBox component (cDay)", cmbDay);
@@ -142,6 +145,8 @@ public class RegisterCustomerTest {
         assertNotNull("Cannot access JComboBox component (cYear)", cmbYear);
         assertNotNull("Cannot access JPasswordField component (jpfPassword)", txtPassword);
         assertNotNull("Cannot access JButton component (btnReg)", btnRegister);
+        assertNotNull("Cannot access JButton component (btnClr)", btnRegister);
+        assertNotNull("Cannot access JButton component (btnCcl)", btnRegister);
             //Declare data
         String name = "TANG";
         String address = "9 JALAN 17";
@@ -161,15 +166,14 @@ public class RegisterCustomerTest {
         txtAddress.postActionEvent();
         txtPassword.postActionEvent();
             //Click button
-        btnRegister.doClick();
-            //Check record exist or not
-        int currSize = cc.getCustomers().size();
-        boolean regSuccess = false;
-        //If customer record size added 1
-        if (currSize - prevSize == 1) {
-            regSuccess = true;
-        }
-        //If false, prompt message
-        assertTrue("Register Failed", regSuccess);
+        btnClear.doClick();
+            //Check record reseted or not
+        assertThat("Clear function failed on (jtfName)", txtName.getText().toString(), is(""));
+        assertThat("Clear function failed on (jtfAddress)", txtAddress.getText().toString(), is(""));
+        assertThat("Clear function failed on (cAcc)", cmbAccount.getSelectedIndex(), is(0));
+        assertThat("Clear function failed on (cDay)", cmbDay.getSelectedIndex(), is(0));
+        assertThat("Clear function failed on (cMonth)", cmbMonth.getSelectedIndex(), is(0));
+        assertThat("Clear function failed on (cYear)", cmbYear.getSelectedIndex(), is(0));
+        assertThat("Clear function failed on (jpfPassword)", txtPassword.getText().toString(), is(""));
     }
 }

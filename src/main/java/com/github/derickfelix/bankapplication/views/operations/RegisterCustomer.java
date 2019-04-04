@@ -35,7 +35,7 @@ public class RegisterCustomer extends javax.swing.JDialog {
         //Mapping JComponent with name, add manually
         txtName.setName("jtfName");
         txtAddress.setName("jtfAddress");
-        cmbAccount.setName("cmbAcc");
+        cmbAccount.setName("cAcc");
         radioFemale.setName("jrbFemale");
         radioMale.setName("jrbMale");
         cmbDay.setName("cDay");
