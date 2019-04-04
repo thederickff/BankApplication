@@ -43,6 +43,8 @@ public class RegisterCustomer extends javax.swing.JDialog {
         cmbYear.setName("cYear");
         txtPassword.setName("jpfPassword");
         btnRegister.setName("btnReg");
+        btnClear.setName("btnClr");
+        btnCancel.setName("btnCcl");
     }
 
     private void customOperations() {
