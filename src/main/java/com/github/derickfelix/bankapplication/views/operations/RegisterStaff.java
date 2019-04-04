@@ -31,6 +31,18 @@ public class RegisterStaff extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         customOperations();
+        
+        //Mapping JComponent with name, add manually
+        txtName.setName("jtfName");
+        txtAddress.setName("jtfAddress");
+        radioFemale.setName("jrbFemale");
+        radioMale.setName("jrbMale");
+        cmbDay.setName("cDay");
+        cmbMonth.setName("cMonth");
+        cmbYear.setName("cYear");
+        cmbRank.setName("cRank");
+        txtPassword.setName("jpfPassword");
+        btnRegister.setName("btnReg");        
     }
 
     private void customOperations() {
