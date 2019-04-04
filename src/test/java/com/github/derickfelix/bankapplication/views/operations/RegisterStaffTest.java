@@ -57,7 +57,7 @@ public class RegisterStaffTest {
         //rc.setVisible(true);
         JTextField txtName = (JTextField) TestUtils.getChildNamed(rc, "jtfName");
         JTextField txtAddress = (JTextField) TestUtils.getChildNamed(rc, "jtfAddress");
-        JComboBox<String> cmbRank = (JComboBox<String>) TestUtils.getChildNamed(rc, "cmbRank");
+        JComboBox<String> cmbRank = (JComboBox<String>) TestUtils.getChildNamed(rc, "cRank");
         JRadioButton radioFemale = (JRadioButton) TestUtils.getChildNamed(rc, "jrbFemale");
         JRadioButton radioMale = (JRadioButton) TestUtils.getChildNamed(rc, "jrbMale");
         JComboBox<String> cmbDay = (JComboBox<String>) TestUtils.getChildNamed(rc, "cDay");
@@ -68,7 +68,7 @@ public class RegisterStaffTest {
             //Check NULL of JComponent
         assertNotNull("Cannot access JTextField component (jtfName)", txtName);
         assertNotNull("Cannot access JTextField component (jtfAddress)", txtAddress);
-        assertNotNull("Cannot access JComboBox component (cmbAcc)", cmbRank);
+        assertNotNull("Cannot access JComboBox component (cmbRank)", cmbRank);
         assertNotNull("Cannot access JRadioButton component (jrbFemale)", radioFemale);
         assertNotNull("Cannot access JRadioButton component (jrbMale)", radioMale);
         assertNotNull("Cannot access JComboBox component (cDay)", cmbDay);
