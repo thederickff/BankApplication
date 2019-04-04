@@ -47,6 +47,8 @@ public class RegisterCustomerTest {
 
     @Test
     public void testSomeMethod() {
+        CustomerController cc = CustomerController.getInstance();
+        int prevSize = cc.getCustomers().size();
         //Add manually
             //Login
         UserController.getInstance().login("0000", "secret");
@@ -76,16 +78,20 @@ public class RegisterCustomerTest {
         assertNotNull("Cannot access JComboBox component (cYear)", cmbYear);
         assertNotNull("Cannot access JPasswordField component (jpfPassword)", txtPassword);
         assertNotNull("Cannot access JButton component (btnReg)", btnRegister);
+            //Declare data
+        String name = "TANG";
+        String address = "9 JALAN 17";
+        String password = "12345678";
             //Set data
-        txtName.setText("TANG");
-        txtAddress.setText("9 JALAN 17");
+        txtName.setText(name);
+        txtAddress.setText(address);
         cmbAccount.setSelectedIndex(1);
         radioFemale.setSelected(true);
         //radioMale.setSelected(true);
         cmbDay.setSelectedIndex(1);
         cmbMonth.setSelectedIndex(1);
         cmbYear.setSelectedIndex(1);
-        txtPassword.setText("12345678");
+        txtPassword.setText(password);
             //Post string to text field (for JTextField only)
         txtName.postActionEvent();
         txtAddress.postActionEvent();
@@ -93,9 +99,14 @@ public class RegisterCustomerTest {
             //Click button
         btnRegister.doClick();
             //Check record exist or not
-        CustomerController cc = CustomerController.getInstance();
-        ArrayList<Customer> custArr = cc.getCustomers();
-        assertThat("Register failed", custArr.size(), is(1)); // fail if record size is zero.
+        int currSize = cc.getCustomers().size();
+        boolean regSuccess = false;
+        //If customer record size added 1
+        if (currSize - prevSize == 1) {
+            regSuccess = true;
+        }
+        //If false, prompt message
+        assertTrue("Register Failed", regSuccess);
     }
     
 }
