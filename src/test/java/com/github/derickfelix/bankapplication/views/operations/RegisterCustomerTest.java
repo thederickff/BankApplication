@@ -261,7 +261,7 @@ public class RegisterCustomerTest {
     }
     
     @Test
-    public void testRegisterNLoginMethod() {
+    public void testRegisterAndLoginMethod() {
         testRegisterMethod();
         
         CustomerController cc = CustomerController.getInstance();
