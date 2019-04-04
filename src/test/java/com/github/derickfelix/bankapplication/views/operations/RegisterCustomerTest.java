@@ -68,6 +68,8 @@ public class RegisterCustomerTest {
         JComboBox<String> cmbYear = (JComboBox<String>) TestUtils.getChildNamed(rc, "cYear");
         JPasswordField txtPassword = (JPasswordField) TestUtils.getChildNamed(rc, "jpfPassword");
         JButton btnRegister = (JButton) TestUtils.getChildNamed(rc, "btnReg");
+        JButton btnClear = (JButton) TestUtils.getChildNamed(rc, "btnClr");
+        JButton btnCancel = (JButton) TestUtils.getChildNamed(rc, "btnCcl");
             //Check NULL of JComponent
         assertNotNull("Cannot access JTextField component (jtfName)", txtName);
         assertNotNull("Cannot access JTextField component (jtfAddress)", txtAddress);
@@ -79,6 +81,8 @@ public class RegisterCustomerTest {
         assertNotNull("Cannot access JComboBox component (cYear)", cmbYear);
         assertNotNull("Cannot access JPasswordField component (jpfPassword)", txtPassword);
         assertNotNull("Cannot access JButton component (btnReg)", btnRegister);
+        assertNotNull("Cannot access JButton component (btnClr)", btnClear);
+        assertNotNull("Cannot access JButton component (btnCcl)", btnCancel);
             //Declare data
         String name = "TANG";
         String address = "9 JALAN 17";
@@ -145,8 +149,8 @@ public class RegisterCustomerTest {
         assertNotNull("Cannot access JComboBox component (cYear)", cmbYear);
         assertNotNull("Cannot access JPasswordField component (jpfPassword)", txtPassword);
         assertNotNull("Cannot access JButton component (btnReg)", btnRegister);
-        assertNotNull("Cannot access JButton component (btnClr)", btnRegister);
-        assertNotNull("Cannot access JButton component (btnCcl)", btnRegister);
+        assertNotNull("Cannot access JButton component (btnClr)", btnClear);
+        assertNotNull("Cannot access JButton component (btnCcl)", btnCancel);
             //Declare data
         String name = "TANG";
         String address = "9 JALAN 17";
@@ -175,5 +179,23 @@ public class RegisterCustomerTest {
         assertThat("Clear function failed on (cMonth)", cmbMonth.getSelectedIndex(), is(0));
         assertThat("Clear function failed on (cYear)", cmbYear.getSelectedIndex(), is(0));
         assertThat("Clear function failed on (jpfPassword)", txtPassword.getText().toString(), is(""));
+    }
+    
+    @Test
+    public void testCancelMethod() {
+        //Add manually
+            //Login
+        UserController.getInstance().login("0000", "secret");
+            //Initiate frame
+        RegisterCustomer rc = new RegisterCustomer(new Main(), true);
+        assertNotNull(rc);
+            //Find JComponent by name set in RegisterCustomer.java
+        //rc.setVisible(true);
+        JButton btnCancel = (JButton) TestUtils.getChildNamed(rc, "btnCcl");
+            //Check NULL of JComponent
+        assertNotNull("Cannot access JButton component (btnCcl)", btnCancel);
+        
+        btnCancel.doClick();
+        assertFalse("Customer registration form window did not dispose", rc.isDisplayable());
     }
 }
