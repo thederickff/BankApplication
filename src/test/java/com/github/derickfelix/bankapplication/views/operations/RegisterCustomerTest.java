@@ -265,7 +265,7 @@ public class RegisterCustomerTest {
         testRegisterMethod();
         
         CustomerController cc = CustomerController.getInstance();
-        ArrayList<Customer> custArr = cc.getCustomers();
+        ArrayList<Customer> custArr = CustomerController.getInstance().getCustomers();
         Customer newCust = custArr.get(custArr.size() - 1);
         
         assertTrue("Customer failed to login", UserController.getInstance().login(newCust.getAccountNumber(), newCust.getPassword()));
