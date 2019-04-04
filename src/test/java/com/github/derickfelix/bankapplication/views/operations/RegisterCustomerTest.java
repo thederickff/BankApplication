@@ -84,8 +84,8 @@ public class RegisterCustomerTest {
         assertNotNull("Cannot access JButton component (btnClr)", btnClear);
         assertNotNull("Cannot access JButton component (btnCcl)", btnCancel);
             //Declare data
-        String name = "TANG";
-        String address = "9 JALAN 17";
+        String name = "Jack";
+        String address = "No.10 Jalan 10, Kampung Baru, 47000 Sungai Buloh, Selangor.";
         String password = "12345678";
             //Set data
         txtName.setText(name);
@@ -151,8 +151,8 @@ public class RegisterCustomerTest {
         assertNotNull("Cannot access JButton component (btnClr)", btnClear);
         assertNotNull("Cannot access JButton component (btnCcl)", btnCancel);
             //Declare data
-        String name = "TANG";
-        String address = "9 JALAN 17";
+        String name = "Jack";
+        String address = "No.10 Jalan 10, Kampung Baru, 47000 Sungai Buloh, Selangor.";
         String password = "12345678";
             //Set data
         txtName.setText(name);
@@ -232,8 +232,8 @@ public class RegisterCustomerTest {
         assertNotNull("Cannot access JButton component (btnClr)", btnClear);
         assertNotNull("Cannot access JButton component (btnCcl)", btnCancel);
             //Declare data
-        String name = "TANG";
-        String address = "9 JALAN 17";
+        String name = "Jack";
+        String address = "No.10 Jalan 10, Kampung Baru, 47000 Sungai Buloh, Selangor.";
         String password = "12345678";
             //Set data
         txtName.setText(name);
