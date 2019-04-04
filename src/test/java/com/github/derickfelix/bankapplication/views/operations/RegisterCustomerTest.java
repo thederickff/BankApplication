@@ -117,7 +117,6 @@ public class RegisterCustomerTest {
     @Test
     public void testClearMethod() {
         CustomerController cc = CustomerController.getInstance();
-        int prevSize = cc.getCustomers().size();
         //Add manually
             //Login
         UserController.getInstance().login("0000", "secret");
