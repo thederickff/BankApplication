@@ -6,6 +6,7 @@
 package com.bankapplication.controller;
 
 import com.bankapplication.model.User;
+import com.github.derickfelix.bankapplication.controllers.UserController;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
