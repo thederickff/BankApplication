@@ -5,8 +5,8 @@
  */
 package com.bankapplication.controller;
 
-import com.bankapplication.model.User;
 import com.github.derickfelix.bankapplication.controllers.UserController;
+import com.github.derickfelix.bankapplication.models.User;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
