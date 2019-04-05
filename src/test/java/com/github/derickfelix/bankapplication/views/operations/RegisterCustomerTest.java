@@ -251,23 +251,71 @@ public class RegisterCustomerTest {
         btnRegister.doClick();
             //Check record exist or not
         int currSize = cc.getCustomers().size();
-        boolean regSuccess = false;
+        boolean regSuccess = true;
         //If customer record size added 1
         if (currSize - prevSize == 0) {
-            regSuccess = true;
+            regSuccess = false;
         }
         //If false, prompt message
-        assertTrue("Register Failed: Should be fail due to null value on gender", regSuccess);
+        assertFalse("Register Failed: Should be fail due to null value on gender", regSuccess);
     }
     
     @Test
-    public void testRegisterAndLoginMethod() {
-        testRegisterMethod();
-        
+    public void testRegisterBirthdayNullMethod() {
         CustomerController cc = CustomerController.getInstance();
-        ArrayList<Customer> custArr = CustomerController.getInstance().getCustomers();
-        Customer newCust = custArr.get(custArr.size() - 1);
-        
-        assertTrue("Customer failed to login", UserController.getInstance().login(newCust.getAccountNumber(), newCust.getPassword()));
+        int prevSize = cc.getCustomers().size();
+        //Add manually
+            //Login
+        UserController.getInstance().login("0000", "secret");
+            //Initiate frame
+        RegisterCustomer rc = new RegisterCustomer(new Main(), true);
+        assertNotNull(rc);
+            //Find JComponent by name set in RegisterCustomer.java
+        //rc.setVisible(true);
+        JTextField txtName = (JTextField) TestUtils.getChildNamed(rc, "jtfName");
+        JTextField txtAddress = (JTextField) TestUtils.getChildNamed(rc, "jtfAddress");
+        JComboBox<String> cmbAccount = (JComboBox<String>) TestUtils.getChildNamed(rc, "cAcc");
+        JRadioButton radioFemale = (JRadioButton) TestUtils.getChildNamed(rc, "jrbFemale");
+        JRadioButton radioMale = (JRadioButton) TestUtils.getChildNamed(rc, "jrbMale");
+        JPasswordField txtPassword = (JPasswordField) TestUtils.getChildNamed(rc, "jpfPassword");
+        JButton btnRegister = (JButton) TestUtils.getChildNamed(rc, "btnReg");
+        JButton btnClear = (JButton) TestUtils.getChildNamed(rc, "btnClr");
+        JButton btnCancel = (JButton) TestUtils.getChildNamed(rc, "btnCcl");
+            //Check NULL of JComponent
+        assertNotNull("Cannot access JTextField component (jtfName)", txtName);
+        assertNotNull("Cannot access JTextField component (jtfAddress)", txtAddress);
+        assertNotNull("Cannot access JComboBox component (cAcc)", cmbAccount);
+        assertNotNull("Cannot access JRadioButton component (jrbFemale)", radioFemale);
+        assertNotNull("Cannot access JRadioButton component (jrbMale)", radioMale);
+        assertNotNull("Cannot access JPasswordField component (jpfPassword)", txtPassword);
+        assertNotNull("Cannot access JButton component (btnReg)", btnRegister);
+        assertNotNull("Cannot access JButton component (btnClr)", btnClear);
+        assertNotNull("Cannot access JButton component (btnCcl)", btnCancel);
+            //Declare data
+        String name = "Jack";
+        String address = "No.10 Jalan 10, Kampung Baru, 47000 Sungai Buloh, Selangor.";
+        String password = "12345678";
+            //Set data
+        txtName.setText(name);
+        txtAddress.setText(address);
+        cmbAccount.setSelectedIndex(1);
+        radioFemale.setSelected(true);
+        //radioMale.setSelected(true);
+        txtPassword.setText(password);
+            //Post string to text field (for JTextField only)
+        txtName.postActionEvent();
+        txtAddress.postActionEvent();
+        txtPassword.postActionEvent();
+            //Click button
+        btnRegister.doClick();
+            //Check record exist or not
+        int currSize = cc.getCustomers().size();
+        boolean regSuccess = true;
+        //If customer record size added 1
+        if (currSize - prevSize == 0) {
+            regSuccess = false;
+        }
+        //If false, prompt message
+        assertFalse("Register Failed: Should be fail due to null value on birthday", regSuccess);
     }
 }
