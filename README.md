@@ -1,3 +1,5 @@
+Learning to test this program using JUnit as part of Software Quality Assurance and Testing assignment.
+
 # Banking System Management - Simulation
 This is a bank application that handles basics operations of a bank, still in development<br>
 
