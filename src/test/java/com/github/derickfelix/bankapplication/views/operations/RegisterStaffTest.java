@@ -20,6 +20,9 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import java.security.SecureRandom;
+import java.util.Base64;
+import java.util.Base64.Encoder;
 
 /**
  *
@@ -27,11 +30,16 @@ import static org.junit.Assert.*;
  */
 public class RegisterStaffTest {
     
+    private static ArrayList<Staff> staffArr;
+    private StaffController cc;
+    private int staffCount;
+    
     public RegisterStaffTest() {
     }
     
     @BeforeClass
     public static void setUpClass() {
+//        testData = new Staff("1234", "Jack", "No.10 Jalan 10, Kampung Baru, 47000 Sungai Buloh, Selangor.", 'f', "1999-01-01", "Board of Director", "123456");
     }
     
     @AfterClass
@@ -40,17 +48,21 @@ public class RegisterStaffTest {
     
     @Before
     public void setUp() {
+        // Get initial staff records
+        cc = StaffController.getInstance();
+        staffArr = cc.getStaffs();
+        staffCount = staffArr.size();
     }
     
     @After
     public void tearDown() {
     }
-
+    
     @Test
-    public void testSomeMethod() {
+    public void staffRegisterValidInput() {
         //Login
         UserController.getInstance().login("0000", "secret");
-         //Initiate frame
+        //Initiate frame
         RegisterStaff rc = new RegisterStaff(new Main(), true);
         assertNotNull(rc);
         //Find JComponent by name set in RegisterCustomer.java
@@ -65,7 +77,8 @@ public class RegisterStaffTest {
         JComboBox<String> cmbYear = (JComboBox<String>) TestUtils.getChildNamed(rc, "cYear");
         JPasswordField txtPassword = (JPasswordField) TestUtils.getChildNamed(rc, "jpfPassword");
         JButton btnRegister = (JButton) TestUtils.getChildNamed(rc, "btnReg");
-            //Check NULL of JComponent
+        
+//Check NULL of JComponent
         assertNotNull("Cannot access JTextField component (jtfName)", txtName);
         assertNotNull("Cannot access JTextField component (jtfAddress)", txtAddress);
         assertNotNull("Cannot access JComboBox component (cmbRank)", cmbRank);
@@ -76,26 +89,29 @@ public class RegisterStaffTest {
         assertNotNull("Cannot access JComboBox component (cYear)", cmbYear);
         assertNotNull("Cannot access JPasswordField component (jpfPassword)", txtPassword);
         assertNotNull("Cannot access JButton component (btnReg)", btnRegister);
-            //Set data
-        txtName.setText("TANG");
-        txtAddress.setText("9 JALAN 17");
+                
+        //Set data
+        txtName.setText("Jack");
+        txtAddress.setText("No.10 Jalan 10, Kampung Baru, 47000 Sungai Buloh, Selangor.");
         cmbRank.setSelectedIndex(1);
         radioFemale.setSelected(true);
-        //radioMale.setSelected(true);
         cmbDay.setSelectedIndex(1);
         cmbMonth.setSelectedIndex(1);
         cmbYear.setSelectedIndex(1);
         txtPassword.setText("12345678");
-            //Post string to text field (for JTextField only)
+        
+        //Post string to text field (for JTextField only)
         txtName.postActionEvent();
         txtAddress.postActionEvent();
         txtPassword.postActionEvent();
-            //Click button
+        
+        //Click button
         btnRegister.doClick();
-            //Check record exist or not
-        StaffController cc = StaffController.getInstance();
-        ArrayList<Staff> staffArr = cc.getStaffs();
-        assertThat("Register failed", staffArr.size(), is(1)); // fail if record size is zero.
+
+        //Get updated staff list
+        ArrayList<Staff> newStaffArr = cc.getStaffs();
+        
+        //Compare new staff count with old staff count
+        assertEquals("Register failed", newStaffArr.size() - 1, staffCount); // fail if record size is zero.
     }
-    
 }
