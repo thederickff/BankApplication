@@ -9,6 +9,7 @@ import com.github.derickfelix.bankapplication.util.Auth;
 import com.github.derickfelix.bankapplication.views.histories.CustomerRegistration;
 import com.github.derickfelix.bankapplication.views.histories.DepositDetails;
 import com.github.derickfelix.bankapplication.views.histories.WithdrawalDetails;
+import com.github.derickfelix.bankapplication.views.operations.SavingCalculator;
 import com.github.derickfelix.bankapplication.views.operations.RegisterCustomer;
 import com.github.derickfelix.bankapplication.views.operations.RegisterStaff;
 import com.github.derickfelix.bankapplication.views.operations.DepositOperation;
@@ -79,6 +80,7 @@ public class Main extends javax.swing.JFrame {
         navCustomerHis = new javax.swing.JButton();
         navWithdrawalHis = new javax.swing.JButton();
         navDepositHis = new javax.swing.JButton();
+        navDepositHis1 = new javax.swing.JButton();
         dskPaneDesktop = new javax.swing.JDesktopPane();
         lblAuthName = new javax.swing.JLabel();
         menuBarMain = new javax.swing.JMenuBar();
@@ -200,6 +202,13 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
+        navDepositHis1.setText("Saving Calculator");
+        navDepositHis1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                navCalculatorHisActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout paneNavigateLayout = new javax.swing.GroupLayout(paneNavigate);
         paneNavigate.setLayout(paneNavigateLayout);
         paneNavigateLayout.setHorizontalGroup(
@@ -215,7 +224,8 @@ public class Main extends javax.swing.JFrame {
                     .addComponent(navWithdrawalHis, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(navCustomerHis, javax.swing.GroupLayout.DEFAULT_SIZE, 167, Short.MAX_VALUE)
                     .addComponent(navStaffOp, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(navCustomerOp, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(navCustomerOp, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(navDepositHis1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         paneNavigateLayout.setVerticalGroup(
@@ -231,7 +241,9 @@ public class Main extends javax.swing.JFrame {
                 .addComponent(navDepositOp)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(navWithdrawalOp)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(navDepositHis1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(navlbHistory)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(navCustomerHis)
@@ -239,8 +251,10 @@ public class Main extends javax.swing.JFrame {
                 .addComponent(navWithdrawalHis)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(navDepositHis)
-                .addContainerGap())
+                .addContainerGap(10, Short.MAX_VALUE))
         );
+
+        navDepositHis1.getAccessibleContext().setAccessibleName("Calculator");
 
         splitPaneMain.setLeftComponent(paneNavigate);
         splitPaneMain.setRightComponent(dskPaneDesktop);
@@ -438,6 +452,10 @@ public class Main extends javax.swing.JFrame {
         new WithdrawOperation(this, true).setVisible(true);
     }//GEN-LAST:event_tbtnMakeWithdrawalActionPerformed
 
+    private void navCalculatorHisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_navCalculatorHisActionPerformed
+        new SavingCalculator(this, true).setVisible(true);
+    }//GEN-LAST:event_navCalculatorHisActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane dskPaneDesktop;
     private javax.swing.JLabel lblAuthName;
@@ -455,6 +473,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JButton navCustomerHis;
     private javax.swing.JButton navCustomerOp;
     private javax.swing.JButton navDepositHis;
+    private javax.swing.JButton navDepositHis1;
     private javax.swing.JButton navDepositOp;
     private javax.swing.JButton navStaffOp;
     private javax.swing.JButton navWithdrawalHis;

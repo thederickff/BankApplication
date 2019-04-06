@@ -227,6 +227,7 @@
                           <Component id="navCustomerHis" alignment="0" pref="167" max="32767" attributes="0"/>
                           <Component id="navStaffOp" max="32767" attributes="0"/>
                           <Component id="navCustomerOp" alignment="0" max="32767" attributes="0"/>
+                          <Component id="navDepositHis1" alignment="0" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -243,9 +244,11 @@
                       <Component id="navStaffOp" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" max="-2" attributes="0"/>
                       <Component id="navDepositOp" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Component id="navWithdrawalOp" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="navDepositHis1" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Component id="navlbHistory" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="navCustomerHis" min="-2" max="-2" attributes="0"/>
@@ -253,7 +256,7 @@
                       <Component id="navWithdrawalHis" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="navDepositHis" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" max="-2" attributes="0"/>
+                      <EmptySpace pref="10" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -331,6 +334,17 @@
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="navDepositHisActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JButton" name="navDepositHis1">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Saving Calculator"/>
+              </Properties>
+              <AccessibilityProperties>
+                <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="Calculator"/>
+              </AccessibilityProperties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="navCalculatorHisActionPerformed"/>
               </Events>
             </Component>
           </SubComponents>

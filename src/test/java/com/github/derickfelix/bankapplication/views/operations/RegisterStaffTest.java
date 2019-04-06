@@ -11,6 +11,8 @@ import com.github.derickfelix.bankapplication.controllers.UserController;
 import com.github.derickfelix.bankapplication.models.Customer;
 import com.github.derickfelix.bankapplication.models.Staff;
 import com.github.derickfelix.bankapplication.views.Main;
+import java.io.File;
+import java.net.URL;
 import java.util.ArrayList;
 import javax.swing.*;
 import static org.hamcrest.CoreMatchers.is;
@@ -23,16 +25,18 @@ import static org.junit.Assert.*;
 import java.security.SecureRandom;
 import java.util.Base64;
 import java.util.Base64.Encoder;
-
+import static org.hamcrest.CoreMatchers.equalTo;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
 /**
  *
- * @author JT
+ * @author Chek Wei
  */
 public class RegisterStaffTest {
     
     private static ArrayList<Staff> staffArr;
     private StaffController cc;
-    private int staffCount;
+    private int initialStaffCount;
     
     public RegisterStaffTest() {
     }
@@ -51,7 +55,7 @@ public class RegisterStaffTest {
         // Get initial staff records
         cc = StaffController.getInstance();
         staffArr = cc.getStaffs();
-        staffCount = staffArr.size();
+        initialStaffCount = staffArr.size();
     }
     
     @After
@@ -106,7 +110,8 @@ public class RegisterStaffTest {
         //Get updated staff list
         ArrayList<Staff> newStaffArr = cc.getStaffs();
         //Compare new staff count with old staff count
-        assertEquals("Register failed", newStaffArr.size() - 1, staffCount); // fail if record size is zero.
+//        assertEquals("Register failed", newStaffArr.size() - 1, initialStaffCount);
+        assertThat(initialStaffCount, equalTo(newStaffArr.size() - 1));
     }
     
     @Test
@@ -117,69 +122,20 @@ public class RegisterStaffTest {
         RegisterStaff rc = new RegisterStaff(new Main(), true);
         assertNotNull(rc);
         //Find JComponent by name set in RegisterCustomer.java
-        JTextField txtName = (JTextField) TestUtils.getChildNamed(rc, "jtfName");
-        JTextField txtAddress = (JTextField) TestUtils.getChildNamed(rc, "jtfAddress");
-        JComboBox<String> cmbRank = (JComboBox<String>) TestUtils.getChildNamed(rc, "cRank");
-        JRadioButton radioFemale = (JRadioButton) TestUtils.getChildNamed(rc, "jrbFemale");
-        JRadioButton radioMale = (JRadioButton) TestUtils.getChildNamed(rc, "jrbMale");
-        JComboBox<String> cmbDay = (JComboBox<String>) TestUtils.getChildNamed(rc, "cDay");
-        JComboBox<String> cmbMonth = (JComboBox<String>) TestUtils.getChildNamed(rc, "cMonth");
-        JComboBox<String> cmbYear = (JComboBox<String>) TestUtils.getChildNamed(rc, "cYear");
-        JPasswordField txtPassword = (JPasswordField) TestUtils.getChildNamed(rc, "jpfPassword");
         JButton btnRegister = (JButton) TestUtils.getChildNamed(rc, "btnReg");
         //Check NULL of JComponent
-        assertNotNull("Cannot access JTextField component (jtfName)", txtName);
-        assertNotNull("Cannot access JTextField component (jtfAddress)", txtAddress);
-        assertNotNull("Cannot access JComboBox component (cmbRank)", cmbRank);
-        assertNotNull("Cannot access JRadioButton component (jrbFemale)", radioFemale);
-        assertNotNull("Cannot access JRadioButton component (jrbMale)", radioMale);
-        assertNotNull("Cannot access JComboBox component (cDay)", cmbDay);
-        assertNotNull("Cannot access JComboBox component (cMonth)", cmbMonth);
-        assertNotNull("Cannot access JComboBox component (cYear)", cmbYear);
-        assertNotNull("Cannot access JPasswordField component (jpfPassword)", txtPassword);
         assertNotNull("Cannot access JButton component (btnReg)", btnRegister);
         //Click Register
         btnRegister.doClick();
         //Get updated staff list
         ArrayList<Staff> newStaffArr = cc.getStaffs();
         //Compare new staff count with old staff count
-        assertEquals("Register failed", newStaffArr.size(), staffCount); // fail if record size is zero.    
+//        assertEquals("Register failed", initialStaffCount, newStaffArr.size());
+        assertThat(initialStaffCount, equalTo(newStaffArr.size()));
     }
     
     @Test
-    public void staffRegisterIDK() {
-        //Login
-        UserController.getInstance().login("0000", "secret");
-        //Initiate frame
-        RegisterStaff rc = new RegisterStaff(new Main(), true);
-        assertNotNull(rc);
-        //Find JComponent by name set in RegisterCustomer.java
-        JTextField txtName = (JTextField) TestUtils.getChildNamed(rc, "jtfName");
-        JTextField txtAddress = (JTextField) TestUtils.getChildNamed(rc, "jtfAddress");
-        JComboBox<String> cmbRank = (JComboBox<String>) TestUtils.getChildNamed(rc, "cRank");
-        JRadioButton radioFemale = (JRadioButton) TestUtils.getChildNamed(rc, "jrbFemale");
-        JRadioButton radioMale = (JRadioButton) TestUtils.getChildNamed(rc, "jrbMale");
-        JComboBox<String> cmbDay = (JComboBox<String>) TestUtils.getChildNamed(rc, "cDay");
-        JComboBox<String> cmbMonth = (JComboBox<String>) TestUtils.getChildNamed(rc, "cMonth");
-        JComboBox<String> cmbYear = (JComboBox<String>) TestUtils.getChildNamed(rc, "cYear");
-        JPasswordField txtPassword = (JPasswordField) TestUtils.getChildNamed(rc, "jpfPassword");
-        JButton btnRegister = (JButton) TestUtils.getChildNamed(rc, "btnReg");
-        //Check NULL of JComponent
-        assertNotNull("Cannot access JTextField component (jtfName)", txtName);
-        assertNotNull("Cannot access JTextField component (jtfAddress)", txtAddress);
-        assertNotNull("Cannot access JComboBox component (cmbRank)", cmbRank);
-        assertNotNull("Cannot access JRadioButton component (jrbFemale)", radioFemale);
-        assertNotNull("Cannot access JRadioButton component (jrbMale)", radioMale);
-        assertNotNull("Cannot access JComboBox component (cDay)", cmbDay);
-        assertNotNull("Cannot access JComboBox component (cMonth)", cmbMonth);
-        assertNotNull("Cannot access JComboBox component (cYear)", cmbYear);
-        assertNotNull("Cannot access JPasswordField component (jpfPassword)", txtPassword);
-        assertNotNull("Cannot access JButton component (btnReg)", btnRegister);
-        //Click Register
-        btnRegister.doClick();
-        //Get updated staff list
-        ArrayList<Staff> newStaffArr = cc.getStaffs();
-        //Compare new staff count with old staff count
-        assertEquals("Register failed", newStaffArr.size(), staffCount); // fail if record size is zero.    
+    public void staffRegisterBrowsePicture() {
+        
     }
 }

@@ -23,6 +23,7 @@ public class RegisterStaff extends javax.swing.JDialog {
     private File file;
     private StaffController staffController;
     private Staff staff;
+    private JFileChooser chooser;
 
     /**
      * Creates new form RegisterStaff
@@ -42,7 +43,7 @@ public class RegisterStaff extends javax.swing.JDialog {
         cmbYear.setName("cYear");
         cmbRank.setName("cRank");
         txtPassword.setName("jpfPassword");
-        btnRegister.setName("btnReg");        
+        btnRegister.setName("btnReg");     
     }
 
     private void customOperations() {
@@ -84,7 +85,7 @@ public class RegisterStaff extends javax.swing.JDialog {
         btnRegister = new javax.swing.JButton();
         btnClear = new javax.swing.JButton();
         btnCancel = new javax.swing.JButton();
-
+		
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Trisoft Bank - Register Staff");
 
@@ -334,7 +335,7 @@ public class RegisterStaff extends javax.swing.JDialog {
 
     private void btnBrowsePictureActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBrowsePictureActionPerformed
         // TODO add your handling code here:
-        JFileChooser chooser = new JFileChooser();
+        chooser = new JFileChooser();
         int i = chooser.showOpenDialog(this);
         if (i == JFileChooser.APPROVE_OPTION) {
             file = chooser.getSelectedFile();
