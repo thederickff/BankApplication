@@ -5,6 +5,8 @@
  */
 package com.github.derickfelix.bankapplication.views.operations;
 
+import java.text.DecimalFormat;
+
 /**
  *
  * @author Tan Chek Wei
@@ -17,6 +19,13 @@ public class SavingCalculator extends javax.swing.JDialog {
     public SavingCalculator(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        
+        //Mapping JComponent with name, add manually
+        txtDepositAmount.setName("txtDepositAmount");
+        txtFinalBalance.setName("txtFinalBalance");
+        txtInterest.setName("txtInterest");
+        txtMonth.setName("txtMonth");
+        jButtonCalculate.setName("jButtonCalculate");
     }
 
     /**
@@ -147,16 +156,18 @@ public class SavingCalculator extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonCalculateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCalculateActionPerformed
-        // TODO add your handling code here:
         double amount = Double.parseDouble(txtDepositAmount.getText());
         double interest = Double.parseDouble(txtInterest.getText());
         double month = Double.parseDouble(txtMonth.getText());
-
-        double finalAmount = amount * java.lang.Math.pow(((interest / 100) / 12) + 1, month);
-
-        txtFinalBalance.setText(String.format("%.2f", finalAmount));
+        txtFinalBalance.setText(calculateSaving(amount, interest, month));
     }//GEN-LAST:event_jButtonCalculateActionPerformed
 
+    public static String calculateSaving(double amount, double interest, double month){
+        DecimalFormat df = new DecimalFormat("#.##");
+        return df.format(amount * java.lang.Math.pow(((interest / 100) / 12) + 1, month));
+    }
+    
+    
     /**
      * @param args the command line arguments
      */

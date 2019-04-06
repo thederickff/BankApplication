@@ -133,9 +133,4 @@ public class RegisterStaffTest {
 //        assertEquals("Register failed", initialStaffCount, newStaffArr.size());
         assertThat(initialStaffCount, equalTo(newStaffArr.size()));
     }
-    
-    @Test
-    public void staffRegisterBrowsePicture() {
-        
-    }
 }
