@@ -20,6 +20,11 @@ public class SavingCalculator extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         
+        // this line set the window in the center of thr screen
+        setLocationRelativeTo(null);
+        // disable the default layout to use custom one.
+        setLayout(null);
+        
         //Mapping JComponent with name, add manually
         txtDepositAmount.setName("txtDepositAmount");
         txtFinalBalance.setName("txtFinalBalance");

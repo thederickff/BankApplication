@@ -227,7 +227,7 @@
                           <Component id="navCustomerHis" alignment="0" pref="167" max="32767" attributes="0"/>
                           <Component id="navStaffOp" max="32767" attributes="0"/>
                           <Component id="navCustomerOp" alignment="0" max="32767" attributes="0"/>
-                          <Component id="navDepositHis1" alignment="0" max="32767" attributes="0"/>
+                          <Component id="navSavingCalculator" alignment="0" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -247,7 +247,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="navWithdrawalOp" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="navDepositHis1" min="-2" max="-2" attributes="0"/>
+                      <Component id="navSavingCalculator" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="navlbHistory" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
@@ -336,7 +336,7 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="navDepositHisActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="navDepositHis1">
+            <Component class="javax.swing.JButton" name="navSavingCalculator">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Saving Calculator"/>
               </Properties>

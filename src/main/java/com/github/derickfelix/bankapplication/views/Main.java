@@ -42,6 +42,7 @@ public class Main extends javax.swing.JFrame {
             tbtnMakeWithdrawal.setEnabled(false);
             menuiDeposit.setEnabled(false);
             menuiWithdrawal.setEnabled(false);
+            navSavingCalculator.setEnabled(true);
             if (!Auth.type().equals("staff")) {
                 navDepositOp.setVisible(true);
                 navWithdrawalOp.setVisible(true);
@@ -52,6 +53,7 @@ public class Main extends javax.swing.JFrame {
                 menuiWithdrawalDetails.setEnabled(false);
                 tbtnMakeDeposit.setEnabled(true);
                 tbtnMakeWithdrawal.setEnabled(true);
+                navSavingCalculator.setEnabled(true);
             }
         }
     }
@@ -80,7 +82,7 @@ public class Main extends javax.swing.JFrame {
         navCustomerHis = new javax.swing.JButton();
         navWithdrawalHis = new javax.swing.JButton();
         navDepositHis = new javax.swing.JButton();
-        navDepositHis1 = new javax.swing.JButton();
+        navSavingCalculator = new javax.swing.JButton();
         dskPaneDesktop = new javax.swing.JDesktopPane();
         lblAuthName = new javax.swing.JLabel();
         menuBarMain = new javax.swing.JMenuBar();
@@ -202,8 +204,8 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
-        navDepositHis1.setText("Saving Calculator");
-        navDepositHis1.addActionListener(new java.awt.event.ActionListener() {
+        navSavingCalculator.setText("Saving Calculator");
+        navSavingCalculator.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 navCalculatorHisActionPerformed(evt);
             }
@@ -225,7 +227,7 @@ public class Main extends javax.swing.JFrame {
                     .addComponent(navCustomerHis, javax.swing.GroupLayout.DEFAULT_SIZE, 167, Short.MAX_VALUE)
                     .addComponent(navStaffOp, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(navCustomerOp, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(navDepositHis1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(navSavingCalculator, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         paneNavigateLayout.setVerticalGroup(
@@ -242,7 +244,7 @@ public class Main extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(navWithdrawalOp)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(navDepositHis1)
+                .addComponent(navSavingCalculator)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(navlbHistory)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -254,7 +256,7 @@ public class Main extends javax.swing.JFrame {
                 .addContainerGap(10, Short.MAX_VALUE))
         );
 
-        navDepositHis1.getAccessibleContext().setAccessibleName("Calculator");
+        navSavingCalculator.getAccessibleContext().setAccessibleName("Calculator");
 
         splitPaneMain.setLeftComponent(paneNavigate);
         splitPaneMain.setRightComponent(dskPaneDesktop);
@@ -473,8 +475,8 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JButton navCustomerHis;
     private javax.swing.JButton navCustomerOp;
     private javax.swing.JButton navDepositHis;
-    private javax.swing.JButton navDepositHis1;
     private javax.swing.JButton navDepositOp;
+    private javax.swing.JButton navSavingCalculator;
     private javax.swing.JButton navStaffOp;
     private javax.swing.JButton navWithdrawalHis;
     private javax.swing.JButton navWithdrawalOp;
