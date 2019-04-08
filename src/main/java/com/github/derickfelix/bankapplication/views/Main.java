@@ -92,6 +92,7 @@ public class Main extends javax.swing.JFrame {
         menuiWithdrawal = new javax.swing.JMenuItem();
         menuiDeposit = new javax.swing.JMenuItem();
         menuiRegistration = new javax.swing.JMenuItem();
+        MenuLogout = new javax.swing.JMenuItem();
         menuHistory = new javax.swing.JMenu();
         menuiRegisteredCustomers = new javax.swing.JMenuItem();
         menuiDepositDetails = new javax.swing.JMenuItem();
@@ -304,6 +305,14 @@ public class Main extends javax.swing.JFrame {
         });
         menuOperations.add(menuiRegistration);
 
+        MenuLogout.setText("Logout");
+        MenuLogout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MenuLogoutActionPerformed(evt);
+            }
+        });
+        menuOperations.add(MenuLogout);
+
         menuBarMain.add(menuOperations);
 
         menuHistory.setText("History");
@@ -458,7 +467,15 @@ public class Main extends javax.swing.JFrame {
         new SavingCalculator(this, true).setVisible(true);
     }//GEN-LAST:event_navCalculatorHisActionPerformed
 
+    private void MenuLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuLogoutActionPerformed
+        setVisible(false);
+        Login dialog = new Login(new javax.swing.JFrame(), true);
+        dialog.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_MenuLogoutActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem MenuLogout;
     private javax.swing.JDesktopPane dskPaneDesktop;
     private javax.swing.JLabel lblAuthName;
     private javax.swing.JMenuBar menuBarMain;

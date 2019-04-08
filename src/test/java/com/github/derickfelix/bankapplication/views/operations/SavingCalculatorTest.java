@@ -125,7 +125,7 @@ public class SavingCalculatorTest {
 
     @Test(expected = java.lang.NumberFormatException.class)
     public void savingCalculatorAlphabetInput() {
-//Login
+        //Login
         UserController.getInstance().login("0000", "secret");
         //Initiate frame
         SavingCalculator rc = new SavingCalculator(new Main(), true);
