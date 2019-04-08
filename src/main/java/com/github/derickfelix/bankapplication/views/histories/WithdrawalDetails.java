@@ -39,6 +39,11 @@ public class WithdrawalDetails extends javax.swing.JDialog {
             tableWithdrawals.setValueAt(tempWithdraw.getDate().toString(), i, 1);
         }
     }
+    
+    
+    public ArrayList<Withdraw> getAllWithdraw() {
+        return withdraws;
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
