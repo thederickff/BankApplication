@@ -1,7 +1,25 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * The MIT License
+ *
+ * Copyright 2019 Derick Felix.
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
  */
 package com.github.derickfelix.bankapplication.respositories.impl;
 
@@ -14,9 +32,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
- * @name OperationRepository
  * @author derickfelix
- * @date Oct 8, 2017
+ * Date: Oct 8, 2017
  */
 public class OperationRepository extends BaseRepository implements IOperationRepository {
 
@@ -26,7 +43,8 @@ public class OperationRepository extends BaseRepository implements IOperationRep
     private ArrayList<Withdraw> withdraws;
 
     @Override
-    public void deposit(int accountNumber, double amount) {
+    public void deposit(int accountNumber, double amount)
+    {
         Connection conn = connectionManager.createConnection();
         String sql = "INSERT INTO " + depositTable + " (`account_number`, `deposit_amount`) VALUES (?, ?)";
         try {
@@ -44,7 +62,8 @@ public class OperationRepository extends BaseRepository implements IOperationRep
     }
 
     @Override
-    public void withdraw(int accountNumber, double amount) {
+    public void withdraw(int accountNumber, double amount)
+    {
         Connection conn = connectionManager.createConnection();
         String sql = "INSERT INTO " + withdrawTable + " (`account_number`, `withdraw_amount`) VALUES (?, ?)";
         try {
@@ -62,7 +81,8 @@ public class OperationRepository extends BaseRepository implements IOperationRep
     }
 
     @Override
-    public ArrayList<Deposit> deposits() {
+    public ArrayList<Deposit> deposits()
+    {
         Connection conn = connectionManager.createConnection();
         String sql = "SELECT * FROM " + depositTable;
         // Intantiate only once
@@ -88,7 +108,8 @@ public class OperationRepository extends BaseRepository implements IOperationRep
     }
 
     @Override
-    public ArrayList<Withdraw> withdraws() {
+    public ArrayList<Withdraw> withdraws()
+    {
         Connection conn = connectionManager.createConnection();
         String sql = "SELECT * FROM " + withdrawTable;
         // Intantiate only once
@@ -114,7 +135,8 @@ public class OperationRepository extends BaseRepository implements IOperationRep
     }
 
     @Override
-    public ArrayList<Deposit> deposits(int accountNumber) {
+    public ArrayList<Deposit> deposits(int accountNumber)
+    {
         Connection conn = connectionManager.createConnection();
         String sql = "SELECT * FROM " + depositTable + " WHERE `account_number` = ?";
         // Intantiate only once
@@ -127,7 +149,7 @@ public class OperationRepository extends BaseRepository implements IOperationRep
             pstmt = conn.prepareStatement(sql);
             pstmt.setInt(1, accountNumber);
             rs = pstmt.executeQuery();
-           
+
             while (rs.next()) {
                 deposits.add(depositMapper(rs));
             }
@@ -141,7 +163,8 @@ public class OperationRepository extends BaseRepository implements IOperationRep
     }
 
     @Override
-    public ArrayList<Withdraw> withdraws(int accountNumber) {
+    public ArrayList<Withdraw> withdraws(int accountNumber)
+    {
         Connection conn = connectionManager.createConnection();
         String sql = "SELECT * FROM " + withdrawTable + " WHERE `account_number` = ?";
         // Intantiate only once
@@ -174,7 +197,8 @@ public class OperationRepository extends BaseRepository implements IOperationRep
      * @return a new Deposit
      * @throws SQLException
      */
-    private Deposit depositMapper(ResultSet rs) throws SQLException {
+    private Deposit depositMapper(ResultSet rs) throws SQLException
+    {
         return new Deposit(rs.getString("account_number"), rs.getDouble("deposit_amount"), rs.getDate("created_at"));
     }
 
@@ -185,7 +209,8 @@ public class OperationRepository extends BaseRepository implements IOperationRep
      * @return a new Withdraw
      * @throws SQLException
      */
-    private Withdraw withdrawMapper(ResultSet rs) throws SQLException {
+    private Withdraw withdrawMapper(ResultSet rs) throws SQLException
+    {
         return new Withdraw(rs.getString("account_number"), rs.getDouble("withdraw_amount"), rs.getDate("created_at"));
     }
 }
