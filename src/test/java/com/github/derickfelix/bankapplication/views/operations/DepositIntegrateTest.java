@@ -27,7 +27,7 @@ import static org.junit.Assert.*;
 
 /**
  *
- * @author JT
+ * @author ivan
  */
 public class DepositIntegrateTest {
     
