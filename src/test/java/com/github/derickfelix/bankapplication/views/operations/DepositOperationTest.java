@@ -22,7 +22,7 @@ import static org.junit.Assert.*;
 
 /**
  *
- * @author hanzo
+ * @author ivan
  */
 public class DepositOperationTest {
 
