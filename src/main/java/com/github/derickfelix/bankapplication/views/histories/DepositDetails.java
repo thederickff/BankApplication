@@ -39,6 +39,10 @@ public class DepositDetails extends javax.swing.JDialog {
         }
     }
 
+    public ArrayList<Deposit> getAllDeposit() {
+        return deposits;
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
