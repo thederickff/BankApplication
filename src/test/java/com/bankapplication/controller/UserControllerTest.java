@@ -1,11 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.bankapplication.controller;
 
-import com.bankapplication.model.User;
+import com.github.derickfelix.bankapplication.controllers.UserController;
+import com.github.derickfelix.bankapplication.models.User;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -21,30 +17,36 @@ public class UserControllerTest {
 
     private UserController instance;
 
-    public UserControllerTest() {
+    public UserControllerTest()
+    {
     }
 
     @BeforeClass
-    public static void setUpClass() {
+    public static void setUpClass()
+    {
     }
 
     @AfterClass
-    public static void tearDownClass() {
+    public static void tearDownClass()
+    {
     }
 
     @Before
-    public void setUp() {
+    public void setUp()
+    {
     }
 
     @After
-    public void tearDown() {
+    public void tearDown()
+    {
     }
 
     /**
      * Test of login method, of class UserController.
      */
     @Test
-    public void testLogin() {
+    public void testLogin()
+    {
         instance = UserController.getInstance();
 
         User user = new User();
@@ -60,7 +62,8 @@ public class UserControllerTest {
      * Test of store method, of class UserController.
      */
     @Test
-    public void testStore() {
+    public void testStore()
+    {
         System.out.println("Store");
         instance = UserController.getInstance();
         User user = new User();
@@ -76,7 +79,8 @@ public class UserControllerTest {
      * Test of update method, of class UserController.
      */
     @Test
-    public void testUpdate() {
+    public void testUpdate()
+    {
         System.out.println("Update");
         instance = UserController.getInstance();
 
@@ -95,7 +99,8 @@ public class UserControllerTest {
      * Test of destroy method, of class UserController.
      */
     @Test
-    public void testDestroy() {
+    public void testDestroy()
+    {
         System.out.println("Destroy");
         instance = UserController.getInstance();
         User user = new User();

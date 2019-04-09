@@ -1,10 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.bankapplication.controller;
 
+import com.github.derickfelix.bankapplication.controllers.OperationController;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -17,33 +13,39 @@ import static org.junit.Assert.*;
  * @author derickfelix
  */
 public class OperationControllerTest {
-    
+
     private OperationController instance;
-    
-    public OperationControllerTest() {
+
+    public OperationControllerTest()
+    {
     }
-    
+
     @BeforeClass
-    public static void setUpClass() {
+    public static void setUpClass()
+    {
     }
-    
+
     @AfterClass
-    public static void tearDownClass() {
+    public static void tearDownClass()
+    {
     }
-    
+
     @Before
-    public void setUp() {
+    public void setUp()
+    {
     }
-    
+
     @After
-    public void tearDown() {
+    public void tearDown()
+    {
     }
 
     /**
      * Test of makeDeposit method, of class OperationController.
      */
     @Test
-    public void testMakeDeposit() {
+    public void testMakeDeposit()
+    {
         System.out.println("makeDeposit");
         //instance = OperationController.getInstance();
         //instance.makeDeposit(1, 1000);
@@ -53,7 +55,8 @@ public class OperationControllerTest {
      * Test of makeWithdraw method, of class OperationController.
      */
     @Test
-    public void testMakeWithdraw() {
+    public void testMakeWithdraw()
+    {
         System.out.println("makeWithdraw");
         instance = OperationController.getInstance();
         instance.makeDeposit(1, 1000);
@@ -67,10 +70,11 @@ public class OperationControllerTest {
      * Test of getBalance method, of class OperationController.
      */
     @Test
-    public void testGetBalance() {
+    public void testGetBalance()
+    {
         System.out.println("getBalance");
         //instance = OperationController.getInstance();
         //System.out.println(instance.getBalance(1));
     }
-    
+
 }

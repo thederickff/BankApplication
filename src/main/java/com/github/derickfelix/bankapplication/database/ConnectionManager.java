@@ -14,7 +14,7 @@ public class ConnectionManager {
 
     private static ConnectionManager connectionManager;
     private final String driverName = "com.mysql.jdbc.Driver";
-    private final String connectionUrl = "jdbc:mysql://localhost:3306/bank_db";
+    private final String connectionUrl = "jdbc:mysql://localhost:3306/bank_application";
     private final String username = "root";
     private final String password = "admin";
     
