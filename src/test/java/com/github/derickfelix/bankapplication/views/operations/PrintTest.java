@@ -9,6 +9,7 @@ import Test.TestUtils;
 import com.github.derickfelix.bankapplication.controllers.UserController;
 import com.github.derickfelix.bankapplication.views.Main;
 import com.github.derickfelix.bankapplication.views.histories.CustomerRegistration;
+import com.github.derickfelix.bankapplication.views.histories.DepositDetails;
 import javax.swing.JButton;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -43,7 +44,7 @@ public class PrintTest {
     }
 
     @Test
-    public void testPrintFunction() {
+    public void testCustomerPrintFunction() {
         //Login
         UserController.getInstance().login("0000", "secret");
         //Initiate frame
@@ -55,5 +56,19 @@ public class PrintTest {
         assertTrue(cr.printFunction);
                 
     }
+    
+    @Test
+    public void testDepositPrintFunction() {
+        //Login
+        UserController.getInstance().login("0000", "secret");
+        //Initiate frame
+        DepositDetails dd = new DepositDetails(new Main(), true);
+        assertNotNull(dd);   
+        JButton btnPrint = (JButton) TestUtils.getChildNamed(dd, "btnPrint");
+        btnPrint.doClick();
+        
+        assertTrue(dd.printFunction);
+                
+    }    
     
 }
