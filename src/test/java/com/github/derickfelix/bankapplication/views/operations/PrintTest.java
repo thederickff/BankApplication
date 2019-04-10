@@ -45,6 +45,7 @@ public class PrintTest {
 
     @Test
     public void testCustomerPrintFunction() {
+        System.out.println("Customer Details Printing Test");
         //Login
         UserController.getInstance().login("0000", "secret");
         //Initiate frame
@@ -52,13 +53,13 @@ public class PrintTest {
         assertNotNull(cr);   
         JButton btnPrint = (JButton) TestUtils.getChildNamed(cr, "btnPrint");
         btnPrint.doClick();
-        
-        assertTrue(cr.printFunction);
-                
+        assertTrue(cr.printFunction);     
+        System.out.println("Print dialog box is poped up.");
     }
     
     @Test
     public void testDepositPrintFunction() {
+        System.out.println("Deposit Details Printing Test");        
         //Login
         UserController.getInstance().login("0000", "secret");
         //Initiate frame
@@ -68,7 +69,7 @@ public class PrintTest {
         btnPrint.doClick();
         
         assertTrue(dd.printFunction);
-                
+        System.out.println("Print dialog box is poped up");
     }    
     
 }
