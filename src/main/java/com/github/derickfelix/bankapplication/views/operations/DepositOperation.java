@@ -30,6 +30,15 @@ public class DepositOperation extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         customComponents();
+        
+        txtAccountNumber.setName("jtfAccNum");
+        txtName.setName("jtfName");
+        txtPreviousDeposit.setName("jtfPrevDeposit");
+        txtTotalBalance.setName("jtfTotalBalance");
+        txtAmount.setName("jtfTotalAmount");
+        btnCheck.setName("jtbCheck");
+        btnDeposit.setName("jtbDeposit");
+        btnCancel.setName("btnCcl");
     }
     
     private void customComponents() {

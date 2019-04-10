@@ -7,7 +7,12 @@ package com.github.derickfelix.bankapplication.views.histories;
 
 import com.github.derickfelix.bankapplication.models.Deposit;
 import com.github.derickfelix.bankapplication.controllers.OperationController;
+import java.awt.print.PrinterException;
+import java.text.MessageFormat;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JTable;
 
 /**
  *
@@ -39,6 +44,10 @@ public class DepositDetails extends javax.swing.JDialog {
         }
     }
 
+    public ArrayList<Deposit> getAllDeposit() {
+        return deposits;
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -111,6 +120,11 @@ public class DepositDetails extends javax.swing.JDialog {
         jScrollPane1.setViewportView(tableDeposits);
 
         btnPrint.setText("Print");
+        btnPrint.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPrintActionPerformed(evt);
+            }
+        });
 
         btnCancel.setText("Cancel");
         btnCancel.addActionListener(new java.awt.event.ActionListener() {
@@ -170,6 +184,18 @@ public class DepositDetails extends javax.swing.JDialog {
     private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
         this.dispose();
     }//GEN-LAST:event_btnCancelActionPerformed
+
+    private void btnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrintActionPerformed
+        // TODO add your handling code here:
+        MessageFormat header = new MessageFormat("Deposit Details");
+        MessageFormat footer = new MessageFormat("End");
+        
+        try {
+            tableDeposits.print(JTable.PrintMode.FIT_WIDTH, header, footer);
+        } catch (PrinterException ex) {
+            Logger.getLogger(CustomerRegistration.class.getName()).log(Level.SEVERE, null, ex);
+        }              
+    }//GEN-LAST:event_btnPrintActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancel;
