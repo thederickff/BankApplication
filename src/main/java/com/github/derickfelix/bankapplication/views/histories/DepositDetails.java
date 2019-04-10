@@ -22,9 +22,7 @@ public class DepositDetails extends javax.swing.JDialog {
 
     private OperationController operationCtrl;
     private ArrayList<Deposit> deposits;
-    /**
-     * Creates new form RegisteredCustomer
-     */
+   
     public DepositDetails(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -35,12 +33,12 @@ public class DepositDetails extends javax.swing.JDialog {
         this.operationCtrl = OperationController.getInstance();
         this.deposits = operationCtrl.getAllDeposits();
         
-        for (int i = 0; i < deposits.size(); i++) {
-            Deposit tempDeposit = deposits.get(i);
+        for (int i = 0; i < this.deposits.size(); i++) {
+            Deposit tempDeposit = this.deposits.get(i);
             // Amount
             tableDeposits.setValueAt(tempDeposit.getAmount(), i, 0);
             // Date
-            tableDeposits.setValueAt(tempDeposit.getDate(), i, 1);
+            tableDeposits.setValueAt(tempDeposit.getDate().toString(), i, 1);
         }
     }
 

@@ -88,7 +88,7 @@ public class DepositOperationTest {
     }
 
     @Test
-    public void checkAccNumWithAlphabet() {
+    public void checkAccNumWithInvalidInput() {
         OperationController oc = OperationController.getInstance();
         CustomerController cc = CustomerController.getInstance();
         UserController.getInstance().login("0000", "secret");
@@ -110,7 +110,7 @@ public class DepositOperationTest {
         assertNotNull("Cannot access JTextField component (jtfTotalAmount)", txtAmount);
         assertNotNull("Cannot access JButton component (btnCheck)", btnCheck);
 
-        txtAccountNumber.setText("aaa");
+        txtAccountNumber.setText("12345");
         String accountNum = txtAccountNumber.getText();
         btnCheck.doClick();
         Customer customer = cc.searchCustomer(Integer.parseInt(accountNum));
