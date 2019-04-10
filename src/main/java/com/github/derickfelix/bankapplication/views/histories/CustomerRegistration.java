@@ -29,6 +29,8 @@ public class CustomerRegistration extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         customOperations();
+        
+        btnPrint.setName("btnPrint");
     }
     private void customOperations() {
         customerCtrl = CustomerController.getInstance();
@@ -215,11 +217,14 @@ public class CustomerRegistration extends javax.swing.JDialog {
         
         try {
             table.print(JTable.PrintMode.FIT_WIDTH, header, footer);
+            printFunction = true;
         } catch (PrinterException ex) {
             Logger.getLogger(CustomerRegistration.class.getName()).log(Level.SEVERE, null, ex);
         }        
     }//GEN-LAST:event_btnPrintActionPerformed
 
+    public boolean printFunction = false;
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancel;
     private javax.swing.JButton btnPrint;
