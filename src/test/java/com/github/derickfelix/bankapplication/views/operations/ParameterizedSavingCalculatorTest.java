@@ -89,7 +89,7 @@ public class ParameterizedSavingCalculatorTest {
         // When run this test, times out after 20 milliseconds.
         // Timeout is applied globally to all methods.
         @Test(timeout = 50)
-        public void savingCalculatorValidInput() throws TestTimedOutException{
+        public void savingCalculatorInvalidInput() throws TestTimedOutException{
             thrown.expect(TestTimedOutException.class);
             SavingCalculator.calculateSaving(depositAmount, interest, month);
         }
