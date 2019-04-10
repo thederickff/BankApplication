@@ -154,7 +154,5 @@ public class LoginTest {
         }
         //result = !txtPassword.getText().equals("secret");
         assertEquals("The password is not encrypted.", expResult, result);
-
     }     
-    
 }
