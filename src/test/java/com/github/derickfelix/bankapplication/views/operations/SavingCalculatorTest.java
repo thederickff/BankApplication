@@ -24,7 +24,8 @@ import static org.junit.Assert.assertThat;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-
+import org.junit.experimental.categories.Category;
+import static org.hamcrest.CoreMatchers.is;
 /**
  *
  * @author Tan Chek Wei
@@ -50,6 +51,7 @@ public class SavingCalculatorTest {
     public void tearDown() {
     }
 
+    @Category(PositiveTest.class)
     @Test
     public void savingCalculatorValidInput() {
         //Login
@@ -87,8 +89,9 @@ public class SavingCalculatorTest {
         //Compare
         assertThat(Double.parseDouble(txtFinalBalance.getText()), equalTo(2627.9));
     }
-
-    @Test(expected = java.lang.NumberFormatException.class)
+    
+    @Category(NegativeTest.class)
+    @Test
     public void savingCalculatorEmptyInput() {
         //Login
         UserController.getInstance().login("0000", "secret");
@@ -121,9 +124,13 @@ public class SavingCalculatorTest {
         
         //Click Calculate
         jButtonCalculate.doClick();
+        
+        //Check any result shown
+        assertThat(txtFinalBalance.getText(), is(""));
     }
 
-    @Test(expected = java.lang.NumberFormatException.class)
+    @Category(NegativeTest.class)
+    @Test
     public void savingCalculatorAlphabetInput() {
         //Login
         UserController.getInstance().login("0000", "secret");
@@ -156,5 +163,8 @@ public class SavingCalculatorTest {
         
         //Click Calculate
         jButtonCalculate.doClick();
+        
+        //Check any result shown
+        assertThat(txtFinalBalance.getText(), is(""));
     }
 }

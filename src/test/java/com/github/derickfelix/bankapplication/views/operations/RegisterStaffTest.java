@@ -28,31 +28,37 @@ import java.util.Base64;
 import java.util.Base64.Encoder;
 import static org.hamcrest.CoreMatchers.equalTo;
 import org.junit.Ignore;
+import org.junit.experimental.categories.Categories;
+import org.junit.experimental.categories.Categories.IncludeCategory;
+import org.junit.experimental.categories.Category;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
+import org.junit.runners.Suite.SuiteClasses;
+
 /**
  *
  * @author Chek Wei
  */
+
 public class RegisterStaffTest {
-    
+
     private static ArrayList<Staff> staffArr;
     private StaffController cc;
     private int initialStaffCount;
     private StaffController staffCtrl;
-    
+
     public RegisterStaffTest() {
     }
-    
+
     @BeforeClass
     public static void setUpClass() {
 //        testData = new Staff("1234", "Jack", "No.10 Jalan 10, Kampung Baru, 47000 Sungai Buloh, Selangor.", 'f', "1999-01-01", "Board of Director", "123456");
     }
-    
+
     @AfterClass
     public static void tearDownClass() {
     }
-    
+
     @Before
     public void setUp() {
         // Get initial staff records
@@ -60,11 +66,12 @@ public class RegisterStaffTest {
         staffArr = cc.getStaffs();
         initialStaffCount = staffArr.size();
     }
-    
+
     @After
     public void tearDown() {
     }
-    
+
+    @Category(PositiveTest.class)
     @Test
     public void staffRegisterValidInput() {
         //Login
@@ -83,7 +90,7 @@ public class RegisterStaffTest {
         JComboBox<String> cmbYear = (JComboBox<String>) TestUtils.getChildNamed(rc, "cYear");
         JPasswordField txtPassword = (JPasswordField) TestUtils.getChildNamed(rc, "jpfPassword");
         JButton btnRegister = (JButton) TestUtils.getChildNamed(rc, "btnReg");
-        
+
         //Check NULL of JComponent
         assertNotNull("Cannot access JTextField component (jtfName)", txtName);
         assertNotNull("Cannot access JTextField component (jtfAddress)", txtAddress);
@@ -116,7 +123,8 @@ public class RegisterStaffTest {
 //        assertEquals("Register failed", newStaffArr.size() - 1, initialStaffCount);
         assertThat(initialStaffCount, equalTo(newStaffArr.size() - 1));
     }
-    
+
+    @Category(NegativeTest.class)
     @Test
     public void staffRegisterEmptyInput() {
         //Login
@@ -136,7 +144,8 @@ public class RegisterStaffTest {
 //        assertEquals("Register failed", initialStaffCount, newStaffArr.size());
         assertThat(initialStaffCount, equalTo(newStaffArr.size()));
     }
-    
+
+    @Category(PositiveTest.class)
     @Test
     public void staffRegisterLoginValidInput() {
         //Login
@@ -155,7 +164,7 @@ public class RegisterStaffTest {
         JComboBox<String> cmbYear = (JComboBox<String>) TestUtils.getChildNamed(rs, "cYear");
         JPasswordField txtPassword = (JPasswordField) TestUtils.getChildNamed(rs, "jpfPassword");
         JButton btnRegister = (JButton) TestUtils.getChildNamed(rs, "btnReg");
-        
+
         //Check NULL of JComponent
         assertNotNull("Cannot access JTextField component (jtfName)", txtName);
         assertNotNull("Cannot access JTextField component (jtfAddress)", txtAddress);
@@ -189,16 +198,16 @@ public class RegisterStaffTest {
         //Compare new staff count with old staff count
 //        assertEquals("Register failed", newStaffArr.size() - 1, initialStaffCount);
         assertThat(initialStaffCount, equalTo(newStaffArr.size() - 1));
-        
+
         //login using new account
         staffCtrl = StaffController.getInstance();
         boolean loginSuccess = staffCtrl.login(staff.getAccountNumber(), "123");
         assertThat(loginSuccess, is(true));
     }
-    
+
     @Test
     @Ignore("Reason: Han Zong went to TT Night and stuff failling")
     public void staffRegisterIgnoreThis() {
-        
+
     }
 }
