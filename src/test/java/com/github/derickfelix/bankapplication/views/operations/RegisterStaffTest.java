@@ -27,6 +27,7 @@ import java.security.SecureRandom;
 import java.util.Base64;
 import java.util.Base64.Encoder;
 import static org.hamcrest.CoreMatchers.equalTo;
+import org.junit.Ignore;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 /**
@@ -102,7 +103,7 @@ public class RegisterStaffTest {
         cmbDay.setSelectedIndex(1);
         cmbMonth.setSelectedIndex(1);
         cmbYear.setSelectedIndex(1);
-        txtPassword.setText("12345678");
+        txtPassword.setText("123");
         //Post string to text field (for JTextField only)
         txtName.postActionEvent();
         txtAddress.postActionEvent();
@@ -193,5 +194,11 @@ public class RegisterStaffTest {
         staffCtrl = StaffController.getInstance();
         boolean loginSuccess = staffCtrl.login(staff.getAccountNumber(), "123");
         assertThat(loginSuccess, is(true));
+    }
+    
+    @Test
+    @Ignore("Reason: Han Zong went to TT Night and stuff failling")
+    public void staffRegisterIgnoreThis() {
+        
     }
 }
