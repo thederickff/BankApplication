@@ -21,7 +21,7 @@ public class UserController {
     private UserRepository userRepository;
     private ArrayList<User> users;
 
-    private UserController() {
+    public UserController() {
         this.userRepository = new UserRepository();
     }
 

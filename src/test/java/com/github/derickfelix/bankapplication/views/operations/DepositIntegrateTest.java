@@ -30,22 +30,22 @@ import static org.junit.Assert.*;
  * @author ivan
  */
 public class DepositIntegrateTest {
-    
+
     public DepositIntegrateTest() {
     }
-    
+
     @BeforeClass
     public static void setUpClass() {
     }
-    
+
     @AfterClass
     public static void tearDownClass() {
     }
-    
+
     @Before
     public void setUp() {
     }
-    
+
     @After
     public void tearDown() {
     }
@@ -78,7 +78,7 @@ public class DepositIntegrateTest {
         txtAccountNumber.setText("10374");
         txtAccountNumber.postActionEvent();
         btnCheck.doClick();
-        
+
         //Declare
         double amountDeposit = 50.0;
         //Set txtAmount
