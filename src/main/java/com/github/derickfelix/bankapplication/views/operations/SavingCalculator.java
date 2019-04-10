@@ -19,12 +19,12 @@ public class SavingCalculator extends javax.swing.JDialog {
     public SavingCalculator(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        
+
         // this line set the window in the center of thr screen
         setLocationRelativeTo(null);
         // disable the default layout to use custom one.
         setLayout(null);
-        
+
         //Mapping JComponent with name, add manually
         txtDepositAmount.setName("txtDepositAmount");
         txtFinalBalance.setName("txtFinalBalance");
@@ -53,6 +53,7 @@ public class SavingCalculator extends javax.swing.JDialog {
         txtFinalBalance = new javax.swing.JTextField();
         lblInterest2 = new javax.swing.JLabel();
         jButtonCalculate = new javax.swing.JButton();
+        lblError = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -97,6 +98,8 @@ public class SavingCalculator extends javax.swing.JDialog {
             }
         });
 
+        lblError.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -113,17 +116,19 @@ public class SavingCalculator extends javax.swing.JDialog {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(txtInterest, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(lblDepositAmount)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtDepositAmount, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
                                 .addComponent(lblMonth)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(txtMonth, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(lblInterest2)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtFinalBalance, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(txtFinalBalance, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(lblError, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                    .addComponent(lblDepositAmount)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(txtDepositAmount, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGap(0, 95, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
@@ -136,6 +141,8 @@ public class SavingCalculator extends javax.swing.JDialog {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(paneTittle2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblError, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblDepositAmount)
@@ -154,25 +161,35 @@ public class SavingCalculator extends javax.swing.JDialog {
                     .addComponent(lblInterest2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButtonCalculate)
-                .addContainerGap(13, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonCalculateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCalculateActionPerformed
-        double amount = Double.parseDouble(txtDepositAmount.getText());
-        double interest = Double.parseDouble(txtInterest.getText());
-        double month = Double.parseDouble(txtMonth.getText());
-        txtFinalBalance.setText(calculateSaving(amount, interest, month));
+
+        if ("".equals(txtDepositAmount.getText())
+                || "".equals(txtInterest.getText())
+                || "".equals(txtMonth.getText())) {
+            lblError.setText("All field should not be empty!");
+        } else {
+            try {
+                double amount = Double.parseDouble(txtDepositAmount.getText());
+                double interest = Double.parseDouble(txtInterest.getText());
+                double month = Double.parseDouble(txtMonth.getText());
+                txtFinalBalance.setText(calculateSaving(amount, interest, month));
+            } catch (java.lang.NumberFormatException e) {
+                lblError.setText("All field should be number!");
+            }
+        }
     }//GEN-LAST:event_jButtonCalculateActionPerformed
 
-    public static String calculateSaving(double amount, double interest, double month){
+    public static String calculateSaving(double amount, double interest, double month) {
         DecimalFormat df = new DecimalFormat("#.##");
         return df.format(amount * java.lang.Math.pow(((interest / 100) / 12) + 1, month));
     }
-    
-    
+
     /**
      * @param args the command line arguments
      */
@@ -219,14 +236,11 @@ public class SavingCalculator extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonCalculate;
     private javax.swing.JLabel lblDepositAmount;
+    private javax.swing.JLabel lblError;
     private javax.swing.JLabel lblInterest;
     private javax.swing.JLabel lblInterest2;
     private javax.swing.JLabel lblMonth;
-    private javax.swing.JPanel paneTittle;
-    private javax.swing.JPanel paneTittle1;
     private javax.swing.JPanel paneTittle2;
-    private javax.swing.JLabel panelbTitle;
-    private javax.swing.JLabel panelbTitle1;
     private javax.swing.JLabel panelbTitle2;
     private javax.swing.JTextField txtDepositAmount;
     private javax.swing.JTextField txtFinalBalance;

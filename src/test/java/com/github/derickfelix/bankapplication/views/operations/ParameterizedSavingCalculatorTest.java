@@ -44,6 +44,7 @@ public class ParameterizedSavingCalculatorTest {
         @Parameters(name = "{index}: calculateSaving({0}, {1}, {2})={3}")
         public static Collection<Object[]> savingCalculatorValidData() {
             return Arrays.asList(new Object[][]{
+                //{depositAmount, interest, month, finalSaving} 
                 {2000.0, 3.0, 6.0, 2030.19},
                 {100078.0, 60.0, 6.0, 134114.09},
                 {6000.0, 5.0, 24.0, 6629.65},
@@ -52,17 +53,17 @@ public class ParameterizedSavingCalculatorTest {
         }
 
         @Parameter(value = 0)
-        public double n1;
+        public double depositAmount;
         @Parameter(value = 1)
-        public double n2;
+        public double interest;
         @Parameter(value = 2)
-        public double n3;
+        public double month;
         @Parameter(value = 3)
-        public double expectedResult;
+        public double finalSaving;
 
         @Test
         public void savingCalculatorValidInput() throws Exception {
-            assertThat(Double.parseDouble(SavingCalculator.calculateSaving(n1, n2, n3)), equalTo(expectedResult));
+            assertThat(Double.parseDouble(SavingCalculator.calculateSaving(depositAmount, interest, month)), equalTo(finalSaving));
         }
     }
 
@@ -74,22 +75,23 @@ public class ParameterizedSavingCalculatorTest {
         @Parameters(name = "{index}: calculateSaving({0}, {1}, {2})")
         public static Collection<Object[]> savingCalculatorValidData() {
             return Arrays.asList(new Object[][]{
+                //{depositAmount, interest, month}
                 {999, 3.0, 9999999999999999.0}});
         }
 
         @Parameter(value = 0)
-        public double n1;
+        public double depositAmount;
         @Parameter(value = 1)
-        public double n2;
+        public double interest;
         @Parameter(value = 2)
-        public double n3;
+        public double month;
         
         // When run this test, times out after 20 milliseconds.
         // Timeout is applied globally to all methods.
         @Test(timeout = 50)
         public void savingCalculatorValidInput() throws TestTimedOutException{
             thrown.expect(TestTimedOutException.class);
-            SavingCalculator.calculateSaving(n1, n2, n3);
+            SavingCalculator.calculateSaving(depositAmount, interest, month);
         }
     }
 }

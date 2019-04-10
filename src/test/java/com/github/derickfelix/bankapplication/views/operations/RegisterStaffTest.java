@@ -103,7 +103,7 @@ public class RegisterStaffTest {
         cmbDay.setSelectedIndex(1);
         cmbMonth.setSelectedIndex(1);
         cmbYear.setSelectedIndex(1);
-        txtPassword.setText("12345678");
+        txtPassword.setText("123");
         //Post string to text field (for JTextField only)
         txtName.postActionEvent();
         txtAddress.postActionEvent();
