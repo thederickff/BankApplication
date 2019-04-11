@@ -72,7 +72,8 @@ public class RegisterStaffTest {
     @After
     public void tearDown() {
     }
-
+    
+    // @Category({PositiveTest.class, RegressionTest.class, FunctionalTest})
     @Category(PositiveTest.class)
     @Test
     public void staffRegisterValidInput() {

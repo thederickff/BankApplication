@@ -62,7 +62,7 @@ public class ParameterizedSavingCalculatorTest {
         public double finalSaving;
 
         @Test
-        public void savingCalculatorValidInput() throws Exception {
+        public void savingCalculatorValidInput() {
             assertThat(Double.parseDouble(SavingCalculator.calculateSaving(depositAmount, interest, month)), equalTo(finalSaving));
         }
     }
