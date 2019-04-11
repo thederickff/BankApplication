@@ -13,6 +13,7 @@ import org.junit.runners.Suite;
  *
  * @author Tan Chek Wei
  */
+//@Categories.ExcludeCategory(NonFunctionalTest.class)
 @RunWith(Categories.class)
 @Categories.IncludeCategory(PositiveTest.class)
 @Suite.SuiteClasses({RegisterStaffTest.class, SavingCalculatorTest.class})

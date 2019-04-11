@@ -27,11 +27,13 @@ import java.security.SecureRandom;
 import java.util.Base64;
 import java.util.Base64.Encoder;
 import static org.hamcrest.CoreMatchers.equalTo;
+import org.junit.FixMethodOrder;
 import org.junit.Ignore;
 import org.junit.experimental.categories.Categories;
 import org.junit.experimental.categories.Categories.IncludeCategory;
 import org.junit.experimental.categories.Category;
 import org.junit.runner.RunWith;
+import org.junit.runners.MethodSorters;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Suite.SuiteClasses;
 
@@ -39,7 +41,7 @@ import org.junit.runners.Suite.SuiteClasses;
  *
  * @author Chek Wei
  */
-
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class RegisterStaffTest {
 
     private static ArrayList<Staff> staffArr;
@@ -122,8 +124,14 @@ public class RegisterStaffTest {
         //Compare new staff count with old staff count
 //        assertEquals("Register failed", newStaffArr.size() - 1, initialStaffCount);
         assertThat(initialStaffCount, equalTo(newStaffArr.size() - 1));
+        //assertThat(initialStaffCount, is(newStaffArr.size() - 1));
+        //assertNull, assertSame, assertEquals
+        
+        //example:
+        //assertThat(x, is(not(4)));
     }
 
+    // @Category({PositiveTest.class, RegressionTest.class, FunctionalTest})
     @Category(NegativeTest.class)
     @Test
     public void staffRegisterEmptyInput() {
