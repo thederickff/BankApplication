@@ -45,6 +45,10 @@ public class Login extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         customOperations();
+        
+        txtAccount.setName("txtAccount");
+        txtPassword.setName("txtPassword");
+        btnLogin.setName("btnLogin");
     }
 
     private void customOperations() {

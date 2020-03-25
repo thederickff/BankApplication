@@ -49,6 +49,14 @@ public class WithdrawOperation extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         customOperations();
+        
+        txtAccountNumber.setName("jtfAccNum");
+        txtName.setName("jtfName");
+        txtPreviousWithdraw.setName("jtfPrevWith");
+        txtTotalBalance.setName("jtfTotalBalance");
+        txtAmount.setName("jtfTotalAmount");
+        btnCheck.setName("jtbCheck");
+        btnWithdraw.setName("jtbWithdraw");
     }
 
     private void customOperations() {

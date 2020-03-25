@@ -27,6 +27,7 @@ import com.github.derickfelix.bankapplication.util.Auth;
 import com.github.derickfelix.bankapplication.views.histories.CustomerRegistration;
 import com.github.derickfelix.bankapplication.views.histories.DepositDetails;
 import com.github.derickfelix.bankapplication.views.histories.WithdrawalDetails;
+import com.github.derickfelix.bankapplication.views.operations.SavingCalculator;
 import com.github.derickfelix.bankapplication.views.operations.RegisterCustomer;
 import com.github.derickfelix.bankapplication.views.operations.RegisterStaff;
 import com.github.derickfelix.bankapplication.views.operations.DepositOperation;
@@ -56,6 +57,7 @@ public class Main extends javax.swing.JFrame {
             tbtnMakeWithdrawal.setEnabled(false);
             menuiDeposit.setEnabled(false);
             menuiWithdrawal.setEnabled(false);
+            navSavingCalculator.setEnabled(true);
             if (!Auth.type().equals("staff")) {
                 navDepositOp.setVisible(true);
                 navWithdrawalOp.setVisible(true);
@@ -66,6 +68,7 @@ public class Main extends javax.swing.JFrame {
                 menuiWithdrawalDetails.setEnabled(false);
                 tbtnMakeDeposit.setEnabled(true);
                 tbtnMakeWithdrawal.setEnabled(true);
+                navSavingCalculator.setEnabled(true);
             }
         }
     }
@@ -94,6 +97,7 @@ public class Main extends javax.swing.JFrame {
         navCustomerHis = new javax.swing.JButton();
         navWithdrawalHis = new javax.swing.JButton();
         navDepositHis = new javax.swing.JButton();
+        navSavingCalculator = new javax.swing.JButton();
         dskPaneDesktop = new javax.swing.JDesktopPane();
         lblAuthName = new javax.swing.JLabel();
         menuBarMain = new javax.swing.JMenuBar();
@@ -103,6 +107,7 @@ public class Main extends javax.swing.JFrame {
         menuiWithdrawal = new javax.swing.JMenuItem();
         menuiDeposit = new javax.swing.JMenuItem();
         menuiRegistration = new javax.swing.JMenuItem();
+        MenuLogout = new javax.swing.JMenuItem();
         menuHistory = new javax.swing.JMenu();
         menuiRegisteredCustomers = new javax.swing.JMenuItem();
         menuiDepositDetails = new javax.swing.JMenuItem();
@@ -215,6 +220,13 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
+        navSavingCalculator.setText("Saving Calculator");
+        navSavingCalculator.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                navCalculatorHisActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout paneNavigateLayout = new javax.swing.GroupLayout(paneNavigate);
         paneNavigate.setLayout(paneNavigateLayout);
         paneNavigateLayout.setHorizontalGroup(
@@ -230,7 +242,8 @@ public class Main extends javax.swing.JFrame {
                     .addComponent(navWithdrawalHis, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(navCustomerHis, javax.swing.GroupLayout.DEFAULT_SIZE, 167, Short.MAX_VALUE)
                     .addComponent(navStaffOp, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(navCustomerOp, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(navCustomerOp, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(navSavingCalculator, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         paneNavigateLayout.setVerticalGroup(
@@ -246,7 +259,9 @@ public class Main extends javax.swing.JFrame {
                 .addComponent(navDepositOp)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(navWithdrawalOp)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(navSavingCalculator)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(navlbHistory)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(navCustomerHis)
@@ -254,8 +269,10 @@ public class Main extends javax.swing.JFrame {
                 .addComponent(navWithdrawalHis)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(navDepositHis)
-                .addContainerGap())
+                .addContainerGap(10, Short.MAX_VALUE))
         );
+
+        navSavingCalculator.getAccessibleContext().setAccessibleName("Calculator");
 
         splitPaneMain.setLeftComponent(paneNavigate);
         splitPaneMain.setRightComponent(dskPaneDesktop);
@@ -302,6 +319,14 @@ public class Main extends javax.swing.JFrame {
             }
         });
         menuOperations.add(menuiRegistration);
+
+        MenuLogout.setText("Logout");
+        MenuLogout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MenuLogoutActionPerformed(evt);
+            }
+        });
+        menuOperations.add(MenuLogout);
 
         menuBarMain.add(menuOperations);
 
@@ -453,7 +478,19 @@ public class Main extends javax.swing.JFrame {
         new WithdrawOperation(this, true).setVisible(true);
     }//GEN-LAST:event_tbtnMakeWithdrawalActionPerformed
 
+    private void navCalculatorHisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_navCalculatorHisActionPerformed
+        new SavingCalculator(this, true).setVisible(true);
+    }//GEN-LAST:event_navCalculatorHisActionPerformed
+
+    private void MenuLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuLogoutActionPerformed
+        setVisible(false);
+        Login dialog = new Login(new javax.swing.JFrame(), true);
+        dialog.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_MenuLogoutActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem MenuLogout;
     private javax.swing.JDesktopPane dskPaneDesktop;
     private javax.swing.JLabel lblAuthName;
     private javax.swing.JMenuBar menuBarMain;
@@ -471,6 +508,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JButton navCustomerOp;
     private javax.swing.JButton navDepositHis;
     private javax.swing.JButton navDepositOp;
+    private javax.swing.JButton navSavingCalculator;
     private javax.swing.JButton navStaffOp;
     private javax.swing.JButton navWithdrawalHis;
     private javax.swing.JButton navWithdrawalOp;

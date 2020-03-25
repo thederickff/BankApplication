@@ -50,6 +50,20 @@ public class RegisterCustomer extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         customOperations();
+        
+        //Mapping JComponent with name, add manually
+        txtName.setName("jtfName");
+        txtAddress.setName("jtfAddress");
+        cmbAccount.setName("cAcc");
+        radioFemale.setName("jrbFemale");
+        radioMale.setName("jrbMale");
+        cmbDay.setName("cDay");
+        cmbMonth.setName("cMonth");
+        cmbYear.setName("cYear");
+        txtPassword.setName("jpfPassword");
+        btnRegister.setName("btnReg");
+        btnClear.setName("btnClr");
+        btnCancel.setName("btnCcl");
     }
 
     private void customOperations() {

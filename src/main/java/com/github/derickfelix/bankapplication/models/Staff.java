@@ -116,5 +116,4 @@ public class Staff {
     {
         this.password = password;
     }
-
 }

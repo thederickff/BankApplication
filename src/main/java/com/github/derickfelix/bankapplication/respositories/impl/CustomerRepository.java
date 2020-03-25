@@ -131,7 +131,7 @@ public class CustomerRepository extends BaseRepository implements ICustomerRepos
             pstmt.close();
             conn.close();
         } catch (SQLException ex) {
-            System.out.println("SQL Erro: " + ex);
+            System.out.println("SQL Error: " + ex);
         }
     }
 
