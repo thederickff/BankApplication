@@ -21,10 +21,10 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package com.github.derickfelix.bankapplication.views.histories;
+package com.github.derickfelix.bankapplication.oldviews.histories;
 
 import com.github.derickfelix.bankapplication.models.Deposit;
-import com.github.derickfelix.bankapplication.controllers.OperationController;
+// import com.github.derickfelix.bankapplication.controllers.OperationController;
 import java.awt.print.PrinterException;
 import java.text.MessageFormat;
 import java.util.ArrayList;
@@ -37,7 +37,7 @@ import javax.swing.JTable;
  */
 public class DepositDetails extends javax.swing.JDialog {
 
-    private OperationController operationCtrl;
+//    private OperationController operationCtrl;
     private ArrayList<Deposit> deposits;
     public boolean printFunction = false;
    
@@ -50,8 +50,8 @@ public class DepositDetails extends javax.swing.JDialog {
     }
     
     private void customOperations() {
-        this.operationCtrl = OperationController.getInstance();
-        this.deposits = operationCtrl.getAllDeposits();
+//        this.operationCtrl = OperationController.getInstance();
+//        this.deposits = operationCtrl.getAllDeposits();
         
         for (int i = 0; i < this.deposits.size(); i++) {
             Deposit tempDeposit = this.deposits.get(i);
@@ -73,7 +73,8 @@ public class DepositDetails extends javax.swing.JDialog {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
+    private void initComponents()
+    {
 
         paneTittle = new javax.swing.JPanel();
         panelbTitle = new javax.swing.JLabel();
@@ -111,7 +112,8 @@ public class DepositDetails extends javax.swing.JDialog {
         );
 
         tableDeposits.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
+            new Object [][]
+            {
                 {null, null},
                 {null, null},
                 {null, null},
@@ -123,30 +125,38 @@ public class DepositDetails extends javax.swing.JDialog {
                 {null, null},
                 {null, null}
             },
-            new String [] {
+            new String []
+            {
                 "Amount", "Date"
             }
-        ) {
-            Class[] types = new Class [] {
+        )
+        {
+            Class[] types = new Class []
+            {
                 java.lang.Double.class, java.lang.String.class
             };
 
-            public Class getColumnClass(int columnIndex) {
+            public Class getColumnClass(int columnIndex)
+            {
                 return types [columnIndex];
             }
         });
         jScrollPane1.setViewportView(tableDeposits);
 
         btnPrint.setText("Print");
-        btnPrint.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnPrint.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 btnPrintActionPerformed(evt);
             }
         });
 
         btnCancel.setText("Cancel");
-        btnCancel.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnCancel.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 btnCancelActionPerformed(evt);
             }
         });

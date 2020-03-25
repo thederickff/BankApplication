@@ -21,10 +21,10 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package com.github.derickfelix.bankapplication.views.operations;
+package com.github.derickfelix.bankapplication.oldviews.operations;
 
-import com.github.derickfelix.bankapplication.controllers.CustomerController;
-import com.github.derickfelix.bankapplication.controllers.OperationController;
+// import com.github.derickfelix.bankapplication.controllers.CustomerController;
+// import com.github.derickfelix.bankapplication.controllers.OperationController;
 import com.github.derickfelix.bankapplication.models.Customer;
 import com.github.derickfelix.bankapplication.models.Deposit;
 import java.awt.HeadlessException;
@@ -35,8 +35,8 @@ import javax.swing.JOptionPane;
  */
 public class DepositOperation extends javax.swing.JDialog {
     
-    private CustomerController customerCtrl;
-    private OperationController operationCtrl;
+//    private CustomerController customerCtrl;
+//    private OperationController operationCtrl;
     private Customer customer;
     private Deposit deposit;
 
@@ -61,8 +61,8 @@ public class DepositOperation extends javax.swing.JDialog {
     }
     
     private void customComponents() {
-        this.customerCtrl = CustomerController.getInstance();
-        this.operationCtrl = OperationController.getInstance();
+//        this.customerCtrl = CustomerController.getInstance();
+//        this.operationCtrl = OperationController.getInstance();
     }
 
     /**
@@ -72,7 +72,8 @@ public class DepositOperation extends javax.swing.JDialog {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
+    private void initComponents()
+    {
 
         paneTittle = new javax.swing.JPanel();
         panelbTitle = new javax.swing.JLabel();
@@ -125,8 +126,10 @@ public class DepositOperation extends javax.swing.JDialog {
         lblAccountNumber.setText("Account number:");
 
         btnCheck.setText("check");
-        btnCheck.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnCheck.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 btnCheckActionPerformed(evt);
             }
         });
@@ -158,8 +161,10 @@ public class DepositOperation extends javax.swing.JDialog {
         paneFields.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Operation", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 0, 14))); // NOI18N
 
         txtAmount.setEnabled(false);
-        txtAmount.addCaretListener(new javax.swing.event.CaretListener() {
-            public void caretUpdate(javax.swing.event.CaretEvent evt) {
+        txtAmount.addCaretListener(new javax.swing.event.CaretListener()
+        {
+            public void caretUpdate(javax.swing.event.CaretEvent evt)
+            {
                 txtAmountCaretUpdate(evt);
             }
         });
@@ -225,15 +230,19 @@ public class DepositOperation extends javax.swing.JDialog {
 
         btnDeposit.setText("Deposit");
         btnDeposit.setEnabled(false);
-        btnDeposit.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnDeposit.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 btnDepositActionPerformed(evt);
             }
         });
 
         btnCancel.setText("Cancel");
-        btnCancel.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnCancel.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 btnCancelActionPerformed(evt);
             }
         });
@@ -292,16 +301,16 @@ public class DepositOperation extends javax.swing.JDialog {
     private void btnCheckActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCheckActionPerformed
         try {
             int accNumber = Integer.parseInt(txtAccountNumber.getText());
-            customer = customerCtrl.searchCustomer(accNumber);
+//            customer = customerCtrl.searchCustomer(accNumber);
             if (customer != null) {
                 txtAccountNumber.setEnabled(false);
                 txtAmount.setEnabled(true);
                 // Update fields
                 txtName.setText(customer.getName());
-                double balance = operationCtrl.getBalance(accNumber);                
-                double previousDeposit = operationCtrl.getPreviousDeposit(accNumber);
-                txtTotalBalance.setText(String.format("%.2f $", balance));
-                txtPreviousDeposit.setText(String.format("%.2f $", previousDeposit));
+//                double balance = operationCtrl.getBalance(accNumber);                
+//                double previousDeposit = operationCtrl.getPreviousDeposit(accNumber);
+//                txtTotalBalance.setText(String.format("%.2f $", balance));
+//                txtPreviousDeposit.setText(String.format("%.2f $", previousDeposit));
             } else {
                 JOptionPane.showMessageDialog(this, "Sorry, this account number did not match our records.", "Account not found.", JOptionPane.ERROR_MESSAGE);
             }
@@ -324,7 +333,7 @@ public class DepositOperation extends javax.swing.JDialog {
     private void btnDepositActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDepositActionPerformed
         double amount = Double.parseDouble(txtAmount.getText());
         int accountNumber = Integer.parseInt(txtAccountNumber.getText());
-        operationCtrl.makeDeposit(accountNumber, amount);
+//        operationCtrl.makeDeposit(accountNumber, amount);
         JOptionPane.showMessageDialog(this, "Deposit was made successfully!", "Deposit Sucess.", JOptionPane.INFORMATION_MESSAGE);
         this.dispose();
     }//GEN-LAST:event_btnDepositActionPerformed

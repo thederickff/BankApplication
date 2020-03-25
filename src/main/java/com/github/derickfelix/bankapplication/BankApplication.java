@@ -23,7 +23,7 @@
  */
 package com.github.derickfelix.bankapplication;
 
-import com.github.derickfelix.bankapplication.views.Login;
+import com.github.derickfelix.bankapplication.oldviews.Login;
 import javax.swing.UnsupportedLookAndFeelException;
 
 /**

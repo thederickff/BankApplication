@@ -1,5 +1,5 @@
 /* * Copyright (c) 2018 VR Fortaleza. All rights reserved. * */
-package com.github.derickfelix.bankapplication.views.dialogs;
+package com.github.derickfelix.bankapplication.oldviews.dialogs;
 
 /**
  *

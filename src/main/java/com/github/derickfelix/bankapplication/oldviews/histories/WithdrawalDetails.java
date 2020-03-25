@@ -21,9 +21,9 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package com.github.derickfelix.bankapplication.views.histories;
+package com.github.derickfelix.bankapplication.oldviews.histories;
 
-import com.github.derickfelix.bankapplication.controllers.OperationController;
+// import com.github.derickfelix.bankapplication.controllers.OperationController;
 import com.github.derickfelix.bankapplication.models.Deposit;
 import com.github.derickfelix.bankapplication.models.Withdraw;
 import java.awt.print.PrinterException;
@@ -39,7 +39,7 @@ import javax.swing.JTable;
  */
 public class WithdrawalDetails extends javax.swing.JDialog {
 
-    private OperationController operationCtrl;
+//    private OperationController operationCtrl;
     private ArrayList<Withdraw> withdraws;
 
     /**
@@ -54,8 +54,9 @@ public class WithdrawalDetails extends javax.swing.JDialog {
     }
 
     private void customOperations() {
-        this.operationCtrl = OperationController.getInstance();
-        this.withdraws = operationCtrl.getAllWithdraws();
+//        this.operationCtrl = OperationController.getInstance();
+//        this.withdraws = operationCtrl.getAllWithdraws();
+        
         for (int i = 0; i < this.withdraws.size(); i++) {
             Withdraw tempWithdraw = this.withdraws.get(i);
             // Amount
@@ -77,7 +78,8 @@ public class WithdrawalDetails extends javax.swing.JDialog {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
+    private void initComponents()
+    {
 
         paneTittle = new javax.swing.JPanel();
         panelbTitle = new javax.swing.JLabel();
@@ -115,7 +117,8 @@ public class WithdrawalDetails extends javax.swing.JDialog {
         );
 
         tableWithdrawals.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
+            new Object [][]
+            {
                 {null, null},
                 {null, null},
                 {null, null},
@@ -128,37 +131,47 @@ public class WithdrawalDetails extends javax.swing.JDialog {
                 {null, null},
                 {null, null}
             },
-            new String [] {
+            new String []
+            {
                 "amount", "time"
             }
-        ) {
-            Class[] types = new Class [] {
+        )
+        {
+            Class[] types = new Class []
+            {
                 java.lang.Double.class, java.lang.String.class
             };
-            boolean[] canEdit = new boolean [] {
+            boolean[] canEdit = new boolean []
+            {
                 false, false
             };
 
-            public Class getColumnClass(int columnIndex) {
+            public Class getColumnClass(int columnIndex)
+            {
                 return types [columnIndex];
             }
 
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
+            public boolean isCellEditable(int rowIndex, int columnIndex)
+            {
                 return canEdit [columnIndex];
             }
         });
         scrllPanelWithdraws.setViewportView(tableWithdrawals);
 
         btnPrint.setText("Print");
-        btnPrint.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnPrint.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 btnPrintActionPerformed(evt);
             }
         });
 
         btnCancel.setText("Cancel");
-        btnCancel.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnCancel.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 btnCancelActionPerformed(evt);
             }
         });

@@ -23,7 +23,7 @@
  */
 package com.github.derickfelix.bankapplication.util;
 
-import com.github.derickfelix.bankapplication.views.dialogs.ExceptionDialog;
+import com.github.derickfelix.bankapplication.oldviews.dialogs.ExceptionDialog;
 import javax.swing.JOptionPane;
 
 public class MessageUtility {

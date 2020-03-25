@@ -21,9 +21,9 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package com.github.derickfelix.bankapplication.views.histories;
+package com.github.derickfelix.bankapplication.oldviews.histories;
 
-import com.github.derickfelix.bankapplication.controllers.CustomerController;
+// import com.github.derickfelix.bankapplication.controllers.CustomerController;
 import com.github.derickfelix.bankapplication.models.Customer;
 import java.awt.print.PrinterException;
 import java.text.MessageFormat;
@@ -38,7 +38,7 @@ import javax.swing.JTable;
 public class CustomerRegistration extends javax.swing.JDialog {
 
     private ArrayList<Customer> customers;
-    private CustomerController customerCtrl;
+//    private CustomerController customerCtrl;
    
     /**
      * Creates new form RegisteredCustomer
@@ -53,9 +53,9 @@ public class CustomerRegistration extends javax.swing.JDialog {
         btnPrint.setName("btnPrint");
     }
     private void customOperations() {
-        customerCtrl = CustomerController.getInstance();
+//        customerCtrl = CustomerController.getInstance();
         // Get All the customers
-        customers = customerCtrl.getCustomers();
+//        customers = customerCtrl.getCustomers();
         
         for (int i = 0; i < customers.size(); i++) {
             Customer tempCustomer = customers.get(i);
@@ -68,7 +68,7 @@ public class CustomerRegistration extends javax.swing.JDialog {
             // Sex
             table.setValueAt(tempCustomer.getSex(), i, 3);
             // Born Date
-            table.setValueAt(tempCustomer.getDob(), i, 4);
+//            table.setValueAt(tempCustomer.getDob(), i, 4);
             // Account Type
             table.setValueAt(tempCustomer.getAccountType(), i, 5);
         }
@@ -81,7 +81,8 @@ public class CustomerRegistration extends javax.swing.JDialog {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
+    private void initComponents()
+    {
 
         paneTittle = new javax.swing.JPanel();
         panelbTitle = new javax.swing.JLabel();
@@ -120,7 +121,8 @@ public class CustomerRegistration extends javax.swing.JDialog {
 
         table.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         table.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
+            new Object [][]
+            {
                 {null, null, null, null, null, null},
                 {null, null, null, null, null, null},
                 {null, null, null, null, null, null},
@@ -142,22 +144,28 @@ public class CustomerRegistration extends javax.swing.JDialog {
                 {null, null, null, null, null, null},
                 {null, null, null, null, null, null}
             },
-            new String [] {
+            new String []
+            {
                 "Account Number", "Name", "Address", "Sex", "Born Date", "Account Type"
             }
-        ) {
-            Class[] types = new Class [] {
+        )
+        {
+            Class[] types = new Class []
+            {
                 java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
-            boolean[] canEdit = new boolean [] {
+            boolean[] canEdit = new boolean []
+            {
                 false, false, false, false, false, false
             };
 
-            public Class getColumnClass(int columnIndex) {
+            public Class getColumnClass(int columnIndex)
+            {
                 return types [columnIndex];
             }
 
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
+            public boolean isCellEditable(int rowIndex, int columnIndex)
+            {
                 return canEdit [columnIndex];
             }
         });
@@ -165,15 +173,19 @@ public class CustomerRegistration extends javax.swing.JDialog {
         jScrollPane1.setViewportView(table);
 
         btnPrint.setText("Print");
-        btnPrint.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnPrint.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 btnPrintActionPerformed(evt);
             }
         });
 
         btnCancel.setText("Cancel");
-        btnCancel.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnCancel.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 btnCancelActionPerformed(evt);
             }
         });

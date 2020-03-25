@@ -21,17 +21,17 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package com.github.derickfelix.bankapplication.views;
+package com.github.derickfelix.bankapplication.oldviews;
 
 import com.github.derickfelix.bankapplication.util.Auth;
-import com.github.derickfelix.bankapplication.views.histories.CustomerRegistration;
-import com.github.derickfelix.bankapplication.views.histories.DepositDetails;
-import com.github.derickfelix.bankapplication.views.histories.WithdrawalDetails;
-import com.github.derickfelix.bankapplication.views.operations.SavingCalculator;
-import com.github.derickfelix.bankapplication.views.operations.RegisterCustomer;
-import com.github.derickfelix.bankapplication.views.operations.RegisterStaff;
-import com.github.derickfelix.bankapplication.views.operations.DepositOperation;
-import com.github.derickfelix.bankapplication.views.operations.WithdrawOperation;
+import com.github.derickfelix.bankapplication.oldviews.histories.CustomerRegistration;
+import com.github.derickfelix.bankapplication.oldviews.histories.DepositDetails;
+import com.github.derickfelix.bankapplication.oldviews.histories.WithdrawalDetails;
+import com.github.derickfelix.bankapplication.oldviews.operations.SavingCalculator;
+import com.github.derickfelix.bankapplication.oldviews.operations.RegisterCustomer;
+import com.github.derickfelix.bankapplication.oldviews.operations.RegisterStaff;
+import com.github.derickfelix.bankapplication.oldviews.operations.DepositOperation;
+import com.github.derickfelix.bankapplication.oldviews.operations.WithdrawOperation;
 import javax.swing.JOptionPane;
 
 /**
@@ -80,7 +80,8 @@ public class Main extends javax.swing.JFrame {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
+    private void initComponents()
+    {
 
         toolBarMain = new javax.swing.JToolBar();
         tbtnRegisterCustomer = new javax.swing.JButton();
@@ -115,8 +116,10 @@ public class Main extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("Trisoft Bank");
-        addWindowListener(new java.awt.event.WindowAdapter() {
-            public void windowClosing(java.awt.event.WindowEvent evt) {
+        addWindowListener(new java.awt.event.WindowAdapter()
+        {
+            public void windowClosing(java.awt.event.WindowEvent evt)
+            {
                 formWindowClosing(evt);
             }
         });
@@ -128,8 +131,10 @@ public class Main extends javax.swing.JFrame {
         tbtnRegisterCustomer.setFocusable(false);
         tbtnRegisterCustomer.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         tbtnRegisterCustomer.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        tbtnRegisterCustomer.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        tbtnRegisterCustomer.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 tbtnRegisterCustomerActionPerformed(evt);
             }
         });
@@ -140,8 +145,10 @@ public class Main extends javax.swing.JFrame {
         tbtnMakeDeposit.setFocusable(false);
         tbtnMakeDeposit.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         tbtnMakeDeposit.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        tbtnMakeDeposit.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        tbtnMakeDeposit.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 tbtnMakeDepositActionPerformed(evt);
             }
         });
@@ -152,8 +159,10 @@ public class Main extends javax.swing.JFrame {
         tbtnMakeWithdrawal.setFocusable(false);
         tbtnMakeWithdrawal.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         tbtnMakeWithdrawal.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        tbtnMakeWithdrawal.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        tbtnMakeWithdrawal.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 tbtnMakeWithdrawalActionPerformed(evt);
             }
         });
@@ -168,29 +177,37 @@ public class Main extends javax.swing.JFrame {
         navlbBankOps.setText("BANK OPERATIONS");
 
         navCustomerOp.setText("Customer Registration");
-        navCustomerOp.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        navCustomerOp.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 navCustomerOpActionPerformed(evt);
             }
         });
 
         navStaffOp.setText("Staff Registration");
-        navStaffOp.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        navStaffOp.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 navStaffOpActionPerformed(evt);
             }
         });
 
         navDepositOp.setText("Deposit");
-        navDepositOp.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        navDepositOp.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 navDepositOpActionPerformed(evt);
             }
         });
 
         navWithdrawalOp.setText("Withdrawal");
-        navWithdrawalOp.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        navWithdrawalOp.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 navWithdrawalOpActionPerformed(evt);
             }
         });
@@ -200,29 +217,37 @@ public class Main extends javax.swing.JFrame {
         navlbHistory.setText("HISTORY");
 
         navCustomerHis.setText("Customer Registration");
-        navCustomerHis.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        navCustomerHis.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 navCustomerHisActionPerformed(evt);
             }
         });
 
         navWithdrawalHis.setText("Withdrawal Details");
-        navWithdrawalHis.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        navWithdrawalHis.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 navWithdrawalHisActionPerformed(evt);
             }
         });
 
         navDepositHis.setText("Deposit Details");
-        navDepositHis.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        navDepositHis.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 navDepositHisActionPerformed(evt);
             }
         });
 
         navSavingCalculator.setText("Saving Calculator");
-        navSavingCalculator.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        navSavingCalculator.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 navCalculatorHisActionPerformed(evt);
             }
         });
@@ -240,7 +265,7 @@ public class Main extends javax.swing.JFrame {
                     .addComponent(navDepositOp, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(navDepositHis, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(navWithdrawalHis, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(navCustomerHis, javax.swing.GroupLayout.DEFAULT_SIZE, 167, Short.MAX_VALUE)
+                    .addComponent(navCustomerHis, javax.swing.GroupLayout.PREFERRED_SIZE, 167, Short.MAX_VALUE)
                     .addComponent(navStaffOp, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(navCustomerOp, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(navSavingCalculator, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -285,8 +310,10 @@ public class Main extends javax.swing.JFrame {
 
         menuiExit.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.CTRL_MASK));
         menuiExit.setText("Exit");
-        menuiExit.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        menuiExit.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 menuiExitActionPerformed(evt);
             }
         });
@@ -297,32 +324,40 @@ public class Main extends javax.swing.JFrame {
         menuOperations.setText("Operations");
 
         menuiWithdrawal.setText("Withdrawal");
-        menuiWithdrawal.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        menuiWithdrawal.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 menuiWithdrawalActionPerformed(evt);
             }
         });
         menuOperations.add(menuiWithdrawal);
 
         menuiDeposit.setText("Deposit");
-        menuiDeposit.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        menuiDeposit.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 menuiDepositActionPerformed(evt);
             }
         });
         menuOperations.add(menuiDeposit);
 
         menuiRegistration.setText("Registration");
-        menuiRegistration.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        menuiRegistration.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 menuiRegistrationActionPerformed(evt);
             }
         });
         menuOperations.add(menuiRegistration);
 
         MenuLogout.setText("Logout");
-        MenuLogout.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        MenuLogout.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 MenuLogoutActionPerformed(evt);
             }
         });
@@ -333,24 +368,30 @@ public class Main extends javax.swing.JFrame {
         menuHistory.setText("History");
 
         menuiRegisteredCustomers.setText("Registered Customers");
-        menuiRegisteredCustomers.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        menuiRegisteredCustomers.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 menuiRegisteredCustomersActionPerformed(evt);
             }
         });
         menuHistory.add(menuiRegisteredCustomers);
 
         menuiDepositDetails.setText("Deposit Details");
-        menuiDepositDetails.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        menuiDepositDetails.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 menuiDepositDetailsActionPerformed(evt);
             }
         });
         menuHistory.add(menuiDepositDetails);
 
         menuiWithdrawalDetails.setText("Withdrawal Details");
-        menuiWithdrawalDetails.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        menuiWithdrawalDetails.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 menuiWithdrawalDetailsActionPerformed(evt);
             }
         });

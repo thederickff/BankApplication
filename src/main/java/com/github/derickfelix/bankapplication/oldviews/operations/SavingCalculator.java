@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.github.derickfelix.bankapplication.views.operations;
+package com.github.derickfelix.bankapplication.oldviews.operations;
 
 import java.text.DecimalFormat;
 
@@ -40,7 +40,8 @@ public class SavingCalculator extends javax.swing.JDialog {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
+    private void initComponents()
+    {
 
         paneTittle2 = new javax.swing.JPanel();
         panelbTitle2 = new javax.swing.JLabel();
@@ -92,8 +93,10 @@ public class SavingCalculator extends javax.swing.JDialog {
         lblInterest2.setText("Final saving balance (RM)");
 
         jButtonCalculate.setText("Calculate");
-        jButtonCalculate.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        jButtonCalculate.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 jButtonCalculateActionPerformed(evt);
             }
         });
