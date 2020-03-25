@@ -23,40 +23,13 @@
  */
 package com.github.derickfelix.bankapplication.models;
 
-/**
- * @author derickfelix
- */
-public class Staff {
+public class Staff extends Entity {
 
-    private String staffId;
-    private String accountNumber;
     private String name;
     private String address;
     private char sex;
-    private String dob;
     private String rank;
-    private String password;
-
-    public String getStaffId()
-    {
-        return staffId;
-    }
-
-    public void setStaffId(String staffId)
-    {
-        this.staffId = staffId;
-    }
-
-    public String getAccountNumber()
-    {
-        return accountNumber;
-    }
-
-    public void setAccountNumber(String accountNumber)
-    {
-        this.accountNumber = accountNumber;
-    }
-
+   
     public String getName()
     {
         return name;
@@ -87,16 +60,6 @@ public class Staff {
         this.sex = sex;
     }
 
-    public String getDob()
-    {
-        return dob;
-    }
-
-    public void setDob(String dob)
-    {
-        this.dob = dob;
-    }
-
     public String getRank()
     {
         return rank;
@@ -107,13 +70,4 @@ public class Staff {
         this.rank = rank;
     }
 
-    public String getPassword()
-    {
-        return password;
-    }
-
-    public void setPassword(String password)
-    {
-        this.password = password;
-    }
 }

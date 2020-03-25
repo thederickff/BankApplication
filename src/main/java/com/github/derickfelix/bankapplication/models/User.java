@@ -23,26 +23,12 @@
  */
 package com.github.derickfelix.bankapplication.models;
 
-/**
- * @author derickfelix
- */
-public class User {
+public class User extends Entity {
 
-    private String userId;
     private String name;
-    private String accountNumber;
-    private String role;
+    private String username;
     private String password;
-
-    public String getAccountNumber()
-    {
-        return accountNumber;
-    }
-
-    public void setAccountNumber(String accountNumber)
-    {
-        this.accountNumber = accountNumber;
-    }
+    private String role;
 
     public String getName()
     {
@@ -54,16 +40,16 @@ public class User {
         this.name = name;
     }
 
-    public String getRole()
+    public String getUsername()
     {
-        return role;
+        return username;
     }
 
-    public void setRole(String role)
+    public void setUsername(String username)
     {
-        this.role = role;
+        this.username = username;
     }
-
+    
     public String getPassword()
     {
         return password;
@@ -73,14 +59,14 @@ public class User {
     {
         this.password = password;
     }
-
-    public String getUserId()
+    
+    public String getRole()
     {
-        return userId;
+        return role;
     }
 
-    public void setUserId(String userId)
+    public void setRole(String role)
     {
-        this.userId = userId;
+        this.role = role;
     }
 }

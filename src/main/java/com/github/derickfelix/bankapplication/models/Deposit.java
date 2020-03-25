@@ -25,9 +25,6 @@ package com.github.derickfelix.bankapplication.models;
 
 import java.util.Date;
 
-/**
- * @author derickfelix 
- */
 public class Deposit {
 
     private String accountNumber;

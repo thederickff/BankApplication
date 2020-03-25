@@ -25,10 +25,6 @@ package com.github.derickfelix.bankapplication.models;
 
 import java.util.Objects;
 
-/**
- *
- * @author derickfelix
- */
 public class Entity {
     
     private Long id;
