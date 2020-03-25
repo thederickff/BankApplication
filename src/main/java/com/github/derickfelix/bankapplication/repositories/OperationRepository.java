@@ -21,55 +21,29 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package com.github.derickfelix.bankapplication.controllers;
+package com.github.derickfelix.bankapplication.repositories;
 
 import com.github.derickfelix.bankapplication.models.Customer;
-import com.github.derickfelix.bankapplication.respositories.impl.CustomerRepository;
-import java.util.ArrayList;
+import com.github.derickfelix.bankapplication.models.Deposit;
+import com.github.derickfelix.bankapplication.models.Withdraw;
+import java.util.List;
 
 /**
+ *
  * @author derickfelix
  */
-public class CustomerController {
+public interface OperationRepository {
 
-    private static CustomerController customerCtrl;
-    private final CustomerRepository customerRepository;
+    List<Deposit> deposits();
+    
+    List<Deposit> deposits(Customer customer);
 
-    private CustomerController()
-    {
-        this.customerRepository = new CustomerRepository();
-    }
+    List<Withdraw> withdraws();
 
-    public void store(Customer customer)
-    {
-        customerRepository.store(customer);
-    }
+    List<Withdraw> withdraws(Customer customer);
 
-    public ArrayList<Customer> getCustomers()
-    {
-        return customerRepository.all();
-    }
+    void deposit(Customer customer, double amount);
 
-    public Customer searchCustomer(int accountNumber)
-    {
-        return customerRepository.find(accountNumber);
-    }
+    void withdraw(Customer customer, double amount);
 
-    public void update(Customer customer)
-    {
-        customerRepository.update(customer);
-    }
-
-    public void destroy(Customer customer)
-    {
-        customerRepository.destroy(customer);
-    }
-
-    public static CustomerController getInstance()
-    {
-        if (customerCtrl == null) {
-            customerCtrl = new CustomerController();
-        }
-        return customerCtrl;
-    }
 }
