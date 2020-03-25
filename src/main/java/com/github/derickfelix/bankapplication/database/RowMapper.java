@@ -33,7 +33,6 @@ import java.sql.SQLException;
  * about exception handling. {@code SQLExceptions} will be caught and handled by
  * the calling {@code BankAppTemplate}.
  *
- * @author derickfelix
  *
  * @param <T> the model of the row mapper
  */

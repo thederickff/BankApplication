@@ -232,7 +232,7 @@
                           <Component id="navDepositOp" alignment="0" max="32767" attributes="0"/>
                           <Component id="navDepositHis" alignment="0" max="32767" attributes="0"/>
                           <Component id="navWithdrawalHis" alignment="0" max="32767" attributes="0"/>
-                          <Component id="navCustomerHis" alignment="0" pref="167" max="32767" attributes="0"/>
+                          <Component id="navCustomerHis" alignment="0" max="32767" attributes="0"/>
                           <Component id="navStaffOp" max="32767" attributes="0"/>
                           <Component id="navCustomerOp" alignment="0" max="32767" attributes="0"/>
                           <Component id="navSavingCalculator" alignment="0" max="32767" attributes="0"/>
@@ -264,7 +264,7 @@
                       <Component id="navWithdrawalHis" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="navDepositHis" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="10" max="32767" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>

@@ -23,8 +23,8 @@
  */
 package com.github.derickfelix.bankapplication.database;
 
-import com.github.derickfelix.bankapplication.util.FileUtility;
-import com.github.derickfelix.bankapplication.util.MessageUtility;
+import com.github.derickfelix.bankapplication.utilities.FileUtility;
+import com.github.derickfelix.bankapplication.utilities.MessageUtility;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;

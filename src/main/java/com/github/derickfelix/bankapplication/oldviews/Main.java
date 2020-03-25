@@ -23,7 +23,7 @@
  */
 package com.github.derickfelix.bankapplication.oldviews;
 
-import com.github.derickfelix.bankapplication.util.Auth;
+// import com.github.derickfelix.bankapplication.util.Auth;
 import com.github.derickfelix.bankapplication.oldviews.histories.CustomerRegistration;
 import com.github.derickfelix.bankapplication.oldviews.histories.DepositDetails;
 import com.github.derickfelix.bankapplication.oldviews.histories.WithdrawalDetails;
@@ -48,8 +48,8 @@ public class Main extends javax.swing.JFrame {
     }
 
     private void customOperations() {
-        lblAuthName.setText(Auth.name());
-        if (!Auth.type().equals("admin")) {
+//        lblAuthName.setText(Auth.name());
+//        if (!Auth.type().equals("admin")) {
             navStaffOp.setVisible(false);
             navDepositOp.setVisible(false);
             navWithdrawalOp.setVisible(false);
@@ -58,7 +58,7 @@ public class Main extends javax.swing.JFrame {
             menuiDeposit.setEnabled(false);
             menuiWithdrawal.setEnabled(false);
             navSavingCalculator.setEnabled(true);
-            if (!Auth.type().equals("staff")) {
+//            if (!Auth.type().equals("staff")) {
                 navDepositOp.setVisible(true);
                 navWithdrawalOp.setVisible(true);
                 navCustomerOp.setVisible(false);
@@ -69,8 +69,8 @@ public class Main extends javax.swing.JFrame {
                 tbtnMakeDeposit.setEnabled(true);
                 tbtnMakeWithdrawal.setEnabled(true);
                 navSavingCalculator.setEnabled(true);
-            }
-        }
+//            }
+//        }
     }
    
     /**

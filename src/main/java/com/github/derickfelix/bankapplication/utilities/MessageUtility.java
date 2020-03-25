@@ -21,9 +21,9 @@
 * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 * SOFTWARE.
  */
-package com.github.derickfelix.bankapplication.util;
+package com.github.derickfelix.bankapplication.utilities;
 
-import com.github.derickfelix.bankapplication.oldviews.dialogs.ExceptionDialog;
+import com.github.derickfelix.bankapplication.views.dialogs.ExceptionDialog;
 import javax.swing.JOptionPane;
 
 public class MessageUtility {

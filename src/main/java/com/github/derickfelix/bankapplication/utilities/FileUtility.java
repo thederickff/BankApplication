@@ -21,7 +21,7 @@
 * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 * SOFTWARE.
  */
-package com.github.derickfelix.bankapplication.util;
+package com.github.derickfelix.bankapplication.utilities;
 
 public class FileUtility {
     private FileUtility()

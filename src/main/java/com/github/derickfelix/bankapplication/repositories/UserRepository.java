@@ -24,7 +24,6 @@
 package com.github.derickfelix.bankapplication.repositories;
 
 import com.github.derickfelix.bankapplication.models.User;
-import java.util.ArrayList;
 
 public interface UserRepository extends BaseRepository<User, Long> {
 }

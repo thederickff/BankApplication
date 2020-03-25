@@ -1,10 +1,6 @@
 /* * Copyright (c) 2018 VR Fortaleza. All rights reserved. * */
-package com.github.derickfelix.bankapplication.oldviews.dialogs;
+package com.github.derickfelix.bankapplication.views.dialogs;
 
-/**
- *
- * @author derickfelix
- */
 public class ExceptionDialog extends javax.swing.JDialog {
 
     private final Exception exception;

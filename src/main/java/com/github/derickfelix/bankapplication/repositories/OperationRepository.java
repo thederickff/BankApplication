@@ -28,10 +28,6 @@ import com.github.derickfelix.bankapplication.models.Deposit;
 import com.github.derickfelix.bankapplication.models.Withdraw;
 import java.util.List;
 
-/**
- *
- * @author derickfelix
- */
 public interface OperationRepository {
 
     List<Deposit> deposits();
