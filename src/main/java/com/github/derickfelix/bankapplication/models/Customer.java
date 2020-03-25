@@ -26,14 +26,12 @@ package com.github.derickfelix.bankapplication.models;
 /**
  * @author derickfelix
  */
-public class Customer {
+public class Customer extends Entity {
 
-    private String accountNumber;
     private String name;
     private String address;
     private String accountType;
     private char sex;
-    private String dob;
     private String password;
 
     public String getName()
@@ -44,16 +42,6 @@ public class Customer {
     public void setName(String name)
     {
         this.name = name;
-    }
-
-    public String getAccountNumber()
-    {
-        return accountNumber;
-    }
-
-    public void setAccountNumber(String accountNumber)
-    {
-        this.accountNumber = accountNumber;
     }
 
     public String getAddress()
@@ -84,16 +72,6 @@ public class Customer {
     public void setSex(char sex)
     {
         this.sex = sex;
-    }
-
-    public String getDob()
-    {
-        return dob;
-    }
-
-    public void setDob(String dob)
-    {
-        this.dob = dob;
     }
 
     public String getPassword()
