@@ -33,6 +33,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 public class BankAppTemplate {
     public void update(String sql, Map<String, Object> params)
@@ -52,15 +53,15 @@ public class BankAppTemplate {
         }
     }
     
-    public <T> T queryForObject(String sql, Map<String, Object> params, RowMapper<T> rowMapper)
+    public <T> Optional<T> queryForObject(String sql, Map<String, Object> params, RowMapper<T> rowMapper)
     {
         List<T> query = query(sql, params, rowMapper);
 
         if (query == null || query.isEmpty()) {
-            return null;
+            return Optional.empty();
         }
 
-        return query.get(0);
+        return Optional.of(query.get(0));
     }
     
     public <T> List<T> queryForList(String sql, Map<String, Object> params, RowMapper<T> rowMapper)
