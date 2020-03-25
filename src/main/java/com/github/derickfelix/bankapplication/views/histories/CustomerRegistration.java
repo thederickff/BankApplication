@@ -25,7 +25,12 @@ package com.github.derickfelix.bankapplication.views.histories;
 
 import com.github.derickfelix.bankapplication.controllers.CustomerController;
 import com.github.derickfelix.bankapplication.models.Customer;
+import java.awt.print.PrinterException;
+import java.text.MessageFormat;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JTable;
 
 /**
  * @author derickfelix
@@ -44,6 +49,8 @@ public class CustomerRegistration extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         customOperations();
+        
+        btnPrint.setName("btnPrint");
     }
     private void customOperations() {
         customerCtrl = CustomerController.getInstance();
@@ -158,6 +165,11 @@ public class CustomerRegistration extends javax.swing.JDialog {
         jScrollPane1.setViewportView(table);
 
         btnPrint.setText("Print");
+        btnPrint.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPrintActionPerformed(evt);
+            }
+        });
 
         btnCancel.setText("Cancel");
         btnCancel.addActionListener(new java.awt.event.ActionListener() {
@@ -205,7 +217,7 @@ public class CustomerRegistration extends javax.swing.JDialog {
                 .addComponent(paneTittle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(paneButtons, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -218,6 +230,21 @@ public class CustomerRegistration extends javax.swing.JDialog {
         this.dispose();
     }//GEN-LAST:event_btnCancelActionPerformed
 
+    private void btnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrintActionPerformed
+        // TODO add your handling code here:
+        MessageFormat header = new MessageFormat("Customers Details");
+        MessageFormat footer = new MessageFormat("End");
+        
+        try {
+            table.print(JTable.PrintMode.FIT_WIDTH, header, footer);
+            printFunction = true;
+        } catch (PrinterException ex) {
+            Logger.getLogger(CustomerRegistration.class.getName()).log(Level.SEVERE, null, ex);
+        }        
+    }//GEN-LAST:event_btnPrintActionPerformed
+
+    public boolean printFunction = false;
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancel;
     private javax.swing.JButton btnPrint;

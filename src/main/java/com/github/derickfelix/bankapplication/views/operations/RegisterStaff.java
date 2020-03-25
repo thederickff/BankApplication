@@ -40,6 +40,7 @@ public class RegisterStaff extends javax.swing.JDialog {
     private File file;
     private StaffController staffController;
     private Staff staff;
+    private JFileChooser chooser;
 
     /**
      * Creates new form RegisterStaff
@@ -50,6 +51,18 @@ public class RegisterStaff extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         customOperations();
+        
+        //Mapping JComponent with name, add manually
+        txtName.setName("jtfName");
+        txtAddress.setName("jtfAddress");
+        radioFemale.setName("jrbFemale");
+        radioMale.setName("jrbMale");
+        cmbDay.setName("cDay");
+        cmbMonth.setName("cMonth");
+        cmbYear.setName("cYear");
+        cmbRank.setName("cRank");
+        txtPassword.setName("jpfPassword");
+        btnRegister.setName("btnReg");     
     }
 
     private void customOperations() {
@@ -203,6 +216,7 @@ public class RegisterStaff extends javax.swing.JDialog {
                     .addComponent(lblRank, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addGap(14, 14, 14)
                 .addGroup(paneBodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblStatus, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(cmbRank, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(txtPassword)
                     .addComponent(txtAddress)
@@ -218,8 +232,7 @@ public class RegisterStaff extends javax.swing.JDialog {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(cmbMonth, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(cmbYear, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(lblStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(cmbYear, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 178, Short.MAX_VALUE)))
                 .addGap(18, 18, 18)
                 .addGroup(paneBodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -237,8 +250,8 @@ public class RegisterStaff extends javax.swing.JDialog {
                         .addComponent(btnBrowsePicture)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, paneBodyLayout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(lblStatus)
+                        .addContainerGap()
+                        .addComponent(lblStatus, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(paneBodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -320,7 +333,7 @@ public class RegisterStaff extends javax.swing.JDialog {
                         .addComponent(btnClear)
                         .addComponent(btnCancel))
                     .addComponent(btnRegister, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
 
         pack();
@@ -341,7 +354,7 @@ public class RegisterStaff extends javax.swing.JDialog {
 
     private void btnBrowsePictureActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBrowsePictureActionPerformed
         // TODO add your handling code here:
-        JFileChooser chooser = new JFileChooser();
+        chooser = new JFileChooser();
         int i = chooser.showOpenDialog(this);
         if (i == JFileChooser.APPROVE_OPTION) {
             file = chooser.getSelectedFile();
