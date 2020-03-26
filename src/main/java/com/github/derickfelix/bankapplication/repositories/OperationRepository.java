@@ -23,7 +23,6 @@
  */
 package com.github.derickfelix.bankapplication.repositories;
 
-import com.github.derickfelix.bankapplication.models.Customer;
 import com.github.derickfelix.bankapplication.models.Deposit;
 import com.github.derickfelix.bankapplication.models.Withdraw;
 import java.util.List;
@@ -32,14 +31,14 @@ public interface OperationRepository {
 
     List<Deposit> deposits();
     
-    List<Deposit> deposits(Customer customer);
+    List<Deposit> deposits(String accountNumber);
 
     List<Withdraw> withdraws();
 
-    List<Withdraw> withdraws(Customer customer);
+    List<Withdraw> withdraws(String accountNumber);
 
-    void deposit(Customer customer, double amount);
+    void deposit(String accountNumber, double amount);
 
-    void withdraw(Customer customer, double amount);
+    void withdraw(String accountNumber, double amount);
 
 }

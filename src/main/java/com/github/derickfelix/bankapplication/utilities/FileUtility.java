@@ -30,6 +30,6 @@ public class FileUtility {
     
     public static String home()
     {
-        return System.getProperty("os.name").contains("Linux") ? "~/.bankapp/" : "C:\\bankapp\\";
+        return System.getProperty("os.name").contains("Linux") ? "~/.zweibank/" : "C:\\zweibank\\";
     }
 }

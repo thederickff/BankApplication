@@ -69,7 +69,7 @@ public class UserRepositoryImpl implements UserRepository {
 
         if (model.getId() != null) {
             sql = "insert into users (name, username, password, role) "
-                    + "values (:name, :username, MD5(:password), :role)";
+                    + "values (:name, :username, HASH('SHA256', :password), :role)";
 
             params.put("username", model.getUsername());
             params.put("password", model.getPassword());
@@ -101,7 +101,7 @@ public class UserRepositoryImpl implements UserRepository {
         return optional;
     }
 
-    private class UserMapper implements RowMapper {
+    public static class UserMapper implements RowMapper {
 
         @Override
         public Object mapRow(ResultSet rs) throws SQLException

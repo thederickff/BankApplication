@@ -23,6 +23,8 @@
  */
 package com.github.derickfelix.bankapplication.views;
 
+import javax.swing.JOptionPane;
+
 public class MainForm extends javax.swing.JFrame {
 
     public MainForm()
@@ -40,20 +42,27 @@ public class MainForm extends javax.swing.JFrame {
     private void initComponents()
     {
 
-        jMenuBar1 = new javax.swing.JMenuBar();
+        appMenubar = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("Zwei Bank Application");
+        addWindowListener(new java.awt.event.WindowAdapter()
+        {
+            public void windowClosing(java.awt.event.WindowEvent evt)
+            {
+                formWindowClosing(evt);
+            }
+        });
 
         jMenu1.setText("File");
-        jMenuBar1.add(jMenu1);
+        appMenubar.add(jMenu1);
 
         jMenu2.setText("Edit");
-        jMenuBar1.add(jMenu2);
+        appMenubar.add(jMenu2);
 
-        setJMenuBar(jMenuBar1);
+        setJMenuBar(appMenubar);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -70,9 +79,18 @@ public class MainForm extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void formWindowClosing(java.awt.event.WindowEvent evt)//GEN-FIRST:event_formWindowClosing
+    {//GEN-HEADEREND:event_formWindowClosing
+        int res = JOptionPane.showConfirmDialog(this, "Are you sure you want to exit?", "Zwei Bank Application", JOptionPane.YES_NO_OPTION);
+        
+        if (res == JOptionPane.YES_OPTION) {
+            System.exit(0);
+        }
+    }//GEN-LAST:event_formWindowClosing
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuBar appMenubar;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenuBar jMenuBar1;
     // End of variables declaration//GEN-END:variables
 }

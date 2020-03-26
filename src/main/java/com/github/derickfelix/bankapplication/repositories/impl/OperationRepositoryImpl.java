@@ -25,7 +25,6 @@ package com.github.derickfelix.bankapplication.repositories.impl;
 
 import com.github.derickfelix.bankapplication.database.BankAppTemplate;
 import com.github.derickfelix.bankapplication.database.RowMapper;
-import com.github.derickfelix.bankapplication.models.Customer;
 import com.github.derickfelix.bankapplication.models.Deposit;
 import com.github.derickfelix.bankapplication.models.Withdraw;
 import java.sql.ResultSet;
@@ -61,42 +60,42 @@ public class OperationRepositoryImpl implements OperationRepository {
     }
 
     @Override
-    public List<Deposit> deposits(Customer customer)
+    public List<Deposit> deposits(String accountNumber)
     {
-        String sql = "select * from deposits where customer_id = :customer_id";
+        String sql = "select * from deposits where account_number = :account_number";
         Map<String, Object> params = new HashMap<>();
-        params.put("customer_id", customer.getId());
+        params.put("account_number", accountNumber);
         
         return template.queryForList(sql, params, new DepositMapper());
     }
 
     @Override
-    public List<Withdraw> withdraws(Customer customer)
+    public List<Withdraw> withdraws(String accountNumber)
     {
-        String sql = "select * from withdraws where customer_id = :customer_id";
+        String sql = "select * from withdraws where account_number = :account_number";
         Map<String, Object> params = new HashMap<>();
-        params.put("customer_id", customer.getId());
+        params.put("account_number", accountNumber);
 
         return template.queryForList(sql, params, new WithdrawMapper());
     }
 
     @Override
-    public void deposit(Customer customer, double amount)
+    public void deposit(String accountNumber, double amount)
     {
-        String sql = "insert into deposits (customer_id, deposit_amount) values (:customer_id, :deposit_amount)";
+        String sql = "insert into deposits (account_number, deposit_amount) values (:account_number, :deposit_amount)";
         Map<String, Object> params = new HashMap<>();
-        params.put("customer_id", customer.getId());
+        params.put("account_number", accountNumber);
         params.put("deposit_amount", amount);
         
         template.update(sql, params);
     }
 
     @Override
-    public void withdraw(Customer customer, double amount)
+    public void withdraw(String accountNumber, double amount)
     {
-        String sql = "insert into withdraws (customer_id, withdraw_amount) values (:customer_id, :deposit_amount)";
+        String sql = "insert into withdraws (account_number, withdraw_amount) values (:account_number, :deposit_amount)";
         Map<String, Object> params = new HashMap<>();
-        params.put("customer_id", customer.getId());
+        params.put("account_number", accountNumber);
         params.put("withdraw_amount", amount);
 
         template.update(sql, params);

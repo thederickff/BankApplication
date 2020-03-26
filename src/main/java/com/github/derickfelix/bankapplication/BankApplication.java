@@ -23,6 +23,7 @@
  */
 package com.github.derickfelix.bankapplication;
 
+import com.github.derickfelix.bankapplication.utilities.DBUtility;
 import com.github.derickfelix.bankapplication.utilities.MessageUtility;
 import com.github.derickfelix.bankapplication.views.LoginForm;
 import javax.swing.UnsupportedLookAndFeelException;
@@ -43,6 +44,8 @@ public class BankApplication {
             MessageUtility.showException(null, "Failed to use system look and feel", e);
         }
         //</editor-fold>
+
+        DBUtility.prepare();
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> {
