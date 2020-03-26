@@ -101,6 +101,17 @@ public class UserRepositoryImpl implements UserRepository {
         return optional;
     }
 
+    @Override
+    public Optional<User> findByUsernameAndPassword(String username, String password)
+    {
+        String sql = "select * from users where username = :username and password = HASH('SHA256', :password)";
+        Map<String, Object> params = new HashMap<>();
+        params.put("username", username);
+        params.put("password", password);
+
+        return template.queryForObject(sql, params, new UserMapper());
+    }
+
     public static class UserMapper implements RowMapper {
 
         @Override

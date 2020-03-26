@@ -23,12 +23,22 @@
  */
 package com.github.derickfelix.bankapplication.views;
 
+import com.github.derickfelix.bankapplication.models.User;
+import com.github.derickfelix.bankapplication.repositories.UserRepository;
+import com.github.derickfelix.bankapplication.repositories.impl.UserRepositoryImpl;
+import com.github.derickfelix.bankapplication.securities.AuthSecurity;
 import com.github.derickfelix.bankapplication.utilities.ViewUtility;
+import java.util.Optional;
+import javax.swing.JOptionPane;
 
 public class LoginForm extends javax.swing.JFrame {
 
+    private final UserRepository repository;
+    
     public LoginForm()
     {
+        this.repository = new UserRepositoryImpl();
+
         initComponents();
         customSettings();
     }
@@ -99,16 +109,16 @@ public class LoginForm extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(lblLogo)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(txtUsername, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblUsername, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, 37, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnLogin, javax.swing.GroupLayout.DEFAULT_SIZE, 132, Short.MAX_VALUE)
+                        .addComponent(btnLogin, javax.swing.GroupLayout.DEFAULT_SIZE, 131, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnExit, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(txtPassword)
-                    .addComponent(lblPassword, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(lblPassword, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtUsername)
+                    .addComponent(lblUsername, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(24, 24, 24))
         );
         layout.setVerticalGroup(
@@ -130,7 +140,7 @@ public class LoginForm extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnLogin)
                             .addComponent(btnExit))))
-                .addContainerGap(36, Short.MAX_VALUE))
+                .addContainerGap(37, Short.MAX_VALUE))
         );
 
         pack();
@@ -144,8 +154,23 @@ public class LoginForm extends javax.swing.JFrame {
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnLoginActionPerformed
     {//GEN-HEADEREND:event_btnLoginActionPerformed
-        new MainForm().setVisible(true);
-        dispose();
+        String username = txtUsername.getText();
+        String password = new String(txtPassword.getPassword());
+        Optional<User> optional = repository.findByUsernameAndPassword(username, password);
+                
+        if (optional.isPresent()) {
+            User user = optional.get();
+            AuthSecurity.login(user);
+            
+            if (user.getRole().equals("admin")) {
+                new AdminForm().setVisible(true);
+            } else {
+//                new StandardForm().setVisible(true);
+            }
+            dispose();
+        } else {
+            JOptionPane.showMessageDialog(this, "Username or password provided doesn't match our records!", "Zwei Bank Application", JOptionPane.WARNING_MESSAGE);
+        }
     }//GEN-LAST:event_btnLoginActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

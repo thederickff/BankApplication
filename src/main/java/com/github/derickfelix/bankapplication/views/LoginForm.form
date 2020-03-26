@@ -28,17 +28,17 @@
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Component id="lblLogo" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="1" attributes="0">
-                  <Component id="txtUsername" alignment="0" max="32767" attributes="0"/>
-                  <Component id="lblUsername" alignment="0" max="32767" attributes="0"/>
+              <EmptySpace type="unrelated" pref="37" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="1" max="-2" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
-                      <Component id="btnLogin" pref="132" max="32767" attributes="0"/>
+                      <Component id="btnLogin" pref="131" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="btnExit" min="-2" pref="73" max="-2" attributes="0"/>
                   </Group>
                   <Component id="txtPassword" alignment="1" max="32767" attributes="0"/>
                   <Component id="lblPassword" alignment="1" max="32767" attributes="0"/>
+                  <Component id="txtUsername" alignment="1" max="32767" attributes="0"/>
+                  <Component id="lblUsername" alignment="1" max="32767" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
           </Group>
@@ -66,7 +66,7 @@
                       </Group>
                   </Group>
               </Group>
-              <EmptySpace pref="36" max="32767" attributes="0"/>
+              <EmptySpace pref="37" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>

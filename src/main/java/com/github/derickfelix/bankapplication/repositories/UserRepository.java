@@ -24,6 +24,10 @@
 package com.github.derickfelix.bankapplication.repositories;
 
 import com.github.derickfelix.bankapplication.models.User;
+import java.util.Optional;
 
 public interface UserRepository extends BaseRepository<User, Long> {
+    
+    Optional<User> findByUsernameAndPassword(String username, String password);
+
 }
