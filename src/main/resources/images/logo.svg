@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="171.96855mm"
+   height="111.39397mm"
+   viewBox="0 0 171.96855 111.39398"
+   version="1.1"
+   id="svg8"
+   inkscape:version="0.92.1 r15371"
+   sodipodi:docname="logo.svg">
+  <defs
+     id="defs2" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.5"
+     inkscape:cx="-78.861056"
+     inkscape:cy="253.02258"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     showborder="false"
+     inkscape:window-width="1366"
+     inkscape:window-height="728"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Ebene 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(11.206197,-66.11857)">
+    <path
+       style="opacity:1;fill:#000055;fill-opacity:1;stroke:#ffffff;stroke-width:2.11640215;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none"
+       d="m 144.28236,140.73305 c 2.83089,31.78492 33.06686,34.25424 0.29566,34.25424 -34.33987,0 -63.188758,10.65393 -63.188758,-25.65786 0,-2.91395 0.18126,-5.78264 0.528773,-8.59638 z"
+       id="path4720"
+       inkscape:connector-curvature="0" />
+    <path
+       style="opacity:1;fill:#000055;fill-opacity:1;stroke:#ffffff;stroke-width:2.11640215;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none"
+       d="m 72.103105,140.73305 c 0.367468,2.81374 0.559656,5.68243 0.559656,8.59638 2e-6,36.31179 -30.505839,25.65786 -66.8176249,25.65786 -34.6530661,0 -2.680814,-2.46932 0.312642,-34.25424 z"
+       id="path4718"
+       inkscape:connector-curvature="0" />
+    <path
+       style="opacity:1;fill:#000055;fill-opacity:1;stroke:#ffffff;stroke-width:2.11640215;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none"
+       d="m 140.68587,67.176771 c 30.18737,0 10.55487,11.110687 3.07268,35.720769 H 82.180907 C 93.089467,81.68665 115.19257,67.176771 140.68587,67.176771 Z"
+       id="path4716"
+       inkscape:connector-curvature="0" />
+    <path
+       style="opacity:1;fill:#000055;fill-opacity:1;stroke:#ffffff;stroke-width:2.11640215;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none"
+       d="m 13.365987,67.176771 c 25.493162,0 47.59646,14.509871 58.504956,35.720769 H 10.293822 c -7.4821519,-24.6101 -27.1151,-35.720769 3.072165,-35.720769 z"
+       id="path4577"
+       inkscape:connector-curvature="0" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:25.20459557px;line-height:2.25;font-family:Kirsty;-inkscape-font-specification:'Kirsty, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;opacity:1;fill:#000055;fill-opacity:1;stroke:#ffffff;stroke-width:1.34937501;stroke-miterlimit:4;stroke-dasharray:none"
+       x="10.689514"
+       y="131.27039"
+       id="text4589"><tspan
+         sodipodi:role="line"
+         x="10.689514"
+         y="131.27039"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:25.20459557px;line-height:2.25;font-family:Kirsty;-inkscape-font-specification:'Kirsty, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#000055;stroke:#ffffff;stroke-width:1.34937501;stroke-miterlimit:4;stroke-dasharray:none"
+         id="tspan4591">ZW<tspan
+   style="line-height:22.85000038;fill:#000055;stroke:#ffffff;stroke-width:1.34937501"
+   id="tspan4654">EI B</tspan>ANK</tspan></text>
+  </g>
+</svg>
