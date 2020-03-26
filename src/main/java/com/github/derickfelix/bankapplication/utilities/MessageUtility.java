@@ -41,6 +41,20 @@ public class MessageUtility {
     {
         JOptionPane.showMessageDialog(parent, message, "Zwei Bank Application", JOptionPane.INFORMATION_MESSAGE);
     }
+    
+    public static void warning(String message)
+    {
+        warning(null, message);
+    }
+    public static void warning(java.awt.Frame parent, String message)
+    {
+        JOptionPane.showMessageDialog(parent, message, "Zwei Bank Application", JOptionPane.WARNING_MESSAGE);
+    }
+    
+    public static int confirmWarning(java.awt.Frame parent, String message)
+    {
+        return JOptionPane.showConfirmDialog(null, message, "Zwei Bank Application", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
+    }
 
     /**
      * Show an exception dialog with two buttons, okay (closes the dialog) and
@@ -59,7 +73,7 @@ public class MessageUtility {
         Object[] choices = {"Ok", "Details >>>"};
         Object defaultChoice = choices[1];
 
-        if (JOptionPane.showOptionDialog(null, message, "Bank Application", JOptionPane.YES_NO_OPTION,
+        if (JOptionPane.showOptionDialog(null, message, "Zwei Bank Application", JOptionPane.YES_NO_OPTION,
                 JOptionPane.ERROR_MESSAGE, null, choices, defaultChoice) == 1) {
             new ExceptionDialog(parent, true, e).setVisible(true);
         }

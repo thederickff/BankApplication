@@ -29,10 +29,9 @@ import com.github.derickfelix.bankapplication.repositories.impl.UserRepositoryIm
 import com.github.derickfelix.bankapplication.utilities.MessageUtility;
 import com.github.derickfelix.bankapplication.utilities.ViewUtility;
 import com.github.derickfelix.bankapplication.views.custom.StripedTableCellRenderer;
+import com.sun.glass.events.KeyEvent;
 import java.awt.Font;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -41,13 +40,14 @@ import javax.swing.table.DefaultTableCellRenderer;
 
 public class UsersFrame extends javax.swing.JInternalFrame {
 
+    private final MainForm mainForm;
     private final UserRepository repository;
+    private List<User> users;
+    private int lastSelected = -1;
     
-    /**
-     * Creates new form UsersFrame
-     */
-    public UsersFrame()
+    public UsersFrame(MainForm mainForm)
     {
+        this.mainForm = mainForm;
         this.repository = new UserRepositoryImpl();
         initComponents();
         customSettings();
@@ -60,6 +60,10 @@ public class UsersFrame extends javax.swing.JInternalFrame {
         mainTable.setDefaultRenderer(String.class, leftRenderer);
         mainTable.getTableHeader().setFont(new Font(Font.DIALOG, Font.PLAIN, 12));
         mainScroll.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+        
+        tbtnEdit.setEnabled(false);
+        tbtnDelete.setEnabled(false);
+        tbtnExport.setEnabled(false);
     }
 
     /**
@@ -127,6 +131,13 @@ public class UsersFrame extends javax.swing.JInternalFrame {
         });
         mainTable.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
         mainTable.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        mainTable.addMouseListener(new java.awt.event.MouseAdapter()
+        {
+            public void mouseClicked(java.awt.event.MouseEvent evt)
+            {
+                mainTableMouseClicked(evt);
+            }
+        });
         mainScroll.setViewportView(mainTable);
         if (mainTable.getColumnModel().getColumnCount() > 0)
         {
@@ -245,6 +256,13 @@ public class UsersFrame extends javax.swing.JInternalFrame {
         lblSearch.setText("Search");
 
         txtSearch.setFont(new java.awt.Font("Noto Sans", 0, 12)); // NOI18N
+        txtSearch.addKeyListener(new java.awt.event.KeyAdapter()
+        {
+            public void keyReleased(java.awt.event.KeyEvent evt)
+            {
+                txtSearchKeyReleased(evt);
+            }
+        });
 
         javax.swing.GroupLayout paneInputsLayout = new javax.swing.GroupLayout(paneInputs);
         paneInputs.setLayout(paneInputsLayout);
@@ -305,7 +323,7 @@ public class UsersFrame extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(paneInputs, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(toolbar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(mainScroll, javax.swing.GroupLayout.DEFAULT_SIZE, 699, Short.MAX_VALUE)
+                    .addComponent(mainScroll, javax.swing.GroupLayout.DEFAULT_SIZE, 696, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(btnSearch)
@@ -331,7 +349,7 @@ public class UsersFrame extends javax.swing.JInternalFrame {
                 .addGap(12, 12, 12))
         );
 
-        setBounds(300, 100, 733, 338);
+        setBounds(300, 100, 730, 338);
     }// </editor-fold>//GEN-END:initComponents
 
     private void tbtnSearchActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_tbtnSearchActionPerformed
@@ -341,17 +359,17 @@ public class UsersFrame extends javax.swing.JInternalFrame {
 
     private void tbtnAddActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_tbtnAddActionPerformed
     {//GEN-HEADEREND:event_tbtnAddActionPerformed
-        // TODO add your handling code here:
+        mainForm.addInternalFrame(new UsersFrameForm(mainForm));
     }//GEN-LAST:event_tbtnAddActionPerformed
 
     private void tbtnEditActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_tbtnEditActionPerformed
     {//GEN-HEADEREND:event_tbtnEditActionPerformed
-        // TODO add your handling code here:
+        edit();
     }//GEN-LAST:event_tbtnEditActionPerformed
 
     private void tbtnDeleteActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_tbtnDeleteActionPerformed
     {//GEN-HEADEREND:event_tbtnDeleteActionPerformed
-        // TODO add your handling code here:
+        delete();
     }//GEN-LAST:event_tbtnDeleteActionPerformed
 
     private void tbtnExportActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_tbtnExportActionPerformed
@@ -369,19 +387,65 @@ public class UsersFrame extends javax.swing.JInternalFrame {
         dispose();
     }//GEN-LAST:event_btnCloseActionPerformed
 
+    private void mainTableMouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_mainTableMouseClicked
+    {//GEN-HEADEREND:event_mainTableMouseClicked
+        tbtnEdit.setEnabled(true);
+        tbtnDelete.setEnabled(true);
+        tbtnExport.setEnabled(true);
+        
+        if (lastSelected == mainTable.getSelectedRow()) {
+            edit();
+        }
+        
+        lastSelected = mainTable.getSelectedRow();
+    }//GEN-LAST:event_mainTableMouseClicked
+
+    private void txtSearchKeyReleased(java.awt.event.KeyEvent evt)//GEN-FIRST:event_txtSearchKeyReleased
+    {//GEN-HEADEREND:event_txtSearchKeyReleased
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            search();
+        }
+    }//GEN-LAST:event_txtSearchKeyReleased
+
     private void search()
     {
+        tbtnEdit.setEnabled(false);
+        tbtnDelete.setEnabled(false);
+        tbtnExport.setEnabled(false);
+
         setCursor(ViewUtility.WAIT_CURSOR);
         ViewUtility.clearTable(mainTable);
         String term = txtSearch.getText();
-        List<User> users = repository.search(term);
+        users = repository.search(term);
 
         if (users.isEmpty()) {
-            MessageUtility.info("No results found!");
+            MessageUtility.info(mainForm, "No results found!");
         }
 
         ViewUtility.addRowsToTable(convertToRows(users), mainTable);
         setCursor(ViewUtility.DEFAULT_CURSOR);
+    }
+    
+    private void edit()
+    {
+        User user = users.get(mainTable.getSelectedRow());
+        mainForm.addInternalFrame(new UsersFrameForm(mainForm).setUser(user));
+    }
+    
+    private void delete()
+    {
+        int option = MessageUtility.confirmWarning(mainForm, "Are you sure you want to delete it?");
+        
+        if (option == JOptionPane.YES_OPTION) {
+            setCursor(ViewUtility.WAIT_CURSOR);
+            repository.find(users.get(mainTable.getSelectedRow()).getId()).ifPresent(user -> {
+                repository.deleteById(user.getId());
+
+                MessageUtility.info("User deleted successfully!");
+                search();
+            });   
+            setCursor(ViewUtility.DEFAULT_CURSOR);
+        }
     }
     
     private List<String[]> convertToRows(List<User> users)

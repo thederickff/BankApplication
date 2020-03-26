@@ -68,18 +68,18 @@ public class UserRepositoryImpl implements UserRepository {
         String sql;
         Map<String, Object> params = new HashMap<>();
 
-        if (model.getId() != null) {
+        if (model.getId() == null) {
             sql = "insert into users (name, username, password, role) "
                     + "values (:name, :username, HASH('SHA256', :password), :role)";
 
-            params.put("username", model.getUsername());
             params.put("password", model.getPassword());
         } else {
-            sql = "update users set name = :name, role = :role where id = :id";
+            sql = "update users set name = :name, username = :username, role = :role where id = :id";
 
             params.put("id", model.getId());
         }
 
+        params.put("username", model.getUsername());
         params.put("name", model.getName());
         params.put("role", model.getRole());
 
@@ -100,6 +100,16 @@ public class UserRepositoryImpl implements UserRepository {
         });
 
         return optional;
+    }
+    
+    @Override
+    public Optional<User> findByUsername(String username)
+    {
+        String sql = "select * from users where username = :username";
+        Map<String, Object> params = new HashMap<>();
+        params.put("username", username);
+
+        return template.queryForObject(sql, params, new UserMapper());
     }
 
     @Override

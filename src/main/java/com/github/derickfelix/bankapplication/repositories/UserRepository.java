@@ -32,5 +32,7 @@ public interface UserRepository extends BaseRepository<User, Long> {
     List<User> search(String term);
     
     Optional<User> findByUsernameAndPassword(String username, String password);
+    
+    Optional<User> findByUsername(String username);
 
 }

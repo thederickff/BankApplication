@@ -162,11 +162,11 @@ public class LoginForm extends javax.swing.JFrame {
             User user = optional.get();
             AuthSecurity.login(user);
             
-            if (user.getRole().equals("admin")) {
-                new AdminForm().setVisible(true);
-            } else {
+//            if (user.getRole().equals("admin")) {
+                new MainForm().setVisible(true);
+//            } else {
 //                new StandardForm().setVisible(true);
-            }
+//            }
             dispose();
         } else {
             JOptionPane.showMessageDialog(this, "Username or password provided doesn't match our records!", "Zwei Bank Application", JOptionPane.WARNING_MESSAGE);

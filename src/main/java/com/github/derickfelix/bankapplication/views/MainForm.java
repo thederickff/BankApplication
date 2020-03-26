@@ -29,9 +29,9 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import javax.swing.JOptionPane;
 
-public class AdminForm extends javax.swing.JFrame {
+public class MainForm extends javax.swing.JFrame {
 
-    public AdminForm()
+    public MainForm()
     {
         initComponents();
         customSettings();
@@ -286,9 +286,7 @@ public class AdminForm extends javax.swing.JFrame {
 
     private void mniUsersActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_mniUsersActionPerformed
     {//GEN-HEADEREND:event_mniUsersActionPerformed
-        UsersFrame usersFrame = new UsersFrame();
-        desktopPane.add(usersFrame);
-        usersFrame.setVisible(true);
+        addInternalFrame(new UsersFrame(this));
     }//GEN-LAST:event_mniUsersActionPerformed
 
     private void mniStaffsActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_mniStaffsActionPerformed
@@ -308,6 +306,12 @@ public class AdminForm extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_mniLogoutActionPerformed
 
+    public void addInternalFrame(javax.swing.JInternalFrame frame)
+    {
+        desktopPane.add(frame);
+        frame.setVisible(true);
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuBar appMenubar;
     private javax.swing.JDesktopPane desktopPane;
