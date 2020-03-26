@@ -525,8 +525,8 @@ public class Main extends javax.swing.JFrame {
 
     private void MenuLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuLogoutActionPerformed
         setVisible(false);
-        Login dialog = new Login(new javax.swing.JFrame(), true);
-        dialog.setVisible(true);
+//        Login dialog = new Login(new javax.swing.JFrame(), true);
+//        dialog.setVisible(true);
         dispose();
     }//GEN-LAST:event_MenuLogoutActionPerformed
 

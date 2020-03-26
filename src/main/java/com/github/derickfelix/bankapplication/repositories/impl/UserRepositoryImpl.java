@@ -33,6 +33,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import org.h2.util.StringUtils;
 
 public class UserRepositoryImpl implements UserRepository {
 
@@ -110,6 +111,17 @@ public class UserRepositoryImpl implements UserRepository {
         params.put("password", password);
 
         return template.queryForObject(sql, params, new UserMapper());
+    }
+
+    @Override
+    public List<User> search(String term)
+    {
+        String sql = "select * from users where id = :code or (upper(name) like :term or upper(username) like :term or upper(role) like :term)";
+        Map<String, Object> params = new HashMap<>();
+        params.put("code", StringUtils.isNumber(term) ? term : -1);
+        params.put("term", "%" + term.toUpperCase() + "%");
+
+        return template.queryForList(sql, params, new UserMapper());
     }
 
     public static class UserMapper implements RowMapper {

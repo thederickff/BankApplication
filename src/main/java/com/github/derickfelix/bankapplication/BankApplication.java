@@ -41,7 +41,7 @@ public class BankApplication {
             String systemLookAndFeel = javax.swing.UIManager.getSystemLookAndFeelClassName();
             javax.swing.UIManager.setLookAndFeel(systemLookAndFeel);
         } catch (ClassNotFoundException | IllegalAccessException | InstantiationException | UnsupportedLookAndFeelException e) {
-            MessageUtility.showException(null, "Failed to use system look and feel", e);
+            MessageUtility.error(null, "Failed to use system look and feel", e);
         }
         //</editor-fold>
 

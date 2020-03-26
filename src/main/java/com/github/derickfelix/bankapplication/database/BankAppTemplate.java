@@ -87,7 +87,7 @@ public class BankAppTemplate {
                 return list;
             }
         } catch (NullPointerException | ClassNotFoundException | SQLException e) {
-            MessageUtility.showException(null, e);
+            MessageUtility.error(null, e);
         }
 
         return null;

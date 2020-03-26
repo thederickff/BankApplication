@@ -44,7 +44,7 @@ public class DBUtility {
             Server.createWebServer().start();
             checkDatabase();
         } catch (SQLException e) {
-            MessageUtility.showException(null, e);
+            MessageUtility.error(null, e);
         }
     }
 

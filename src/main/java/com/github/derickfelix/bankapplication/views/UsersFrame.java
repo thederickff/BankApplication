@@ -23,19 +23,43 @@
  */
 package com.github.derickfelix.bankapplication.views;
 
+import com.github.derickfelix.bankapplication.models.User;
+import com.github.derickfelix.bankapplication.repositories.UserRepository;
+import com.github.derickfelix.bankapplication.repositories.impl.UserRepositoryImpl;
+import com.github.derickfelix.bankapplication.utilities.MessageUtility;
+import com.github.derickfelix.bankapplication.utilities.ViewUtility;
+import com.github.derickfelix.bankapplication.views.custom.StripedTableCellRenderer;
+import java.awt.Font;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JScrollPane;
+import javax.swing.table.DefaultTableCellRenderer;
+
 public class UsersFrame extends javax.swing.JInternalFrame {
 
+    private final UserRepository repository;
+    
     /**
      * Creates new form UsersFrame
      */
     public UsersFrame()
     {
+        this.repository = new UserRepositoryImpl();
         initComponents();
         customSettings();
     }
     
     private void customSettings()
     {
+        DefaultTableCellRenderer leftRenderer = new StripedTableCellRenderer(JLabel.LEFT);
+        // Align all to left with stripped color
+        mainTable.setDefaultRenderer(String.class, leftRenderer);
+        mainTable.getTableHeader().setFont(new Font(Font.DIALOG, Font.PLAIN, 12));
+        mainScroll.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
     }
 
     /**
@@ -48,7 +72,7 @@ public class UsersFrame extends javax.swing.JInternalFrame {
     private void initComponents()
     {
 
-        scrollPane = new javax.swing.JScrollPane();
+        mainScroll = new javax.swing.JScrollPane();
         mainTable = new javax.swing.JTable();
         toolbar = new javax.swing.JToolBar();
         tbtnSearch = new javax.swing.JButton();
@@ -58,14 +82,12 @@ public class UsersFrame extends javax.swing.JInternalFrame {
         tbtnExport = new javax.swing.JButton();
         btnSearch = new javax.swing.JButton();
         btnClose = new javax.swing.JButton();
-        paneLines = new javax.swing.JPanel();
-        lblLine = new javax.swing.JLabel();
-        txtLine = new javax.swing.JLabel();
         paneInputs = new javax.swing.JPanel();
-        lblCode = new javax.swing.JLabel();
-        txtCode = new javax.swing.JTextField();
-        lblUsername = new javax.swing.JLabel();
-        txtUsername = new javax.swing.JTextField();
+        lblSearch = new javax.swing.JLabel();
+        txtSearch = new javax.swing.JTextField();
+        statusPanel = new javax.swing.JPanel();
+        lblLine = new javax.swing.JLabel();
+        lblSelectedLine = new javax.swing.JLabel();
 
         setClosable(true);
         setMaximizable(true);
@@ -90,7 +112,7 @@ public class UsersFrame extends javax.swing.JInternalFrame {
             };
             boolean[] canEdit = new boolean []
             {
-                false, false, true, false
+                false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex)
@@ -103,7 +125,24 @@ public class UsersFrame extends javax.swing.JInternalFrame {
                 return canEdit [columnIndex];
             }
         });
-        scrollPane.setViewportView(mainTable);
+        mainTable.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
+        mainTable.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        mainScroll.setViewportView(mainTable);
+        if (mainTable.getColumnModel().getColumnCount() > 0)
+        {
+            mainTable.getColumnModel().getColumn(0).setMinWidth(100);
+            mainTable.getColumnModel().getColumn(0).setPreferredWidth(100);
+            mainTable.getColumnModel().getColumn(0).setMaxWidth(150);
+            mainTable.getColumnModel().getColumn(1).setMinWidth(200);
+            mainTable.getColumnModel().getColumn(1).setPreferredWidth(200);
+            mainTable.getColumnModel().getColumn(1).setMaxWidth(250);
+            mainTable.getColumnModel().getColumn(2).setMinWidth(200);
+            mainTable.getColumnModel().getColumn(2).setPreferredWidth(200);
+            mainTable.getColumnModel().getColumn(2).setMaxWidth(250);
+            mainTable.getColumnModel().getColumn(3).setMinWidth(100);
+            mainTable.getColumnModel().getColumn(3).setPreferredWidth(100);
+            mainTable.getColumnModel().getColumn(3).setMaxWidth(150);
+        }
 
         toolbar.setFloatable(false);
         toolbar.setRollover(true);
@@ -200,46 +239,12 @@ public class UsersFrame extends javax.swing.JInternalFrame {
             }
         });
 
-        paneLines.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-
-        lblLine.setFont(new java.awt.Font("Noto Sans", 0, 12)); // NOI18N
-        lblLine.setText("Line:");
-
-        txtLine.setFont(new java.awt.Font("Noto Sans", 0, 12)); // NOI18N
-        txtLine.setText("0/0");
-
-        javax.swing.GroupLayout paneLinesLayout = new javax.swing.GroupLayout(paneLines);
-        paneLines.setLayout(paneLinesLayout);
-        paneLinesLayout.setHorizontalGroup(
-            paneLinesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(paneLinesLayout.createSequentialGroup()
-                .addGap(4, 4, 4)
-                .addComponent(lblLine)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtLine, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        paneLinesLayout.setVerticalGroup(
-            paneLinesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, paneLinesLayout.createSequentialGroup()
-                .addGap(0, 0, 0)
-                .addGroup(paneLinesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblLine)
-                    .addComponent(txtLine))
-                .addGap(0, 0, 0))
-        );
-
         paneInputs.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 102, 102)));
 
-        lblCode.setFont(new java.awt.Font("Noto Sans", 0, 12)); // NOI18N
-        lblCode.setText("Code");
+        lblSearch.setFont(new java.awt.Font("Noto Sans", 0, 12)); // NOI18N
+        lblSearch.setText("Search");
 
-        txtCode.setFont(new java.awt.Font("Noto Sans", 0, 12)); // NOI18N
-
-        lblUsername.setFont(new java.awt.Font("Noto Sans", 0, 12)); // NOI18N
-        lblUsername.setText("Username");
-
-        txtUsername.setFont(new java.awt.Font("Noto Sans", 0, 12)); // NOI18N
+        txtSearch.setFont(new java.awt.Font("Noto Sans", 0, 12)); // NOI18N
 
         javax.swing.GroupLayout paneInputsLayout = new javax.swing.GroupLayout(paneInputs);
         paneInputs.setLayout(paneInputsLayout);
@@ -247,29 +252,48 @@ public class UsersFrame extends javax.swing.JInternalFrame {
             paneInputsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(paneInputsLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(paneInputsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(txtCode)
-                    .addComponent(lblCode, javax.swing.GroupLayout.DEFAULT_SIZE, 122, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(paneInputsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(txtUsername)
-                    .addComponent(lblUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(paneInputsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtSearch)
+                    .addComponent(lblSearch, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         paneInputsLayout.setVerticalGroup(
             paneInputsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(paneInputsLayout.createSequentialGroup()
                 .addGap(6, 6, 6)
-                .addGroup(paneInputsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addGroup(paneInputsLayout.createSequentialGroup()
-                        .addComponent(lblUsername)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtUsername))
-                    .addGroup(paneInputsLayout.createSequentialGroup()
-                        .addComponent(lblCode)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtCode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addComponent(lblSearch)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        statusPanel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
+
+        lblLine.setFont(new java.awt.Font("Noto Sans", 0, 11)); // NOI18N
+        lblLine.setText("Line:");
+
+        lblSelectedLine.setFont(new java.awt.Font("Noto Sans", 0, 11)); // NOI18N
+        lblSelectedLine.setText("0/0");
+
+        javax.swing.GroupLayout statusPanelLayout = new javax.swing.GroupLayout(statusPanel);
+        statusPanel.setLayout(statusPanelLayout);
+        statusPanelLayout.setHorizontalGroup(
+            statusPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(statusPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblLine)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblSelectedLine, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        statusPanelLayout.setVerticalGroup(
+            statusPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(statusPanelLayout.createSequentialGroup()
+                .addGap(0, 0, 0)
+                .addGroup(statusPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblLine)
+                    .addComponent(lblSelectedLine))
+                .addGap(0, 0, 0))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -281,13 +305,13 @@ public class UsersFrame extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(paneInputs, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(toolbar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(paneLines, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(scrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 792, Short.MAX_VALUE)
+                    .addComponent(mainScroll, javax.swing.GroupLayout.DEFAULT_SIZE, 699, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(btnSearch)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnClose)))
+                        .addComponent(btnClose))
+                    .addComponent(statusPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -297,22 +321,22 @@ public class UsersFrame extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(paneInputs, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(scrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 197, Short.MAX_VALUE)
+                .addComponent(mainScroll, javax.swing.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(paneLines, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(12, 12, 12)
+                .addComponent(statusPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(13, 13, 13)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnClose)
                     .addComponent(btnSearch))
                 .addGap(12, 12, 12))
         );
 
-        pack();
+        setBounds(300, 100, 733, 338);
     }// </editor-fold>//GEN-END:initComponents
 
     private void tbtnSearchActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_tbtnSearchActionPerformed
     {//GEN-HEADEREND:event_tbtnSearchActionPerformed
-        // TODO add your handling code here:
+        search();
     }//GEN-LAST:event_tbtnSearchActionPerformed
 
     private void tbtnAddActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_tbtnAddActionPerformed
@@ -337,7 +361,7 @@ public class UsersFrame extends javax.swing.JInternalFrame {
 
     private void btnSearchActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnSearchActionPerformed
     {//GEN-HEADEREND:event_btnSearchActionPerformed
-        // TODO add your handling code here:
+        search();
     }//GEN-LAST:event_btnSearchActionPerformed
 
     private void btnCloseActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnCloseActionPerformed
@@ -345,25 +369,50 @@ public class UsersFrame extends javax.swing.JInternalFrame {
         dispose();
     }//GEN-LAST:event_btnCloseActionPerformed
 
+    private void search()
+    {
+        setCursor(ViewUtility.WAIT_CURSOR);
+        ViewUtility.clearTable(mainTable);
+        String term = txtSearch.getText();
+        List<User> users = repository.search(term);
 
+        if (users.isEmpty()) {
+            MessageUtility.info("No results found!");
+        }
+
+        ViewUtility.addRowsToTable(convertToRows(users), mainTable);
+        setCursor(ViewUtility.DEFAULT_CURSOR);
+    }
+    
+    private List<String[]> convertToRows(List<User> users)
+    {
+        return users.stream().map(user -> {
+            String[] row = new String[4];
+            row[0] = user.getId().toString();
+            row[1] = user.getName();
+            row[2] = user.getUsername();
+            row[3] = user.getRole();
+            
+            return row;
+        }).collect(Collectors.toList());
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnClose;
     private javax.swing.JButton btnSearch;
-    private javax.swing.JLabel lblCode;
     private javax.swing.JLabel lblLine;
-    private javax.swing.JLabel lblUsername;
+    private javax.swing.JLabel lblSearch;
+    private javax.swing.JLabel lblSelectedLine;
+    private javax.swing.JScrollPane mainScroll;
     private javax.swing.JTable mainTable;
     private javax.swing.JPanel paneInputs;
-    private javax.swing.JPanel paneLines;
-    private javax.swing.JScrollPane scrollPane;
+    private javax.swing.JPanel statusPanel;
     private javax.swing.JButton tbtnAdd;
     private javax.swing.JButton tbtnDelete;
     private javax.swing.JButton tbtnEdit;
     private javax.swing.JButton tbtnExport;
     private javax.swing.JButton tbtnSearch;
     private javax.swing.JToolBar toolbar;
-    private javax.swing.JTextField txtCode;
-    private javax.swing.JLabel txtLine;
-    private javax.swing.JTextField txtUsername;
+    private javax.swing.JTextField txtSearch;
     // End of variables declaration//GEN-END:variables
 }

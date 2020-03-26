@@ -27,9 +27,19 @@ import com.github.derickfelix.bankapplication.views.dialogs.ExceptionDialog;
 import javax.swing.JOptionPane;
 
 public class MessageUtility {
-    
+
     private MessageUtility()
     {
+    }
+    
+    public static void info(String message)
+    {
+        info(null, message);
+    }
+    
+    public static void info(java.awt.Frame parent, String message)
+    {
+        JOptionPane.showMessageDialog(parent, message, "Zwei Bank Application", JOptionPane.INFORMATION_MESSAGE);
     }
 
     /**
@@ -39,12 +49,12 @@ public class MessageUtility {
      * @param parent the calling frame of this dialog
      * @param e the exception which this dialog is showing
      */
-    public static void showException(java.awt.Frame parent, Exception e)
+    public static void error(java.awt.Frame parent, Exception e)
     {
-        showException(parent, e.getMessage(), e);
+        error(parent, e.getMessage(), e);
     }
 
-    public static void showException(java.awt.Frame parent, String message, Exception e)
+    public static void error(java.awt.Frame parent, String message, Exception e)
     {
         Object[] choices = {"Ok", "Details >>>"};
         Object defaultChoice = choices[1];
