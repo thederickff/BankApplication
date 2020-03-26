@@ -23,6 +23,7 @@
  */
 package com.github.derickfelix.bankapplication.views;
 
+import com.github.derickfelix.bankapplication.utilities.ViewUtility;
 import javax.swing.JOptionPane;
 
 public class MainForm extends javax.swing.JFrame {
@@ -30,6 +31,12 @@ public class MainForm extends javax.swing.JFrame {
     public MainForm()
     {
         initComponents();
+        customSettings();
+    }
+    
+    private void customSettings()
+    {
+        ViewUtility.addIconTo(this);
     }
 
     /**

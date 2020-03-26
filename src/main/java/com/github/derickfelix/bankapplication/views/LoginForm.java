@@ -23,11 +23,19 @@
  */
 package com.github.derickfelix.bankapplication.views;
 
+import com.github.derickfelix.bankapplication.utilities.ViewUtility;
+
 public class LoginForm extends javax.swing.JFrame {
 
     public LoginForm()
     {
         initComponents();
+        customSettings();
+    }
+    
+    private void customSettings()
+    {
+        ViewUtility.addIconTo(this);
     }
 
     /**
