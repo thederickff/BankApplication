@@ -29,14 +29,19 @@ import com.github.derickfelix.bankapplication.repositories.impl.UserRepositoryIm
 import com.github.derickfelix.bankapplication.utilities.MessageUtility;
 import com.github.derickfelix.bankapplication.utilities.ViewUtility;
 import com.github.derickfelix.bankapplication.views.custom.StripedTableCellRenderer;
+import com.github.derickfelix.bankapplication.views.dialogs.ExportDialog;
 import com.sun.glass.events.KeyEvent;
 import java.awt.Font;
+import java.util.ArrayList;
+import java.util.Enumeration;
 import java.util.List;
 import java.util.stream.Collectors;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.TableColumn;
+import javax.swing.table.TableColumnModel;
 
 public class UsersFrame extends javax.swing.JInternalFrame {
 
@@ -130,9 +135,14 @@ public class UsersFrame extends javax.swing.JInternalFrame {
             }
         });
         mainTable.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
+        mainTable.setGridColor(new java.awt.Color(255, 255, 255));
         mainTable.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         mainTable.addMouseListener(new java.awt.event.MouseAdapter()
         {
+            public void mouseReleased(java.awt.event.MouseEvent evt)
+            {
+                mainTableMouseReleased(evt);
+            }
             public void mouseClicked(java.awt.event.MouseEvent evt)
             {
                 mainTableMouseClicked(evt);
@@ -250,7 +260,7 @@ public class UsersFrame extends javax.swing.JInternalFrame {
             }
         });
 
-        paneInputs.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 102, 102)));
+        paneInputs.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         lblSearch.setFont(new java.awt.Font("Noto Sans", 0, 12)); // NOI18N
         lblSearch.setText("Search");
@@ -287,10 +297,10 @@ public class UsersFrame extends javax.swing.JInternalFrame {
 
         statusPanel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
 
-        lblLine.setFont(new java.awt.Font("Noto Sans", 0, 11)); // NOI18N
+        lblLine.setFont(new java.awt.Font("Noto Sans", 0, 12)); // NOI18N
         lblLine.setText("Line:");
 
-        lblSelectedLine.setFont(new java.awt.Font("Noto Sans", 0, 11)); // NOI18N
+        lblSelectedLine.setFont(new java.awt.Font("Noto Sans", 0, 12)); // NOI18N
         lblSelectedLine.setText("0/0");
 
         javax.swing.GroupLayout statusPanelLayout = new javax.swing.GroupLayout(statusPanel);
@@ -339,7 +349,7 @@ public class UsersFrame extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(paneInputs, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(mainScroll, javax.swing.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE)
+                .addComponent(mainScroll, javax.swing.GroupLayout.DEFAULT_SIZE, 122, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(statusPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(13, 13, 13)
@@ -374,7 +384,14 @@ public class UsersFrame extends javax.swing.JInternalFrame {
 
     private void tbtnExportActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_tbtnExportActionPerformed
     {//GEN-HEADEREND:event_tbtnExportActionPerformed
-        // TODO add your handling code here:
+        Enumeration<TableColumn> enumColumns = mainTable.getColumnModel().getColumns();
+        List<String> columns = new ArrayList<>();
+        
+        while (enumColumns.hasMoreElements()) {
+            columns.add(enumColumns.nextElement().getHeaderValue().toString());
+        }
+        
+        new ExportDialog(mainForm, columns, convertToRows(users)).setVisible(true);
     }//GEN-LAST:event_tbtnExportActionPerformed
 
     private void btnSearchActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnSearchActionPerformed
@@ -391,7 +408,6 @@ public class UsersFrame extends javax.swing.JInternalFrame {
     {//GEN-HEADEREND:event_mainTableMouseClicked
         tbtnEdit.setEnabled(true);
         tbtnDelete.setEnabled(true);
-        tbtnExport.setEnabled(true);
         
         if (lastSelected == mainTable.getSelectedRow()) {
             edit();
@@ -407,6 +423,11 @@ public class UsersFrame extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_txtSearchKeyReleased
 
+    private void mainTableMouseReleased(java.awt.event.MouseEvent evt)//GEN-FIRST:event_mainTableMouseReleased
+    {//GEN-HEADEREND:event_mainTableMouseReleased
+        lblSelectedLine.setText((mainTable.getSelectedRow() + 1) + "/" + mainTable.getRowCount());
+    }//GEN-LAST:event_mainTableMouseReleased
+
     private void search()
     {
         tbtnEdit.setEnabled(false);
@@ -420,9 +441,14 @@ public class UsersFrame extends javax.swing.JInternalFrame {
 
         if (users.isEmpty()) {
             MessageUtility.info(mainForm, "No results found!");
+        } else {
+            tbtnExport.setEnabled(true);
         }
 
         ViewUtility.addRowsToTable(convertToRows(users), mainTable);
+        
+        lblSelectedLine.setText(0 + "/" + mainTable.getRowCount());
+        
         setCursor(ViewUtility.DEFAULT_CURSOR);
     }
     

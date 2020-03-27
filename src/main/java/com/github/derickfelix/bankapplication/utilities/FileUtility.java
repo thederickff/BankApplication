@@ -23,6 +23,10 @@
  */
 package com.github.derickfelix.bankapplication.utilities;
 
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.List;
+
 public class FileUtility {
     private FileUtility()
     {
@@ -31,5 +35,16 @@ public class FileUtility {
     public static String home()
     {
         return System.getProperty("os.name").contains("Linux") ? "~/.zweibank/" : "C:\\zweibank\\";
+    }
+    
+    public static void write(List<String> lines, String pathFile)
+    {
+        try (PrintWriter writer = new PrintWriter(pathFile)) {
+            lines.forEach(line -> {
+               writer.println(line);
+            });
+        } catch (IOException e) {
+            MessageUtility.error(null, e);
+        }
     }
 }

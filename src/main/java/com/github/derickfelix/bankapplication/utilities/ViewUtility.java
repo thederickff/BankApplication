@@ -25,6 +25,7 @@ package com.github.derickfelix.bankapplication.utilities;
 
 import java.awt.Cursor;
 import java.util.List;
+import java.util.stream.Collectors;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
@@ -60,5 +61,39 @@ public class ViewUtility {
         DefaultTableModel dm = (DefaultTableModel) table.getModel();
         dm.getDataVector().removeAllElements();
         dm.fireTableDataChanged(); // notifies the JTable that the model has changed
+    }
+    
+    /**
+     * Exports a table data to a file, user informs which colunms they
+     * want, and a file divided by ';' will be generated.
+     * 
+     * @param rows each row (String[]) has many columns
+     * @param columns only export columns with the true value
+     * @param filePath the path where the content will be exported
+     */
+    public static void exportTableDataToFile(List<String[]> rows, boolean[] columns, String filePath) throws Exception
+    {
+        if (rows.isEmpty()) {
+            throw new Exception("Could not export, there is no data");
+        }
+        
+        if (rows.get(0).length != columns.length) {
+            throw new Exception("Could not export, the amount of columns is not the same of the columns of the data");
+        }
+        
+        List<String> lines = rows.stream().map(row -> {
+            
+            String line = "";
+            
+            for (int i = 0; i < row.length; ++i) {
+                if (columns[i]) {
+                    line += row[i] + ";";
+                }
+            }
+            
+            return line;
+        }).collect(Collectors.toList());
+        
+        FileUtility.write(lines, filePath);
     }
 }

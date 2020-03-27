@@ -54,7 +54,7 @@
               <EmptySpace max="-2" attributes="0"/>
               <Component id="paneInputs" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="mainScroll" pref="125" max="32767" attributes="0"/>
+              <Component id="mainScroll" pref="122" max="32767" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="statusPanel" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
@@ -113,6 +113,9 @@
                 </Column>
               </TableColumnModel>
             </Property>
+            <Property name="gridColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
             <Property name="selectionModel" type="javax.swing.ListSelectionModel" editor="org.netbeans.modules.form.editors2.JTableSelectionModelEditor">
               <JTableSelectionModel selectionMode="0"/>
             </Property>
@@ -121,6 +124,7 @@
             </Property>
           </Properties>
           <Events>
+            <EventHandler event="mouseReleased" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="mainTableMouseReleased"/>
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="mainTableMouseClicked"/>
           </Events>
         </Component>
@@ -237,10 +241,8 @@
     <Container class="javax.swing.JPanel" name="paneInputs">
       <Properties>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-          <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
-            <LineBorder>
-              <Color PropertyName="color" blue="66" green="66" red="0" type="rgb"/>
-            </LineBorder>
+          <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
+            <EtchetBorder/>
           </Border>
         </Property>
       </Properties>
@@ -329,7 +331,7 @@
         <Component class="javax.swing.JLabel" name="lblLine">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Noto Sans" size="11" style="0"/>
+              <Font name="Noto Sans" size="12" style="0"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Line:"/>
           </Properties>
@@ -337,7 +339,7 @@
         <Component class="javax.swing.JLabel" name="lblSelectedLine">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Noto Sans" size="11" style="0"/>
+              <Font name="Noto Sans" size="12" style="0"/>
             </Property>
             <Property name="text" type="java.lang.String" value="0/0"/>
           </Properties>
