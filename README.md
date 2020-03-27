@@ -1,19 +1,19 @@
-Learning to write test cases and test the program using JUnit as part of Software Quality Assurance and Testing assignment.
+# Banking System Management
+This is a bank application that handles basics operations of a bank, such as customer's deposit and withdraw, money transferences, and fixed income calculations (Interest Rate or Bonds calculations). Still in development, feel free to contribute!
 
-# Banking System Management - Simulation
-This is a bank application that handles basics operations of a bank, still in development<br>
-
-![Image Demo](https://github.com/derickfelix/BankApplication/blob/master/src/main/resources/images/demo.png)
+![Image Demo](https://github.com/derickfelix/BankApplication/blob/master/src/main/resources/images/demo.jpeg)
 
 ## Getting Started
-To install the application follow these steps.
 ### Step 1: Clone this Repository
 `git clone https://github.com/derickfelix/BankApplication` 
-### Step 2: Install the Netbeans
-Before installing [netbeans](https://netbeans.org/) make sure you have Java installed.
-### Step 3: Open the project on Netbeans
-Click in open the project on netbeans
-### Step 4: Import the Database
-Import the `database/migration.sql` file to a mysql database. 
+### Step 2: Build & Run
+```shell
+./mvn clean package
+java -jar target/BankApplication-<current version>-jar-with-dependencies.jar
+```
 
+## Development
+### Step 3: Open the project with netbeans
+### Step 4: Start Coding!!
+No database is required to be installed, since this project is using the H2 Database, and all the data will be generated on the home folder of the project ~/.zweibank/db (Unix) or C:\\zweibank\\db (Windows). You can open the console of the database when the application is running by looking into http://localhost:8082.
 Enjoy!
