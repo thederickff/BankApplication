@@ -30,7 +30,7 @@ public class StripedTableCellRenderer extends DefaultTableCellRenderer {
         if (isSelected) {
             c.setBackground(new Color(50, 120, 255));
             String item = (String) value;
-            if (item.contains("-") && !item.contains("/") && Character.isDigit(item.charAt(0))) {
+            if (item.startsWith("-") && Character.isDigit(item.charAt(1))) {
                 c.setForeground(Color.CYAN);
             } else {
                 c.setForeground(Color.WHITE);
@@ -43,10 +43,10 @@ public class StripedTableCellRenderer extends DefaultTableCellRenderer {
             }
 
             String item = (String) value;
-            if (item.contains("-") && !item.contains("/") && Character.isDigit(item.charAt(0))) {
+            if (item.startsWith("-") && Character.isDigit(item.charAt(1))) {
                 c.setForeground(Color.RED);
             } else {
-                c.setForeground(Color.BLACK);
+                c.setForeground(Color.DARK_GRAY);
             }
         }
 

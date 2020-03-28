@@ -390,10 +390,10 @@ public class RegisterCustomer extends javax.swing.JDialog {
             String address = txtAddress.getText();
             String accType = cmbAccount.getSelectedItem().toString();
 
-            char sex = 'm';
-            if (radioFemale.isSelected()) {
-                sex = 'f';
-            }
+//            char sex = 'm';
+//            if (radioFemale.isSelected()) {
+//                sex = 'f';
+//            }
             // Database mask yy-mm-dd
             String dob = (String) cmbYear.getSelectedItem() + "-" + cmbMonth.getSelectedItem() + "-" + cmbDay.getSelectedItem();
             String psw = txtPassword.getText();
@@ -406,7 +406,7 @@ public class RegisterCustomer extends javax.swing.JDialog {
                 customer.setAddress(address);
                 customer.setAccountType(accType);
 //                customer.setDob(dob);
-                customer.setSex(sex);
+//                customer.setSex(sex);
 //                customer.setPassword(psw);
 //                customerController.store(customer);
                 JOptionPane.showMessageDialog(this, "Customer created successfully\n"

@@ -27,7 +27,6 @@ public class Customer extends Entity {
 
     private String name;
     private String address;
-    private char sex;
     private String accountNumber;
     private String accountType;
     
@@ -49,16 +48,6 @@ public class Customer extends Entity {
     public void setAddress(String address)
     {
         this.address = address;
-    }
-    
-    public char getSex()
-    {
-        return sex;
-    }
-
-    public void setSex(char sex)
-    {
-        this.sex = sex;
     }
     
     public String getAccountNumber()

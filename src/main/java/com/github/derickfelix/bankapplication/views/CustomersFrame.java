@@ -23,9 +23,9 @@
  */
 package com.github.derickfelix.bankapplication.views;
 
-import com.github.derickfelix.bankapplication.models.User;
-import com.github.derickfelix.bankapplication.repositories.UserRepository;
-import com.github.derickfelix.bankapplication.repositories.impl.UserRepositoryImpl;
+import com.github.derickfelix.bankapplication.models.Customer;
+import com.github.derickfelix.bankapplication.repositories.CustomerRepository;
+import com.github.derickfelix.bankapplication.repositories.impl.CustomerRepositoryImpl;
 import com.github.derickfelix.bankapplication.utilities.MessageUtility;
 import com.github.derickfelix.bankapplication.utilities.ViewUtility;
 import com.github.derickfelix.bankapplication.views.custom.StripedTableCellRenderer;
@@ -41,19 +41,18 @@ import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.TableColumn;
-import javax.swing.table.TableColumnModel;
 
-public class UsersFrame extends javax.swing.JInternalFrame {
+public class CustomersFrame extends javax.swing.JInternalFrame {
 
     private final MainForm mainForm;
-    private final UserRepository repository;
-    private List<User> users;
+    private final CustomerRepository repository;
+    private List<Customer> customers;
     private int lastSelected = -1;
     
-    public UsersFrame(MainForm mainForm)
+    public CustomersFrame(MainForm mainForm)
     {
         this.mainForm = mainForm;
-        this.repository = new UserRepositoryImpl();
+        this.repository = new CustomerRepositoryImpl();
         initComponents();
         customSettings();
     }
@@ -101,7 +100,7 @@ public class UsersFrame extends javax.swing.JInternalFrame {
         setClosable(true);
         setMaximizable(true);
         setResizable(true);
-        setTitle("Zwei Bank Application - Users");
+        setTitle("Zwei Bank Application - Customers");
 
         mainTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][]
@@ -110,17 +109,17 @@ public class UsersFrame extends javax.swing.JInternalFrame {
             },
             new String []
             {
-                "Code", "Name", "Username", "Role"
+                "Code", "Name", "Address", "Account Number", "Account Type"
             }
         )
         {
             Class[] types = new Class []
             {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean []
             {
-                false, false, false, false
+                false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex)
@@ -136,6 +135,7 @@ public class UsersFrame extends javax.swing.JInternalFrame {
         mainTable.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
         mainTable.setGridColor(new java.awt.Color(255, 255, 255));
         mainTable.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        mainTable.getTableHeader().setReorderingAllowed(false);
         mainTable.addMouseListener(new java.awt.event.MouseAdapter()
         {
             public void mouseReleased(java.awt.event.MouseEvent evt)
@@ -159,9 +159,12 @@ public class UsersFrame extends javax.swing.JInternalFrame {
             mainTable.getColumnModel().getColumn(2).setMinWidth(200);
             mainTable.getColumnModel().getColumn(2).setPreferredWidth(200);
             mainTable.getColumnModel().getColumn(2).setMaxWidth(250);
-            mainTable.getColumnModel().getColumn(3).setMinWidth(100);
-            mainTable.getColumnModel().getColumn(3).setPreferredWidth(100);
-            mainTable.getColumnModel().getColumn(3).setMaxWidth(150);
+            mainTable.getColumnModel().getColumn(3).setMinWidth(200);
+            mainTable.getColumnModel().getColumn(3).setPreferredWidth(200);
+            mainTable.getColumnModel().getColumn(3).setMaxWidth(250);
+            mainTable.getColumnModel().getColumn(4).setMinWidth(200);
+            mainTable.getColumnModel().getColumn(4).setPreferredWidth(200);
+            mainTable.getColumnModel().getColumn(4).setMaxWidth(250);
         }
 
         toolbar.setFloatable(false);
@@ -326,7 +329,7 @@ public class UsersFrame extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(paneInputs, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(toolbar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(mainScroll, javax.swing.GroupLayout.DEFAULT_SIZE, 734, Short.MAX_VALUE)
+                    .addComponent(mainScroll, javax.swing.GroupLayout.DEFAULT_SIZE, 681, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(btnSearch)
@@ -342,7 +345,7 @@ public class UsersFrame extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(paneInputs, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(mainScroll, javax.swing.GroupLayout.DEFAULT_SIZE, 218, Short.MAX_VALUE)
+                .addComponent(mainScroll, javax.swing.GroupLayout.DEFAULT_SIZE, 198, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(statusPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(13, 13, 13)
@@ -352,7 +355,7 @@ public class UsersFrame extends javax.swing.JInternalFrame {
                 .addGap(12, 12, 12))
         );
 
-        setBounds(300, 100, 769, 441);
+        setBounds(300, 100, 716, 421);
     }// </editor-fold>//GEN-END:initComponents
 
     private void tbtnSearchActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_tbtnSearchActionPerformed
@@ -384,7 +387,7 @@ public class UsersFrame extends javax.swing.JInternalFrame {
             columns.add(enumColumns.nextElement().getHeaderValue().toString());
         }
         
-        new ExportDialog(mainForm, columns, convertToRows(users)).setVisible(true);
+        new ExportDialog(mainForm, columns, convertToRows(customers)).setVisible(true);
     }//GEN-LAST:event_tbtnExportActionPerformed
 
     private void btnSearchActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnSearchActionPerformed
@@ -426,20 +429,21 @@ public class UsersFrame extends javax.swing.JInternalFrame {
         tbtnEdit.setEnabled(false);
         tbtnDelete.setEnabled(false);
         tbtnExport.setEnabled(false);
+        mainScroll.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 
         setCursor(ViewUtility.WAIT_CURSOR);
         ViewUtility.clearTable(mainTable);
         String term = txtSearch.getText();
-        users = repository.search(term);
+        customers = repository.search(term);
 
-        if (users.isEmpty()) {
+        if (customers.isEmpty()) {
             MessageUtility.info(mainForm, "No results found!");
         } else {
             tbtnExport.setEnabled(true);
+            mainScroll.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
         }
 
-        ViewUtility.addRowsToTable(convertToRows(users), mainTable);
-        
+        ViewUtility.addRowsToTable(convertToRows(customers), mainTable);
         lblSelectedLine.setText(0 + "/" + mainTable.getRowCount());
         
         setCursor(ViewUtility.DEFAULT_CURSOR);
@@ -447,8 +451,8 @@ public class UsersFrame extends javax.swing.JInternalFrame {
     
     private void edit()
     {
-        User user = users.get(mainTable.getSelectedRow());
-        mainForm.addInternalFrame(new UsersFrameForm(mainForm).setUser(user));
+        Customer customer = customers.get(mainTable.getSelectedRow());
+        mainForm.addInternalFrame(new CustomersFrameForm(mainForm).setCustomer(customer));
     }
     
     private void delete()
@@ -457,7 +461,7 @@ public class UsersFrame extends javax.swing.JInternalFrame {
         
         if (option == JOptionPane.YES_OPTION) {
             setCursor(ViewUtility.WAIT_CURSOR);
-            repository.find(users.get(mainTable.getSelectedRow()).getId()).ifPresent(user -> {
+            repository.find(customers.get(mainTable.getSelectedRow()).getId()).ifPresent(user -> {
                 repository.deleteById(user.getId());
 
                 MessageUtility.info("User deleted successfully!");
@@ -467,14 +471,15 @@ public class UsersFrame extends javax.swing.JInternalFrame {
         }
     }
     
-    private List<String[]> convertToRows(List<User> users)
+    private List<String[]> convertToRows(List<Customer> customers)
     {
-        return users.stream().map(user -> {
-            String[] row = new String[4];
-            row[0] = user.getId().toString();
-            row[1] = user.getName();
-            row[2] = user.getUsername();
-            row[3] = user.getRole();
+        return customers.stream().map(customer -> {
+            String[] row = new String[5];
+            row[0] = customer.getId().toString();
+            row[1] = customer.getName();
+            row[2] = customer.getAddress();
+            row[3] = customer.getAccountNumber();
+            row[4] = customer.getAccountType();
             
             return row;
         }).collect(Collectors.toList());

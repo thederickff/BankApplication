@@ -33,6 +33,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import org.h2.util.StringUtils;
 
 public class CustomerRepositoryImpl implements CustomerRepository {
 
@@ -67,12 +68,12 @@ public class CustomerRepositoryImpl implements CustomerRepository {
         String sql;
         Map<String, Object> params = new HashMap<>();
         
-        if (model.getId() != null) {
-            sql = "insert into customers (name, address, sex, account_number, account_type) "
-                    + "values (:name, :address, :sex, :account_number, :account_type)";
+        if (model.getId() == null) {
+            sql = "insert into customers (name, address, account_number, account_type) "
+                    + "values (:name, :address, :account_number, :account_type)";
         } else {
             sql = "update customers set name = :name, address = :address, "
-                    + "sex = :sex, account_number = :account_number, account_type = :account_type "
+                    + "account_number = :account_number, account_type = :account_type "
                     + "where id = :id";
 
             params.put("id", model.getId());            
@@ -80,7 +81,6 @@ public class CustomerRepositoryImpl implements CustomerRepository {
         
         params.put("name", model.getName());
         params.put("address", model.getAddress());
-        params.put("sex", model.getSex());
         params.put("account_number", model.getAccountNumber());
         params.put("account_type", model.getAccountType());
         
@@ -102,6 +102,27 @@ public class CustomerRepositoryImpl implements CustomerRepository {
         
         return optional;
     }
+
+    @Override
+    public List<Customer> search(String term)
+    {
+        String sql = "select * from customers where id = :code or (upper(name) like :term or upper(address) like :term or upper(account_number) like :term or upper(account_type) like :term)";
+        Map<String, Object> params = new HashMap<>();
+        params.put("code", StringUtils.isNumber(term) ? term : -1);
+        params.put("term", "%" + term.toUpperCase() + "%");
+
+        return template.queryForList(sql, params, new CustomerMapper());
+    }
+    
+    @Override
+    public Optional<Customer> findByAccountNumber(String accountNumber)
+    {
+        String sql = "select * from customers where account_number = :account_number";
+        Map<String, Object> params = new HashMap<>();
+        params.put("account_number", accountNumber);
+
+        return template.queryForObject(sql, params, new CustomerMapper());
+    }
     
     public class CustomerMapper implements RowMapper {
 
@@ -112,7 +133,6 @@ public class CustomerRepositoryImpl implements CustomerRepository {
             customer.setId(rs.getLong("id"));
             customer.setName(rs.getString("name"));
             customer.setAddress(rs.getString("address"));
-            customer.setSex((rs.getString("sex").charAt(0)));
             customer.setAccountNumber(rs.getString("account_number"));
             customer.setAccountType(rs.getString("account_type"));
 

@@ -34,7 +34,7 @@ import org.h2.tools.Server;
 
 public class DBUtility {
 
-    private static final BankAppTemplate template = new BankAppTemplate();
+    private static BankAppTemplate template;
 
     private DBUtility()
     {
@@ -44,6 +44,7 @@ public class DBUtility {
     {
         try {
             Server.createWebServer().start();
+            template = new BankAppTemplate();
             checkDatabase();
         } catch (SQLException e) {
             MessageUtility.error(null, e);
@@ -53,13 +54,7 @@ public class DBUtility {
     private static void checkDatabase()
     {
         checkTable("customers",
-                "id identity", "name varchar", "address varchar",
-                "sex char", "account_number varchar", "account_type varchar"
-        );
-        
-        checkTable("staffs",
-                "id identity", "name varchar", "address varchar",
-                "sex char", "rank varchar"
+                "id identity", "name varchar", "address varchar", "account_number varchar", "account_type varchar"
         );
         
         checkTable("users",
@@ -162,7 +157,7 @@ public class DBUtility {
 
     private static void seedCustomers()
     {
-        StringBuilder sql = new StringBuilder("insert into customers (name, address, sex, account_number, account_type) values\n");
+        StringBuilder sql = new StringBuilder("insert into customers (name, address, account_number, account_type) values\n");
         Random random = new Random();
         String[] maleNames = maleNames();
         String[] femaleNames = femaleNames();
@@ -187,9 +182,6 @@ public class DBUtility {
             sql.append(' ');
             sql.append(random.nextInt(38208) + 1000);
             
-            sql.append("', '");
-            // sex
-            sql.append(male ? 'm': 'f');
             sql.append("', '");
             // account number
             sql.append(random.nextInt(175665) + 100000);

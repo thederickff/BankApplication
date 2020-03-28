@@ -66,7 +66,7 @@ public class CustomerRegistration extends javax.swing.JDialog {
             // Address
             table.setValueAt(tempCustomer.getAddress(), i, 2);
             // Sex
-            table.setValueAt(tempCustomer.getSex(), i, 3);
+//            table.setValueAt(tempCustomer.getSex(), i, 3);
             // Born Date
 //            table.setValueAt(tempCustomer.getDob(), i, 4);
             // Account Type

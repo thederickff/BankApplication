@@ -69,7 +69,6 @@ public class MainForm extends javax.swing.JFrame {
         appMenubar = new javax.swing.JMenuBar();
         menuAccount = new javax.swing.JMenu();
         mniUsers = new javax.swing.JMenuItem();
-        mniStaffs = new javax.swing.JMenuItem();
         mniCustomers = new javax.swing.JMenuItem();
         mniLogout = new javax.swing.JMenuItem();
         menuHelp = new javax.swing.JMenu();
@@ -200,16 +199,6 @@ public class MainForm extends javax.swing.JFrame {
         });
         menuAccount.add(mniUsers);
 
-        mniStaffs.setText("Staffs");
-        mniStaffs.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
-                mniStaffsActionPerformed(evt);
-            }
-        });
-        menuAccount.add(mniStaffs);
-
         mniCustomers.setText("Customers");
         mniCustomers.addActionListener(new java.awt.event.ActionListener()
         {
@@ -289,14 +278,9 @@ public class MainForm extends javax.swing.JFrame {
         addInternalFrame(new UsersFrame(this));
     }//GEN-LAST:event_mniUsersActionPerformed
 
-    private void mniStaffsActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_mniStaffsActionPerformed
-    {//GEN-HEADEREND:event_mniStaffsActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_mniStaffsActionPerformed
-
     private void mniCustomersActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_mniCustomersActionPerformed
     {//GEN-HEADEREND:event_mniCustomersActionPerformed
-        // TODO add your handling code here:
+        addInternalFrame(new CustomersFrame(this));
     }//GEN-LAST:event_mniCustomersActionPerformed
 
     private void mniLogoutActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_mniLogoutActionPerformed
@@ -324,7 +308,6 @@ public class MainForm extends javax.swing.JFrame {
     private javax.swing.JMenuItem mniAbout;
     private javax.swing.JMenuItem mniCustomers;
     private javax.swing.JMenuItem mniLogout;
-    private javax.swing.JMenuItem mniStaffs;
     private javax.swing.JMenuItem mniUsers;
     private javax.swing.JPanel paneAppVersion;
     private javax.swing.JPanel paneCompany;
