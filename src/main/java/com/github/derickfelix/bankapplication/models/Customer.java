@@ -29,6 +29,7 @@ public class Customer extends Entity {
     private String address;
     private String accountNumber;
     private String accountType;
+    private String password;
     
     public String getName()
     {
@@ -68,6 +69,16 @@ public class Customer extends Entity {
     public void setAccountType(String accountType)
     {
         this.accountType = accountType;
+    }
+
+    public String getPassword()
+    {
+        return password;
+    }
+
+    public void setPassword(String password)
+    {
+        this.password = password;
     }
 
 }

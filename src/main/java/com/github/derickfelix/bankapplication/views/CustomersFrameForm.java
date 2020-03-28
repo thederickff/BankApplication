@@ -71,6 +71,8 @@ public class CustomersFrameForm extends javax.swing.JInternalFrame {
         lblAccountType = new javax.swing.JLabel();
         txtAccountNumber = new javax.swing.JTextField();
         lblAccountNumber = new javax.swing.JLabel();
+        txtPassword = new javax.swing.JPasswordField();
+        lblPassword = new javax.swing.JLabel();
 
         setClosable(true);
         setMaximizable(true);
@@ -140,6 +142,8 @@ public class CustomersFrameForm extends javax.swing.JInternalFrame {
 
         lblAccountNumber.setText("Account Number");
 
+        lblPassword.setText("Password");
+
         javax.swing.GroupLayout paneInputsLayout = new javax.swing.GroupLayout(paneInputs);
         paneInputs.setLayout(paneInputsLayout);
         paneInputsLayout.setHorizontalGroup(
@@ -147,16 +151,20 @@ public class CustomersFrameForm extends javax.swing.JInternalFrame {
             .addGroup(paneInputsLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(paneInputsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtAccountNumber)
-                    .addComponent(txtName)
-                    .addComponent(lblAccountNumber, javax.swing.GroupLayout.DEFAULT_SIZE, 269, Short.MAX_VALUE)
-                    .addComponent(lblName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(paneInputsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtAddress)
-                    .addComponent(cmbAccountType, javax.swing.GroupLayout.Alignment.TRAILING, 0, 309, Short.MAX_VALUE)
-                    .addComponent(lblAddress, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lblAccountType, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(paneInputsLayout.createSequentialGroup()
+                        .addGroup(paneInputsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtAccountNumber)
+                            .addComponent(txtName)
+                            .addComponent(lblAccountNumber, javax.swing.GroupLayout.DEFAULT_SIZE, 290, Short.MAX_VALUE)
+                            .addComponent(lblName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(paneInputsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtAddress)
+                            .addComponent(cmbAccountType, javax.swing.GroupLayout.Alignment.TRAILING, 0, 329, Short.MAX_VALUE)
+                            .addComponent(lblAddress, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(lblAccountType, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(txtPassword)
+                    .addComponent(lblPassword, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         paneInputsLayout.setVerticalGroup(
@@ -182,7 +190,11 @@ public class CustomersFrameForm extends javax.swing.JInternalFrame {
                 .addGroup(paneInputsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtAccountNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cmbAccountType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(56, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lblPassword)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(58, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -214,7 +226,7 @@ public class CustomersFrameForm extends javax.swing.JInternalFrame {
                 .addGap(12, 12, 12))
         );
 
-        setBounds(300, 100, 651, 292);
+        setBounds(300, 100, 692, 355);
     }// </editor-fold>//GEN-END:initComponents
 
     private void tbtnSaveActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_tbtnSaveActionPerformed
@@ -243,6 +255,9 @@ public class CustomersFrameForm extends javax.swing.JInternalFrame {
         txtAddress.setText("");
         txtAccountNumber.setText("");
         cmbAccountType.setSelectedIndex(0);
+        lblPassword.setVisible(true);
+        txtPassword.setVisible(true);
+        txtPassword.setText("");
     }
     
     private void save()
@@ -251,12 +266,14 @@ public class CustomersFrameForm extends javax.swing.JInternalFrame {
         String address = txtAddress.getText();
         String accountNumber = txtAccountNumber.getText();
         String accountType = cmbAccountType.getItemAt(cmbAccountType.getSelectedIndex());
+        String password = new String(txtPassword.getPassword());
         
-        if (name.isEmpty() || address.isEmpty() || accountNumber.isEmpty() || cmbAccountType.getSelectedIndex() == 0) {
+        if (name.isEmpty() || address.isEmpty() || accountNumber.isEmpty() || cmbAccountType.getSelectedIndex() == 0 || (customer == null && password.isEmpty())) {
             MessageUtility.warning(mainForm, "There are invalid fields");
         } else {
             if (customer == null) {
                 customer = new Customer();
+                customer.setPassword(password);
             }
 
             Optional<Customer> optional = repository.findByAccountNumber(accountNumber);
@@ -280,6 +297,8 @@ public class CustomersFrameForm extends javax.swing.JInternalFrame {
     public CustomersFrameForm setCustomer(Customer customer)
     {
         this.customer = customer;
+        this.lblPassword.setVisible(false);
+        this.txtPassword.setVisible(false);
         
         txtName.setText(customer.getName());
         txtAddress.setText(customer.getAddress());
@@ -306,6 +325,7 @@ public class CustomersFrameForm extends javax.swing.JInternalFrame {
     private javax.swing.JLabel lblAccountType;
     private javax.swing.JLabel lblAddress;
     private javax.swing.JLabel lblName;
+    private javax.swing.JLabel lblPassword;
     private javax.swing.JPanel paneInputs;
     private javax.swing.JButton tbtnAdd;
     private javax.swing.JButton tbtnSave;
@@ -313,5 +333,6 @@ public class CustomersFrameForm extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txtAccountNumber;
     private javax.swing.JTextField txtAddress;
     private javax.swing.JTextField txtName;
+    private javax.swing.JPasswordField txtPassword;
     // End of variables declaration//GEN-END:variables
 }

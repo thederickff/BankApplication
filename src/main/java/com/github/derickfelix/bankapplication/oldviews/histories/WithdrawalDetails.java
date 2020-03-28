@@ -24,7 +24,7 @@
 package com.github.derickfelix.bankapplication.oldviews.histories;
 
 // import com.github.derickfelix.bankapplication.controllers.OperationController;
-import com.github.derickfelix.bankapplication.models.Deposit;
+//import com.github.derickfelix.bankapplication.models.Deposit;
 import com.github.derickfelix.bankapplication.models.Withdraw;
 import java.awt.print.PrinterException;
 import java.text.MessageFormat;
@@ -235,7 +235,7 @@ public class WithdrawalDetails extends javax.swing.JDialog {
         try {
             tableWithdrawals.print(JTable.PrintMode.FIT_WIDTH, header, footer);
         } catch (PrinterException ex) {
-            Logger.getLogger(CustomerRegistration.class.getName()).log(Level.SEVERE, null, ex);
+//            Logger.getLogger(CustomerRegistration.class.getName()).log(Level.SEVERE, null, ex);
         }             
     }//GEN-LAST:event_btnPrintActionPerformed
 

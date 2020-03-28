@@ -69,8 +69,10 @@ public class CustomerRepositoryImpl implements CustomerRepository {
         Map<String, Object> params = new HashMap<>();
         
         if (model.getId() == null) {
-            sql = "insert into customers (name, address, account_number, account_type) "
-                    + "values (:name, :address, :account_number, :account_type)";
+            sql = "insert into customers (name, address, account_number, account_type, password) "
+                    + "values (:name, :address, :account_number, :account_type, HASH('SHA256', :password))";
+            
+            params.put("password", model.getPassword());
         } else {
             sql = "update customers set name = :name, address = :address, "
                     + "account_number = :account_number, account_type = :account_type "
@@ -135,6 +137,7 @@ public class CustomerRepositoryImpl implements CustomerRepository {
             customer.setAddress(rs.getString("address"));
             customer.setAccountNumber(rs.getString("account_number"));
             customer.setAccountType(rs.getString("account_type"));
+            customer.setPassword(rs.getString("password"));
 
             return customer;
         }

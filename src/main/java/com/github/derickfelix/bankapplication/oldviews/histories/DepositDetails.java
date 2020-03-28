@@ -222,7 +222,7 @@ public class DepositDetails extends javax.swing.JDialog {
             tableDeposits.print(JTable.PrintMode.FIT_WIDTH, header, footer);
             printFunction = true;
         } catch (PrinterException ex) {
-            Logger.getLogger(CustomerRegistration.class.getName()).log(Level.SEVERE, null, ex);
+//            Logger.getLogger(CustomerRegistration.class.getName()).log(Level.SEVERE, null, ex);
         }              
     }//GEN-LAST:event_btnPrintActionPerformed
 

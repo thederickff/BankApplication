@@ -54,7 +54,7 @@ public class DBUtility {
     private static void checkDatabase()
     {
         checkTable("customers",
-                "id identity", "name varchar", "address varchar", "account_number varchar", "account_type varchar"
+                "id identity", "name varchar", "address varchar", "account_number varchar", "account_type varchar", "password varchar"
         );
         
         checkTable("users",
@@ -157,7 +157,7 @@ public class DBUtility {
 
     private static void seedCustomers()
     {
-        StringBuilder sql = new StringBuilder("insert into customers (name, address, account_number, account_type) values\n");
+        StringBuilder sql = new StringBuilder("insert into customers (name, address, account_number, account_type, password) values\n");
         Random random = new Random();
         String[] maleNames = maleNames();
         String[] femaleNames = femaleNames();
@@ -190,7 +190,8 @@ public class DBUtility {
             sql.append("', '");
             // account type
             sql.append(random.nextBoolean() ? "Current" : "Savings");
-            sql.append("')");
+            // password
+            sql.append("', HASH('SHA256', '123456'))");
             
             if ((i + 1) < amount) {
                 sql.append(",\n");

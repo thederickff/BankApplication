@@ -365,7 +365,7 @@ public class CustomersFrame extends javax.swing.JInternalFrame {
 
     private void tbtnAddActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_tbtnAddActionPerformed
     {//GEN-HEADEREND:event_tbtnAddActionPerformed
-        mainForm.addInternalFrame(new UsersFrameForm(mainForm));
+        mainForm.addInternalFrame(new CustomersFrameForm(mainForm));
     }//GEN-LAST:event_tbtnAddActionPerformed
 
     private void tbtnEditActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_tbtnEditActionPerformed
