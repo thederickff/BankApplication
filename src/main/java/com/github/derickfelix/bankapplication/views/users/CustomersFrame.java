@@ -23,8 +23,6 @@
  */
 package com.github.derickfelix.bankapplication.views.users;
 
-import com.github.derickfelix.bankapplication.views.users.CustomersFrameForm;
-import com.github.derickfelix.bankapplication.views.users.MainForm;
 import com.github.derickfelix.bankapplication.models.Customer;
 import com.github.derickfelix.bankapplication.repositories.CustomerRepository;
 import com.github.derickfelix.bankapplication.repositories.impl.CustomerRepositoryImpl;
@@ -454,7 +452,8 @@ public class CustomersFrame extends javax.swing.JInternalFrame {
     
     private void edit()
     {
-        Customer customer = customers.get(mainTable.getSelectedRow());
+        int selected = mainTable.getSelectedRow();
+        Customer customer = customers.get(mainTable.convertRowIndexToModel(selected));
         mainForm.addInternalFrame(new CustomersFrameForm(mainForm).setCustomer(customer));
     }
     

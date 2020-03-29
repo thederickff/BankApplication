@@ -456,7 +456,7 @@ public class UsersFrame extends javax.swing.JInternalFrame {
             MessageUtility.warning("You do not have permission for this operation!");
             return;
         }
-        User user = users.get(mainTable.getSelectedRow());
+        User user = users.get(mainTable.convertRowIndexToModel(mainTable.getSelectedRow()));
         mainForm.addInternalFrame(new UsersFrameForm(mainForm).setUser(user));
     }
     

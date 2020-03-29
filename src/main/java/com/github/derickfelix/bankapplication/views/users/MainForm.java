@@ -23,7 +23,6 @@
  */
 package com.github.derickfelix.bankapplication.views.users;
 
-import com.github.derickfelix.bankapplication.views.users.UsersFrame;
 import com.github.derickfelix.bankapplication.securities.AuthSecurity;
 import com.github.derickfelix.bankapplication.utilities.MessageUtility;
 import com.github.derickfelix.bankapplication.utilities.ViewUtility;
