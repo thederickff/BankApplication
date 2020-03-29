@@ -23,10 +23,10 @@
  */
 package com.github.derickfelix.bankapplication.views.users;
 
-import com.github.derickfelix.bankapplication.views.users.UsersFrameForm;
 import com.github.derickfelix.bankapplication.models.User;
 import com.github.derickfelix.bankapplication.repositories.UserRepository;
 import com.github.derickfelix.bankapplication.repositories.impl.UserRepositoryImpl;
+import com.github.derickfelix.bankapplication.securities.AuthSecurity;
 import com.github.derickfelix.bankapplication.utilities.MessageUtility;
 import com.github.derickfelix.bankapplication.utilities.ViewUtility;
 import com.github.derickfelix.bankapplication.views.custom.StripedTableCellRenderer;
@@ -401,8 +401,11 @@ public class UsersFrame extends javax.swing.JInternalFrame {
 
     private void mainTableMouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_mainTableMouseClicked
     {//GEN-HEADEREND:event_mainTableMouseClicked
-        tbtnEdit.setEnabled(true);
-        tbtnDelete.setEnabled(true);
+        if (AuthSecurity.isUserAdmin()) {
+            tbtnEdit.setEnabled(true);
+            tbtnDelete.setEnabled(true);
+        }
+
         
         if (lastSelected == mainTable.getSelectedRow()) {
             edit();
@@ -449,6 +452,10 @@ public class UsersFrame extends javax.swing.JInternalFrame {
     
     private void edit()
     {
+        if (!AuthSecurity.isUserAdmin()) {
+            MessageUtility.warning("You do not have permission for this operation!");
+            return;
+        }
         User user = users.get(mainTable.getSelectedRow());
         mainForm.addInternalFrame(new UsersFrameForm(mainForm).setUser(user));
     }

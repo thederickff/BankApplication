@@ -70,4 +70,9 @@ public class AuthSecurity {
     {
         return customerAuthenticated != null;
     }
+    
+    public static boolean isUserAdmin()
+    {
+        return userAuthenticated != null && userAuthenticated.getRole().equals("Administrator");
+    }
 }
