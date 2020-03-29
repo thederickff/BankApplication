@@ -25,7 +25,7 @@ package com.github.derickfelix.bankapplication.views.dialogs;
 
 import com.github.derickfelix.bankapplication.utilities.MessageUtility;
 import com.github.derickfelix.bankapplication.utilities.ViewUtility;
-import com.github.derickfelix.bankapplication.views.MainForm;
+import com.github.derickfelix.bankapplication.views.users.MainForm;
 import com.github.derickfelix.bankapplication.views.custom.StripedTableCellRenderer;
 import java.awt.Font;
 import java.io.File;

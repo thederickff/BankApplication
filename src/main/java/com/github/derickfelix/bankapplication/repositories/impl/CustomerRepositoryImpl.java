@@ -125,6 +125,17 @@ public class CustomerRepositoryImpl implements CustomerRepository {
 
         return template.queryForObject(sql, params, new CustomerMapper());
     }
+
+    @Override
+    public Optional<Customer> findByAccountNumberAndPassword(String accountNumber, String password)
+    {
+        String sql = "select * from customers where account_number = :account_number and password = HASH('SHA256', :password)";
+        Map<String, Object> params = new HashMap<>();
+        params.put("account_number", accountNumber);
+        params.put("password", password);
+
+        return template.queryForObject(sql, params, new CustomerMapper());
+    }
     
     public class CustomerMapper implements RowMapper {
 

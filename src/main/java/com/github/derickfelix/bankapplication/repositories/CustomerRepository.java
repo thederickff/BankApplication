@@ -33,4 +33,6 @@ public interface CustomerRepository extends BaseRepository<Customer, Long> {
     
     Optional<Customer> findByAccountNumber(String accountNumber);
     
+    Optional<Customer> findByAccountNumberAndPassword(String accountNumber, String password);
+    
 }

@@ -21,8 +21,10 @@
 * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 * SOFTWARE.
  */
-package com.github.derickfelix.bankapplication.views;
+package com.github.derickfelix.bankapplication.views.users;
 
+import com.github.derickfelix.bankapplication.views.users.CustomersFrameForm;
+import com.github.derickfelix.bankapplication.views.users.MainForm;
 import com.github.derickfelix.bankapplication.models.Customer;
 import com.github.derickfelix.bankapplication.repositories.CustomerRepository;
 import com.github.derickfelix.bankapplication.repositories.impl.CustomerRepositoryImpl;

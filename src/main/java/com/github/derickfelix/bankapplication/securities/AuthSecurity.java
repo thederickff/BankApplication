@@ -23,11 +23,13 @@
  */
 package com.github.derickfelix.bankapplication.securities;
 
+import com.github.derickfelix.bankapplication.models.Customer;
 import com.github.derickfelix.bankapplication.models.User;
 
 public class AuthSecurity {
     
-    private static User authenticated;
+    private static User userAuthenticated;
+    private static Customer customerAuthenticated;
     
     private AuthSecurity()
     {
@@ -35,21 +37,37 @@ public class AuthSecurity {
     
     public static void login(User user)
     {
-        authenticated = user;
+        userAuthenticated = user;
+    }
+    
+    public static void login(Customer customer)
+    {
+        customerAuthenticated = customer;
     }
     
     public static void logout()
     {
-        authenticated = null;
+        userAuthenticated = null;
+        customerAuthenticated = null;
     }
     
     public static User getUser()
     {
-        return authenticated;
+        return userAuthenticated;
     }
     
-    public static boolean isAuthenticated()
+    public static Customer getCustomer()
     {
-        return authenticated != null;
+        return customerAuthenticated;
+    }
+    
+    public static boolean isUserAuthenticated()
+    {
+        return userAuthenticated != null;
+    }
+    
+    public static boolean isCustomerAuthenticated()
+    {
+        return customerAuthenticated != null;
     }
 }

@@ -23,21 +23,28 @@
  */
 package com.github.derickfelix.bankapplication.views;
 
+import com.github.derickfelix.bankapplication.models.Customer;
+import com.github.derickfelix.bankapplication.views.users.MainForm;
 import com.github.derickfelix.bankapplication.models.User;
+import com.github.derickfelix.bankapplication.repositories.CustomerRepository;
 import com.github.derickfelix.bankapplication.repositories.UserRepository;
+import com.github.derickfelix.bankapplication.repositories.impl.CustomerRepositoryImpl;
 import com.github.derickfelix.bankapplication.repositories.impl.UserRepositoryImpl;
 import com.github.derickfelix.bankapplication.securities.AuthSecurity;
 import com.github.derickfelix.bankapplication.utilities.ViewUtility;
+import com.github.derickfelix.bankapplication.views.customers.CustomerMainForm;
 import java.util.Optional;
 import javax.swing.JOptionPane;
 
 public class LoginForm extends javax.swing.JFrame {
 
-    private final UserRepository repository;
+    private final UserRepository userRepository;
+    private final CustomerRepository customerRepository;
     
     public LoginForm()
     {
-        this.repository = new UserRepositoryImpl();
+        this.userRepository = new UserRepositoryImpl();
+        this.customerRepository = new CustomerRepositoryImpl();
 
         initComponents();
         customSettings();
@@ -61,8 +68,8 @@ public class LoginForm extends javax.swing.JFrame {
         btnExit = new javax.swing.JButton();
         btnLogin = new javax.swing.JButton();
         lblLogo = new javax.swing.JLabel();
-        txtUsername = new javax.swing.JTextField();
-        lblUsername = new javax.swing.JLabel();
+        txtUsernameOrAccountNumber = new javax.swing.JTextField();
+        lblUsernameOrAccountNumber = new javax.swing.JLabel();
         lblPassword = new javax.swing.JLabel();
         txtPassword = new javax.swing.JPasswordField();
 
@@ -92,10 +99,10 @@ public class LoginForm extends javax.swing.JFrame {
 
         lblLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/logo.png"))); // NOI18N
 
-        txtUsername.setFont(new java.awt.Font("Liberation Sans", 0, 12)); // NOI18N
+        txtUsernameOrAccountNumber.setFont(new java.awt.Font("Liberation Sans", 0, 12)); // NOI18N
 
-        lblUsername.setFont(new java.awt.Font("Liberation Sans", 0, 12)); // NOI18N
-        lblUsername.setText("Username");
+        lblUsernameOrAccountNumber.setFont(new java.awt.Font("Liberation Sans", 0, 12)); // NOI18N
+        lblUsernameOrAccountNumber.setText("Username or Account Number");
 
         lblPassword.setFont(new java.awt.Font("Liberation Sans", 0, 12)); // NOI18N
         lblPassword.setText("Password");
@@ -117,8 +124,8 @@ public class LoginForm extends javax.swing.JFrame {
                         .addComponent(btnExit, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(txtPassword)
                     .addComponent(lblPassword, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(txtUsername)
-                    .addComponent(lblUsername, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(txtUsernameOrAccountNumber)
+                    .addComponent(lblUsernameOrAccountNumber, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(24, 24, 24))
         );
         layout.setVerticalGroup(
@@ -129,9 +136,9 @@ public class LoginForm extends javax.swing.JFrame {
                     .addComponent(lblLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(21, 21, 21)
-                        .addComponent(lblUsername)
+                        .addComponent(lblUsernameOrAccountNumber)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtUsernameOrAccountNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lblPassword)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -154,23 +161,29 @@ public class LoginForm extends javax.swing.JFrame {
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnLoginActionPerformed
     {//GEN-HEADEREND:event_btnLoginActionPerformed
-        String username = txtUsername.getText();
+        String usernameOrAccountNumber = txtUsernameOrAccountNumber.getText();
         String password = new String(txtPassword.getPassword());
-        Optional<User> optional = repository.findByUsernameAndPassword(username, password);
+        Optional<User> userOptional = userRepository.findByUsernameAndPassword(usernameOrAccountNumber, password);
                 
-        if (optional.isPresent()) {
-            User user = optional.get();
+        if (userOptional.isPresent()) {
+            User user = userOptional.get();
             AuthSecurity.login(user);
-            
-//            if (user.getRole().equals("admin")) {
-                new MainForm().setVisible(true);
-//            } else {
-//                new StandardForm().setVisible(true);
-//            }
+            new MainForm().setVisible(true);
             dispose();
-        } else {
-            JOptionPane.showMessageDialog(this, "Username or password provided doesn't match our records!", "Zwei Bank Application", JOptionPane.WARNING_MESSAGE);
+            return;
         }
+        
+        Optional<Customer> customerOptional = customerRepository.findByAccountNumberAndPassword(usernameOrAccountNumber, password);
+        
+        if (customerOptional.isPresent()) {
+            Customer customer = customerOptional.get();
+            AuthSecurity.login(customer);
+            new CustomerMainForm().setVisible(true);
+            dispose();
+            return;
+        }
+        
+        JOptionPane.showMessageDialog(this, "Credentials provided doesn't match our records!", "Zwei Bank Application", JOptionPane.WARNING_MESSAGE);
     }//GEN-LAST:event_btnLoginActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -178,8 +191,8 @@ public class LoginForm extends javax.swing.JFrame {
     private javax.swing.JButton btnLogin;
     private javax.swing.JLabel lblLogo;
     private javax.swing.JLabel lblPassword;
-    private javax.swing.JLabel lblUsername;
+    private javax.swing.JLabel lblUsernameOrAccountNumber;
     private javax.swing.JPasswordField txtPassword;
-    private javax.swing.JTextField txtUsername;
+    private javax.swing.JTextField txtUsernameOrAccountNumber;
     // End of variables declaration//GEN-END:variables
 }

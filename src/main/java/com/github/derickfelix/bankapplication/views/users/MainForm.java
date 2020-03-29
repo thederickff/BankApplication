@@ -21,10 +21,13 @@
 * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 * SOFTWARE.
  */
-package com.github.derickfelix.bankapplication.views;
+package com.github.derickfelix.bankapplication.views.users;
 
+import com.github.derickfelix.bankapplication.views.users.UsersFrame;
 import com.github.derickfelix.bankapplication.securities.AuthSecurity;
+import com.github.derickfelix.bankapplication.utilities.MessageUtility;
 import com.github.derickfelix.bankapplication.utilities.ViewUtility;
+import com.github.derickfelix.bankapplication.views.LoginForm;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import javax.swing.JOptionPane;
@@ -39,6 +42,11 @@ public class MainForm extends javax.swing.JFrame {
     
     private void customSettings()
     {
+        if (!AuthSecurity.isUserAuthenticated()) {
+            MessageUtility.warning("User not authenticated!");
+            dispose();
+        }
+        
         ViewUtility.addIconTo(this);
         setExtendedState(javax.swing.JFrame.MAXIMIZED_BOTH);
         

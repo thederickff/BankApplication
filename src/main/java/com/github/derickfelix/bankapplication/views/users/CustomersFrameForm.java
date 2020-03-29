@@ -21,24 +21,25 @@
 * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 * SOFTWARE.
  */
-package com.github.derickfelix.bankapplication.views;
+package com.github.derickfelix.bankapplication.views.users;
 
-import com.github.derickfelix.bankapplication.models.User;
-import com.github.derickfelix.bankapplication.repositories.UserRepository;
-import com.github.derickfelix.bankapplication.repositories.impl.UserRepositoryImpl;
+import com.github.derickfelix.bankapplication.views.users.MainForm;
+import com.github.derickfelix.bankapplication.models.Customer;
+import com.github.derickfelix.bankapplication.repositories.CustomerRepository;
+import com.github.derickfelix.bankapplication.repositories.impl.CustomerRepositoryImpl;
 import com.github.derickfelix.bankapplication.utilities.MessageUtility;
 import java.util.Optional;
 
-public class UsersFrameForm extends javax.swing.JInternalFrame {
+public class CustomersFrameForm extends javax.swing.JInternalFrame {
 
     private final MainForm mainForm;
-    private final UserRepository repository;
-    private User user;
+    private final CustomerRepository repository;
+    private Customer customer;
     
-    public UsersFrameForm(MainForm mainForm)
+    public CustomersFrameForm(MainForm mainForm)
     {
         this.mainForm = mainForm;
-        this.repository = new UserRepositoryImpl();
+        this.repository = new CustomerRepositoryImpl();
         initComponents();
         customSettings();
     }
@@ -65,12 +66,14 @@ public class UsersFrameForm extends javax.swing.JInternalFrame {
         paneInputs = new javax.swing.JPanel();
         lblName = new javax.swing.JLabel();
         txtName = new javax.swing.JTextField();
-        lblUsername = new javax.swing.JLabel();
-        txtUsername = new javax.swing.JTextField();
-        lblPassword = new javax.swing.JLabel();
+        lblAddress = new javax.swing.JLabel();
+        txtAddress = new javax.swing.JTextField();
+        cmbAccountType = new javax.swing.JComboBox<>();
+        lblAccountType = new javax.swing.JLabel();
+        txtAccountNumber = new javax.swing.JTextField();
+        lblAccountNumber = new javax.swing.JLabel();
         txtPassword = new javax.swing.JPasswordField();
-        cmbRole = new javax.swing.JComboBox<>();
-        lblRole = new javax.swing.JLabel();
+        lblPassword = new javax.swing.JLabel();
 
         setClosable(true);
         setMaximizable(true);
@@ -108,7 +111,6 @@ public class UsersFrameForm extends javax.swing.JInternalFrame {
         });
         toolbar.add(tbtnSave);
 
-        btnSave.setFont(new java.awt.Font("Noto Sans", 0, 12)); // NOI18N
         btnSave.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/save.png"))); // NOI18N
         btnSave.setText("Save");
         btnSave.addActionListener(new java.awt.event.ActionListener()
@@ -119,7 +121,6 @@ public class UsersFrameForm extends javax.swing.JInternalFrame {
             }
         });
 
-        btnClose.setFont(new java.awt.Font("Noto Sans", 0, 12)); // NOI18N
         btnClose.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/close.png"))); // NOI18N
         btnClose.setText("Close");
         btnClose.addActionListener(new java.awt.event.ActionListener()
@@ -132,26 +133,17 @@ public class UsersFrameForm extends javax.swing.JInternalFrame {
 
         paneInputs.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 102, 102)));
 
-        lblName.setFont(new java.awt.Font("Noto Sans", 0, 12)); // NOI18N
         lblName.setText("Name");
 
-        txtName.setFont(new java.awt.Font("Noto Sans", 0, 12)); // NOI18N
+        lblAddress.setText("Address");
 
-        lblUsername.setFont(new java.awt.Font("Noto Sans", 0, 12)); // NOI18N
-        lblUsername.setText("Username");
+        cmbAccountType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select One", "Current", "Savings" }));
 
-        txtUsername.setFont(new java.awt.Font("Noto Sans", 0, 12)); // NOI18N
+        lblAccountType.setText("Account Type");
 
-        lblPassword.setFont(new java.awt.Font("Noto Sans", 0, 12)); // NOI18N
+        lblAccountNumber.setText("Account Number");
+
         lblPassword.setText("Password");
-
-        txtPassword.setFont(new java.awt.Font("Noto Sans", 0, 12)); // NOI18N
-
-        cmbRole.setFont(new java.awt.Font("Noto Sans", 0, 12)); // NOI18N
-        cmbRole.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Standard", "Administrator" }));
-
-        lblRole.setFont(new java.awt.Font("Noto Sans", 0, 12)); // NOI18N
-        lblRole.setText("Role");
 
         javax.swing.GroupLayout paneInputsLayout = new javax.swing.GroupLayout(paneInputs);
         paneInputs.setLayout(paneInputsLayout);
@@ -160,41 +152,50 @@ public class UsersFrameForm extends javax.swing.JInternalFrame {
             .addGroup(paneInputsLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(paneInputsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lblRole, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtName)
-                    .addComponent(cmbRole, 0, 270, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(paneInputsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtUsername)
+                    .addGroup(paneInputsLayout.createSequentialGroup()
+                        .addGroup(paneInputsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtAccountNumber)
+                            .addComponent(txtName)
+                            .addComponent(lblAccountNumber, javax.swing.GroupLayout.DEFAULT_SIZE, 290, Short.MAX_VALUE)
+                            .addComponent(lblName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(paneInputsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtAddress)
+                            .addComponent(cmbAccountType, javax.swing.GroupLayout.Alignment.TRAILING, 0, 329, Short.MAX_VALUE)
+                            .addComponent(lblAddress, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(lblAccountType, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addComponent(txtPassword)
-                    .addComponent(lblPassword, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lblUsername, javax.swing.GroupLayout.DEFAULT_SIZE, 286, Short.MAX_VALUE))
+                    .addComponent(lblPassword, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         paneInputsLayout.setVerticalGroup(
             paneInputsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(paneInputsLayout.createSequentialGroup()
-                .addGap(6, 6, 6)
                 .addGroup(paneInputsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(paneInputsLayout.createSequentialGroup()
-                        .addGap(23, 23, 23)
+                        .addGap(35, 35, 35)
                         .addGroup(paneInputsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(paneInputsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(lblName)
-                        .addComponent(lblUsername)))
-                .addGroup(paneInputsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtAddress, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(paneInputsLayout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addGroup(paneInputsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(cmbRole, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(paneInputsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(lblRole)
-                        .addComponent(lblPassword)))
-                .addContainerGap(72, Short.MAX_VALUE))
+                        .addContainerGap()
+                        .addComponent(lblName))
+                    .addGroup(paneInputsLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(lblAddress)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(paneInputsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblAccountNumber)
+                    .addComponent(lblAccountType))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(paneInputsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtAccountNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cmbAccountType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lblPassword)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(58, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -204,13 +205,13 @@ public class UsersFrameForm extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(paneInputs, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(toolbar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(btnSave)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnClose)))
+                        .addComponent(btnClose))
+                    .addComponent(paneInputs, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -226,7 +227,7 @@ public class UsersFrameForm extends javax.swing.JInternalFrame {
                 .addGap(12, 12, 12))
         );
 
-        setBounds(300, 100, 628, 286);
+        setBounds(300, 100, 692, 355);
     }// </editor-fold>//GEN-END:initComponents
 
     private void tbtnSaveActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_tbtnSaveActionPerformed
@@ -252,8 +253,9 @@ public class UsersFrameForm extends javax.swing.JInternalFrame {
     private void clearForm()
     {
         txtName.setText("");
-        txtUsername.setText("");
-        cmbRole.setSelectedIndex(0);
+        txtAddress.setText("");
+        txtAccountNumber.setText("");
+        cmbAccountType.setSelectedIndex(0);
         lblPassword.setVisible(true);
         txtPassword.setVisible(true);
         txtPassword.setText("");
@@ -262,53 +264,56 @@ public class UsersFrameForm extends javax.swing.JInternalFrame {
     private void save()
     {
         String name = txtName.getText();
-        String username = txtUsername.getText();
-        String role = cmbRole.getItemAt(cmbRole.getSelectedIndex());
+        String address = txtAddress.getText();
+        String accountNumber = txtAccountNumber.getText();
+        String accountType = cmbAccountType.getItemAt(cmbAccountType.getSelectedIndex());
         String password = new String(txtPassword.getPassword());
         
-        if (name.isEmpty() || username.isEmpty() || role.isEmpty() || (user == null && password.isEmpty())) {
+        if (name.isEmpty() || address.isEmpty() || accountNumber.isEmpty() || cmbAccountType.getSelectedIndex() == 0 || (customer == null && password.isEmpty())) {
             MessageUtility.warning(mainForm, "There are invalid fields");
         } else {
-            if (user == null) {
-                user = new User();
-                user.setPassword(password);
+            if (customer == null) {
+                customer = new Customer();
+                customer.setPassword(password);
             }
 
-            Optional<User> optional = repository.findByUsername(username);
-            if (optional.isPresent() && !optional.get().getUsername().equals(user.getUsername())) {
-                MessageUtility.warning(mainForm, "Username already in use!");
+            Optional<Customer> optional = repository.findByAccountNumber(accountNumber);
+            if (optional.isPresent() && !optional.get().getAccountNumber().equals(customer.getAccountNumber())) {
+                MessageUtility.warning(mainForm, "Account Number already in use!");
                 return;
             }
             
-            user.setName(name);
-            user.setUsername(username);
-            user.setRole(role);
+            customer.setName(name);
+            customer.setAddress(address);
+            customer.setAccountNumber(accountNumber);
+            customer.setAccountType(accountType);
             
-            repository.save(user);
+            repository.save(customer);
             
             MessageUtility.info(mainForm, "Content saved successfully!");
             clearForm();
         }
     }
     
-    public UsersFrameForm setUser(User user)
+    public CustomersFrameForm setCustomer(Customer customer)
     {
-        this.user = user;
+        this.customer = customer;
+        this.lblPassword.setVisible(false);
+        this.txtPassword.setVisible(false);
         
-        txtName.setText(user.getName());
-        txtUsername.setText(user.getUsername());
-        lblPassword.setVisible(false);
-        txtPassword.setVisible(false);
+        txtName.setText(customer.getName());
+        txtAddress.setText(customer.getAddress());
+        txtAccountNumber.setText(customer.getAccountNumber());
         
         int index = 0;
-        for (int i = 0; i < cmbRole.getItemCount(); i++) {
-            if (cmbRole.getItemAt(i).equals(user.getRole())) {
+        for (int i = 0; i < cmbAccountType.getItemCount(); i++) {
+            if (cmbAccountType.getItemAt(i).equals(customer.getAccountType())) {
                 index = i;
                 break;
             }
         }
 
-        cmbRole.setSelectedIndex(index);
+        cmbAccountType.setSelectedIndex(index);
         
         return this;
     }
@@ -316,17 +321,19 @@ public class UsersFrameForm extends javax.swing.JInternalFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnClose;
     private javax.swing.JButton btnSave;
-    private javax.swing.JComboBox<String> cmbRole;
+    private javax.swing.JComboBox<String> cmbAccountType;
+    private javax.swing.JLabel lblAccountNumber;
+    private javax.swing.JLabel lblAccountType;
+    private javax.swing.JLabel lblAddress;
     private javax.swing.JLabel lblName;
     private javax.swing.JLabel lblPassword;
-    private javax.swing.JLabel lblRole;
-    private javax.swing.JLabel lblUsername;
     private javax.swing.JPanel paneInputs;
     private javax.swing.JButton tbtnAdd;
     private javax.swing.JButton tbtnSave;
     private javax.swing.JToolBar toolbar;
+    private javax.swing.JTextField txtAccountNumber;
+    private javax.swing.JTextField txtAddress;
     private javax.swing.JTextField txtName;
     private javax.swing.JPasswordField txtPassword;
-    private javax.swing.JTextField txtUsername;
     // End of variables declaration//GEN-END:variables
 }
