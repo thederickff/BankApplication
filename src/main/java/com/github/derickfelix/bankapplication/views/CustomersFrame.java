@@ -64,6 +64,7 @@ public class CustomersFrame extends javax.swing.JInternalFrame {
         mainTable.setDefaultRenderer(String.class, leftRenderer);
         mainTable.getTableHeader().setFont(new Font(Font.DIALOG, Font.PLAIN, 12));
         mainScroll.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+        mainTable.setAutoCreateRowSorter(true);
         
         tbtnEdit.setEnabled(false);
         tbtnDelete.setEnabled(false);

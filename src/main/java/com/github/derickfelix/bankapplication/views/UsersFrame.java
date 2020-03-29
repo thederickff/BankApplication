@@ -41,7 +41,6 @@ import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.TableColumn;
-import javax.swing.table.TableColumnModel;
 
 public class UsersFrame extends javax.swing.JInternalFrame {
 
@@ -65,6 +64,7 @@ public class UsersFrame extends javax.swing.JInternalFrame {
         mainTable.setDefaultRenderer(String.class, leftRenderer);
         mainTable.getTableHeader().setFont(new Font(Font.DIALOG, Font.PLAIN, 12));
         mainScroll.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+        mainTable.setAutoCreateRowSorter(true);
         
         tbtnEdit.setEnabled(false);
         tbtnDelete.setEnabled(false);
@@ -136,6 +136,7 @@ public class UsersFrame extends javax.swing.JInternalFrame {
         mainTable.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
         mainTable.setGridColor(new java.awt.Color(255, 255, 255));
         mainTable.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        mainTable.getTableHeader().setReorderingAllowed(false);
         mainTable.addMouseListener(new java.awt.event.MouseAdapter()
         {
             public void mouseReleased(java.awt.event.MouseEvent evt)

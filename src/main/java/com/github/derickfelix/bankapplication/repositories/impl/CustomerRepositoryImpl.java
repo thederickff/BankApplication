@@ -71,7 +71,7 @@ public class CustomerRepositoryImpl implements CustomerRepository {
         if (model.getId() == null) {
             sql = "insert into customers (name, address, account_number, account_type, password) "
                     + "values (:name, :address, :account_number, :account_type, HASH('SHA256', :password))";
-            
+
             params.put("password", model.getPassword());
         } else {
             sql = "update customers set name = :name, address = :address, "
