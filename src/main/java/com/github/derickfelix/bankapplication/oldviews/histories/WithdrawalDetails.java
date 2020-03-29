@@ -62,7 +62,7 @@ public class WithdrawalDetails extends javax.swing.JDialog {
             // Amount
             tableWithdrawals.setValueAt(tempWithdraw.getAmount(), i, 0);
             // Date
-            tableWithdrawals.setValueAt(tempWithdraw.getDate().toString(), i, 1);
+//            tableWithdrawals.setValueAt(tempWithdraw.getDate().toString(), i, 1);
         }
     }
     

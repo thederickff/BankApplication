@@ -23,19 +23,19 @@
  */
 package com.github.derickfelix.bankapplication.models;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 public class Withdraw {
 
     private String accountNumber;
     private double amount;
-    private Date date;
+    private LocalDateTime createdAt;
 
-    public Withdraw(String accountNumber, double amount, Date date)
+    public Withdraw(String accountNumber, double amount, LocalDateTime createdAt)
     {
         this.accountNumber = accountNumber;
         this.amount = amount;
-        this.date = date;
+        this.createdAt = createdAt;
     }
 
     public String getAccountNumber()
@@ -58,14 +58,14 @@ public class Withdraw {
         this.amount = amount;
     }
 
-    public Date getDate()
+    public LocalDateTime getCreatedAt()
     {
-        return date;
+        return createdAt;
     }
 
-    public void setDate(Date date)
+    public void setCreatedAt(LocalDateTime createdAt)
     {
-        this.date = date;
+        this.createdAt = createdAt;
     }
 
 }

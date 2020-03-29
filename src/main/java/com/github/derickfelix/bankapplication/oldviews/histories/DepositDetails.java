@@ -58,7 +58,7 @@ public class DepositDetails extends javax.swing.JDialog {
             // Amount
             tableDeposits.setValueAt(tempDeposit.getAmount(), i, 0);
             // Date
-            tableDeposits.setValueAt(tempDeposit.getDate().toString(), i, 1);
+//            tableDeposits.setValueAt(tempDeposit.getDate().toString(), i, 1);
         }
     }
 

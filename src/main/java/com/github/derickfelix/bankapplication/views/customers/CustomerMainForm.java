@@ -76,6 +76,9 @@ public class CustomerMainForm extends javax.swing.JFrame {
         appMenubar = new javax.swing.JMenuBar();
         menuAccount = new javax.swing.JMenu();
         mniLogout = new javax.swing.JMenuItem();
+        menuOperations = new javax.swing.JMenu();
+        mniDeposit = new javax.swing.JMenuItem();
+        mniWithdraw = new javax.swing.JMenuItem();
         menuHelp = new javax.swing.JMenu();
         mniAbout = new javax.swing.JMenuItem();
 
@@ -206,6 +209,30 @@ public class CustomerMainForm extends javax.swing.JFrame {
 
         appMenubar.add(menuAccount);
 
+        menuOperations.setText("Operations");
+
+        mniDeposit.setText("Deposit");
+        mniDeposit.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                mniDepositActionPerformed(evt);
+            }
+        });
+        menuOperations.add(mniDeposit);
+
+        mniWithdraw.setText("Withdraw");
+        mniWithdraw.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                mniWithdrawActionPerformed(evt);
+            }
+        });
+        menuOperations.add(mniWithdraw);
+
+        appMenubar.add(menuOperations);
+
         menuHelp.setText("Help");
 
         mniAbout.setText("About");
@@ -265,6 +292,16 @@ public class CustomerMainForm extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_mniLogoutActionPerformed
 
+    private void mniDepositActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_mniDepositActionPerformed
+    {//GEN-HEADEREND:event_mniDepositActionPerformed
+        addInternalFrame(new DepositFrameForm(this));
+    }//GEN-LAST:event_mniDepositActionPerformed
+
+    private void mniWithdrawActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_mniWithdrawActionPerformed
+    {//GEN-HEADEREND:event_mniWithdrawActionPerformed
+        addInternalFrame(new WithdrawFrameForm(this));
+    }//GEN-LAST:event_mniWithdrawActionPerformed
+
     public void addInternalFrame(javax.swing.JInternalFrame frame)
     {
         desktopPane.add(frame);
@@ -280,8 +317,11 @@ public class CustomerMainForm extends javax.swing.JFrame {
     private javax.swing.JLabel lblInfoDate;
     private javax.swing.JMenu menuAccount;
     private javax.swing.JMenu menuHelp;
+    private javax.swing.JMenu menuOperations;
     private javax.swing.JMenuItem mniAbout;
+    private javax.swing.JMenuItem mniDeposit;
     private javax.swing.JMenuItem mniLogout;
+    private javax.swing.JMenuItem mniWithdraw;
     private javax.swing.JPanel paneAppVersion;
     private javax.swing.JPanel paneCompany;
     private javax.swing.JPanel paneCustomerName;

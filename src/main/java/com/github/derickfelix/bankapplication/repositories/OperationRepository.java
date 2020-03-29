@@ -26,6 +26,7 @@ package com.github.derickfelix.bankapplication.repositories;
 import com.github.derickfelix.bankapplication.models.Deposit;
 import com.github.derickfelix.bankapplication.models.Withdraw;
 import java.util.List;
+import java.util.Optional;
 
 public interface OperationRepository {
 
@@ -41,4 +42,6 @@ public interface OperationRepository {
 
     void withdraw(String accountNumber, double amount);
 
+    Optional<Double> currentBalance(String accountNumber);
+        
 }

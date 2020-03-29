@@ -63,11 +63,11 @@ public class DBUtility {
         );
         
         checkTable("deposits",
-                "id identity", "account_number varchar", "deposit_amount decimal"
+                "id identity", "account_number varchar", "deposit_amount decimal, created_at timestamp"
         );
         
         checkTable("withdraws",
-                "id identity", "account_number varchar", "withdraw_amount decimal"
+                "id identity", "account_number varchar", "withdraw_amount decimal, created_at timestamp"
         );
         
         // Optional
