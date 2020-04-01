@@ -25,12 +25,13 @@ package com.github.derickfelix.bankapplication.repositories.impl;
 
 import com.github.derickfelix.bankapplication.database.BankAppTemplate;
 import com.github.derickfelix.bankapplication.database.RowMapper;
-import com.github.derickfelix.bankapplication.models.Deposit;
-import com.github.derickfelix.bankapplication.models.Withdraw;
+import com.github.derickfelix.bankapplication.models.Operation;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import com.github.derickfelix.bankapplication.repositories.OperationRepository;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -44,51 +45,73 @@ public class OperationRepositoryImpl implements OperationRepository {
     {
         this.template = new BankAppTemplate();
     }
-
+    
     @Override
-    public List<Withdraw> withdraws()
+    public List<Operation> findAllWithdraws()
     {
         String sql = "select * from withdraws";
 
-        return template.queryForList(sql, null, new WithdrawMapper());
+        return template.queryForList(sql, null, new OperationMapper(Operation.Type.WITHDRAW));
     }
 
     @Override
-    public List<Deposit> deposits()
+    public List<Operation> findAllDeposits()
     {
         String sql = "select * from deposits";
 
-        return template.queryForList(sql, null, new DepositMapper());
+        return template.queryForList(sql, null, new OperationMapper(Operation.Type.DEPOSIT));
+    }
+    
+    @Override
+    public List<Operation> findAllByAccountNumber(String accountNumber)
+    {
+        String withdrawSql = "select * from withdraws where account_number = :account_number";
+        String depositSql = "select * from deposits where account_number = :account_number";
+        Map<String, Object> params = new HashMap<>();
+        params.put("account_number", accountNumber);
+
+        List<Operation> withdraws = template.queryForList(withdrawSql, null, new OperationMapper(Operation.Type.WITHDRAW));
+        List<Operation> deposits = template.queryForList(depositSql, null, new OperationMapper(Operation.Type.DEPOSIT));
+
+        List<Operation> operations = new ArrayList<>(withdraws.size() + deposits.size());
+        operations.addAll(withdraws);
+        operations.addAll(deposits);
+
+        Collections.sort(operations, (a, b) -> {
+            return a.getCreatedAt().compareTo(b.getCreatedAt());
+        });
+
+        return operations;
     }
 
     @Override
-    public List<Deposit> deposits(String accountNumber)
+    public List<Operation> findAllDepositsByAccountNumber(String accountNumber)
     {
         String sql = "select * from deposits where account_number = :account_number";
         Map<String, Object> params = new HashMap<>();
         params.put("account_number", accountNumber);
 
-        return template.queryForList(sql, params, new DepositMapper());
+        return template.queryForList(sql, params, new OperationMapper(Operation.Type.DEPOSIT));
     }
 
     @Override
-    public List<Withdraw> withdraws(String accountNumber)
+    public List<Operation> findAllWithdrawsByAccountNumber(String accountNumber)
     {
         String sql = "select * from withdraws where account_number = :account_number";
         Map<String, Object> params = new HashMap<>();
         params.put("account_number", accountNumber);
 
-        return template.queryForList(sql, params, new WithdrawMapper());
+        return template.queryForList(sql, params, new OperationMapper(Operation.Type.WITHDRAW));
     }
-
+    
     @Override
     public void deposit(String accountNumber, double amount)
     {
-        String sql = "insert into deposits (account_number, deposit_amount, created_at) values (:account_number, :deposit_amount, :created_at)";
+        String sql = "insert into deposits (created_at, account_number, amount) values (:created_at, :account_number, :amount)";
         Map<String, Object> params = new HashMap<>();
-        params.put("account_number", accountNumber);
-        params.put("deposit_amount", amount);
         params.put("created_at", LocalDateTime.now());
+        params.put("account_number", accountNumber);
+        params.put("amount", amount);
 
         template.update(sql, params);
     }
@@ -96,11 +119,11 @@ public class OperationRepositoryImpl implements OperationRepository {
     @Override
     public void withdraw(String accountNumber, double amount)
     {
-        String sql = "insert into withdraws (account_number, withdraw_amount, created_at) values (:account_number, :withdraw_amount, :created_at)";
+        String sql = "insert into withdraws (created_at, account_number, amount) values (:created_at, :account_number, :amount)";
         Map<String, Object> params = new HashMap<>();
-        params.put("account_number", accountNumber);
-        params.put("withdraw_amount", amount);
         params.put("created_at", LocalDateTime.now());
+        params.put("account_number", accountNumber);
+        params.put("amount", amount);
 
         template.update(sql, params);
     }
@@ -109,9 +132,9 @@ public class OperationRepositoryImpl implements OperationRepository {
     public Optional<Double> currentBalance(String accountNumber)
     {
         String sql = "select "
-                + "(select sum(deposit_amount) from deposits where account_number = :account_number) "
+                + "(select sum(amount) from deposits where account_number = :account_number) "
                 + " - "
-                + "(select sum(withdraw_amount) from withdraws where account_number = :account_number) "
+                + "(select sum(amount) from withdraws where account_number = :account_number) "
                 + "as balance";
         
         Map<String, Object> params = new HashMap<>();
@@ -119,24 +142,26 @@ public class OperationRepositoryImpl implements OperationRepository {
 
         return template.queryForObject(sql, params, new BalanceMapper());
     }
+    
+    public class OperationMapper implements RowMapper<Operation> {
 
-    public class WithdrawMapper implements RowMapper<Withdraw> {
-
-        @Override
-        public Withdraw mapRow(ResultSet rs) throws SQLException
+        private final Operation.Type type;
+        
+        public OperationMapper(Operation.Type type)
         {
-            System.out.println(rs.getString("created_at"));
-            return new Withdraw(rs.getString("account_number"), rs.getDouble("withdraw_amount"), null);
+            this.type = type;
         }
-
-    }
-
-    public class DepositMapper implements RowMapper<Deposit> {
-
+        
         @Override
-        public Deposit mapRow(ResultSet rs) throws SQLException
+        public Operation mapRow(ResultSet rs) throws SQLException
         {
-            return new Deposit(rs.getString("account_number"), rs.getDouble("deposit_amount"), null);
+            Operation operation = new Operation();
+            operation.setCreatedAt(LocalDateTime.now());
+            operation.setAccountNumber(rs.getString("account_number"));
+            operation.setAmount(rs.getDouble("amount"));
+            operation.setType(type);
+            
+            return operation;
         }
 
     }

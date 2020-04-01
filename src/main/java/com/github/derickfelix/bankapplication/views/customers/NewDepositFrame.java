@@ -33,14 +33,14 @@ import com.github.derickfelix.bankapplication.utilities.MessageUtility;
 import com.github.derickfelix.bankapplication.utilities.ViewUtility;
 import java.util.Optional;
 
-public class WithdrawFrameForm extends javax.swing.JInternalFrame {
+public class NewDepositFrame extends javax.swing.JInternalFrame {
 
     private final CustomerMainForm customerMainForm;
     private final CustomerRepository customerRepository;
     private final OperationRepository operationRepository;
     private final String accountNumber;
     
-    public WithdrawFrameForm(CustomerMainForm customerMainForm)
+    public NewDepositFrame(CustomerMainForm customerMainForm)
     {
         this.customerMainForm = customerMainForm;
         this.customerRepository = new CustomerRepositoryImpl();
@@ -66,28 +66,28 @@ public class WithdrawFrameForm extends javax.swing.JInternalFrame {
     private void initComponents()
     {
 
-        btnWithdraw = new javax.swing.JButton();
+        btnDeposit = new javax.swing.JButton();
         btnClose = new javax.swing.JButton();
         paneInputs = new javax.swing.JPanel();
         lblCurrentBalance = new javax.swing.JLabel();
         txtCurrentBalance = new javax.swing.JTextField();
-        txtWithdrawAmount = new javax.swing.JTextField();
-        lblWithdrawAmount = new javax.swing.JLabel();
+        txtDepositAmount = new javax.swing.JTextField();
+        lblDepositAmount = new javax.swing.JLabel();
         txtPassword = new javax.swing.JPasswordField();
         lblPassword = new javax.swing.JLabel();
 
         setClosable(true);
         setMaximizable(true);
         setResizable(true);
-        setTitle("Zwei Bank Application - Withdraw Operation");
+        setTitle("Zwei Bank Application - Deposit Operation");
 
-        btnWithdraw.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/save.png"))); // NOI18N
-        btnWithdraw.setText("Withdraw");
-        btnWithdraw.addActionListener(new java.awt.event.ActionListener()
+        btnDeposit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/save.png"))); // NOI18N
+        btnDeposit.setText("Deposit");
+        btnDeposit.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
             {
-                btnWithdrawActionPerformed(evt);
+                btnDepositActionPerformed(evt);
             }
         });
 
@@ -107,7 +107,7 @@ public class WithdrawFrameForm extends javax.swing.JInternalFrame {
 
         txtCurrentBalance.setEnabled(false);
 
-        lblWithdrawAmount.setText("Withdraw Amount");
+        lblDepositAmount.setText("Deposit Amount");
 
         lblPassword.setText("Password");
 
@@ -118,9 +118,9 @@ public class WithdrawFrameForm extends javax.swing.JInternalFrame {
             .addGroup(paneInputsLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(paneInputsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtWithdrawAmount)
+                    .addComponent(txtDepositAmount)
                     .addComponent(txtCurrentBalance)
-                    .addComponent(lblWithdrawAmount, javax.swing.GroupLayout.DEFAULT_SIZE, 408, Short.MAX_VALUE)
+                    .addComponent(lblDepositAmount, javax.swing.GroupLayout.DEFAULT_SIZE, 408, Short.MAX_VALUE)
                     .addComponent(lblCurrentBalance, javax.swing.GroupLayout.DEFAULT_SIZE, 408, Short.MAX_VALUE)
                     .addComponent(txtPassword)
                     .addComponent(lblPassword, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -137,9 +137,9 @@ public class WithdrawFrameForm extends javax.swing.JInternalFrame {
                         .addContainerGap()
                         .addComponent(lblCurrentBalance)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lblWithdrawAmount)
+                .addComponent(lblDepositAmount)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtWithdrawAmount, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtDepositAmount, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(15, 15, 15)
                 .addComponent(lblPassword)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -156,7 +156,7 @@ public class WithdrawFrameForm extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(btnWithdraw)
+                        .addComponent(btnDeposit)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnClose))
                     .addComponent(paneInputs, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -170,17 +170,17 @@ public class WithdrawFrameForm extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnClose)
-                    .addComponent(btnWithdraw))
+                    .addComponent(btnDeposit))
                 .addGap(12, 12, 12))
         );
 
         setBounds(300, 100, 469, 302);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnWithdrawActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnWithdrawActionPerformed
-    {//GEN-HEADEREND:event_btnWithdrawActionPerformed
-        withdraw();
-    }//GEN-LAST:event_btnWithdrawActionPerformed
+    private void btnDepositActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnDepositActionPerformed
+    {//GEN-HEADEREND:event_btnDepositActionPerformed
+        deposit();
+    }//GEN-LAST:event_btnDepositActionPerformed
 
     private void btnCloseActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnCloseActionPerformed
     {//GEN-HEADEREND:event_btnCloseActionPerformed
@@ -189,7 +189,7 @@ public class WithdrawFrameForm extends javax.swing.JInternalFrame {
 
     private void clearForm()
     {
-        txtWithdrawAmount.setText("");
+        txtDepositAmount.setText("");
         txtPassword.setText("");
         defineCurrentBalance();
     }
@@ -201,49 +201,42 @@ public class WithdrawFrameForm extends javax.swing.JInternalFrame {
         setCursor(ViewUtility.DEFAULT_CURSOR);
     }
     
-    private void withdraw()
+    private void deposit()
     {
         try {
-            double withdrawAmount = Double.parseDouble(txtWithdrawAmount.getText());
+            double depositAmount = Double.parseDouble(txtDepositAmount.getText());
             String password = new String(txtPassword.getPassword());
 
-            if (withdrawAmount <= 0 || password.isEmpty()) {
+            if (depositAmount <= 0 || password.isEmpty()) {
                 MessageUtility.warning(customerMainForm, "There are invalid fields");
-                return;
-            }
-            
-            double futureBalance = Double.parseDouble(txtCurrentBalance.getText()) - withdrawAmount;
-            
-            if (futureBalance < 0) {
-                MessageUtility.warning(customerMainForm, "Could not perform this operation, not enough money!");
                 return;
             }
             
             Optional<Customer> optional = customerRepository.findByAccountNumberAndPassword(accountNumber, password);
             
             if (!optional.isPresent()) {
-                MessageUtility.warning(customerMainForm, "Could not peform this operation, invalid password!");
+                MessageUtility.warning(customerMainForm, "Could not peform operation invalid password!");
                 return;
             }
             
-            operationRepository.withdraw(accountNumber, withdrawAmount);
+            operationRepository.deposit(accountNumber, depositAmount);
             
-            MessageUtility.info(customerMainForm, "Money withdrawn successfully!");
+            MessageUtility.info(customerMainForm, "Money deposited  successfully!");
             clearForm();
         } catch (NumberFormatException e) {
-            MessageUtility.error(customerMainForm, "Invalid withdraw value", e);
+            MessageUtility.error(customerMainForm, "Invalid deposit vaule", e);
         }
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnClose;
-    private javax.swing.JButton btnWithdraw;
+    private javax.swing.JButton btnDeposit;
     private javax.swing.JLabel lblCurrentBalance;
+    private javax.swing.JLabel lblDepositAmount;
     private javax.swing.JLabel lblPassword;
-    private javax.swing.JLabel lblWithdrawAmount;
     private javax.swing.JPanel paneInputs;
     private javax.swing.JTextField txtCurrentBalance;
+    private javax.swing.JTextField txtDepositAmount;
     private javax.swing.JPasswordField txtPassword;
-    private javax.swing.JTextField txtWithdrawAmount;
     // End of variables declaration//GEN-END:variables
 }

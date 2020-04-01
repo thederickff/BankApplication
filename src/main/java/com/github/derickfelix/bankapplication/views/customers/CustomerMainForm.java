@@ -75,6 +75,7 @@ public class CustomerMainForm extends javax.swing.JFrame {
         lblInfoDate = new javax.swing.JLabel();
         appMenubar = new javax.swing.JMenuBar();
         menuAccount = new javax.swing.JMenu();
+        mniAccountInfo = new javax.swing.JMenuItem();
         mniLogout = new javax.swing.JMenuItem();
         menuOperations = new javax.swing.JMenu();
         mniDeposit = new javax.swing.JMenuItem();
@@ -197,6 +198,16 @@ public class CustomerMainForm extends javax.swing.JFrame {
 
         menuAccount.setText("Account");
 
+        mniAccountInfo.setText("Information");
+        mniAccountInfo.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                mniAccountInfoActionPerformed(evt);
+            }
+        });
+        menuAccount.add(mniAccountInfo);
+
         mniLogout.setText("Logout");
         mniLogout.addActionListener(new java.awt.event.ActionListener()
         {
@@ -294,13 +305,18 @@ public class CustomerMainForm extends javax.swing.JFrame {
 
     private void mniDepositActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_mniDepositActionPerformed
     {//GEN-HEADEREND:event_mniDepositActionPerformed
-        addInternalFrame(new DepositFrameForm(this));
+        addInternalFrame(new NewDepositFrame(this));
     }//GEN-LAST:event_mniDepositActionPerformed
 
     private void mniWithdrawActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_mniWithdrawActionPerformed
     {//GEN-HEADEREND:event_mniWithdrawActionPerformed
-        addInternalFrame(new WithdrawFrameForm(this));
+        addInternalFrame(new NewWithdrawFrame(this));
     }//GEN-LAST:event_mniWithdrawActionPerformed
+
+    private void mniAccountInfoActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_mniAccountInfoActionPerformed
+    {//GEN-HEADEREND:event_mniAccountInfoActionPerformed
+        addInternalFrame(new AccountInfoFrame(this));
+    }//GEN-LAST:event_mniAccountInfoActionPerformed
 
     public void addInternalFrame(javax.swing.JInternalFrame frame)
     {
@@ -319,6 +335,7 @@ public class CustomerMainForm extends javax.swing.JFrame {
     private javax.swing.JMenu menuHelp;
     private javax.swing.JMenu menuOperations;
     private javax.swing.JMenuItem mniAbout;
+    private javax.swing.JMenuItem mniAccountInfo;
     private javax.swing.JMenuItem mniDeposit;
     private javax.swing.JMenuItem mniLogout;
     private javax.swing.JMenuItem mniWithdraw;

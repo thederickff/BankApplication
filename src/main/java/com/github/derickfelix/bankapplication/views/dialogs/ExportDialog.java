@@ -25,13 +25,13 @@ package com.github.derickfelix.bankapplication.views.dialogs;
 
 import com.github.derickfelix.bankapplication.utilities.MessageUtility;
 import com.github.derickfelix.bankapplication.utilities.ViewUtility;
-import com.github.derickfelix.bankapplication.views.users.MainForm;
 import com.github.derickfelix.bankapplication.views.custom.StripedTableCellRenderer;
 import java.awt.Font;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JFileChooser;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JScrollPane;
 import javax.swing.table.DefaultTableCellRenderer;
@@ -47,16 +47,14 @@ public class ExportDialog extends javax.swing.JDialog {
     private final List<String> columns;
     private final List<String[]> data;
     private final JFileChooser fileChooser;
-    private final MainForm mainForm;
     
-    public ExportDialog(MainForm mainForm, List<String> columns, List<String[]> data)
+    public ExportDialog(JFrame parent, List<String> columns, List<String[]> data)
     {
-        super(mainForm, true);
+        super(parent, true);
 
         this.columns = columns;
         this.data = data;
         this.fileChooser = new JFileChooser();
-        this.mainForm = mainForm;
 
         initComponents();
         customSettings();
@@ -258,7 +256,7 @@ public class ExportDialog extends javax.swing.JDialog {
     private void btnExportActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnExportActionPerformed
     {//GEN-HEADEREND:event_btnExportActionPerformed
         if (txtPath.getText().isEmpty()) {
-            MessageUtility.warning(mainForm, "File path is empty!");
+            MessageUtility.warning("File path is empty!");
             return;
         }
         
@@ -281,10 +279,10 @@ public class ExportDialog extends javax.swing.JDialog {
             
             
             ViewUtility.exportTableDataToFile(rows, colStates, txtPath.getText());
-            MessageUtility.info(mainForm, "Data exported successfully!");
+            MessageUtility.info("Data exported successfully!");
             txtPath.setText("");
         } catch (Exception e) {
-            MessageUtility.error(mainForm, e);
+            MessageUtility.error(null, e);
         }
     }//GEN-LAST:event_btnExportActionPerformed
 

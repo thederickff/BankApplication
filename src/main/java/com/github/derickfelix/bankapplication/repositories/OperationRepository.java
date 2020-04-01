@@ -23,21 +23,24 @@
  */
 package com.github.derickfelix.bankapplication.repositories;
 
-import com.github.derickfelix.bankapplication.models.Deposit;
-import com.github.derickfelix.bankapplication.models.Withdraw;
+import com.github.derickfelix.bankapplication.models.Operation;
 import java.util.List;
 import java.util.Optional;
 
 public interface OperationRepository {
 
-    List<Deposit> deposits();
+//    List<Operation> findAll();
     
-    List<Deposit> deposits(String accountNumber);
+    List<Operation> findAllDeposits();
+    
+    List<Operation> findAllWithdraws();
+    
+    List<Operation> findAllByAccountNumber(String accountNumber);
 
-    List<Withdraw> withdraws();
+    List<Operation> findAllDepositsByAccountNumber(String accountNumber);
 
-    List<Withdraw> withdraws(String accountNumber);
-
+    List<Operation> findAllWithdrawsByAccountNumber(String accountNumber);
+    
     void deposit(String accountNumber, double amount);
 
     void withdraw(String accountNumber, double amount);
