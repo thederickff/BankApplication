@@ -132,9 +132,9 @@ public class OperationRepositoryImpl implements OperationRepository {
     public Optional<Double> currentBalance(String accountNumber)
     {
         String sql = "select "
-                + "(select sum(amount) from deposits where account_number = :account_number) "
+                + "IFNULL((select sum(amount) from deposits where account_number = :account_number), 0) "
                 + " - "
-                + "(select sum(amount) from withdraws where account_number = :account_number) "
+                + "IFNULL((select sum(amount) from withdraws where account_number = :account_number), 0)"
                 + "as balance";
         
         Map<String, Object> params = new HashMap<>();
