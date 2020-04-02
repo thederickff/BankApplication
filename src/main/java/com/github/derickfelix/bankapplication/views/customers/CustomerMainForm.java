@@ -75,7 +75,7 @@ public class CustomerMainForm extends javax.swing.JFrame {
         lblInfoDate = new javax.swing.JLabel();
         appMenubar = new javax.swing.JMenuBar();
         menuAccount = new javax.swing.JMenu();
-        mniAccountInfo = new javax.swing.JMenuItem();
+        mniHistories = new javax.swing.JMenuItem();
         mniLogout = new javax.swing.JMenuItem();
         menuOperations = new javax.swing.JMenu();
         mniDeposit = new javax.swing.JMenuItem();
@@ -198,15 +198,15 @@ public class CustomerMainForm extends javax.swing.JFrame {
 
         menuAccount.setText("Account");
 
-        mniAccountInfo.setText("Information");
-        mniAccountInfo.addActionListener(new java.awt.event.ActionListener()
+        mniHistories.setText("Histories");
+        mniHistories.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
             {
-                mniAccountInfoActionPerformed(evt);
+                mniHistoriesActionPerformed(evt);
             }
         });
-        menuAccount.add(mniAccountInfo);
+        menuAccount.add(mniHistories);
 
         mniLogout.setText("Logout");
         mniLogout.addActionListener(new java.awt.event.ActionListener()
@@ -247,6 +247,13 @@ public class CustomerMainForm extends javax.swing.JFrame {
         menuHelp.setText("Help");
 
         mniAbout.setText("About");
+        mniAbout.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                mniAboutActionPerformed(evt);
+            }
+        });
         menuHelp.add(mniAbout);
 
         appMenubar.add(menuHelp);
@@ -313,10 +320,15 @@ public class CustomerMainForm extends javax.swing.JFrame {
         addInternalFrame(new NewWithdrawFrame(this));
     }//GEN-LAST:event_mniWithdrawActionPerformed
 
-    private void mniAccountInfoActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_mniAccountInfoActionPerformed
-    {//GEN-HEADEREND:event_mniAccountInfoActionPerformed
+    private void mniHistoriesActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_mniHistoriesActionPerformed
+    {//GEN-HEADEREND:event_mniHistoriesActionPerformed
         addInternalFrame(new AccountInfoFrame(this));
-    }//GEN-LAST:event_mniAccountInfoActionPerformed
+    }//GEN-LAST:event_mniHistoriesActionPerformed
+
+    private void mniAboutActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_mniAboutActionPerformed
+    {//GEN-HEADEREND:event_mniAboutActionPerformed
+        new AboutForm().setVisible(true);
+    }//GEN-LAST:event_mniAboutActionPerformed
 
     public void addInternalFrame(javax.swing.JInternalFrame frame)
     {
@@ -335,8 +347,8 @@ public class CustomerMainForm extends javax.swing.JFrame {
     private javax.swing.JMenu menuHelp;
     private javax.swing.JMenu menuOperations;
     private javax.swing.JMenuItem mniAbout;
-    private javax.swing.JMenuItem mniAccountInfo;
     private javax.swing.JMenuItem mniDeposit;
+    private javax.swing.JMenuItem mniHistories;
     private javax.swing.JMenuItem mniLogout;
     private javax.swing.JMenuItem mniWithdraw;
     private javax.swing.JPanel paneAppVersion;

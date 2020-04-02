@@ -26,6 +26,7 @@ package com.github.derickfelix.bankapplication.views.users;
 import com.github.derickfelix.bankapplication.securities.AuthSecurity;
 import com.github.derickfelix.bankapplication.utilities.MessageUtility;
 import com.github.derickfelix.bankapplication.utilities.ViewUtility;
+import com.github.derickfelix.bankapplication.views.AboutForm;
 import com.github.derickfelix.bankapplication.views.LoginForm;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -231,6 +232,13 @@ public class MainForm extends javax.swing.JFrame {
         menuHelp.setText("Help");
 
         mniAbout.setText("About");
+        mniAbout.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                mniAboutActionPerformed(evt);
+            }
+        });
         menuHelp.add(mniAbout);
 
         appMenubar.add(menuHelp);
@@ -296,6 +304,11 @@ public class MainForm extends javax.swing.JFrame {
         new LoginForm().setVisible(true);
         dispose();
     }//GEN-LAST:event_mniLogoutActionPerformed
+
+    private void mniAboutActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_mniAboutActionPerformed
+    {//GEN-HEADEREND:event_mniAboutActionPerformed
+        new AboutForm().setVisible(true);
+    }//GEN-LAST:event_mniAboutActionPerformed
 
     public void addInternalFrame(javax.swing.JInternalFrame frame)
     {

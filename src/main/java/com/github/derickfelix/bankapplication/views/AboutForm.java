@@ -23,29 +23,16 @@
  */
 package com.github.derickfelix.bankapplication.views;
 
-import com.github.derickfelix.bankapplication.models.Customer;
-import com.github.derickfelix.bankapplication.views.users.MainForm;
-import com.github.derickfelix.bankapplication.models.User;
-import com.github.derickfelix.bankapplication.repositories.CustomerRepository;
-import com.github.derickfelix.bankapplication.repositories.UserRepository;
-import com.github.derickfelix.bankapplication.repositories.impl.CustomerRepositoryImpl;
-import com.github.derickfelix.bankapplication.repositories.impl.UserRepositoryImpl;
-import com.github.derickfelix.bankapplication.securities.AuthSecurity;
 import com.github.derickfelix.bankapplication.utilities.ViewUtility;
-import com.github.derickfelix.bankapplication.views.customers.CustomerMainForm;
-import java.util.Optional;
-import javax.swing.JOptionPane;
+import java.awt.Color;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import javax.swing.BorderFactory;
 
-public class LoginForm extends javax.swing.JFrame {
-
-    private final UserRepository userRepository;
-    private final CustomerRepository customerRepository;
+public class AboutForm extends javax.swing.JFrame {
     
-    public LoginForm()
+    public AboutForm()
     {
-        this.userRepository = new UserRepositoryImpl();
-        this.customerRepository = new CustomerRepositoryImpl();
-
         initComponents();
         customSettings();
     }
@@ -53,6 +40,8 @@ public class LoginForm extends javax.swing.JFrame {
     private void customSettings()
     {
         ViewUtility.addIconTo(this);
+        lblDate.setText("Date: " + LocalDate.now().format(DateTimeFormatter.ofPattern("MM/dd/yyyy")));
+        getRootPane().setBorder(BorderFactory.createMatteBorder(2, 2, 2, 2, Color.WHITE));
     }
 
     /**
@@ -65,134 +54,84 @@ public class LoginForm extends javax.swing.JFrame {
     private void initComponents()
     {
 
-        btnExit = new javax.swing.JButton();
-        btnLogin = new javax.swing.JButton();
         lblLogo = new javax.swing.JLabel();
-        txtUsernameOrAccountNumber = new javax.swing.JTextField();
-        lblUsernameOrAccountNumber = new javax.swing.JLabel();
-        lblPassword = new javax.swing.JLabel();
-        txtPassword = new javax.swing.JPasswordField();
+        lblTitle = new javax.swing.JLabel();
+        lblVersion = new javax.swing.JLabel();
+        lblDate = new javax.swing.JLabel();
+        lblLicense = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Zwei Bank - Login");
-        setUndecorated(true);
-
-        btnExit.setFont(new java.awt.Font("Liberation Sans", 0, 12)); // NOI18N
-        btnExit.setText("Exit");
-        btnExit.addActionListener(new java.awt.event.ActionListener()
+        addMouseListener(new java.awt.event.MouseAdapter()
         {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
+            public void mouseClicked(java.awt.event.MouseEvent evt)
             {
-                btnExitActionPerformed(evt);
-            }
-        });
-
-        btnLogin.setFont(new java.awt.Font("Liberation Sans", 0, 12)); // NOI18N
-        btnLogin.setText("Login");
-        btnLogin.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
-                btnLoginActionPerformed(evt);
+                formMouseClicked(evt);
             }
         });
 
         lblLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/logo.png"))); // NOI18N
 
-        txtUsernameOrAccountNumber.setFont(new java.awt.Font("Liberation Sans", 0, 12)); // NOI18N
+        lblTitle.setFont(new java.awt.Font("Noto Sans", 1, 18)); // NOI18N
+        lblTitle.setText("Bank Application");
 
-        lblUsernameOrAccountNumber.setFont(new java.awt.Font("Liberation Sans", 0, 12)); // NOI18N
-        lblUsernameOrAccountNumber.setText("Username or Account Number");
+        lblVersion.setText("Version 1.0.0");
 
-        lblPassword.setFont(new java.awt.Font("Liberation Sans", 0, 12)); // NOI18N
-        lblPassword.setText("Password");
+        lblDate.setText("Date: dd/MM/yyyy");
 
-        txtPassword.setFont(new java.awt.Font("Liberation Sans", 0, 12)); // NOI18N
+        lblLicense.setText("MIT License");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lblLogo)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, 37, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnLogin, javax.swing.GroupLayout.DEFAULT_SIZE, 131, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnExit, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(txtPassword)
-                    .addComponent(lblPassword, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(txtUsernameOrAccountNumber)
-                    .addComponent(lblUsernameOrAccountNumber, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(24, 24, 24))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblTitle, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lblLicense, javax.swing.GroupLayout.Alignment.TRAILING)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(lblLogo)
+                        .addGap(96, 96, 96)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblVersion, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lblDate, javax.swing.GroupLayout.Alignment.TRAILING))))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(28, 28, 28)
+                .addContainerGap()
+                .addComponent(lblTitle)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(21, 21, 21)
-                        .addComponent(lblUsernameOrAccountNumber)
+                        .addComponent(lblVersion)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtUsernameOrAccountNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblPassword)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnLogin)
-                            .addComponent(btnExit))))
-                .addContainerGap(37, Short.MAX_VALUE))
+                        .addComponent(lblDate))
+                    .addComponent(lblLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
+                .addComponent(lblLicense)
+                .addContainerGap())
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnExitActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnExitActionPerformed
-    {//GEN-HEADEREND:event_btnExitActionPerformed
-        System.exit(0);
-    }//GEN-LAST:event_btnExitActionPerformed
-
-    private void btnLoginActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnLoginActionPerformed
-    {//GEN-HEADEREND:event_btnLoginActionPerformed
-        String usernameOrAccountNumber = txtUsernameOrAccountNumber.getText();
-        String password = new String(txtPassword.getPassword());
-        Optional<User> userOptional = userRepository.findByUsernameAndPassword(usernameOrAccountNumber, password);
-                
-        if (userOptional.isPresent()) {
-            User user = userOptional.get();
-            AuthSecurity.login(user);
-            new MainForm().setVisible(true);
-            dispose();
-            return;
-        }
-        
-        Optional<Customer> customerOptional = customerRepository.findByAccountNumberAndPassword(usernameOrAccountNumber, password);
-        
-        if (customerOptional.isPresent()) {
-            Customer customer = customerOptional.get();
-            AuthSecurity.login(customer);
-            new CustomerMainForm().setVisible(true);
-            dispose();
-            return;
-        }
-        
-        JOptionPane.showMessageDialog(this, "Credentials provided doesn't match our records!", "Zwei Bank Application", JOptionPane.WARNING_MESSAGE);
-    }//GEN-LAST:event_btnLoginActionPerformed
+    private void formMouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_formMouseClicked
+    {//GEN-HEADEREND:event_formMouseClicked
+        dispose();
+    }//GEN-LAST:event_formMouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnExit;
-    private javax.swing.JButton btnLogin;
+    private javax.swing.JLabel lblDate;
+    private javax.swing.JLabel lblLicense;
     private javax.swing.JLabel lblLogo;
-    private javax.swing.JLabel lblPassword;
-    private javax.swing.JLabel lblUsernameOrAccountNumber;
-    private javax.swing.JPasswordField txtPassword;
-    private javax.swing.JTextField txtUsernameOrAccountNumber;
+    private javax.swing.JLabel lblTitle;
+    private javax.swing.JLabel lblVersion;
     // End of variables declaration//GEN-END:variables
 }
