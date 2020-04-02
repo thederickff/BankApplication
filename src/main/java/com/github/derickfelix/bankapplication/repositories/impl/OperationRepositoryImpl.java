@@ -70,8 +70,8 @@ public class OperationRepositoryImpl implements OperationRepository {
         Map<String, Object> params = new HashMap<>();
         params.put("account_number", accountNumber);
 
-        List<Operation> withdraws = template.queryForList(withdrawSql, null, new OperationMapper(Operation.Type.WITHDRAW));
-        List<Operation> deposits = template.queryForList(depositSql, null, new OperationMapper(Operation.Type.DEPOSIT));
+        List<Operation> withdraws = template.queryForList(withdrawSql, params, new OperationMapper(Operation.Type.WITHDRAW));
+        List<Operation> deposits = template.queryForList(depositSql, params, new OperationMapper(Operation.Type.DEPOSIT));
 
         List<Operation> operations = new ArrayList<>(withdraws.size() + deposits.size());
         operations.addAll(withdraws);
@@ -156,9 +156,9 @@ public class OperationRepositoryImpl implements OperationRepository {
         public Operation mapRow(ResultSet rs) throws SQLException
         {
             Operation operation = new Operation();
-            operation.setCreatedAt(LocalDateTime.now());
+            operation.setCreatedAt(rs.getTimestamp("created_at").toLocalDateTime());
             operation.setAccountNumber(rs.getString("account_number"));
-            operation.setAmount(rs.getDouble("amount"));
+            operation.setAmount(type == Operation.Type.WITHDRAW ? -rs.getDouble("amount") : rs.getDouble("amount"));
             operation.setType(type);
             
             return operation;

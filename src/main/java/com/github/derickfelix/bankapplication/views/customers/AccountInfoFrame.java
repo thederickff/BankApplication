@@ -94,9 +94,6 @@ public class AccountInfoFrame extends javax.swing.JInternalFrame {
         valCurrentBalance = new javax.swing.JLabel();
         btnSearch = new javax.swing.JButton();
         btnClose = new javax.swing.JButton();
-        paneInputs = new javax.swing.JPanel();
-        lblSearch = new javax.swing.JLabel();
-        txtSearch = new javax.swing.JTextField();
         statusPanel = new javax.swing.JPanel();
         lblLine = new javax.swing.JLabel();
         lblSelectedLine = new javax.swing.JLabel();
@@ -226,39 +223,6 @@ public class AccountInfoFrame extends javax.swing.JInternalFrame {
             }
         });
 
-        paneInputs.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-
-        lblSearch.setText("Search");
-
-        txtSearch.addKeyListener(new java.awt.event.KeyAdapter()
-        {
-            public void keyReleased(java.awt.event.KeyEvent evt)
-            {
-                txtSearchKeyReleased(evt);
-            }
-        });
-
-        javax.swing.GroupLayout paneInputsLayout = new javax.swing.GroupLayout(paneInputs);
-        paneInputs.setLayout(paneInputsLayout);
-        paneInputsLayout.setHorizontalGroup(
-            paneInputsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(paneInputsLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(paneInputsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtSearch)
-                    .addComponent(lblSearch, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
-        );
-        paneInputsLayout.setVerticalGroup(
-            paneInputsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(paneInputsLayout.createSequentialGroup()
-                .addGap(6, 6, 6)
-                .addComponent(lblSearch)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
         statusPanel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
 
         lblLine.setText("Line:");
@@ -293,7 +257,6 @@ public class AccountInfoFrame extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(paneInputs, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(toolbar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(mainScroll, javax.swing.GroupLayout.DEFAULT_SIZE, 704, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -309,9 +272,7 @@ public class AccountInfoFrame extends javax.swing.JInternalFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addComponent(toolbar, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(paneInputs, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(mainScroll, javax.swing.GroupLayout.DEFAULT_SIZE, 198, Short.MAX_VALUE)
+                .addComponent(mainScroll, javax.swing.GroupLayout.DEFAULT_SIZE, 278, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(statusPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(13, 13, 13)
@@ -356,13 +317,6 @@ public class AccountInfoFrame extends javax.swing.JInternalFrame {
 
     }//GEN-LAST:event_mainTableMouseClicked
 
-    private void txtSearchKeyReleased(java.awt.event.KeyEvent evt)//GEN-FIRST:event_txtSearchKeyReleased
-    {//GEN-HEADEREND:event_txtSearchKeyReleased
-        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-            search();
-        }
-    }//GEN-LAST:event_txtSearchKeyReleased
-
     private void mainTableMouseReleased(java.awt.event.MouseEvent evt)//GEN-FIRST:event_mainTableMouseReleased
     {//GEN-HEADEREND:event_mainTableMouseReleased
         lblSelectedLine.setText((mainTable.getSelectedRow() + 1) + "/" + mainTable.getRowCount());
@@ -375,7 +329,7 @@ public class AccountInfoFrame extends javax.swing.JInternalFrame {
 
         setCursor(ViewUtility.WAIT_CURSOR);
         ViewUtility.clearTable(mainTable);
-        String term = txtSearch.getText();
+        operations = operationRepository.findAllByAccountNumber(accountNumber);
         
         if (operations.isEmpty()) {
             MessageUtility.info(customerMainForm, "No results found!");
@@ -415,17 +369,14 @@ public class AccountInfoFrame extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnSearch;
     private javax.swing.JLabel lblCurrentBalance;
     private javax.swing.JLabel lblLine;
-    private javax.swing.JLabel lblSearch;
     private javax.swing.JLabel lblSelectedLine;
     private javax.swing.JScrollPane mainScroll;
     private javax.swing.JTable mainTable;
-    private javax.swing.JPanel paneInputs;
     private javax.swing.JToolBar.Separator separator;
     private javax.swing.JPanel statusPanel;
     private javax.swing.JButton tbtnExport;
     private javax.swing.JButton tbtnSearch;
     private javax.swing.JToolBar toolbar;
-    private javax.swing.JTextField txtSearch;
     private javax.swing.JLabel valCurrentBalance;
     // End of variables declaration//GEN-END:variables
 }
