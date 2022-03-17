@@ -53,20 +53,20 @@ public class DBUtility {
 
     private static void checkDatabase()
     {
-        checkTable("customers",
+        initialiseTable("customers",
                 "id identity", "name varchar", "address varchar", "account_number varchar", "account_type varchar", "password varchar"
         );
         
-        checkTable("users",
+        initialiseTable("users",
                 "id identity", "name varchar", "username varchar unique",
                 "password varchar", "role varchar"
         );
         
-        checkTable("deposits",
+        initialiseTable("deposits",
                 "id identity", "created_at timestamp", "account_number varchar", "amount decimal"
         );
         
-        checkTable("withdraws",
+        initialiseTable("withdraws",
                 "id identity", "created_at timestamp", "account_number varchar", "amount decimal"
         );
         
@@ -75,7 +75,7 @@ public class DBUtility {
         checkDefaultUser();
     }
 
-    private static void checkTable(String tableName, String... fields)
+    private static void initialiseTable(String tableName, String... fields)
     {
         StringBuilder builder = new StringBuilder();
         builder.append("create table if not exists ");
@@ -125,25 +125,13 @@ public class DBUtility {
     private static void seedUsers()
     {
         StringBuilder sql = new StringBuilder("insert into users (name, username, password, role) values\n");
-        Random random = new Random();
-        String[] maleNames = maleNames();
-        String[] femaleNames = femaleNames();
+
         int amount = 100;
 
         for (int i = 0; i < amount; i++) {
             sql.append('(');
-            boolean male = random.nextBoolean();
-            String firstName = male ? maleNames[random.nextInt(maleNames.length)] : femaleNames[random.nextInt(femaleNames.length)];
-
-            // Full name
-            sql.append("'");
-            sql.append(firstName);
-            sql.append(' ');
-            sql.append(maleNames[random.nextInt(maleNames.length)]);
-            sql.append("', '");
-            // username
-            sql.append(firstName.toLowerCase());
-            sql.append(random.nextInt(1000));
+            //Generating and appending fullname and username
+            sql.append(generateNameAndUsername());
             // password
             sql.append("', HASH('SHA256', '123456'), 'Standard')");
 
@@ -153,6 +141,27 @@ public class DBUtility {
         }
 
         template.update(sql.toString(), null);
+    }
+
+    private  static StringBuilder generateNameAndUsername(){
+        Random random = new Random();
+        String[] maleNames = maleNames();
+        String[] femaleNames = femaleNames();
+        StringBuilder name = new StringBuilder();
+        boolean male = random.nextBoolean();
+        String firstName = male ? maleNames[random.nextInt(maleNames.length)] : femaleNames[random.nextInt(femaleNames.length)];
+
+        // Full name
+        name.append("'");
+        name.append(firstName);
+        name.append(' ');
+        name.append(maleNames[random.nextInt(maleNames.length)]);
+        name.append("', '");
+        // username
+        name.append(firstName.toLowerCase());
+        name.append(random.nextInt(1000));
+
+        return name;
     }
 
     private static void seedCustomers()

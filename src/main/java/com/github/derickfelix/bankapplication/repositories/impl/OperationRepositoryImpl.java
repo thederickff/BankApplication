@@ -46,13 +46,7 @@ public class OperationRepositoryImpl implements OperationRepository {
         this.template = new BankAppTemplate();
     }
     
-    @Override
-    public List<Operation> findAllWithdraws()
-    {
-        String sql = "select * from withdraws";
 
-        return template.queryForList(sql, null, new OperationMapper(Operation.Type.WITHDRAW));
-    }
 
     @Override
     public List<Operation> findAllDeposits()
@@ -94,15 +88,8 @@ public class OperationRepositoryImpl implements OperationRepository {
         return template.queryForList(sql, params, new OperationMapper(Operation.Type.DEPOSIT));
     }
 
-    @Override
-    public List<Operation> findAllWithdrawsByAccountNumber(String accountNumber)
-    {
-        String sql = "select * from withdraws where account_number = :account_number";
-        Map<String, Object> params = new HashMap<>();
-        params.put("account_number", accountNumber);
 
-        return template.queryForList(sql, params, new OperationMapper(Operation.Type.WITHDRAW));
-    }
+
     
     @Override
     public void deposit(String accountNumber, double amount)
@@ -116,17 +103,8 @@ public class OperationRepositoryImpl implements OperationRepository {
         template.update(sql, params);
     }
 
-    @Override
-    public void withdraw(String accountNumber, double amount)
-    {
-        String sql = "insert into withdraws (created_at, account_number, amount) values (:created_at, :account_number, :amount)";
-        Map<String, Object> params = new HashMap<>();
-        params.put("created_at", LocalDateTime.now());
-        params.put("account_number", accountNumber);
-        params.put("amount", amount);
 
-        template.update(sql, params);
-    }
+
 
     @Override
     public Optional<Double> currentBalance(String accountNumber)

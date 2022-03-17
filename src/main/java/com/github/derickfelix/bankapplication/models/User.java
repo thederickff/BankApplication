@@ -25,20 +25,9 @@ package com.github.derickfelix.bankapplication.models;
 
 public class User extends Entity {
 
-    private String name;
     private String username;
     private String password;
     private String role;
-
-    public String getName()
-    {
-        return name;
-    }
-
-    public void setName(String name)
-    {
-        this.name = name;
-    }
 
     public String getUsername()
     {
