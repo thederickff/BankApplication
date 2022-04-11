@@ -43,7 +43,7 @@ public class NewWithdrawFrame extends javax.swing.JInternalFrame {
     public NewWithdrawFrame(CustomerMainForm customerMainForm)
     {
         this.customerMainForm = customerMainForm;
-        this.customerRepository = new CustomerRepositoryImpl();
+        this.customerRepository = CustomerRepositoryImpl.getLogInstance();
         this.operationRepository = new OperationRepositoryImpl();
         this.accountNumber = AuthSecurity.getCustomer().getAccountNumber();
 

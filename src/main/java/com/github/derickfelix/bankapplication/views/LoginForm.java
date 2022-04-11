@@ -46,8 +46,7 @@ public class LoginForm extends javax.swing.JFrame {
     public LoginForm()
     {
         this.userRepository = new UserRepositoryImpl();
-        this.customerRepository = new CustomerRepositoryImpl();
-
+        this.customerRepository = CustomerRepositoryImpl.getLogInstance();
         initComponents();
         customSettings();
     }

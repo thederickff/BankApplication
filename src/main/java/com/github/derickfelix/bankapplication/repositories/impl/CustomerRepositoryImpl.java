@@ -38,10 +38,18 @@ import org.h2.util.StringUtils;
 public class CustomerRepositoryImpl implements CustomerRepository {
 
     private final BankAppTemplate template;
-    
-    public CustomerRepositoryImpl()
+    private static CustomerRepositoryImpl custRepoInstance = null;
+    private CustomerRepositoryImpl()
     {
         this.template = new BankAppTemplate();
+    }
+
+    public static CustomerRepositoryImpl getLogInstance() {
+        if(custRepoInstance == null) {
+            custRepoInstance = new CustomerRepositoryImpl();
+        }
+        return custRepoInstance;
+
     }
 
     @Override

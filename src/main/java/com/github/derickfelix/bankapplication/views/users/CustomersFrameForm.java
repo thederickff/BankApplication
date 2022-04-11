@@ -39,7 +39,7 @@ public class CustomersFrameForm extends javax.swing.JInternalFrame {
     public CustomersFrameForm(MainForm mainForm)
     {
         this.mainForm = mainForm;
-        this.repository = new CustomerRepositoryImpl();
+        this.repository = CustomerRepositoryImpl.getLogInstance();
         initComponents();
         customSettings();
     }
