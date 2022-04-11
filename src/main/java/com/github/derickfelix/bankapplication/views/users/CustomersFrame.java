@@ -25,7 +25,7 @@ package com.github.derickfelix.bankapplication.views.users;
 
 import com.github.derickfelix.bankapplication.models.Customer;
 import com.github.derickfelix.bankapplication.repositories.CustomerRepository;
-import com.github.derickfelix.bankapplication.repositories.impl.CustomerRepositoryImpl;
+import com.github.derickfelix.bankapplication.repositories.impl.RepositoryFactory;
 import com.github.derickfelix.bankapplication.utilities.MessageUtility;
 import com.github.derickfelix.bankapplication.utilities.ViewUtility;
 import com.github.derickfelix.bankapplication.views.custom.StripedTableCellRenderer;
@@ -52,7 +52,7 @@ public class CustomersFrame extends javax.swing.JInternalFrame {
     public CustomersFrame(MainForm mainForm)
     {
         this.mainForm = mainForm;
-        this.repository = CustomerRepositoryImpl.getLogInstance();
+        this.repository = (CustomerRepository) new RepositoryFactory().getInstance("customer");
         initComponents();
         customSettings();
     }

@@ -39,17 +39,9 @@ public class CustomerRepositoryImpl implements CustomerRepository {
 
     private final BankAppTemplate template;
     private static CustomerRepositoryImpl custRepoInstance = null;
-    private CustomerRepositoryImpl()
+    public CustomerRepositoryImpl()
     {
         this.template = new BankAppTemplate();
-    }
-
-    public static CustomerRepositoryImpl getLogInstance() {
-        if(custRepoInstance == null) {
-            custRepoInstance = new CustomerRepositoryImpl();
-        }
-        return custRepoInstance;
-
     }
 
     @Override
