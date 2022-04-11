@@ -40,12 +40,20 @@ import java.util.Optional;
 public class OperationRepositoryImpl implements OperationRepository {
 
     private final BankAppTemplate template;
+    private static OperationRepositoryImpl operationalRepoInstance = null;
 
-    public OperationRepositoryImpl()
+    private OperationRepositoryImpl()
     {
         this.template = new BankAppTemplate();
     }
-    
+
+    public static OperationRepositoryImpl getLogInstance() {
+        if (operationalRepoInstance == null) {
+            operationalRepoInstance = new OperationRepositoryImpl();
+        }
+        return operationalRepoInstance;
+    }
+
     @Override
     public List<Operation> findAllWithdraws()
     {
