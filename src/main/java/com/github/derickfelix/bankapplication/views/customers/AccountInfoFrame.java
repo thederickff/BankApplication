@@ -53,7 +53,7 @@ public class AccountInfoFrame extends javax.swing.JInternalFrame {
     public AccountInfoFrame(CustomerMainForm customerMainForm)
     {
         this.customerMainForm = customerMainForm;
-        this.operationRepository = OperationRepositoryImpl.getLogInstance();
+        this.operationRepository = OperationRepositoryImpl.getOPInstance();
         this.accountNumber = AuthSecurity.getCustomer().getAccountNumber();
 
         initComponents();

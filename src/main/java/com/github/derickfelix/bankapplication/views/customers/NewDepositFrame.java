@@ -44,7 +44,7 @@ public class NewDepositFrame extends javax.swing.JInternalFrame {
     {
         this.customerMainForm = customerMainForm;
         this.customerRepository = (CustomerRepository) new RepositoryFactory().getInstance("customer");
-        this.operationRepository = OperationRepositoryImpl.getLogInstance();
+        this.operationRepository = OperationRepositoryImpl.getOPInstance();
         this.accountNumber = AuthSecurity.getCustomer().getAccountNumber();
 
         initComponents();

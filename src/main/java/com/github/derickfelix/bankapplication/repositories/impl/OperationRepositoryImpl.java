@@ -47,7 +47,7 @@ public class OperationRepositoryImpl implements OperationRepository {
         this.template = new BankAppTemplate();
     }
 
-    public static OperationRepositoryImpl getLogInstance() {
+    public static OperationRepositoryImpl getOPInstance() {
         if (operationalRepoInstance == null) {
             operationalRepoInstance = new OperationRepositoryImpl();
         }
