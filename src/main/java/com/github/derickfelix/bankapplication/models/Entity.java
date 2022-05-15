@@ -29,6 +29,8 @@ public class Entity {
     
     private Long id;
 
+    private String name;
+
     public Long getId()
     {
         return id;
@@ -65,6 +67,16 @@ public class Entity {
         final Entity other = (Entity) obj;
 
         return Objects.equals(this.id, other.id);
+    }
+
+    public String getName()
+    {
+        return name;
+    }
+
+    public void setName(String name)
+    {
+        this.name = name;
     }
     
 }
