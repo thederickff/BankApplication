@@ -25,7 +25,7 @@ package com.github.derickfelix.bankapplication.views.users;
 
 import com.github.derickfelix.bankapplication.models.User;
 import com.github.derickfelix.bankapplication.repositories.UserRepository;
-import com.github.derickfelix.bankapplication.repositories.impl.UserRepositoryImpl;
+import com.github.derickfelix.bankapplication.repositories.impl.RepositoryFactory;
 import com.github.derickfelix.bankapplication.securities.AuthSecurity;
 import com.github.derickfelix.bankapplication.utilities.MessageUtility;
 import com.github.derickfelix.bankapplication.utilities.ViewUtility;
@@ -53,7 +53,7 @@ public class UsersFrame extends javax.swing.JInternalFrame {
     public UsersFrame(MainForm mainForm)
     {
         this.mainForm = mainForm;
-        this.repository = new UserRepositoryImpl();
+        this.repository = (UserRepository) new RepositoryFactory().getInstance("user");
         initComponents();
         customSettings();
     }

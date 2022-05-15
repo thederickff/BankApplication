@@ -24,12 +24,11 @@
 package com.github.derickfelix.bankapplication.views;
 
 import com.github.derickfelix.bankapplication.models.Customer;
+import com.github.derickfelix.bankapplication.repositories.impl.RepositoryFactory;
 import com.github.derickfelix.bankapplication.views.users.MainForm;
 import com.github.derickfelix.bankapplication.models.User;
 import com.github.derickfelix.bankapplication.repositories.CustomerRepository;
 import com.github.derickfelix.bankapplication.repositories.UserRepository;
-import com.github.derickfelix.bankapplication.repositories.impl.CustomerRepositoryImpl;
-import com.github.derickfelix.bankapplication.repositories.impl.UserRepositoryImpl;
 import com.github.derickfelix.bankapplication.securities.AuthSecurity;
 import com.github.derickfelix.bankapplication.utilities.ViewUtility;
 import com.github.derickfelix.bankapplication.views.customers.CustomerMainForm;
@@ -45,9 +44,8 @@ public class LoginForm extends javax.swing.JFrame {
     
     public LoginForm()
     {
-        this.userRepository = new UserRepositoryImpl();
-        this.customerRepository = new CustomerRepositoryImpl();
-
+        this.userRepository = (UserRepository) new RepositoryFactory().getInstance("user");
+        this.customerRepository = (CustomerRepository) new RepositoryFactory().getInstance("customer");
         initComponents();
         customSettings();
     }

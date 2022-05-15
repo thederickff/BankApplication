@@ -38,7 +38,7 @@ import org.h2.util.StringUtils;
 public class CustomerRepositoryImpl implements CustomerRepository {
 
     private final BankAppTemplate template;
-    
+    private static CustomerRepositoryImpl custRepoInstance = null;
     public CustomerRepositoryImpl()
     {
         this.template = new BankAppTemplate();

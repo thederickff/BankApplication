@@ -26,6 +26,7 @@ package com.github.derickfelix.bankapplication.views.customers;
 import com.github.derickfelix.bankapplication.models.Customer;
 import com.github.derickfelix.bankapplication.repositories.CustomerRepository;
 import com.github.derickfelix.bankapplication.repositories.OperationRepository;
+import com.github.derickfelix.bankapplication.repositories.impl.RepositoryFactory;
 import com.github.derickfelix.bankapplication.repositories.WithdrawRepository;
 
 import com.github.derickfelix.bankapplication.repositories.impl.CustomerRepositoryImpl;
@@ -48,8 +49,8 @@ public class NewWithdrawFrame extends javax.swing.JInternalFrame {
     public NewWithdrawFrame(CustomerMainForm customerMainForm)
     {
         this.customerMainForm = customerMainForm;
-        this.customerRepository = new CustomerRepositoryImpl();
-        this.operationRepository = new OperationRepositoryImpl();
+        this.customerRepository = (CustomerRepository) new RepositoryFactory().getInstance("customer");
+        this.operationRepository = OperationRepositoryImpl.getOPInstance();
         this.withdrawRepository = new WithdrawRepositoryImpl();
         this.accountNumber = AuthSecurity.getCustomer().getAccountNumber();
 
