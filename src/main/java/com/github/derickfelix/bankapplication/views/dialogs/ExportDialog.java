@@ -23,8 +23,8 @@
  */
 package com.github.derickfelix.bankapplication.views.dialogs;
 
+import com.github.derickfelix.bankapplication.utilities.FileUtility;
 import com.github.derickfelix.bankapplication.utilities.MessageUtility;
-import com.github.derickfelix.bankapplication.utilities.ViewUtility;
 import com.github.derickfelix.bankapplication.views.custom.StripedTableCellRenderer;
 import java.awt.Font;
 import java.io.File;
@@ -278,7 +278,7 @@ public class ExportDialog extends javax.swing.JDialog {
             });
             
             
-            ViewUtility.exportTableDataToFile(rows, colStates, txtPath.getText());
+            FileUtility.exportTableDataToFile(rows, colStates, txtPath.getText());
             MessageUtility.info("Data exported successfully!");
             txtPath.setText("");
         } catch (Exception e) {

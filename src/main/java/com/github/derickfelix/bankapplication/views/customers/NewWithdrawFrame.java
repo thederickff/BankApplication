@@ -26,8 +26,12 @@ package com.github.derickfelix.bankapplication.views.customers;
 import com.github.derickfelix.bankapplication.models.Customer;
 import com.github.derickfelix.bankapplication.repositories.CustomerRepository;
 import com.github.derickfelix.bankapplication.repositories.OperationRepository;
+import com.github.derickfelix.bankapplication.repositories.WithdrawRepository;
+
 import com.github.derickfelix.bankapplication.repositories.impl.CustomerRepositoryImpl;
 import com.github.derickfelix.bankapplication.repositories.impl.OperationRepositoryImpl;
+
+import com.github.derickfelix.bankapplication.repositories.impl.WithdrawRepositoryImpl;
 import com.github.derickfelix.bankapplication.securities.AuthSecurity;
 import com.github.derickfelix.bankapplication.utilities.MessageUtility;
 import com.github.derickfelix.bankapplication.utilities.ViewUtility;
@@ -38,6 +42,7 @@ public class NewWithdrawFrame extends javax.swing.JInternalFrame {
     private final CustomerMainForm customerMainForm;
     private final CustomerRepository customerRepository;
     private final OperationRepository operationRepository;
+    private final WithdrawRepository withdrawRepository;
     private final String accountNumber;
     
     public NewWithdrawFrame(CustomerMainForm customerMainForm)
@@ -45,6 +50,7 @@ public class NewWithdrawFrame extends javax.swing.JInternalFrame {
         this.customerMainForm = customerMainForm;
         this.customerRepository = new CustomerRepositoryImpl();
         this.operationRepository = new OperationRepositoryImpl();
+        this.withdrawRepository = new WithdrawRepositoryImpl();
         this.accountNumber = AuthSecurity.getCustomer().getAccountNumber();
 
         initComponents();
@@ -226,7 +232,7 @@ public class NewWithdrawFrame extends javax.swing.JInternalFrame {
                 return;
             }
             
-            operationRepository.withdraw(accountNumber, withdrawAmount);
+            withdrawRepository.withdraw(accountNumber, withdrawAmount);
             
             MessageUtility.info(customerMainForm, "Money withdrawn successfully!");
             clearForm();
