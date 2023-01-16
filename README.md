@@ -18,6 +18,7 @@ You'll need to use Netbeans for development, this IDE was chosen because it is w
 No database is required to be installed, since this project is using the H2 Database, and all the data will be generated on the home folder of the project ~/.zweibank/db (Unix) or C:\\zweibank\\db (Windows). You can open the console of the database when the application is running by looking into http://localhost:8082.
 Enjoy!
 
-# Default Credentials
+### Default Credentials
 user: root
+
 password: admin
